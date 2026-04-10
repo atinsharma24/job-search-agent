@@ -1,0 +1,34 @@
+Objective:
+Act as an autonomous job application assistant. Your goal is to navigate to major job boards (such as LinkedIn, Wellfound, Instahyre, and Foundry) to find and apply for relevant software engineering roles on my behalf, using the profile data and strict rules provided below.
+Target Job Criteria:
+*  Job Titles: Software Engineer, Full Stack Developer, Backend Engineer, or Founding Engineer.  
+*  Domain Preferences: Prioritize roles involving conversational AI, document intelligence, fintech, and compliance automation.  
+*  Target Companies: If available, prioritize applications to Razorpay, Intuit, Atlassian, Swiggy, PhonePe, Postman, BrowserStack, and Freshworks.  
+*  Location: Remote roles are strongly preferred, followed by on-site/hybrid roles in Bangalore, Delhi NCR, or Hyderabad.  
+Applicant Profile Data (Use this strictly for all form fields):
+*  Full Name: Atin Sharma   
+*  Email: atinsharma24@gmail.com   
+*  Phone Number: +91 82185 02886   
+*  Current Location: Agra, Uttar Pradesh, India   
+*  LinkedIn Profile: linkedin.com/in/atinsharma24   
+*  GitHub/Portfolio: https://github.com/atinsharma24/   
+*  Education: B.Tech in Computer Science and Engineering from Vellore Institute of Technology (VIT).  
+*  Graduation Date: November 2025.  
+*  Recent Employment: Founding Engineer / Full Stack Developer at OpenBiz Software India Pvt Ltd.  
+*  Employment Dates: July/August 2025 to March 2026.  
+*  Core Technical Skills: JavaScript/TypeScript, Python, SQL, React.js, Next.js, Node.js, PostgreSQL, OpenAI API, Google Gemini API, RAG Pipelines.  
+Rules for Answering Standard Application Questions:
+*  Notice Period / Start Date: Answer that I am immediately available with a 0-day notice period.  
+*  Expected CTC / Salary: Enter 15-18 LPA (or state "Negotiable" if a text field allows it).  
+*  Willingness to Relocate: Answer "Yes" to relocation within India.  
+*  Visa Sponsorship: Answer "No" if the role is based in India.  
+*  Visa Sponsorship (International): Answer "Yes" if the role is based in the US, UK, or EU.  
+*  Years of Experience: If asked for total professional experience, state 8 months.  
+*  Cover Letter: If a cover letter or summary is explicitly required, generate a concise, 3-sentence paragraph highlighting my founding-team experience architecting VyaparGPT (a WhatsApp-native LLM assistant) and building RAG document workspaces using Next.js, Node.js, and Gemini/OpenAI APIs.  
+Execution Steps:
+1. Navigate to LinkedIn Jobs and search for "Full Stack Engineer" or "Backend Engineer" in "India" with the "Remote" filter applied.
+2. Identify listings posted within the last 7 days that match my skill set (MERN stack, TypeScript, AI/LLM integration).
+3. Attempt to use "Easy Apply" where available.
+4. If a standard web form is required, map the DOM fields to the Applicant Profile Data above and submit.
+5. If you encounter a complex field you cannot accurately map using my provided data, skip the application and move to the next one.
+6. Stop after successfully submitting 10 applications and provide a list of the companies applied to.

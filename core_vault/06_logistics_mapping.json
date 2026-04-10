@@ -1,0 +1,88 @@
+{
+  "logistics": {
+    "current_location": {
+      "city": "Agra",
+      "state": "Uttar Pradesh",
+      "pincode": "282007",
+      "country": "India",
+      "country_code": "IN",
+      "timezone": "Asia/Kolkata",
+      "utc_offset": "+05:30",
+      "nearest_major_city": "Delhi",
+      "distance_to_delhi_km": 200,
+      "distance_to_bangalore_km": 1740
+    },
+
+    "availability": {
+      "notice_period_days": 0,
+      "notice_period_label": "Immediate Joiner",
+      "available_from": "Immediately",
+      "currently_employed": false,
+      "last_role_end_date": "2026-03"
+    },
+
+    "compensation": {
+      "expected_ctc_inr_lpa_min": 15,
+      "expected_ctc_inr_lpa_max": 18,
+      "expected_ctc_label": "15–18 LPA",
+      "currency": "INR",
+      "unit": "LPA (Lakhs Per Annum)",
+      "current_ctc_inr_lpa": null,
+      "negotiable": true,
+      "negotiable_note": "Open to discussion for high-ownership roles with equity or performance components"
+    },
+
+    "work_preference": {
+      "primary": "Remote",
+      "secondary": "Bangalore (on-site or hybrid)",
+      "open_to_relocate": true,
+      "relocation_cities": ["Bangalore", "Hyderabad", "Pune", "Delhi NCR", "Mumbai"],
+      "willing_to_relocate_for_onsite": true,
+      "remote_work_setup": "MacBook Air M4 — fully equipped home office",
+      "preferred_engagement_types": [
+        "Full-time",
+        "Founding / early-stage team"
+      ],
+      "not_preferred": [
+        "Contract / freelance only",
+        "Internship"
+      ]
+    },
+
+    "work_authorization": {
+      "status": "Indian Citizen",
+      "requires_visa_sponsorship": false,
+      "eligible_to_work_in": ["India"],
+      "long_term_relocation_interest": ["Canada", "Germany"],
+      "long_term_relocation_timeline": "3–5 years post India-based experience"
+    },
+
+    "contact": {
+      "email": "atinsharma24@gmail.com",
+      "phone": "+91 82185 02886",
+      "github": "https://github.com/atinsharma24/",
+      "preferred_contact_method": "Email or LinkedIn message",
+      "response_time": "Within 24 hours"
+    },
+
+    "application_metadata": {
+      "resume_versions_prepared": 5,
+      "resume_archetypes": [
+        "Document AI / KYC",
+        "Conversational AI / WhatsApp",
+        "Full-Stack Product Engineer",
+        "AI / LLM Infrastructure",
+        "Fintech / Compliance Automation"
+      ],
+      "target_company_tiers": [
+        "Legal-tech (Leegality, Digio, RegisterKaro)",
+        "KYC / Identity (Signzy, Bureau)",
+        "Conversational AI (Yellow.ai, Sarvam AI)",
+        "SMB Fintech",
+        "Remote-first US/EU-funded startups"
+      ],
+      "open_to_equity": true,
+      "open_to_founding_engineer_roles": true
+    }
+  }
+}

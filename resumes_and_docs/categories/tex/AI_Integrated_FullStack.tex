@@ -1,0 +1,153 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[rgb]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+
+% Font options
+\usepackage[sfdefault]{roboto}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+% -------------------------------------------
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Atin Sharma} \\ \vspace{1pt}
+    \small Agra, India $|$ \href{mailto:atinsharma24@gmail.com}{atinsharma24@gmail.com} $|$ +91 82185 02886 \\
+    \small \href{https://linkedin.com/in/atinsharma24}{linkedin.com/in/atinsharma24} $|$ \href{https://github.com/atinsharma24}{github.com/atinsharma24}
+\end{center}
+
+\section{Profile}
+\vspace{2pt}
+\small{Full-Stack Product Engineer with founding-team experience bridging the gap between sophisticated AI models and production web architectures. Specialized in MERN stack development and seamless integration of LLM APIs (OpenAI, Gemini, Groq) to build "AI-first" user experiences. Proven track record in reducing API latency by 40\% and accelerating deployment cycles by 30\% through TypeScript-driven microservices.}
+\vspace{-4pt}
+\resumeItemListStart
+    \resumeItem{Shipped VyaparGPT: A WhatsApp-native LLM assistant for Indian SMBs (40+ business pilot).}
+    \resumeItem{Optimized Supabase (PostgreSQL) performance: Fixed N+1 query patterns to achieve sub-second response times.}
+    \resumeItem{Automated document intelligence: Built Gemini-powered data extraction replacing manual review cycles.}
+\resumeItemListEnd\section{Professional Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {OpenBiz Software India Pvt Ltd}{Jul 2025 -- Mar 2026}
+      {Founding Engineer}{Remote/Bangalore}
+      \resumeItemListStart
+        \resumeItem{Architected the zero-to-one core MERN platform, implementing strict TypeScript practices across the stack to build a scalable, production-ready foundation.}
+        \resumeItem{Architected VyaparGPT, a WhatsApp-native AI assistant for Indian SMBs, successfully deploying the MVP to an initial closed-pilot cohort of $\sim$40 businesses; handled webhook ingestion $\rightarrow$ LLM orchestration $\rightarrow$ response delivery with provider fallback and session-aware context.}
+        \resumeItem{Built an AI document verification module using Google Gemini API, automating data extraction from unstructured SMB documents and replacing a manual review step.}
+        \resumeItem{Diagnosed and resolved N+1 query patterns in Supabase (PostgreSQL), reducing API latency by 40\% across critical endpoints through indexing and response caching.}
+        \resumeItem{Engineered a fault-tolerant Razorpay subscription billing system with idempotent webhook validation, achieving 100\% payment-state consistency and reducing manual reconciliation to zero.}
+        \resumeItem{Owned CI/CD pipeline setup using GitHub Actions and Vercel, reducing deployment cycle time by 30\% and eliminating environment-drift bugs.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Nimbus --- AI RAG Workspace} $|$ \href{https://github.com/atinsharma24/nimbus}{\underline{github.com/atinsharma24/nimbus}}}{In Development 2026}
+          \resumeItemListStart
+            \resumeItem{\emph{Stack: Next.js, pgvector, Groq, Prisma}}
+            \resumeItem{Architected a production RAG pipeline (pgvector + Groq API) achieving sub-800ms semantic retrieval over multi-format document corpora with streaming LLM responses.}
+            \resumeItem{Designed a provider-agnostic LLM layer supporting Groq, OpenAI, and Anthropic, enabling one-config switching without downstream changes to retrieval logic.}
+            \resumeItem{Implemented async ingestion with 429 retry logic and per-document status tracking for production-grade rate limit handling.}
+          \resumeItemListEnd
+          
+      \resumeProjectHeading
+          {\textbf{Autonomous Web Agent} $|$ \href{https://github.com/atinsharma24/autonomous-web-agent}{\underline{github.com/atinsharma24/auto-agent}}}{}
+          \resumeItemListStart
+            \resumeItem{\emph{Stack: OpenClaw, BrowserOS (MCP), Python, Groq}}
+            \resumeItem{Designed a Claude 3.5 Sonnet + MCP orchestration layer that translates structured local context schemas into DOM-level form interactions for multi-step web workflows across dynamic web forms.}
+            \resumeItem{Built a decoupled system with a lightweight Groq-based "Watcher" for cost-efficient parsing and a heavy "Executor" agent for complex interactions.}
+            \resumeItem{Engineered resilient infra with local queue management and WAF/Captcha detection with graceful human-escalation.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Automated Content Intelligence Pipeline} $|$ \href{https://github.com/atinsharma24/content-pipeline}{\underline{github.com/atinsharma24/pipeline}}}{}
+          \resumeItemListStart
+            \resumeItem{\emph{Stack: React 19, TypeScript, Node.js, OpenAI}}
+            \resumeItem{Built an autonomous content pipeline running Puppeteer scraping and dual-model AI rewriting with Gemini and OpenAI failover.}
+            \resumeItem{Developed a React 19 frontend with a split-screen diff view for real-time editorial comparison of AI-rewritten content.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Focus Stack:}{ React 19, TypeScript, Node.js, Next.js, OpenAI, Gemini, PostgreSQL, Vercel, Docker. } \\ 
+     \textbf{Languages:}{ JavaScript/TypeScript, Python, SQL, Java} \\
+     \textbf{Frontend:}{ React (v18/19), Next.js, React Native, Redux Toolkit, TailwindCSS} \\
+     \textbf{Backend/DB:}{ Node.js, Express, NestJS, Django, PostgreSQL, MongoDB, pgvector, ChromaDB} \\
+     \textbf{AI/LLM:}{ OpenAI, Google Gemini, Groq API, RAG Pipelines, LangChain.js, Sentence Transformers, Prompt Engineering} \\
+     \textbf{DevOps:}{ Docker, GitHub Actions, Vercel, AWS (S3, DynamoDB)} \\
+     \textbf{Tools:}{ Git, Postman, Socket.IO, Razorpay SDK, VideoSDK, Puppeteer}
+    }}
+ \end{itemize}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Vellore Institute of Technology}{Expected Graduation: May 2026}
+      {B.Tech in Computer Science and Engineering}{Vellore}
+      \resumeItemListStart
+        \resumeItem{Focus on Full Stack Development and AI Systems.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\end{document}

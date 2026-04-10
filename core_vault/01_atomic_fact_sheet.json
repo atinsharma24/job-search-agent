@@ -1,0 +1,181 @@
+{
+  "candidate": {
+    "full_name": "Atin Sharma",
+    "title": "Full-Stack Product Engineer | AI Systems - WhatsApp Automation - RAG Pipelines",
+    "email": "atinsharma24@gmail.com",
+    "phone": "+91 82185 02886",
+    "location": {
+      "city": "Agra",
+      "state": "Uttar Pradesh",
+      "pincode": "282007",
+      "country": "India"
+    },
+    "github": "https://github.com/atinsharma24/",
+    "notice_period_days": 0,
+    "availability": "Immediate",
+    "salary_expectation_inr_lpa": {
+      "min": 15,
+      "max": 18,
+      "currency": "INR",
+      "unit": "LPA"
+    },
+    "work_authorization": "Indian Citizen — no sponsorship required"
+  },
+
+  "education": [
+    {
+      "institution": "Vellore Institute of Technology",
+      "degree": "B.Tech",
+      "field": "Computer Science and Engineering",
+      "campus": "Vellore",
+      "start_date": "2020-08",
+      "end_date": "2025-11",
+      "focus_areas": ["Full Stack Development", "AI Systems"]
+    },
+    {
+      "institution": "Delhi Public School",
+      "campus": "Agra",
+      "degree": "Secondary / Senior Secondary",
+      "start_date": null,
+      "end_date": null
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "OpenBiz Software India Pvt Ltd",
+      "title": "Founding Engineer",
+      "employment_type": "Full-time",
+      "work_mode": "Remote / Bangalore",
+      "start_date": "2025-07",
+      "end_date": "2026-03",
+      "duration_months": 9,
+      "team_size": 3,
+      "team_role": "One of three founding technical leads"
+    }
+  ],
+
+  "quantitative_metrics": {
+    "platform_scale": {
+      "value": 1000,
+      "qualifier": "active users",
+      "operator": "minimum",
+      "context": "MERN platform built from scratch at OpenBiz"
+    },
+    "api_latency_reduction": {
+      "value": 40,
+      "unit": "percent",
+      "cause": "N+1 query fix in Supabase (PostgreSQL), indexing, response caching"
+    },
+    "deployment_cycle_reduction": {
+      "value": 30,
+      "unit": "percent",
+      "cause": "GitHub Actions + Vercel CI/CD pipeline setup"
+    },
+    "team_size_openBiz": {
+      "value": 3,
+      "context": "Founding technical leads"
+    },
+    "leetcode_problems_solved": 347
+  },
+
+  "projects": [
+    {
+      "name": "Nimbus",
+      "type": "Open-source side project (in progress)",
+      "description": "AI-first RAG document workspace",
+      "start_date": "2025",
+      "end_date": "present",
+      "stack": [
+        "Next.js 14", "TypeScript", "PostgreSQL", "pgvector",
+        "Prisma", "NextAuth.js", "Groq API", "OpenAI"
+      ],
+      "key_features": [
+        "Streaming LLM responses via Groq API",
+        "Semantic search with pgvector (cosine similarity)",
+        "Provider-agnostic LLM layer (Groq, OpenAI, Anthropic)",
+        "Async document ingestion with 429 retry logic",
+        "Per-document status tracking"
+      ]
+    },
+    {
+      "name": "DocGPT",
+      "type": "Side project",
+      "description": "RAG Document Assistant",
+      "stack": ["React 19", "Python (Django)", "ChromaDB", "OpenAI", "Docker"],
+      "embedding_model": "all-MiniLM-L6-v2",
+      "generation_model": "GPT-4o-mini",
+      "chunking_library": "PyPDF2",
+      "vector_db": "ChromaDB"
+    },
+    {
+      "name": "VyaparGPT",
+      "type": "Professional product (OpenBiz)",
+      "description": "WhatsApp-native AI business assistant for Indian SMBs",
+      "stack": ["Node.js", "OpenAI API", "Google Gemini API"],
+      "key_features": [
+        "Full WhatsApp message lifecycle management",
+        "LLM provider-fallback logic (OpenAI to Gemini)"
+      ]
+    },
+    {
+      "name": "Automated Content Intelligence Pipeline",
+      "type": "Professional product (OpenBiz)",
+      "stack": [
+        "React 19", "TypeScript", "Laravel", "Node.js",
+        "OpenAI", "Gemini", "Docker", "GitHub Actions", "Puppeteer"
+      ],
+      "key_features": [
+        "Puppeteer-based scraping bypassing client-side rendering",
+        "Dual-model AI rewriting (Gemini + OpenAI with failover)",
+        "React 19 Diff View for editorial review",
+        "Microservices on Docker with GitHub Actions cron"
+      ]
+    }
+  ],
+
+  "tech_stack": {
+    "languages": ["JavaScript", "TypeScript", "Python", "SQL", "Java"],
+    "frontend": [
+      "React.js (v18, v19)", "Next.js", "React Native",
+      "Redux Toolkit", "TailwindCSS"
+    ],
+    "backend": ["Node.js", "Express.js", "NestJS", "Django", "Laravel"],
+    "databases": [
+      "PostgreSQL", "Supabase", "MongoDB",
+      "ChromaDB", "pgvector", "AWS DynamoDB"
+    ],
+    "ai_llm": [
+      "OpenAI API", "Google Gemini API", "Groq API",
+      "RAG Pipelines", "pgvector", "ChromaDB",
+      "Sentence Transformers", "all-MiniLM-L6-v2",
+      "Vercel AI SDK", "LangChain.js", "Prompt Engineering",
+      "PyPDF2"
+    ],
+    "devops_cloud": [
+      "Docker", "GitHub Actions", "Vercel",
+      "AWS S3", "AWS SNS"
+    ],
+    "tools": [
+      "Git", "Postman", "Socket.IO",
+      "Razorpay SDK", "VideoSDK", "Puppeteer"
+    ],
+    "protocols_patterns": [
+      "WebSocket (Socket.IO)", "REST", "Webhook validation",
+      "N+1 query optimization", "Vector similarity search (cosine)"
+    ]
+  },
+
+  "target_roles": [
+    "Conversational AI",
+    "Document Intelligence",
+    "Compliance Automation",
+    "AI-powered Fintech",
+    "Developer Tooling"
+  ],
+
+  "self_assessment_domains": [
+    "MERN", "Python", "Databases",
+    "Frontend", "Backend", "DevOps & Tools"
+  ]
+}

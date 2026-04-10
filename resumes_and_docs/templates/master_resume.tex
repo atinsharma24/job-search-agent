@@ -1,0 +1,170 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[rgb]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+% ---------- FONT OPTIONS ----------
+% sans-serif
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% ---------- CUSTOM COMMANDS ----------
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+% -------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+% ---------- HEADER ----------
+\begin{center}
+    \textbf{\Huge \scshape Atin Sharma} \\ \vspace{1pt}
+    \small Agra, India $|$ \href{mailto:atinsharma24@gmail.com}{atinsharma24@gmail.com} $|$ +91 82185 02886 \\
+    \href{https://linkedin.com/in/atinsharma24}{\underline{linkedin.com/in/atinsharma24}} $|$ 
+    \href{https://github.com/atinsharma24}{\underline{github.com/atinsharma24}}
+\end{center}
+
+% ---------- PROFILE ----------
+\section{Profile}
+\small{Full-Stack Product Engineer specializing in zero-to-one development of conversational AI, agentic workflows, and production RAG pipelines. Founding engineer with experience shipping production systems—including a WhatsApp-native AI assistant deployed to $\sim$40 pilot SMBs—while reducing API latency by 40\% and deployment cycle time by 30\% through TypeScript-driven architecture and database optimizations.}
+
+% ---------- EXPERIENCE ----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {OpenBiz Software India Pvt Ltd}{Jul 2025 -- Mar 2026}
+      {Founding Engineer}{Remote/Bangalore}
+      \resumeItemListStart
+        \resumeItem{Spearheaded the zero-to-one development of the core MERN platform, implementing strict TypeScript practices across the stack to build a scalable, production-ready foundation.}
+        \resumeItem{Architected VyaparGPT, a WhatsApp-native AI assistant for Indian SMBs, successfully deploying the MVP to an initial closed-pilot cohort of $\sim$40 businesses and managing the full message lifecycle.}
+        \resumeItem{Diagnosed and resolved N+1 query patterns in Supabase (PostgreSQL), reducing API latency by 40\% across critical endpoints through indexing and response caching.}
+        \resumeItem{Engineered a fault-tolerant Razorpay subscription billing system with idempotent webhook validation, achieving 100\% payment-state consistency and reducing manual reconciliation to zero.}
+        \resumeItem{Built an AI document verification module using Google Gemini API, automating data extraction from unstructured SMB documents and replacing a manual review step.}
+        \resumeItem{Owned CI/CD pipeline setup using GitHub Actions and Vercel, reducing deployment cycle time by 30\% and eliminating environment-drift bugs.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+% ---------- PROJECTS ----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Nimbus AI — First Local Workspace} $|$ \emph{Next.js, pgvector, Groq, Prisma}}{In Development 2026}
+          \resumeItemListStart
+            \resumeItem{Architected a production RAG pipeline (pgvector + Groq API) achieving sub-800ms semantic retrieval over multi-format document corpora with streaming LLM responses.}
+            \resumeItem{Designed a provider-agnostic LLM layer supporting Groq, OpenAI, and Anthropic, enabling one-config switching without downstream changes to retrieval logic.}
+            \resumeItem{Implemented async ingestion with 429 retry logic and per-document status tracking for production-grade rate limit handling.}
+          \resumeItemListEnd
+          
+      \resumeProjectHeading
+          {\textbf{Autonomous Web Agent} $|$ \emph{OpenClaw, BrowserOS (MCP), Python, Groq}}{}
+          \resumeItemListStart
+            \resumeItem{Designed a Claude 3.5 Sonnet + MCP orchestration layer that translates structured local context schemas into DOM-level form interactions across heterogeneous job board UIs.}
+            \resumeItem{Built a decoupled system with a lightweight Groq-based "Watcher" for cost-efficient parsing and a heavy "Executor" agent for complex interactions.}
+            \resumeItem{Engineered resilient infra with local queue management and WAF/Captcha detection with graceful human-escalation.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Automated Content Intelligence Pipeline} $|$ \emph{React 19, TypeScript, Node.js, OpenAI}}{}
+          \resumeItemListStart
+            \resumeItem{Built an autonomous content pipeline running Puppeteer scraping and dual-model AI rewriting with Gemini and OpenAI failover.}
+            \resumeItem{Developed a React 19 frontend with a split-screen diff view for real-time editorial comparison of AI-rewritten content.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+% ---------- SKILLS ----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages:}{ JavaScript/TypeScript, Python, SQL, Java} \\
+     \textbf{Frontend:}{ React (v18/19), Next.js, React Native, Redux Toolkit, TailwindCSS} \\
+     \textbf{Backend/DB:}{ Node.js, Express, NestJS, Django, PostgreSQL, MongoDB, pgvector, ChromaDB} \\
+     \textbf{AI/LLM:}{ OpenAI, Google Gemini, Groq API, RAG Pipelines, LangChain.js, Sentence Transformers, Prompt Engineering} \\
+     \textbf{DevOps:}{ Docker, GitHub Actions, Vercel, AWS (S3, DynamoDB)} \\
+     \textbf{Tools:}{ Git, Postman, Socket.IO, Razorpay SDK, VideoSDK, Puppeteer}
+    }}
+ \end{itemize}
+
+% ---------- EDUCATION ----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Vellore Institute of Technology}{Expected Graduation: May 2026}
+      {B.Tech in Computer Science and Engineering}{Vellore}
+      \resumeItemListStart
+        \resumeItem{Focus on Full Stack Development and AI Systems.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+% -------------------------------------------
+\end{document}
