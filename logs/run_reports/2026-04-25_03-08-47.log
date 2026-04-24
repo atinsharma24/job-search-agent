@@ -1,0 +1,51 @@
+--- [1/2] Discovery Run Started: Sat Apr 25 03:08:47 IST 2026 ---
+[
+  {
+    "job_title": "Python + Gen AI",
+    "company": "Deloitte",
+    "required_stack": [
+      "Python",
+      "AI"
+    ],
+    "application_url": "https://in.linkedin.com/jobs/view/python-%2B-gen-ai-at-deloitte-4399779066?position=1&pageNum=0&refId=QnzyGLlUy%2BB%2F0X41zP9z5A%3D%3D&trackingId=G1NCYduCiC82JNA%2Fx7VMSw%3D%3D"
+  },
+  {
+    "job_title": "Full Stack Python Developer",
+    "company": "Deloitte",
+    "required_stack": [
+      "Python",
+      "AI"
+    ],
+    "application_url": "https://in.linkedin.com/jobs/view/full-stack-python-developer-at-deloitte-4392281466?position=2&pageNum=0&refId=QnzyGLlUy%2BB%2F0X41zP9z5A%3D%3D&trackingId=uBKxhuIp0tlimWcp1QQxZw%3D%3D"
+  },
+  {
+    "job_title": "Data Scientist",
+    "company": "Deloitte",
+    "required_stack": [
+      "Python",
+      "AI"
+    ],
+    "application_url": "https://in.linkedin.com/jobs/view/data-scientist-at-deloitte-4390573266?position=3&pageNum=0&refId=QnzyGLlUy%2BB%2F0X41zP9z5A%3D%3D&trackingId=bwWywg1DTgllx%2B0qF12xVg%3D%3D"
+  },
+  {
+    "job_title": "AI Engineer",
+    "company": "Deloitte",
+    "required_stack": [
+      "Python",
+      "AI"
+    ],
+    "application_url": "https://in.linkedin.com/jobs/view/ai-engineer-at-deloitte-4398854205?position=4&pageNum=0&refId=QnzyGLlUy%2BB%2F0X41zP9z5A%3D%3D&trackingId=XBPgEpUcW69iXYg1wU6Avw%3D%3D"
+  },
+  {
+    "job_title": "Data Scientist",
+    "company": "Ujjivan Small Finance Bank",
+    "required_stack": [
+      "Python",
+      "AI"
+    ],
+    "application_url": "https://in.linkedin.com/jobs/view/data-scientist-at-ujjivan-small-finance-bank-4402340931?position=6&pageNum=0&refId=QnzyGLlUy%2BB%2F0X41zP9z5A%3D%3D&trackingId=099K6ZSSt%2B8lE99Zcb7WHg%3D%3D"
+  }
+]
+--- [2/2] Fast-Path Scout Run Started: Sat Apr 25 03:09:29 IST 2026 ---
+scripts/run_scout.sh: line 52: gemini-cli: command not found
+--- Run Failed: Sat Apr 25 03:09:29 IST 2026 ---

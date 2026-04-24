@@ -1,0 +1,25 @@
+[
+  {
+    "queue_id": "b9a8f2f4-3c1a-4b2e-9d3b-111111111111",
+    "contact_id": "c001",
+    "full_name": "Ankit Verma",
+    "company": "Signzy",
+    "linkedin_url": "https://www.linkedin.com/in/[placeholder]",
+    "persona_id": 2,
+    "variant_id": "2B",
+    "message_type": "cold_email",
+    "subject": "Backend + LLM integration engineer — no \"AI wrapper\" experience",
+    "body_raw": "The most common failure mode when teams add AI to an existing backend: it becomes a bolted-on API call with no state management, no fallback, and no observability. I've specifically avoided that pattern.\n\nAt my last role I owned the LLM integration layer end-to-end:\n\n- **Orchestration:** LangGraph for multi-step, stateful workflows — not a linear chain, an actual state machine with conditional routing and retry handling\n- **Retrieval:** pgvector RAG pipeline with cosine similarity, async ingestion, per-document status tracking, and 429 retry logic — built to survive production rate limits\n- **Backend contract:** Clean separation between the AI layer and the core MERN API so LLM providers can be swapped (and were — OpenAI to Gemini fallback in production) without touching business logic\n\nI'm targeting roles at [Company Name] specifically because [Specific Reason — e.g., \"your compliance automation stack is the exact domain I've been building for\" / \"the way your platform handles document verification maps closely to problems I've already solved\"].\n\nHappy to walk through the architecture on a short call, or send over the relevant code if that's more useful.\n\n**Atin Sharma**\ngithub.com/atinsharma24 | linkedin.com/in/atinsharma24",
+    "body_compiled": "The most common failure mode when teams add AI to an existing backend: it becomes a bolted-on API call with no state management, no fallback, and no observability. I've specifically avoided that pattern.\n\nAt my last role I owned the LLM integration layer end-to-end:\n\n- **Orchestration:** LangGraph for multi-step, stateful workflows — not a linear chain, an actual state machine with conditional routing and retry handling\n- **Retrieval:** pgvector RAG pipeline with cosine similarity, async ingestion, per-document status tracking, and 429 retry logic — built to survive production rate limits\n- **Backend contract:** Clean separation between the AI layer and the core MERN API so LLM providers can be swapped (and were — OpenAI to Gemini fallback in production) without touching business logic\n\nI'm targeting roles at Signzy specifically because compliance automation stack is the exact domain I've been building for.\n\nHappy to walk through the architecture on a short call, or send over the relevant code if that's more useful.\n\n**Atin Sharma**\ngithub.com/atinsharma24 | linkedin.com/in/atinsharma24",
+    "placeholders_used": {
+      "[Company Name]": "Signzy",
+      "[Specific Reason]": "compliance automation stack is the exact domain I've been building for"
+    },
+    "status": "pending",
+    "priority": "HIGH",
+    "created_at": "2026-04-11T09:00:00.000Z",
+    "approved_at": null,
+    "sent_at": null,
+    "error": null
+  }
+]

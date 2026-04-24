@@ -1,9 +1,6 @@
-# Prompt: Weekly Tracker Sync & Audit
+# Prompt: Tracker Sync
 
-**Target:** Ensure the log is accurate and identify patterns in rejections/ghosting.
+**Target:** Keep the tracker and state file aligned with minimal output.
 
 **Prompt:**
-"@job-scout Audit my `job_applications_tracker.md` against the `applied_job_ids` in `active_application_context/background_agent_state.json`.
-1. Sync any missing entries.
-2. Highlight any portals where I am seeing a high 'seen' count but low 'applied' count.
-3. Suggest a refinement to my `AGENT.md` filtering logic if we are wasting too many tokens on irrelevant roles."
+`@job-scout Read active_application_context/background_agent_state.json and active_application_context/job_applications_tracker.md. Sync missing entries, remove obvious duplicates, and output only flat JSON objects with company, job_title, application_url, and status. Do not suggest workflow changes. Do not analyze ghosting or rejection patterns.`

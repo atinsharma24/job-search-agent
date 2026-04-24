@@ -1,10 +1,6 @@
-# Prompt: Draft Pending Cover Letters
+# Prompt: Draft Fast-Path Cover Letters
 
-**Target:** Clear the backlog of high-value roles that require custom writing.
+**Target:** Generate low-token cover letters for jobs already selected for application.
 
 **Prompt:**
-"@job-scout Review the `pending_review` list in `active_application_context/background_agent_state.json`. 
-For the top 3 most relevant roles:
-1. Research the company's core product.
-2. Draft a tailored cover letter in `ResumesTailored/cover-letters/` using a relevant STAR story from `04_behavioral_star_stories.md`.
-3. Notify me once the drafts are ready for my final review before submission."
+`@job-scout For each supplied job packet, generate one template-based cover letter using only company, role, and required_stack substitutions. Do not research the company. Do not use STAR stories. Do not open any historical logs. Output one flat JSON object per job with job_title, company, application_url, cover_letter_path, and status.`

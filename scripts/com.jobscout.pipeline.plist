@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.jobscout.pipeline</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-lc</string>
+    <string>cd /Users/atinsharma/job_search_vault &amp;&amp; /Users/atinsharma/job_search_vault/scripts/run_scout.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/atinsharma/job_search_vault</string>
+
+  <key>StartInterval</key>
+  <integer>14400</integer>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>DRY_RUN</key>
+    <string>0</string>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/atinsharma/job_search_vault/logs/launchd_scout.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/atinsharma/job_search_vault/logs/launchd_scout.log</string>
+</dict>
+</plist>

@@ -1,0 +1,23 @@
+{
+  "name": "linkedin_outreach",
+  "version": "1.0.0",
+  "scripts": {
+    "prepare": "ts-node --esm scripts/prepare_queue.ts",
+    "review": "ts-node --esm scripts/review_queue.ts",
+    "send": "ts-node --esm scripts/send_agent.ts",
+    "agent:run": "ts-node --esm scripts/agent_runner.ts",
+    "gmail:invoke": "ts-node --esm scripts/gmail_invoker.ts"
+  },
+  "dependencies": {
+    "papaparse": "^5.4.1",
+    "enquirer": "^2.3.6",
+    "write-file-atomic": "^5.0.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/papaparse": "^5.2.7",
+    "@types/uuid": "^9.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}

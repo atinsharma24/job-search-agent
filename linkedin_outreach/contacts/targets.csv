@@ -1,0 +1,2 @@
+contact_id,full_name,title,company,linkedin_url,email,persona_id,variant_id,status,placeholder_company,placeholder_feature_or_news,placeholder_specific_reason,placeholder_technical_thing,notes,priority,added_date,approved_date,sent_date
+c001,Ankit Verma,VP of Engineering,Signzy,https://www.linkedin.com/in/[placeholder],,2,2B,pending,Signzy,"KYC document intelligence layer",compliance automation stack alignment,,HIGH,2026-04-11,,

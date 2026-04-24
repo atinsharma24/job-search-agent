@@ -1,10 +1,6 @@
-# Prompt: Resume Tailoring for High-Value Lead
+# Prompt: Deep-Dive Tailoring Disabled
 
-**Target:** Manually trigger a deep-dive tailoring for a "Dream Company" lead.
+**Target:** Prevent high-token resume rewrites.
 
 **Prompt:**
-"@job-scout I have a high-priority role at [COMPANY_NAME] for [ROLE_NAME] found on [YC/Wellfound/Instahyre/Cutshort]. 
-1. Analyze the job description at [URL].
-2. Identify the top 3 keywords missing from my current `resumes_and_docs/templates/master_resume_alt.tex`.
-3. Draft a tailored version of my resume in `resumes_and_docs/tailored/resumes/` that specifically highlights my work on [SPECIFIC_PROJECT_FROM_VAULT] to match their requirements.
-4. Ensure the output is a single-page PDF using Tectonic."
+`@job-scout Deep-dive tailoring is disabled. For any requested role, choose the nearest baseline resume from resumes_and_docs/categories/md/ and swap target keywords only in summary, skills, and highlights. Do not rewrite the resume structure. Do not research the company. Do not use STAR stories. Do not generate a new resume strategy. Output flat JSON with company, job_title, resume_category, changed_keywords, and status.`
