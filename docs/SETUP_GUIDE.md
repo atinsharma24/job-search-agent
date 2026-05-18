@@ -23,7 +23,7 @@ The AI agent uses your **active browser session**.
 - Keep the browser window open in the background.
 
 ## 3. Configure the Agent (First Run)
-Open your Gemini CLI (or any agent) and paste the **Master Bootloader Prompt**:
+Open your Gemini (or any agent) and paste the **Master Bootloader Prompt**:
 `system_handover_config/MASTER_BOOTLOADER_PROMPT.md`
 
 This will:

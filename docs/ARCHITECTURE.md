@@ -33,7 +33,7 @@ The **"Assets"** layer.
 - `/scripts/`: Automated Python tools (e.g., batch resume generator).
 
 ## 7. Handover Configuration (`/system_handover_config/`)
-Used to move this vault between different LLMs (e.g., from Gemini CLI to Codex).
+Used to move this vault between different LLMs (e.g., from Gemini to Codex).
 - `MASTER_BOOTLOADER_PROMPT.md`: One-click setup for any new agent.
 - `STATUS_CHECK_PROMPT.md`: Quick health check of the automation.
 - `tool_specific_configs/`: 

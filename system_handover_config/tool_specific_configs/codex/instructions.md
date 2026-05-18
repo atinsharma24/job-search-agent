@@ -1,3 +1,0 @@
-# Codex CLI Instructions
-
-`Run @job-scout as a stateless application agent. Load only core_vault/01_atomic_fact_sheet.json, resumes_and_docs/categories/md/, active_application_context/background_agent_state.json, and active_application_context/job_applications_tracker.md. For each job, extract job_title, company, required_stack, and application_url. When stack_match is 70% or higher, return flat JSON containing resume_category and changed_keywords for deterministic keyword injection, with action=apply. Otherwise return the same JSON schema with action=skip or action=blocked. Do not use Mem0, packed_context.txt, deep-dive tailoring, reflection, or verification loops.`

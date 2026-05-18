@@ -1,2 +1,32 @@
-contact_id,full_name,title,company,linkedin_url,email,persona_id,variant_id,status,placeholder_company,placeholder_feature_or_news,placeholder_specific_reason,placeholder_technical_thing,notes,priority,added_date,approved_date,sent_date
-c001,Ankit Verma,VP of Engineering,Signzy,https://www.linkedin.com/in/[placeholder],,2,2B,pending,Signzy,"KYC document intelligence layer",compliance automation stack alignment,,HIGH,2026-04-11,,
+name,url,persona,company
+Vivek Raghavan,https://www.linkedin.com/in/vivekraghavan,persona_1_founders,Sarvam AI
+Pratyush Kumar,https://www.linkedin.com/in/pratyush-kumar-9b1b1b,persona_1_founders,Sarvam AI
+Bhavish Aggarwal,https://www.linkedin.com/in/bhavishaggarwal,persona_1_founders,Krutrim
+Prasad Kavuri,https://www.linkedin.com/in/prasadkavuri,persona_2_vp_eng,Krutrim
+Raghu Ravinutala,https://www.linkedin.com/in/raghuravinutala,persona_1_founders,Yellow.ai
+Madhav Chinta,https://www.linkedin.com/in/madhavchinta,persona_2_vp_eng,Yellow.ai
+Ashwini Asokan,https://www.linkedin.com/in/ashwiniasokan,persona_1_founders,Mad Street Den
+Anand Chandrasekaran,https://www.linkedin.com/in/anand-chandrasekaran-7b1b1b,persona_1_founders,Mad Street Den
+Beerud Sheth,https://www.linkedin.com/in/beerud,persona_1_founders,Gupshup
+Swapnil Jain,https://www.linkedin.com/in/swapniljain,persona_1_founders,Observe.AI
+Jithendra Vepa,https://www.linkedin.com/in/jithendravepa,persona_1_founders,Observe.AI
+Ayush Kumar,https://www.linkedin.com/in/ayush-kumar-iitp,persona_3_eng_managers,Observe.AI
+Muzammil Badbade,https://www.linkedin.com/in/muzammilbadbade,persona_5_recruiters,Observe.AI
+Umesh Sachdev,https://www.linkedin.com/in/umeshsachdev,persona_1_founders,Uniphore
+Ravi Saraogi,https://www.linkedin.com/in/ravisaraogi,persona_1_founders,Uniphore
+Ravi Mayuram,https://www.linkedin.com/in/ravimayuram,persona_2_vp_eng,Uniphore
+Muddu Sudhakar,https://www.linkedin.com/in/muddusudhakar,persona_1_founders,Aisera
+Christos Tryfonas,https://www.linkedin.com/in/christos-tryfonas,persona_1_founders,Aisera
+Chinna Polinati,https://www.linkedin.com/in/chinna-polinati-aisera,persona_2_vp_eng,Aisera
+Shubham Mishra,https://www.linkedin.com/in/shubham-mishra-pixis,persona_1_founders,Pixis
+Vrushali Prasade,https://www.linkedin.com/in/vrushali-prasade,persona_1_founders,Pixis
+Vikas Mishra,https://www.linkedin.com/in/vikas-mishra-pixis,persona_2_vp_eng,Pixis
+Vishnu Subramanian,https://www.linkedin.com/in/vishnusubramanian,persona_1_founders,JarvisLabs.ai
+Ganesh Gopalan,https://www.linkedin.com/in/ganeshgopalan,persona_1_founders,Gnani.ai
+Ananth Nagaraj,https://www.linkedin.com/in/ananth-nagaraj-gnani,persona_1_founders,Gnani.ai
+Anup Pattnaik,https://www.linkedin.com/in/anup-pattnaik,persona_3_eng_managers,Observe.AI
+Navtej Reddy,https://www.linkedin.com/in/navtej-reddy,persona_4_senior_engineers,Observe.AI
+Ajey Hare Prasath,https://www.linkedin.com/in/ajeyhareprasath,persona_5_recruiters,Pixis
+Ayushree Chatterjee,https://www.linkedin.com/in/ayushree-chatterjee,persona_5_recruiters,Pixis
+Jared Lucas,https://www.linkedin.com/in/jaredlucas,persona_5_recruiters,Aisera
+Emily Yarrington,https://www.linkedin.com/in/emily-yarrington-aisera,persona_5_recruiters,Aisera

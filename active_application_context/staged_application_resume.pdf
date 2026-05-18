@@ -1,0 +1,48 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 1094 >>
+stream
+BT
+/F1 10 Tf
+50 780 Td
+14 TL
+(# Backend AI Specialist) Tj
+T* () Tj
+T* (**Profile:**) Tj
+T* (Backend Engineer specializing in AI-driven data systems, RAG pipeline architecture, and high-performance API development. Expert in Python \(Django/FastAPI\) and Node.js for building secure, scalable AI backends with advanced retrieval logic and semantic search. Experienced in optimizing database queries and managing large-scale vector embeddings for document intelligence and business automation. Target keywords: Medical AI.) Tj
+T* () Tj
+T* (**Key Experience Highlights:**) Tj
+T* (- Production RAG Pipeline: Achieved sub-800ms retrieval across multi-format corpora using pgvector and Groq.) Tj
+T* (- WhatsApp AI Lifecycle: Managed full-cycle message orchestration from webhook ingestion to LLM response delivery.) Tj
+T* (- Async Document Ingestion: Implemented robust retry logic and status tracking for production-grade rate limit handling.) Tj
+T* () Tj
+T* (**Tech Focus:**) Tj
+T* (Python, FastAPI, Django, Node.js, PostgreSQL, pgvector, ChromaDB, OpenAI, LangChain, Redis, Medical AI, RAG.) Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Type /Page /Parent 4 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+4 0 obj
+<< /Type /Pages /Kids [ 3 0 R ] /Count 1 >>
+endobj
+5 0 obj
+<< /Type /Catalog /Pages 4 0 R >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000001225 00000 n 
+0000001351 00000 n 
+0000001410 00000 n 
+trailer
+<< /Size 6 /Root 5 0 R >>
+startxref
+1459
+%%EOF

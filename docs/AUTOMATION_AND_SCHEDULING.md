@@ -18,13 +18,13 @@ Use the **@job-scout** to suggest a new schedule:
 ---
 
 ## 2. Using System Cron (Local Machine)
-If you want to run the **Gemini CLI** from your terminal on a fixed schedule (e.g., while you are away from the computer).
+If you want to run the **Gemini** from your terminal on a fixed schedule (e.g., while you are away from the computer).
 
 1.  **Create a script (`run_scout.sh`):**
     ```bash
     #!/bin/bash
     cd /Users/atinsharma/job_search_vault
-    gemini-cli "@job-scout Execute prompt #01 from /prompts/job-automation-library/01_scout_and_filter.md"
+    gemini "@job-scout Execute prompt #01 from /prompts/job-automation-library/01_scout_and_filter.md"
     ```
 2.  **Add to Crontab:**
     `crontab -e`

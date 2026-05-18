@@ -1,6 +1,27 @@
-# Job Applications Tracker
+# Job Application Tracker
 
-Human-readable audit log for application outcomes.
-
-| Date | Company | Job Title | URL | Status |
-| --- | --- | --- | --- | --- |
+- [2025-05-15] **Company:** detanomics | **Role:** Solutions Engineer | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** Aether Legals | **Role:** Frontend Engineer (Legaltech) | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** Triveous | **Role:** Team Lead - Fullstack | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** WishWish | **Role:** Frontend Engineer (iOS + Unity) | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** Talent Authority Partners | **Role:** Product Engineer — AI | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** ReviewMyCoach | **Role:** Technical Co-Founder | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** Blabber AI | **Role:** Full Stack Engineer | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** Invene | **Role:** Junior Data Engineer | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** TrickCV | **Role:** Software Engineer | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** Prodinit | **Role:** Full Stack Engineer (Django + React) | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** insettini | **Role:** Founding Full-Stack Engineer | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** Pyarsani Business Solutions | **Role:** Lead Mobile Developer (Founding Engineer Role) - MVP Stage | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** BitNorm | **Role:** Full Stack Engineer | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** Serokell | **Role:** DevOps Engineer [FULLY REMOTE] | **Status:** Applied | **Note:** Shared AI interview.
+- [2025-05-15] **Company:** Strobes Security, Inc. | **Role:** Full Stack Engineer | **Status:** Applied | **Note:** N/A (Premium Application).
+- [2025-05-15] **Company:** CareerXperts Consulting | **Role:** Associate Software Engineer | **Status:** Apply flow opened — manual submit required | **Note:** Easy Apply (SDUI iframe). Screenshot saved: screens/careerxperts_easyapply_open.png
+- [2025-05-15] **Company:** CareerXperts Consulting | **Role:** Associate Software Engineer | **Status:** Apply flow opened — manual submit required | **Note:** Easy Apply (SDUI iframe). Screenshot saved: screens/careerxperts_easyapply_open.png
+- [2025-05-15] **Company:** CareerXperts Consulting | **Role:** Software Engineer | **Status:** Apply flow opened — manual submit required | **Note:** Easy Apply (SDUI iframe). Screenshot saved: screens/careerxperts_easyapply_open.png
+- [2025-05-15] **Company:** Crossing Hurdles | **Role:** Software Developer (Remote) | **Status:** Applied | **Note:** Easy Apply (SDUI iframe). Screenshots saved: screens/crossing_hurdles_easy_apply.png, screens/crossing_hurdles_easystep2.png, screens/crossing_hurdles_review.png
+- [2025-05-15] **Company:** Navi | **Role:** SDE I (Backend) | **Status:** Apply flow opened — manual submit required | **Note:** Easy Apply (SDUI iframe). Screenshot saved: screens/navi_sde1_page.png
+- [2025-05-15] **Company:** LeadSoc Technologies Pvt Ltd | **Role:** Javascript Developer | **Status:** Apply flow opened — manual submit required | **Note:** Easy Apply (SDUI iframe). Screenshot saved: screens/leadsoc_easy_apply.png
+- [2025-05-15] **Company:** TekIT Software Solutions Pvt. Ltd. (India & USA) | **Role:** Full Stack Engineer | **Status:** Application submitted (confirmed) | **Note:** View resume / screenshot: screens/tekit_applied.png
+- [2025-05-15] **Company:** Kipplo | **Role:** Software Engineer | **Status:** Application submitted (confirmed) | **Note:** View resume / screenshot: screens/kipplo_applied.png
+- [2025-05-15] **Company:** LeadSoc Technologies Pvt Ltd | **Role:** Javascript Developer | **Status:** Application submitted (confirmed) | **Note:** View resume / screenshot: screens/leadsoc_applied.png
+- [2025-05-15] **Company:** Zeabyte Limited | **Role:** Frontend Developer (React / Next.js) | **Status:** Apply flow opened — manual submit required | **Note:** Easy Apply (SDUI iframe). Screenshot: screens/zeabyte_easyapply.png
