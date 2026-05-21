@@ -65,6 +65,15 @@
       "response_time": "Within 24 hours"
     },
 
+    "qa_bank": {
+      "qa_about_me": "Founding engineer with 9 months of production experience building AI-powered full-stack systems at OpenBiz. Shipped VyaparGPT (WhatsApp-native LLM assistant for 1,000+ Indian SMBs), a Puppeteer + dual-model content intelligence pipeline, and Nimbus (open-source RAG workspace on pgvector + Groq). Strong in TypeScript, Node.js, Python, and production RAG pipelines. Immediate joiner.",
+      "qa_tech_challenge": "At OpenBiz, API latency degraded as user volume crossed 1,000. I traced the root cause to an N+1 query pattern in our Supabase PostgreSQL layer — single parent fetches spawning N individual child queries per request. I rewrote ORM calls to use JOIN-based queries, added composite indexes on high-frequency WHERE/JOIN columns, and introduced TTL-based response caching for stable read-heavy endpoints. The result was a verified 40% reduction in API latency.",
+      "qa_innovation": "Nimbus is an open-source RAG document workspace I built with Next.js 14, pgvector, and Groq API. Documents are ingested asynchronously, chunked, embedded, and stored in PostgreSQL with cosine similarity search via pgvector. A provider-agnostic LLM layer switches between Groq, OpenAI, and Anthropic via a single config flag. Streaming responses via Groq API deliver real-time document Q&A with visible token streaming. Ingestion pipeline includes 429 retry logic and per-document status tracking.",
+      "qa_leadership": "At OpenBiz, environment drift between three engineers' local setups and staging was causing non-reproducible bugs. I built a GitHub Actions and Vercel CI/CD pipeline from scratch — automated testing on every PR, environment-consistent staging deploys on main, production gated behind explicit approval. I introduced branch conventions and PR description standards that became team defaults. Result: 30% faster deployment cycles and zero environment-mismatch incidents over the following two months.",
+      "qa_product_impact": "Indian SMBs operate through WhatsApp and physical documents, not SaaS dashboards. VyaparGPT met them where they were: a WhatsApp-native AI assistant for business queries, invoicing, and GST guidance, with session context for natural multi-turn conversation. The document verification module using Google Gemini API automated extraction from photographs of GST certificates and vendor agreements, eliminating a manual agent-driven step. Together, these products served 1,000+ active users, directly reducing hours of manual coordination per week.",
+      "qa_why_role": "I am looking for a founding-stage or early product role where I can own the full stack, ship AI-powered features quickly, and work with a small team building something with real user impact. My background in production RAG pipelines, WhatsApp automation, and TypeScript full-stack development maps directly to roles requiring both AI integration and reliable backend engineering."
+    },
+
     "application_metadata": {
       "resume_versions_prepared": 5,
       "resume_archetypes": [

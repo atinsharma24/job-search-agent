@@ -77,6 +77,14 @@ LINKEDIN_MAPPING = [
     ((r"\brelocat",), "open_to_relocate"),
     ((r"\bdegree\b",), "degree"),
     ((r"\buniversity\b", r"\binstitution\b", r"\bcollege\b"), "university"),
+    # Open-ended text / textarea questions — answered from qa_bank
+    ((r"\btell us about yourself\b", r"\babout yourself\b", r"\bintroduce yourself\b", r"\bbackground\b"), "qa_about_me"),
+    ((r"\btechnical challenge\b", r"\bcomplex bug\b", r"\bperformance issue\b", r"\bdifficult problem\b"), "qa_tech_challenge"),
+    ((r"\bproduct you built\b", r"\bside project\b", r"\bmost proud\b", r"\bbuild from scratch\b"), "qa_innovation"),
+    ((r"\bconflict\b", r"\binitiative\b", r"\bteam problem\b", r"\bleadership\b", r"\btook ownership\b"), "qa_leadership"),
+    ((r"\bproduct impact\b", r"\bend users\b", r"\bhow.*helped\b", r"\buser value\b"), "qa_product_impact"),
+    ((r"\bwhy.*role\b", r"\bwhy.*position\b", r"\bwhy.*company\b", r"\bwhy.*interest\b", r"\bmotivation\b"), "qa_why_role"),
+    ((r"\bcover letter\b", r"\bcover note\b", r"\badditional information\b", r"\banything else\b"), "qa_about_me"),
 ]
 
 
