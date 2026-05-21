@@ -1,39 +1,127 @@
 # Job Search — Single Run Invoke
 
-You are a job application agent operating from this directory.
+You are a job application agent for Atin Sharma operating from this vault.
+Vault root: `/Users/atinsharma/job_search_vault`
 
-## Your Task (run top to bottom, stop on first real error)
+## Safety Rules (read before anything else)
 
-1. Run the discovery script to find fresh jobs:
-   `python3 scripts/job_discovery_feeder.py --limit 10 --output-file /tmp/discovered_jobs.json`
+- All field values MUST come from `core_vault/01_atomic_fact_sheet.json` or `core_vault/06_logistics_mapping.json`.
+- Salary: 15–18 LPA only. Current CTC = 0. Never deviate.
+- Notice period: 0 days / Immediate Joiner. Always.
+- If a required form field cannot be answered from the vault, log it as `blocked` and move to the next job.
+- Never submit without confirming the exit code from the Playwright script is 0.
+- Run with `--dry-run` first when testing a new portal or script version.
 
-2. Read `/tmp/discovered_jobs.json`. For each job:
-   - Read `core_vault/01_atomic_fact_sheet.json` for stack
-   - Compute stack_match against the job's required_stack
-   - If stack_match < 0.70, skip and note why
-   - If stack_match >= 0.70, proceed
+---
 
-3. For each qualifying job, call apply_io_handler:
-   `python3 scripts/apply_io_handler.py --payload-file /tmp/payload_<company>.json`
-   
-   Build the payload JSON with: job_title, company, required_stack, application_url,
-   resume_category (pick the closest from resumes_and_docs/categories/md/),
-   changed_keywords (3-5 keywords from the JD not already in the baseline),
-   action="apply"
+## Step 1 — Discover Fresh Jobs
 
-4. Run the apply macro for each staged job:
-   `bash scripts/browseros_apply_macro.sh /tmp/payload_<company>.json 
-    active_application_context/staged_application_resume.pdf`
+```bash
+python3 scripts/job_discovery_feeder.py --limit 10 --output-file /tmp/discovered_jobs.json
+```
 
-5. Report a summary: jobs discovered, skipped (with reason), applied, blocked.
+Read `/tmp/discovered_jobs.json`. It is a JSON array of job packets:
+```json
+[{"job_title":"","company":"","required_stack":[],"application_url":""}]
+```
 
-## Rules
-- Use exact field values from core_vault/01_atomic_fact_sheet.json — no inventing data
-- Never enter a CTC value outside 15-18 LPA range
-- Notice period is always 0 / Immediate
-- If a form asks for current CTC, enter 0
-- If blocked by CAPTCHA or login wall, log it and move to next job
-- Do not stop on a single blocked application
+If the file is empty or the script errors, check if the LinkedIn browser session exists:
+`active_application_context/playwright/linkedin-profile/`
+If it does not exist, stop and tell the user to run `bash scripts/setup_browser_sessions.sh` first.
 
-## After the run
-Append results to active_application_context/job_applications_tracker.md
+---
+
+## Step 2 — Screen Each Job
+
+For each job in the array:
+
+1. Read `core_vault/01_atomic_fact_sheet.json` (your stack is in `tech_stack`).
+2. Compare the job's `required_stack` against your stack. Compute `stack_match` = (matching technologies) / (total required technologies).
+3. If `stack_match < 0.70`: log skip with reason and move to next.
+4. If `stack_match >= 0.70`: proceed to Step 3.
+
+---
+
+## Step 3 — Stage the Resume
+
+Pick the best baseline resume using this routing table:
+
+| JD signals | Resume category |
+|---|---|
+| LLM, RAG, vector, embedding, Groq, pgvector, conversational, chatbot | `GenAI_Prompt_Engineer` |
+| compliance, KYC, legal, identity, AML, document verification | `Backend_AI_Specialist` |
+| cloud, DevOps, Docker, Kubernetes, AWS, infra | `Cloud_Native_FullStack` |
+| full-stack, MERN, React, Next.js, product, founding | `AI_Integrated_FullStack` |
+
+Identify 3–5 keywords from the JD that are NOT already in the baseline resume's skills/profile section. These are `changed_keywords`.
+
+Write a payload JSON to `/tmp/payload_<company>.json`:
+```json
+{
+  "job_title": "...",
+  "company": "...",
+  "required_stack": [...],
+  "application_url": "...",
+  "resume_category": "...",
+  "changed_keywords": [...],
+  "action": "apply"
+}
+```
+
+Run the stager:
+```bash
+python3 scripts/apply_io_handler.py --payload-file /tmp/payload_<company>.json
+```
+
+This produces `active_application_context/staged_application_resume.pdf` and appends a row to the tracker.
+
+---
+
+## Step 4 — Apply
+
+```bash
+bash scripts/browseros_apply_macro.sh \
+  /tmp/payload_<company>.json \
+  active_application_context/staged_application_resume.pdf
+```
+
+The macro auto-routes by URL:
+- `linkedin.com` → `playwright_linkedin_easy_apply.py`
+- `wellfound.com` / `angel.co` → `playwright_wellfound_apply.py`
+- `naukri.com` → `playwright_naukri_apply.py`
+- Anything else → `claude` CLI visual fallback (you will be prompted to complete it)
+
+Exit codes:
+- `0` = applied successfully
+- `1` = generic failure
+- `10` = CAPTCHA detected — log `blocked`, skip
+- `11` = external redirect / non-standard ATS — log `blocked`, skip
+- `12` = login wall — session expired, run `setup_browser_sessions.sh`
+
+---
+
+## Step 5 — Report
+
+After processing all jobs, output a summary table:
+
+| Company | Job Title | Action | Reason |
+|---|---|---|---|
+| ... | ... | applied / skipped / blocked | ... |
+
+Then verify `active_application_context/job_applications_tracker.md` has a row for every `applied` entry.
+
+---
+
+## Supplemental: Apply to a Specific Job (Skip Discovery)
+
+If you already have a job URL and want to apply directly, provide this input:
+
+```
+Apply to this job on my behalf:
+  Job title: [title]
+  Company: [company]
+  URL: [url]
+  Required stack: [comma-separated techs from the JD]
+
+Run Steps 2–5 from INVOKE.md.
+```
