@@ -38,7 +38,7 @@ def build_base_answer_bank(fact_sheet_path: Path, logistics_path: Path) -> dict:
     expected_min = candidate["salary_expectation_inr_lpa"]["min"]
     expected_max = candidate["salary_expectation_inr_lpa"]["max"]
 
-    return {
+    bank = {
         "fact_sheet": fact_sheet,
         "logistics": logistics,
         "first_name": first_name,
@@ -73,6 +73,12 @@ def build_base_answer_bank(fact_sheet_path: Path, logistics_path: Path) -> dict:
         "university": fact_sheet["education"][0]["institution"],
         "linkedin_profile": "https://www.linkedin.com/in/atinsharma24/",
     }
+
+    # Merge Q&A bank so all portal scripts can answer open-ended text fields.
+    qa_bank = logistics.get("qa_bank", {})
+    bank.update(qa_bank)
+
+    return bank
 
 
 def build_field_key(locator, wrapper_selector: Optional[str] = None) -> str:
