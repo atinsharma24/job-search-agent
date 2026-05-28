@@ -1,5 +1,0 @@
---- [1/2] Scouting Run Started: Fri Apr 17 08:00:00 IST 2026 ---
-/Users/atinsharma/job_search_vault/scripts/run_scout.sh: line 19: gemini-cli: command not found
---- [2/2] Summary & Sync Started: Fri Apr 17 08:00:00 IST 2026 ---
-/Users/atinsharma/job_search_vault/scripts/run_scout.sh: line 24: gemini-cli: command not found
---- Run Finished: Fri Apr 17 08:00:01 IST 2026 ---

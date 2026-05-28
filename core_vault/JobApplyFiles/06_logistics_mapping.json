@@ -1,0 +1,97 @@
+{
+  "logistics": {
+    "current_location": {
+      "city": "Agra",
+      "state": "Uttar Pradesh",
+      "pincode": "282007",
+      "country": "India",
+      "country_code": "IN",
+      "timezone": "Asia/Kolkata",
+      "utc_offset": "+05:30",
+      "nearest_major_city": "Delhi",
+      "distance_to_delhi_km": 200,
+      "distance_to_bangalore_km": 1740
+    },
+
+    "availability": {
+      "notice_period_days": 0,
+      "notice_period_label": "Immediate Joiner",
+      "available_from": "Immediately",
+      "currently_employed": true,
+      "last_role_end_date": "2026-05-20"
+    },
+
+    "compensation": {
+      "expected_ctc_inr_lpa_min": 15,
+      "expected_ctc_inr_lpa_max": 18,
+      "expected_ctc_label": "15–18 LPA",
+      "currency": "INR",
+      "unit": "LPA (Lakhs Per Annum)",
+      "current_ctc_inr_lpa": null,
+      "negotiable": true,
+      "negotiable_note": "Open to discussion for high-ownership roles with equity or performance components"
+    },
+
+    "work_preference": {
+      "primary": "Remote",
+      "secondary": "Bangalore (on-site or hybrid)",
+      "open_to_relocate": true,
+      "relocation_cities": ["Bangalore", "Hyderabad", "Pune", "Delhi NCR", "Mumbai"],
+      "willing_to_relocate_for_onsite": true,
+      "remote_work_setup": "MacBook Air M4 — fully equipped home office",
+      "preferred_engagement_types": [
+        "Full-time",
+        "Founding / early-stage team"
+      ],
+      "not_preferred": [
+        "Contract / freelance only",
+        "Internship"
+      ]
+    },
+
+    "work_authorization": {
+      "status": "Indian Citizen",
+      "requires_visa_sponsorship": false,
+      "eligible_to_work_in": ["India"],
+      "long_term_relocation_interest": ["Canada", "Germany"],
+      "long_term_relocation_timeline": "3–5 years post India-based experience"
+    },
+
+    "contact": {
+      "email": "atinsharma24@gmail.com",
+      "phone": "+91 82185 02886",
+      "github": "https://github.com/atinsharma24/",
+      "preferred_contact_method": "Email or LinkedIn message",
+      "response_time": "Within 24 hours"
+    },
+
+    "qa_bank": {
+      "qa_about_me": "Founding engineer with 9 months of production experience building AI-powered full-stack systems at OpenBiz. Shipped VyaparGPT (WhatsApp-native LLM assistant for 1,000+ Indian SMBs), a Puppeteer + dual-model content intelligence pipeline, and Nimbus (open-source RAG workspace on pgvector + Groq). Strong in TypeScript, Node.js, Python, and production RAG pipelines. Immediate joiner.",
+      "qa_tech_challenge": "At OpenBiz, API latency degraded as user volume crossed 1,000. I traced the root cause to an N+1 query pattern in our Supabase PostgreSQL layer — single parent fetches spawning N individual child queries per request. I rewrote ORM calls to use JOIN-based queries, added composite indexes on high-frequency WHERE/JOIN columns, and introduced TTL-based response caching for stable read-heavy endpoints. The result was a verified 40% reduction in API latency.",
+      "qa_innovation": "Nimbus is an open-source RAG document workspace I built with Next.js 14, pgvector, and Groq API. Documents are ingested asynchronously, chunked, embedded, and stored in PostgreSQL with cosine similarity search via pgvector. A provider-agnostic LLM layer switches between Groq, OpenAI, and Anthropic via a single config flag. Streaming responses via Groq API deliver real-time document Q&A with visible token streaming. Ingestion pipeline includes 429 retry logic and per-document status tracking.",
+      "qa_leadership": "At OpenBiz, environment drift between three engineers' local setups and staging was causing non-reproducible bugs. I built a GitHub Actions and Vercel CI/CD pipeline from scratch — automated testing on every PR, environment-consistent staging deploys on main, production gated behind explicit approval. I introduced branch conventions and PR description standards that became team defaults. Result: 30% faster deployment cycles and zero environment-mismatch incidents over the following two months.",
+      "qa_product_impact": "Indian SMBs operate through WhatsApp and physical documents, not SaaS dashboards. VyaparGPT met them where they were: a WhatsApp-native AI assistant for business queries, invoicing, and GST guidance, with session context for natural multi-turn conversation. The document verification module using Google Gemini API automated extraction from photographs of GST certificates and vendor agreements, eliminating a manual agent-driven step. Together, these products served 1,000+ active users, directly reducing hours of manual coordination per week.",
+      "qa_why_role": "I am looking for a founding-stage or early product role where I can own the full stack, ship AI-powered features quickly, and work with a small team building something with real user impact. My background in production RAG pipelines, WhatsApp automation, and TypeScript full-stack development maps directly to roles requiring both AI integration and reliable backend engineering."
+    },
+
+    "application_metadata": {
+      "resume_versions_prepared": 5,
+      "resume_archetypes": [
+        "Document AI / KYC",
+        "Conversational AI / WhatsApp",
+        "Full-Stack Product Engineer",
+        "AI / LLM Infrastructure",
+        "Fintech / Compliance Automation"
+      ],
+      "target_company_tiers": [
+        "Legal-tech (Leegality, Digio, RegisterKaro)",
+        "KYC / Identity (Signzy, Bureau)",
+        "Conversational AI (Yellow.ai, Sarvam AI)",
+        "SMB Fintech",
+        "Remote-first US/EU-funded startups"
+      ],
+      "open_to_equity": true,
+      "open_to_founding_engineer_roles": true
+    }
+  }
+}

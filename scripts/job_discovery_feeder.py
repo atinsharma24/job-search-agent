@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import os
 import re
 from pathlib import Path
 from typing import Iterable
@@ -291,12 +292,30 @@ def main() -> int:
     args = parse_args()
     applied_pairs = load_applied_pairs()
 
+    # LinkedIn uses a persistent context so the logged-in session is reused.
+    linkedin_headless = os.environ.get("LINKEDIN_PLAYWRIGHT_HEADLESS", "1").lower() not in {"0", "false", "no"}
+    linkedin_profile_dir = Path(
+        os.environ.get(
+            "LINKEDIN_PLAYWRIGHT_PROFILE_DIR",
+            str(VAULT_ROOT / "active_application_context" / "playwright" / "linkedin-profile"),
+        )
+    ).expanduser()
+    linkedin_profile_dir.mkdir(parents=True, exist_ok=True)
+
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=True)
-        context = browser.new_context(viewport={"width": 1440, "height": 1200})
+        # Persistent context for LinkedIn — carries the saved login session.
+        linkedin_context = playwright.chromium.launch_persistent_context(
+            user_data_dir=str(linkedin_profile_dir),
+            headless=linkedin_headless,
+            channel=os.environ.get("LINKEDIN_PLAYWRIGHT_CHANNEL") or None,
+            viewport={"width": 1440, "height": 1200},
+        )
+        # Wellfound public listings are accessible without auth.
+        wellfound_browser = playwright.chromium.launch(headless=True)
+        wellfound_context = wellfound_browser.new_context(viewport={"width": 1440, "height": 1200})
         try:
-            linkedin_page = context.new_page()
-            wellfound_page = context.new_page()
+            linkedin_page = linkedin_context.new_page()
+            wellfound_page = wellfound_context.new_page()
 
             jobs: list[dict] = []
             try:
@@ -318,9 +337,7 @@ def main() -> int:
             jobs = trim_jobs(jobs, args.limit)
             if args.dry_run:
                 DISCOVERY_DEBUG_PATH.parent.mkdir(parents=True, exist_ok=True)
-                target_page = linkedin_page
-                if len(jobs) == 0:
-                    target_page = wellfound_page
+                target_page = linkedin_page if jobs else wellfound_page
                 target_page.screenshot(path=str(DISCOVERY_DEBUG_PATH), full_page=False)
             output = json.dumps(jobs, indent=2)
             if args.output_file:
@@ -328,8 +345,9 @@ def main() -> int:
             print(output)
             return 0
         finally:
-            context.close()
-            browser.close()
+            linkedin_context.close()
+            wellfound_context.close()
+            wellfound_browser.close()
 
 
 if __name__ == "__main__":

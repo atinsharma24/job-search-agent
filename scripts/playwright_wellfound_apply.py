@@ -28,8 +28,8 @@ EXIT_EXTERNAL_REDIRECT = 11
 EXIT_LOGIN_REQUIRED = 12
 
 VAULT_ROOT = Path(__file__).resolve().parents[1]
-FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "01_atomic_fact_sheet.json"
-LOGISTICS_PATH = VAULT_ROOT / "core_vault" / "06_logistics_mapping.json"
+FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
+LOGISTICS_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "06_logistics_mapping.json"
 ARTIFACT_DIR = VAULT_ROOT / "output" / "playwright"
 LOG_DIR = VAULT_ROOT / "logs"
 WELLFOUND_DOMAINS = ("wellfound.com", "angel.co")
@@ -91,7 +91,7 @@ WELLFOUND_MAPPING = [
     ((r"\bcountry\b",), "country"),
     ((r"\bgithub\b", r"\bportfolio\b", r"\bwebsite\b"), "github"),
     ((r"\blinkedin\b",), "linkedin_profile"),
-    ((r"\bpitch\b", r"\bwhy .*interested\b", r"\bwhy .*join\b", r"\babout yourself\b", r"\bsummary\b"), "pitch"),
+    ((r"\bpitch\b", r"\bwhy .*interested\b", r"\bwhy .*join\b", r"\babout yourself\b", r"\bsummary\b"), "qa_about_me"),
     ((r"\bavailability\b", r"\bstart date\b", r"\bnotice\b", r"\bjoin\b"), "availability"),
     ((r"\bexperience\b", r"\byears of\b"), "years_experience"),
     ((r"\bsalary\b", r"\bcompensation\b", r"\bctc\b"), "expected_salary_min"),
@@ -100,6 +100,13 @@ WELLFOUND_MAPPING = [
     ((r"\brelocat",), "open_to_relocate"),
     ((r"\bdegree\b",), "degree"),
     ((r"\buniversity\b", r"\binstitution\b", r"\bcollege\b"), "university"),
+    # Open-ended text / textarea questions — answered from qa_bank
+    ((r"\btechnical challenge\b", r"\bcomplex bug\b", r"\bperformance issue\b", r"\bdifficult problem\b"), "qa_tech_challenge"),
+    ((r"\bproduct you built\b", r"\bside project\b", r"\bmost proud\b", r"\bbuild from scratch\b"), "qa_innovation"),
+    ((r"\bconflict\b", r"\binitiative\b", r"\bteam problem\b", r"\bleadership\b", r"\btook ownership\b"), "qa_leadership"),
+    ((r"\bproduct impact\b", r"\bend users\b", r"\bhow.*helped\b", r"\buser value\b"), "qa_product_impact"),
+    ((r"\bwhy.*role\b", r"\bwhy.*position\b", r"\bwhy.*company\b", r"\bmotivation\b"), "qa_why_role"),
+    ((r"\bcover letter\b", r"\bcover note\b", r"\badditional information\b", r"\banything else\b"), "qa_about_me"),
 ]
 
 

@@ -6,7 +6,7 @@ Welcome to your AI-powered job search command center. This vault is a modular, h
 - **@job-scout Agent:** A specialized AI persona that understands your tech stack and experience.
 - **Auto-Tailoring Resumes:** Automated LaTeX generation using `tectonic` for single-page, professional PDFs.
 - **Intelligent Scouting:** Hourly background scans of top India-remote job portals.
-- **Modular Vault:** A clean "Source of Truth" architecture compatible with Gemini CLI, Codex, and OpenClaw.
+- **Modular Vault:** A clean "Source of Truth" architecture compatible with Gemini, Codex, and OpenClaw.
 - **Portability:** Use the **Master Bootloader Prompt** to instantly spin up this system on any LLM.
 
 ---
@@ -31,7 +31,7 @@ Welcome to your AI-powered job search command center. This vault is a modular, h
 ---
 
 ## 🛠️ Requirements
-- **Gemini CLI** (or any LLM agent with browser/shell access)
+- **Gemini** (or any LLM agent with browser/shell access)
 - **Local-Server MCP** (for browser interactions)
 - **Tectonic CLI** (for LaTeX $\rightarrow$ PDF compilation)
 - **Active Browser Session:** Stay logged into your job portals!

@@ -1,0 +1,20 @@
+{
+  "action": "apply",
+  "application_url": "https://in.linkedin.com/jobs/view/artificial-intelligence-engineer-at-meril-4394766198?position=7&pageNum=0&refId=es1lVRBH%2Fb8umHa4Gbh%2F2g%3D%3D&trackingId=dgJdwyxnUxlOfs6cRKV3LQ%3D%3D",
+  "changed_keywords": [
+    "Medical AI",
+    "Python",
+    "RAG"
+  ],
+  "company": "Meril",
+  "cover_letter": "template_ai_engineer",
+  "job_title": "Artificial Intelligence Engineer",
+  "log_status": "written",
+  "reason": "High alignment with Python and AI stack requirements.",
+  "required_stack": [
+    "Python",
+    "AI"
+  ],
+  "resume_category": "Backend_AI_Specialist.md",
+  "stack_match": 1.0
+}
