@@ -323,6 +323,101 @@ Primary Rewrite: Google Gemini API
 ---
 
 > **MCP Agent Usage Note:**  
-> Query this document by architecture letter (A / B / C) or by technology keyword  
-> (e.g., "pgvector", "webhook", "Puppeteer") to retrieve the relevant technical block  
+> Query this document by architecture letter (A / B / C / D) or by technology keyword  
+> (e.g., "pgvector", "webhook", "Puppeteer", "MCP") to retrieve the relevant technical block  
 > for answering deep technical screening questions.
+
+---
+---
+
+## Architecture D — Autonomous Web Agent (Job Application Automation)
+
+### System Overview
+
+A Claude 3.5 Sonnet + MCP orchestration layer that translates structured local context schemas (vault files) into DOM-level browser interactions for multi-step web form automation.  
+Runtime: Python. Browser control: BrowserOS via MCP. Dual-agent architecture (Watcher + Executor).
+
+---
+
+### Agent Architecture
+
+```
+Local Context Vault (JSON / Markdown files)
+        │
+        ▼
+Executor Agent — Claude 3.5 Sonnet (via Anthropic API)
+        │   Reads structured schemas → generates tool calls
+        │
+        ├─ MCP Tool Layer (BrowserOS / OpenClaw)
+        │       ├─ DOM inspection (read field labels, input types)
+        │       ├─ Form fill (type text, select options, click)
+        │       └─ Navigation (next page, submit)
+        │
+        ▼
+Watcher Agent — Groq (lightweight, cost-efficient)
+        │   Parses page state between steps
+        │   Detects: WAF challenges, CAPTCHAs, unexpected modals
+        │
+        ├─ NORMAL STATE → continue Executor
+        └─ ANOMALY DETECTED → pause + escalate to human
+```
+
+---
+
+### Dual-Agent Design Rationale
+
+| Agent | Model | Role | Cost Profile |
+|---|---|---|---|
+| Executor | Claude 3.5 Sonnet | Complex reasoning over DOM + form logic | Higher per-call cost, used sparingly |
+| Watcher | Groq (fast inference) | Lightweight page-state parsing between steps | Near-zero cost, runs on every state transition |
+
+- **Separation of concerns:** Executor handles multi-step reasoning; Watcher handles cheap, frequent state validation
+- **Cost optimization:** Groq runs on every DOM transition; Claude only invoked for actual form-fill decisions
+- **Failure isolation:** Watcher anomaly detection prevents Executor from wasting tokens on broken flows
+
+---
+
+### Local Queue Management
+
+```
+Job URL Queue (local file / SQLite)
+        │
+        ▼
+Dequeue next job URL
+        │
+        ▼
+Watcher: Pre-flight check (site reachable? known WAF?)
+        │
+        ├─ WAF / CAPTCHA detected → flag for human + skip
+        │
+        ▼
+Executor: Load context schema → begin form traversal
+        │
+        ├─ Watcher validates state after each step
+        │
+        ▼
+Submit → mark as applied in queue
+        │
+        └─ Failure at any step → mark status + continue to next URL
+```
+
+**Queue properties:**
+- Persistent across sessions (not in-memory)
+- Per-job status: `pending → in_progress → applied / failed / escalated`
+- Deduplication: URL hash prevents re-applying to same posting
+
+---
+
+### WAF / CAPTCHA Handling
+
+- **Detection:** Watcher identifies challenge pages by DOM fingerprint (CAPTCHA iframe src, Cloudflare challenge text, reCAPTCHA widget)
+- **Response:** Graceful pause — job flagged as `escalated`, human prompted to complete challenge manually
+- **Resumption:** After human clears challenge, Executor resumes from last saved state checkpoint
+
+---
+
+> **Interview talking points:**  
+> — Why two agents? Cost/capability separation — Groq for cheap state-polling, Claude for reasoning  
+> — Why MCP over Selenium/Playwright? Structured tool access without brittle selectors; LLM navigates by intent  
+> — How do you prevent bans? WAF detection + rate limiting + human escalation for challenges
+

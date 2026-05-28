@@ -116,6 +116,12 @@ Designed structured prompts for document extraction (Gemini), content rewriting 
 **PyPDF2**
 Used PyPDF2 in the DocGPT ingestion pipeline to extract text from uploaded PDFs and apply overlap-based chunking strategies before embedding and vector storage.
 
+**Anthropic Claude (Claude 3.5 Sonnet)**
+Used Claude 3.5 Sonnet as the primary orchestration model in the Autonomous Web Agent — translating structured local context into DOM-level browser interactions via MCP for multi-step web workflow automation.
+
+**MCP (Model Context Protocol)**
+Integrated MCP (Model Context Protocol) in the Autonomous Web Agent to give Claude structured, tool-level access to browser state, enabling reliable DOM-level interaction across dynamic web forms.
+
 ---
 
 ## DEVOPS / CLOUD
@@ -156,6 +162,9 @@ Integrated VideoSDK to add in-app video conferencing to the OpenBiz platform, en
 
 **Puppeteer**
 Used Puppeteer to bypass client-side rendering on JavaScript-heavy target sites in the Content Intelligence Pipeline, enabling reliable scraping of SPA content that standard HTTP clients could not access.
+
+**BrowserOS / OpenClaw**
+Used BrowserOS (via MCP) and OpenClaw in the Autonomous Web Agent project to provide browser-level tool access to an LLM orchestration layer, enabling programmatic interaction with web UIs without brittle CSS selectors.
 
 ---
 

@@ -28,8 +28,9 @@
       "degree": "B.Tech",
       "field": "Computer Science and Engineering",
       "campus": "Vellore",
-      "start_date": "2020-08",
-      "end_date": "2025-11",
+      "start_date": "2021",
+      "end_date": "2026-05",
+      "graduation_status": "Expecting May 2026",
       "focus_areas": ["Full Stack Development", "AI Systems"]
     },
     {
@@ -47,11 +48,23 @@
       "title": "Founding Engineer",
       "employment_type": "Full-time",
       "work_mode": "Remote / Bangalore",
-      "start_date": "2025-07",
-      "end_date": "2026-03",
-      "duration_months": 9,
+      "start_date": "2025-06",
+      "end_date": "2026-05-20",
+      "duration_months": 12,
       "team_size": 3,
       "team_role": "One of three founding technical leads"
+    },
+    {
+      "company": "Vellore Institute of Technology",
+      "title": "Research Contributor",
+      "employment_type": "Academic / Part-time",
+      "work_mode": "On-campus, Vellore",
+      "start_date": "2025-01",
+      "end_date": "2025-11",
+      "duration_months": 11,
+      "research_topics": [
+        "Blockchain-Based LLM Model Using Fully Homomorphic Encryption (FHE) for Academic Records"
+      ]
     }
   ],
 
@@ -61,6 +74,12 @@
       "qualifier": "active users",
       "operator": "minimum",
       "context": "MERN platform built from scratch at OpenBiz"
+    },
+    "vyapargpt_pilot_size": {
+      "value": 40,
+      "qualifier": "SMB businesses",
+      "operator": "approximately",
+      "context": "Initial closed-pilot cohort for VyaparGPT WhatsApp assistant"
     },
     "api_latency_reduction": {
       "value": 40,
@@ -96,6 +115,18 @@
         "Provider-agnostic LLM layer (Groq, OpenAI, Anthropic)",
         "Async document ingestion with 429 retry logic",
         "Per-document status tracking"
+      ]
+    },
+    {
+      "name": "Autonomous Web Agent",
+      "type": "Open-source side project",
+      "description": "Claude 3.5 Sonnet + MCP orchestration layer for multi-step web form automation",
+      "github": "github.com/atinsharma24/auto-agent",
+      "stack": ["Python", "Groq API", "OpenClaw", "BrowserOS (MCP)", "Claude 3.5 Sonnet"],
+      "key_features": [
+        "MCP orchestration layer translating structured local context schemas into DOM-level form interactions across dynamic web forms",
+        "Decoupled architecture: lightweight Groq-based 'Watcher' for cost-efficient parsing + heavy 'Executor' agent for complex interactions",
+        "Local queue management with WAF/Captcha detection and graceful human-escalation"
       ]
     },
     {

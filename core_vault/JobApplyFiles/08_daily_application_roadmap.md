@@ -180,7 +180,7 @@ For each job, verify in this order:
 2. Does it explicitly allow India or avoid excluding India?
 3. Is the title in-scope?
 4. Is the stack reasonably aligned?
-5. Is the seniority realistic for 8-9 months of experience?
+5. Is the seniority realistic for ~12 months of experience?
 6. Can every required field be answered from the vault?
 7. Does the JD warrant a specific resume variant?
 
