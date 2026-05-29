@@ -15,20 +15,26 @@ Full-stack engineer with founding experience building **AI-powered document veri
 ## PROFESSIONAL EXPERIENCE
 
 ### Founding Engineer | OpenBiz Software India Pvt Ltd
-**Jul 2025 – Mar 2026 | Remote (Bangalore)**
+**Jun 2025 – May 2026 | Remote (Bangalore)**
 
 **Document Intelligence & Verification:**
-- Built an **AI document verification module** using **Google Gemini API** to automate data extraction and validation from unstructured SMB documents (invoices, GST forms, business licenses), eliminating manual review steps
-- Architected **VyaparGPT** — a WhatsApp-native LLM assistant for Indian SMBs using **Node.js, OpenAI, and Gemini APIs**, handling full message lifecycle: webhook → LLM processing → response dispatch with provider-fallback logic
-- Processed **1,000+ active users** with **conversation context managed per session** for personalized, stateful interactions
+- **Gemini Vision API document verification module**: extracting structured fields (GST number, business name, invoice amount, dates) from **WhatsApp photographs of GST certificates and vendor agreements** — eliminating a manual data-entry step in SMB onboarding. Direct applicability to KYC document extraction workflows.
+- **VyaparGPT**: built full WhatsApp message lifecycle — webhook ingestion → **HMAC-SHA256 validation** → session context → LLM dispatch → response delivery — serving **40+ SMBs in closed pilot**, scaling to **1,000+ active platform users**.
+- **LLM provider-fallback**: OpenAI → Google Gemini on HTTP 5xx, 429 rate-limit, or configurable timeout — zero failure surface exposed to users.
 
 **System Performance & Reliability:**
-- Diagnosed and resolved **N+1 query patterns** in **Supabase (PostgreSQL)**; implemented indexing and response caching, **cutting API response time by 40%** across critical endpoints
-- Engineered **real-time bidirectional chat** using **Socket.IO** and integrated **VideoSDK** for live SMB-to-support workflows, ensuring zero third-party dependency for compliance-sensitive environments
-- Owned **CI/CD pipeline** setup with **GitHub Actions and Vercel**, reducing deployment cycle time by 30% and eliminating environment drift
+- **N+1 fix**: rewrote ORM calls to JOIN-based queries, composite indexes on high-frequency WHERE/JOIN columns, TTL-based response caching — **40% API latency reduction** at 1,000+ user scale.
+- **Razorpay**: HMAC webhook validation, payment-state reconciliation, out-of-order event handling via re-entrant idempotency check — **100% payment-state consistency**.
+- **CI/CD**: GitHub Actions + Vercel — **30% reduction in deployment cycle time**, zero broken-build incidents over four months.
 
-**Payment & Compliance Infrastructure:**
-- Integrated **Razorpay** payment gateway for subscription billing, handling **webhook validation, payment state reconciliation, and failed-payment retry flows** in production
+---
+
+### Research Contributor | Vellore Institute of Technology
+**Jan 2025 – Nov 2025 | Vellore (On-campus)**
+
+- Contributed to research on **Blockchain-Based LLM Model Using Fully Homomorphic Encryption (FHE) for Academic Records** — directly relevant to KYC/identity: FHE enables computation on encrypted personal data without decryption, with blockchain providing an immutable audit trail for credential issuance and verification.
+- Evaluated architectural trade-offs between on-chain data storage and off-chain encrypted record pointers, assessing gas cost constraints versus **data privacy guarantees** in an academic credential provenance system — applicable to identity verification infrastructure design.
+- Explored how model inference could operate on **privacy-preserving representations of sensitive data** using FHE-compatible cryptographic primitives, without exposing plaintext records.
 
 ---
 
@@ -68,13 +74,14 @@ Full-stack engineer with founding experience building **AI-powered document veri
 **AI/LLM:** **OpenAI API · Google Gemini API · Groq API** · RAG Pipelines · **Vector Search** · LangChain.js · Vercel AI SDK · Prompt Engineering  
 **DevOps:** Docker · GitHub Actions · Vercel · CI/CD Pipelines · Git · Prisma ORM  
 **Tools:** Socket.IO · **Razorpay API** · Puppeteer · Postman · VideoSDK  
+**Patterns:** WebSocket (Socket.IO) · REST · Webhook Validation (HMAC-SHA256) · N+1 Query Optimization · Vector Similarity Search (cosine) · Provider-Agnostic LLM Layers · Idempotent Event Processing  
 
 ---
 
 ## EDUCATION
 
 **B.Tech — Computer Science & Engineering**  
-Vellore Institute of Technology (VIT), Vellore | Aug 2020 – Nov 2025  
+Vellore Institute of Technology (VIT), Vellore | Expected Graduation: May 2026  
 Focus: Full Stack Development, AI Systems, Information Security Management, Image Processing (CNNs), Cyber Security
 
 ---
@@ -93,3 +100,7 @@ Focus: Full Stack Development, AI Systems, Information Security Management, Imag
 
 **Target Companies:** Signzy, Bureau, Digio  
 **GitHub:** [github.com/atinsharma24](https://github.com/atinsharma24/)
+
+---
+
+**Availability:** Immediate Joiner — 0-day notice period | **Work Mode:** Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai | **Expected CTC:** 15–18 LPA (INR) | **Work Authorization:** Indian Citizen — no sponsorship required

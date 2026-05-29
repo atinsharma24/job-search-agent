@@ -15,24 +15,26 @@ Full-stack engineer with founding experience building **production conversationa
 ## PROFESSIONAL EXPERIENCE
 
 ### Founding Engineer | OpenBiz Software India Pvt Ltd
-**Jul 2025 – Mar 2026 | Remote (Bangalore)**
+**Jun 2025 – May 2026 | Remote (Bangalore)**
 
 **Conversational AI & LLM Systems:**
-- Architected **VyaparGPT** — a **WhatsApp-native AI business assistant** for Indian SMBs using **Node.js, OpenAI, and Gemini APIs**
-  - Handled **full message lifecycle**: webhook receipt → LLM processing → response dispatch
-  - Implemented **provider-fallback logic** (OpenAI ↔ Gemini) for high availability
-  - Managed **conversation context per session** for stateful, personalized interactions
-  - Processed **1,000+ active users** with TypeScript-based type-safe architecture
-- Built an **AI document verification module** using **Google Gemini API** to automate data extraction from unstructured business documents
+- **VyaparGPT**: built full WhatsApp message lifecycle — webhook ingestion → **HMAC-SHA256 validation** → session context → LLM dispatch → response delivery — serving **40+ SMBs in closed pilot**, scaling to **1,000+ active platform users**. Multi-turn conversational context via rolling `conversation_history[]`.
+- **LLM provider-fallback**: OpenAI → Google Gemini on HTTP 5xx, 429 rate-limit, or configurable timeout, with response-shape normalisation — zero failure surface exposed to users.
+- **Gemini Vision API document verification**: extracting structured fields (GST number, business name, invoice amount, dates) from WhatsApp photographs of GST certificates and vendor agreements — eliminating a manual data-entry step in SMB onboarding.
 
-**Real-Time Infrastructure & Performance:**
-- Engineered **real-time bidirectional chat** using **Socket.IO** and integrated **VideoSDK** for in-app conferencing — supporting live SMB-to-support workflows
-- Diagnosed and resolved **N+1 query patterns** in **Supabase (PostgreSQL)**; implemented indexing and response caching, **cutting API response time by 40%**
-- Owned **CI/CD pipeline** setup with **GitHub Actions and Vercel**, reducing deployment cycle time by 30%
+**Performance & Infrastructure:**
+- **N+1 fix**: rewrote ORM calls to JOIN-based queries, composite indexes on high-frequency WHERE/JOIN columns, TTL-based response caching — **40% API latency reduction** at 1,000+ user scale.
+- **Razorpay**: HMAC webhook validation, payment-state reconciliation, out-of-order event handling via re-entrant idempotency check — **100% payment-state consistency**.
+- **CI/CD**: GitHub Actions + Vercel — **30% reduction in deployment cycle time**, zero broken-build incidents over four months.
+- Website Builder: shipped within 6-week window by reusing ~60% of shared infrastructure.
 
-**Platform Engineering:**
-- Integrated **Razorpay** payment gateway for subscription billing, handling **webhook validation, payment state reconciliation, and retry flows**
-- Architected the core MERN platform from scratch, scaling to 1,000+ active users with TypeScript throughout the stack
+---
+
+### Research Contributor | Vellore Institute of Technology
+**Jan 2025 – Nov 2025 | Vellore (On-campus)**
+
+- Contributed to research on **Blockchain-Based LLM Model Using Fully Homomorphic Encryption (FHE) for Academic Records** — investigating how FHE enables computation on encrypted student data without decryption, with blockchain providing an immutable audit trail.
+- Explored how model inference could operate on privacy-preserving representations of sensitive academic data using FHE-compatible cryptographic primitives.
 
 ---
 
@@ -71,13 +73,14 @@ Full-stack engineer with founding experience building **production conversationa
 **AI/LLM:** **OpenAI API · Google Gemini API · Groq API** · **RAG Pipelines** · **Vector Search** · **LangChain.js** · **Vercel AI SDK** · **Prompt Engineering**  
 **DevOps:** Docker · GitHub Actions · Vercel · CI/CD Pipelines · Git · Prisma ORM  
 **Tools:** **Socket.IO** · Razorpay API · Puppeteer · Postman · VideoSDK  
+**Patterns:** WebSocket (Socket.IO) · REST · Webhook Validation (HMAC-SHA256) · N+1 Query Optimization · Vector Similarity Search (cosine) · Provider-Agnostic LLM Layers · Idempotent Event Processing  
 
 ---
 
 ## EDUCATION
 
 **B.Tech — Computer Science & Engineering**  
-Vellore Institute of Technology (VIT), Vellore | Aug 2020 – Nov 2025  
+Vellore Institute of Technology (VIT), Vellore | Expected Graduation: May 2026  
 Focus: Full Stack Development, AI Systems, Information Security Management
 
 ---
@@ -96,3 +99,7 @@ Focus: Full Stack Development, AI Systems, Information Security Management
 
 **Target Companies:** Sarvam AI, Yellow.ai  
 **GitHub:** [github.com/atinsharma24](https://github.com/atinsharma24/)
+
+---
+
+**Availability:** Immediate Joiner — 0-day notice period | **Work Mode:** Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai | **Expected CTC:** 15–18 LPA (INR) | **Work Authorization:** Indian Citizen — no sponsorship required

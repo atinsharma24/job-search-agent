@@ -24,46 +24,39 @@ Here is a highly detailed breakdown of how each version of the resume aligns wit
 
 ### 2. AI_Integrated_FullStack.pdf (The Applied AI Profile)
 
-**Target Roles:** AI Software Engineer, Full-Stack AI Developer, Software Engineer (AI/ML Products).
+**Target Roles:** AI Software Engineer, Full-Stack AI Developer, Software Engineer (AI/ML Products), Fintech/Payments Engineer.
 
 **Why it Works for these Roles:**
 
 * This resume specifically highlights the ability to bridge the gap between sophisticated AI models and production web architectures.
 
-
 * It explicitly calls out the seamless integration of LLM APIs, including OpenAI, Gemini, and Groq, to build "AI-first" user experiences.
 
+* Now includes the **Automated Content Intelligence Pipeline** with full Puppeteer + dual-model architecture, and **DocGPT** RAG project demonstrating Django + ChromaDB + local embeddings.
 
-* The profile emphasizes automated document intelligence, detailing a Gemini-powered data extraction system that replaces manual review cycles.
+* Prominently features **Razorpay HMAC webhook validation** and **idempotent event processing** — signals strong fintech/payments infrastructure capability.
 
+* Includes **VIT Research Contributor role** (FHE + Blockchain LLM, Jan–Nov 2025) as a secondary credentialing signal.
 
-* The "Focus Stack" refines the skill set to highlight modern frontend tools such as React 19 and Next.js alongside AI providers and deployment platforms like Vercel and Docker.
-
-
-* **Best Used When:** A team needs an engineer who can build the user interface and backend connective tissue for AI features, rather than a researcher focused on training foundational models from scratch.
+* **Best Used When:** A team needs an engineer who can build the user interface and backend connective tissue for AI features, or when the JD mentions payments, Razorpay, billing, payout, wallet, banking, or fintech.
 
 ---
 
 ### 3. Backend_AI_Specialist.pdf (The Data & Retrieval Profile)
 
-**Target Roles:** Backend Engineer, Data Systems Engineer, API Developer, Software Engineer (Retrieval Systems).
+**Target Roles:** Backend Engineer, Data Systems Engineer, API Developer, Software Engineer (Retrieval Systems), KYC/Document Intelligence.
 
 **Why it Works for these Roles:**
 
 * The profile immediately positions the applicant as a Backend Engineer specializing in AI-driven data systems, RAG pipeline architecture, and high-performance API development.
 
-
 * It pivots the language to emphasize expertise in Python (Django/FastAPI) and Node.js for building secure, scalable AI backends.
 
+* Now includes **DocGPT** project with full Django RAG pipeline (PyPDF2 → all-MiniLM-L6-v2 local embeddings → ChromaDB → GPT-4o-mini) — directly relevant to document intelligence roles.
 
-* The focus is placed heavily on database optimization, large-scale vector embeddings, and managing complex async document ingestion with robust retry logic.
+* **VIT Research Contributor role** (FHE + Blockchain LLM, Jan–Nov 2025) adds a privacy-preserving computation angle — use this variant for KYC/identity/compliance roles that value cryptographic data handling.
 
-
-* The "Focus Stack" strictly removes frontend technologies and prioritizes Python, FastAPI, Django, LangChain, Redis, and vector databases like pgvector and ChromaDB.
-
-
-* 
-**Best Used When:** The role demands heavy server-side logic, API development, asynchronous system design, and database latency optimization, such as resolving N+1 query patterns in PostgreSQL.
+* **Best Used When:** The role demands heavy server-side logic, API development, asynchronous system design, database latency optimization, or document intelligence/KYC workflows.
 
 
 
@@ -87,8 +80,9 @@ Here is a highly detailed breakdown of how each version of the resume aligns wit
 * The "Focus Stack" prioritizes AWS (S3, DynamoDB), microservices, Docker, and GitHub Actions over general web frameworks.
 
 
-* 
-**Best Used When:** Applying to infrastructure teams where deployment pipelines, fault tolerance, payment-state consistency, and the elimination of environment-drift bugs are the highest priorities.
+* Now includes **VIT Research Contributor role** and **DocGPT** containerized RAG pipeline as additional depth signals.
+
+* **Best Used When:** Applying to infrastructure teams where deployment pipelines, fault tolerance, payment-state consistency, and the elimination of environment-drift bugs are the highest priorities.
 
 
 
@@ -112,5 +106,6 @@ Here is a highly detailed breakdown of how each version of the resume aligns wit
 * The "Focus Stack" is hyper-specialized, featuring the Groq API, LangChain, Prompt Engineering, Agentic Workflows, and Python as the core competencies.
 
 
-* 
-**Best Used When:** A team is building advanced autonomous AI agents, evaluating multi-model orchestration logic, or heavily optimizing semantic search and message lifecycles.
+* Now includes **DocGPT** with local all-MiniLM-L6-v2 embeddings (zero API cost) and **VIT Research role** (FHE + Blockchain LLM) — use this variant when the JD emphasizes LLM research, privacy-preserving AI, or multi-model architectures.
+
+* **Best Used When:** A team is building advanced autonomous AI agents, evaluating multi-model orchestration logic, or heavily optimizing semantic search and message lifecycles.

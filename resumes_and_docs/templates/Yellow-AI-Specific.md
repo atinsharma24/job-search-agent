@@ -15,7 +15,7 @@ Full-stack engineer with founding experience building **production conversationa
 ## PROFESSIONAL EXPERIENCE
 
 ### Founding Engineer | OpenBiz Software India Pvt Ltd
-**Jul 2025 – Mar 2026 | Remote (Bangalore)**
+**Jun 2025 – May 2026 | Remote (Bangalore)**
 
 **Conversational AI & LLM Integration:**
 - Architected **VyaparGPT** — a **WhatsApp-native AI business assistant** for Indian SMBs using **Node.js, OpenAI, and Gemini APIs**
@@ -31,8 +31,17 @@ Full-stack engineer with founding experience building **production conversationa
 - Architected the core **MERN platform** from scratch; scaled to 1,000+ active users with **TypeScript** throughout the stack
 
 **Platform Engineering:**
-- Integrated **Razorpay** payment gateway for subscription billing, handling **webhook validation, payment state reconciliation, and retry flows** in production
-- Owned **CI/CD pipeline** setup with **GitHub Actions and Vercel**, reducing deployment cycle time by 30%
+- **Razorpay**: HMAC webhook validation, payment-state reconciliation, re-entrant idempotency check — **100% payment-state consistency**.
+- **CI/CD**: GitHub Actions + Vercel — **30% reduction in deployment cycle time**, zero broken-build incidents over four months.
+- Website Builder: shipped within 6-week window by reusing ~60% of shared infrastructure.
+
+---
+
+### Research Contributor | Vellore Institute of Technology
+**Jan 2025 – Nov 2025 | Vellore (On-campus)**
+
+- Contributed to research on **Blockchain-Based LLM Model Using Fully Homomorphic Encryption (FHE) for Academic Records** — investigating how FHE enables computation on encrypted student data without decryption.
+- Explored how model inference could operate on **privacy-preserving representations of sensitive data** using FHE-compatible cryptographic primitives, without exposing plaintext records.
 
 ---
 
@@ -72,13 +81,14 @@ Full-stack engineer with founding experience building **production conversationa
 **Real-Time:** **Socket.IO · WebSockets · Server-Sent Events (SSE)**  
 **DevOps:** **Docker · GitHub Actions · Vercel · CI/CD Pipelines · Git · Prisma ORM**  
 **Tools:** **Razorpay API · Puppeteer · Postman · VideoSDK**  
+**Patterns:** WebSocket (Socket.IO) · REST · Webhook Validation (HMAC-SHA256) · N+1 Query Optimization · Vector Similarity Search (cosine) · Provider-Agnostic LLM Layers · Idempotent Event Processing  
 
 ---
 
 ## EDUCATION
 
 **B.Tech — Computer Science & Engineering**  
-Vellore Institute of Technology (VIT), Vellore | Aug 2020 – Nov 2025  
+Vellore Institute of Technology (VIT), Vellore | Expected Graduation: May 2026  
 Focus: Full Stack Development, AI Systems, Information Security Management
 
 ---
@@ -101,3 +111,7 @@ Focus: Full Stack Development, AI Systems, Information Security Management
 - Senior Software Engineer
 
 **GitHub:** [github.com/atinsharma24](https://github.com/atinsharma24/)
+
+---
+
+**Availability:** Immediate Joiner — 0-day notice period | **Work Mode:** Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai | **Expected CTC:** 15–18 LPA (INR) | **Work Authorization:** Indian Citizen — no sponsorship required

@@ -71,13 +71,13 @@ I took ownership of the CI/CD infrastructure as an explicit engineering priority
 
 The cultural shift mattered as much as the tooling. I established branch naming conventions, required PR descriptions to include test evidence, and created deployment checklists that became team defaults. The process removed the ambiguity that had been causing delayed releases—we went from ad-hoc pushes to a predictable, audited deployment cycle.
 
-The outcome was a **30% reduction in deployment cycle time** and, more importantly, zero environment-mismatch incidents in the subsequent two months. In a three-person founding team where every engineer is also a decision-maker, that kind of systemic reliability directly translated into faster product iteration and fewer regression fires during customer demos.
+The outcome was a **30% reduction in deployment cycle time** and, more importantly, zero broken-build incidents in the subsequent four months. In a three-person founding team where every engineer is also a decision-maker, that kind of systemic reliability directly translated into faster product iteration and fewer regression fires during customer demos.
 
 ---
 
 ### 100-Word Version
 
-At OpenBiz, environment drift between three engineers' local setups and staging was causing non-reproducible bugs and inconsistent deploys. I built a GitHub Actions + Vercel CI/CD pipeline from scratch—automated testing on every PR, environment-consistent staging deploys on main, production gated behind explicit approval. I also introduced branch conventions and PR description standards that became team defaults. The result: **30% faster deployment cycles** and zero environment-mismatch incidents over the following two months. In a three-person founding team, that reliability directly translated into faster product iteration and more stable customer demos.
+At OpenBiz, environment drift between three engineers' local setups and staging was causing non-reproducible bugs and inconsistent deploys. I built a GitHub Actions + Vercel CI/CD pipeline from scratch—automated testing on every PR, environment-consistent staging deploys on main, production gated behind explicit approval. I also introduced branch conventions and PR description standards that became team defaults. The result: **30% faster deployment cycles** and zero broken-build incidents over the following four months. In a three-person founding team, that reliability directly translated into faster product iteration and more stable customer demos.
 
 ---
 ---

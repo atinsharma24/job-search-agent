@@ -30,7 +30,7 @@
       "campus": "Vellore",
       "start_date": "2021",
       "end_date": "2026-05",
-      "graduation_status": "Expecting May 2026",
+      "graduation_status": "Coursework Completed November 2025 | Expecting May 2026",
       "focus_areas": ["Full Stack Development", "AI Systems"]
     },
     {
@@ -49,7 +49,7 @@
       "employment_type": "Full-time",
       "work_mode": "Remote / Bangalore",
       "start_date": "2025-06",
-      "end_date": "2026-05-20",
+      "end_date": "2026-05",
       "duration_months": 12,
       "team_size": 3,
       "team_role": "One of three founding technical leads"
@@ -133,7 +133,7 @@
       "name": "DocGPT",
       "type": "Side project",
       "description": "RAG Document Assistant",
-      "stack": ["React 19", "Python (Django)", "ChromaDB", "OpenAI", "Docker"],
+      "stack": ["React 19", "Python (Django)", "ChromaDB", "OpenAI GPT-4o-mini", "all-MiniLM-L6-v2", "PyPDF2", "Docker"],
       "embedding_model": "all-MiniLM-L6-v2",
       "generation_model": "GPT-4o-mini",
       "chunking_library": "PyPDF2",
@@ -143,10 +143,14 @@
       "name": "VyaparGPT",
       "type": "Professional product (OpenBiz)",
       "description": "WhatsApp-native AI business assistant for Indian SMBs",
-      "stack": ["Node.js", "OpenAI API", "Google Gemini API"],
+      "stack": ["Node.js", "OpenAI API", "Google Gemini API", "WhatsApp Business API"],
+      "pilot_scale": "40+ SMBs in closed pilot, scaling to 1,000+ active platform users",
       "key_features": [
-        "Full WhatsApp message lifecycle management",
-        "LLM provider-fallback logic (OpenAI to Gemini)"
+        "Full WhatsApp message lifecycle: webhook ingestion → HMAC-SHA256 validation → session context → LLM dispatch → response delivery",
+        "Multi-turn conversational context via rolling conversation_history[] with configurable TTL expiry",
+        "LLM provider-fallback: OpenAI → Google Gemini on HTTP 5xx, 429, or configurable timeout with response-shape normalisation",
+        "Gemini Vision API document verification module: extracting GST number, business name, invoice amount, dates from WhatsApp photographs of GST certificates and vendor agreements",
+        "Serving 40+ SMBs in closed pilot, scaling to 1,000+ active platform users"
       ]
     },
     {
@@ -194,6 +198,11 @@
     "protocols_patterns": [
       "WebSocket (Socket.IO)", "REST", "Webhook validation",
       "N+1 query optimization", "Vector similarity search (cosine)"
+    ],
+    "patterns": [
+      "WebSocket (Socket.IO)", "REST", "Webhook Validation (HMAC-SHA256)",
+      "N+1 Query Optimization", "Vector Similarity Search (cosine)",
+      "Provider-Agnostic LLM Layers", "Idempotent Event Processing"
     ]
   },
 

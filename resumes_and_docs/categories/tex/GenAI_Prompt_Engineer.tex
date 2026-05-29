@@ -80,63 +80,63 @@
 \small{Specialized Generative AI Engineer focused on LLM orchestration, agentic workflows, and high-fidelity RAG pipelines. Expert in prompt engineering, dual-model failover architectures (Gemini + OpenAI), and semantic search optimization using pgvector and ChromaDB. Experienced in designing resilient AI infrastructures with sub-800ms retrieval times and fault-tolerant message lifecycles.}
 \vspace{-4pt}
 \resumeItemListStart
-    \resumeItem{Architected Nimbus AI: A production-grade RAG workspace with provider-agnostic LLM layers and async ingestion.}
-    \resumeItem{Built Autonomous Web Agent: A Claude-based orchestration layer for structured form interaction across dynamic job portals.}
-    \resumeItem{Content Intelligence Pipeline: Dual-model AI rewriting system with real-time editorial diffing using React 19.}
+    \resumeItem{Architected Nimbus AI: production RAG workspace with provider-agnostic LLM layer + async ingestion.}
+    \resumeItem{Built Autonomous Web Agent: Claude 3.5 Sonnet + MCP orchestration for DOM-level form interaction.}
+    \resumeItem{Content Intelligence Pipeline: Gemini $\rightarrow$ OpenAI dual-model rewriting + React 19 Diff View.}
 \resumeItemListEnd\section{Professional Experience}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {OpenBiz Software India Pvt Ltd}{Jul 2025 -- Mar 2026}
-      {Founding Engineer}{Remote/Bangalore}
+      {OpenBiz Software India Pvt Ltd}{Jun 2025 -- May 2026}
+      {Founding Engineer}{Remote / Bangalore}
       \resumeItemListStart
-        \resumeItem{Architected the zero-to-one core MERN platform, implementing strict TypeScript practices across the stack to build a scalable, production-ready foundation.}
-        \resumeItem{Architected VyaparGPT, a WhatsApp-native AI assistant for Indian SMBs, successfully deploying the MVP to an initial closed-pilot cohort of $\sim$40 businesses; handled webhook ingestion $\rightarrow$ LLM orchestration $\rightarrow$ response delivery with provider fallback and session-aware context.}
-        \resumeItem{Built an AI document verification module using Google Gemini API, automating data extraction from unstructured SMB documents and replacing a manual review step.}
-        \resumeItem{Diagnosed and resolved N+1 query patterns in Supabase (PostgreSQL), reducing API latency by 40\% across critical endpoints through indexing and response caching.}
-        \resumeItem{Engineered a fault-tolerant Razorpay subscription billing system with idempotent webhook validation, achieving 100\% payment-state consistency and reducing manual reconciliation to zero.}
-        \resumeItem{Owned CI/CD pipeline setup using GitHub Actions and Vercel, reducing deployment cycle time by 30\% and eliminating environment-drift bugs.}
+        \resumeItem{VyaparGPT: HMAC-SHA256 webhook $\rightarrow$ session context $\rightarrow$ LLM dispatch $\rightarrow$ delivery; 40+ SMBs pilot, 1,000+ platform users; multi-turn context via \texttt{conversation\_history[]}.}
+        \resumeItem{LLM fallback (OpenAI $\rightarrow$ Gemini on 5xx/429/timeout); Gemini Vision extracted GST, amounts, dates from WhatsApp SMB photographs, eliminating manual onboarding data entry.}
+        \resumeItem{N+1 fix (JOIN rewrites, composite indexes, TTL cache) --- \textbf{40\% API latency reduction} at 1,000+ user scale.}
+        \resumeItem{Razorpay: HMAC webhook validation + re-entrant idempotency check --- \textbf{100\% payment-state consistency}.}
+        \resumeItem{CI/CD (GitHub Actions + Vercel): automated testing per PR, staging on merge, prod behind approval --- \textbf{30\% faster deployments}, zero broken-build incidents over four months.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
 \section{Projects}
     \resumeSubHeadingListStart
       \resumeProjectHeading
-          {\textbf{Nimbus --- AI RAG Workspace} $|$ \href{https://github.com/atinsharma24/nimbus}{\underline{github.com/atinsharma24/nimbus}}}{In Development 2026}
+          {\textbf{Nimbus --- AI RAG Workspace} $|$ \emph{Next.js 14, TypeScript, PostgreSQL, pgvector, Prisma, Groq API, OpenAI}}{In Development 2026}
           \resumeItemListStart
-            \resumeItem{\emph{Stack: Next.js, pgvector, Groq, Prisma}}
-            \resumeItem{Architected a production RAG pipeline (pgvector + Groq API) achieving sub-800ms semantic retrieval over multi-format document corpora with streaming LLM responses.}
-            \resumeItem{Designed a provider-agnostic LLM layer supporting Groq, OpenAI, and Anthropic, enabling one-config switching without downstream changes to retrieval logic.}
-            \resumeItem{Implemented async ingestion with 429 retry logic and per-document status tracking for production-grade rate limit handling.}
-          \resumeItemListEnd
-          
-      \resumeProjectHeading
-          {\textbf{Autonomous Web Agent} $|$ \href{https://github.com/atinsharma24/autonomous-web-agent}{\underline{github.com/atinsharma24/auto-agent}}}{}
-          \resumeItemListStart
-            \resumeItem{\emph{Stack: OpenClaw, BrowserOS (MCP), Python, Groq}}
-            \resumeItem{Designed a Claude 3.5 Sonnet + MCP orchestration layer that translates structured local context schemas into DOM-level form interactions for multi-step web workflows across dynamic web forms.}
-            \resumeItem{Built a decoupled system with a lightweight Groq-based "Watcher" for cost-efficient parsing and a heavy "Executor" agent for complex interactions.}
-            \resumeItem{Engineered resilient infra with local queue management and WAF/Captcha detection with graceful human-escalation.}
+            \resumeItem{Async queue ingestion (pending $\rightarrow$ indexed) with overlap chunking; pgvector cosine search for hybrid SQL + semantic filtering --- sub-800ms retrieval.}
+            \resumeItem{Provider-agnostic LLM layer (\texttt{groq|openai|anthropic} config flag) + SSE streaming via Groq; 429 retry (exp. backoff) and per-document status tracking.}
           \resumeItemListEnd
 
       \resumeProjectHeading
-          {\textbf{Automated Content Intelligence Pipeline} $|$ \href{https://github.com/atinsharma24/content-pipeline}{\underline{github.com/atinsharma24/pipeline}}}{}
+          {\textbf{DocGPT --- RAG Document Assistant} $|$ \emph{React 19, Python (Django), ChromaDB, OpenAI, Docker}}{}
           \resumeItemListStart
-            \resumeItem{\emph{Stack: React 19, TypeScript, Node.js, OpenAI}}
-            \resumeItem{Built an autonomous content pipeline running Puppeteer scraping and dual-model AI rewriting with Gemini and OpenAI failover.}
-            \resumeItem{Developed a React 19 frontend with a split-screen diff view for real-time editorial comparison of AI-rewritten content.}
+            \resumeItem{Django RAG pipeline: PyPDF2 overlap chunking, local all-MiniLM-L6-v2 embeddings (offline, zero API cost), ChromaDB cosine retrieval, GPT-4o-mini generation; Dockerized.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Autonomous Web Agent} $|$ \href{https://github.com/atinsharma24/auto-agent}{\underline{github.com/atinsharma24/auto-agent}} $|$ \emph{Python, Groq, BrowserOS (MCP), Claude 3.5 Sonnet}}{}
+          \resumeItemListStart
+            \resumeItem{Dual-agent: Claude 3.5 Sonnet Executor (DOM + form reasoning) + Groq Watcher (page-state validation between transitions).}
+            \resumeItem{MCP via BrowserOS for structured DOM access; persistent queue (pending $\rightarrow$ applied/failed) with URL dedup and WAF/CAPTCHA detection.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Automated Content Intelligence Pipeline} $|$ \emph{React 19, TypeScript, Laravel, OpenAI, Gemini, Docker, Puppeteer}}{}
+          \resumeItemListStart
+            \resumeItem{Puppeteer SPA scraping; Gemini $\rightarrow$ OpenAI fallback rewriting; React 19 Diff View with per-article state machine; Dockerized microservices on GitHub Actions cron.}
           \resumeItemListEnd
     \resumeSubHeadingListEnd
 
 \section{Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Focus Stack:}{ Python, LangChain, Groq API, pgvector, ChromaDB, OpenAI, Google Gemini, Prompt Engineering, Agentic Workflows. } \\ 
+     \textbf{Focus Stack:}{ Python, LangChain, Groq API, pgvector, ChromaDB, OpenAI, Google Gemini, Prompt Engineering, Agentic Workflows.} \\
      \textbf{Languages:}{ JavaScript/TypeScript, Python, SQL, Java} \\
      \textbf{Frontend:}{ React (v18/19), Next.js, React Native, Redux Toolkit, TailwindCSS} \\
      \textbf{Backend/DB:}{ Node.js, Express, NestJS, Django, PostgreSQL, MongoDB, pgvector, ChromaDB} \\
      \textbf{AI/LLM:}{ OpenAI, Google Gemini, Groq API, RAG Pipelines, LangChain.js, Sentence Transformers, Prompt Engineering} \\
      \textbf{DevOps:}{ Docker, GitHub Actions, Vercel, AWS (S3, DynamoDB)} \\
-     \textbf{Tools:}{ Git, Postman, Socket.IO, Razorpay SDK, VideoSDK, Puppeteer}
+     \textbf{Tools:}{ Git, Postman, Socket.IO, Razorpay SDK, VideoSDK, Puppeteer} \\
+     \textbf{Patterns:}{ Webhook Validation (HMAC-SHA256), N+1 Optimization, Vector Similarity Search, Provider-Agnostic LLM Layers, Idempotent Events}
     }}
  \end{itemize}
 
@@ -147,6 +147,7 @@
       {B.Tech in Computer Science and Engineering}{Vellore}
       \resumeItemListStart
         \resumeItem{Focus on Full Stack Development and AI Systems.}
+        \resumeItem{Research (Jan--Nov 2025): Blockchain-Based LLM + FHE for Academic Records --- FHE enables encrypted-data inference without decryption; blockchain provides credential audit trail.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
