@@ -37,7 +37,7 @@
 | Remote Setup | MacBook Air M4 — fully equipped home office |
 | Preferred Role Types | Full-time · Founding / early-stage |
 | Not Preferred | Contract-only · Internship |
-| Total Experience | ~12 months (OpenBiz Founding Engineer) |
+| Total Experience | ~12 months (OpenBiz Founding Engineer + VIT Research Contributor) |
 | Years of Experience | 1 |
 
 ---
@@ -50,7 +50,7 @@
 | Title | Founding Engineer |
 | Employment Type | Full-time |
 | Start Date | June 2025 |
-| End Date | 20 May 2026 |
+| End Date | May 2026 |
 | Duration | ~12 months |
 | Work Mode | Remote / Bangalore |
 | Team Size | 3 founding engineers |
@@ -75,8 +75,10 @@
 | Duration | 11 months |
 | Location | On-campus, Vellore |
 
-**Research topic:**
-- Blockchain-Based LLM Model Using Fully Homomorphic Encryption (FHE) for Academic Records
+**Research topics & contributions:**
+- Contributed to research on **Blockchain-Based LLM Model Using Fully Homomorphic Encryption (FHE) for Academic Records** — investigating how FHE enables computation on encrypted student data without decryption, with blockchain providing an immutable audit trail for credential issuance and verification.
+- Evaluated architectural trade-offs between on-chain data storage and off-chain encrypted record pointers, assessing gas cost constraints versus data privacy guarantees in an academic credential provenance system.
+- Explored how model inference could operate on privacy-preserving representations of sensitive academic data using FHE-compatible cryptographic primitives, without exposing plaintext records.
 
 ---
 
@@ -108,6 +110,8 @@
 | API latency reduction | 40% | N+1 fix + indexing + caching in Supabase |
 | Deployment cycle reduction | 30% | GitHub Actions + Vercel CI/CD pipeline |
 | Payment consistency | 100% | Razorpay idempotent webhook system |
+| Shared infra reuse (Website Builder) | ~60% | Reused auth, Supabase layer, Razorpay billing, CI/CD |
+| Zero broken-build incidents | 4 months | Post CI/CD pipeline setup with GitHub Actions + Vercel |
 | LeetCode problems | 347+ | Data structures & algorithms practice |
 | Team size (OpenBiz) | 3 | Founding technical leads |
 
@@ -180,6 +184,9 @@ Docker · GitHub Actions · Vercel · AWS S3 · AWS SNS
 ### Tools
 Git · Postman · Socket.IO · Razorpay SDK · VideoSDK · Puppeteer · BrowserOS · OpenClaw
 
+### Patterns
+WebSocket (Socket.IO) · REST · Webhook Validation (HMAC-SHA256) · N+1 Query Optimization · Vector Similarity Search (cosine) · Provider-Agnostic LLM Layers · Idempotent Event Processing
+
 ---
 
 ## 8. STANDARD FORM-FILL ANSWERS
@@ -229,6 +236,19 @@ I'm a Full-Stack Product Engineer with ~12 months of founding-team experience at
 | Short-answer / situational Q&A (250-word & 100-word versions) | `../JobApplyFiles/02_situational_qa_library.md` |
 | Full logistics & compensation detail | `../JobApplyFiles/06_logistics_mapping.json` |
 | Resume routing rules & daily application workflow | `../JobApplyFiles/08_daily_application_roadmap.md` |
+
+---
+
+## 10. PROFILE SNAPSHOT
+
+| Field | Value |
+|---|---|
+| Availability | Immediate Joiner — 0-day notice period |
+| Work Mode | Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai |
+| Expected CTC | 15–18 LPA (INR) — negotiable for high-ownership roles with equity |
+| Work Authorization | Indian Citizen — no sponsorship required |
+| GitHub | github.com/atinsharma24 |
+| LinkedIn | linkedin.com/in/atinsharma24 |
 
 ---
 

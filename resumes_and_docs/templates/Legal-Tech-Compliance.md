@@ -15,7 +15,7 @@ Full-stack engineer with founding experience building **AI-powered automation sy
 ## PROFESSIONAL EXPERIENCE
 
 ### Founding Engineer | OpenBiz Software India Pvt Ltd
-**Jul 2025 – Mar 2026 | Remote (Bangalore)**
+**Jun 2025 – May 2026 | Remote (Bangalore)**
 
 **Document Automation & Compliance:**
 - Built an **AI document verification module** using **Google Gemini API** to automate data extraction and validation from unstructured SMB documents (invoices, GST certificates, business licenses), replacing fully manual review workflows
@@ -28,7 +28,17 @@ Full-stack engineer with founding experience building **AI-powered automation sy
 - Owned **CI/CD pipeline** setup with **GitHub Actions and Vercel**, reducing deployment cycle time by 30%
 
 **Payment & Subscription Management:**
-- Integrated **Razorpay** payment gateway for subscription billing, handling **webhook validation, payment state reconciliation, and failed-payment retry flows** in production
+- Integrated **Razorpay** payment gateway with **HMAC webhook validation**, payment-state reconciliation, and re-entrant idempotency check — **100% payment-state consistency**.
+- **CI/CD**: GitHub Actions + Vercel — **30% reduction in deployment cycle time**, zero broken-build incidents over four months.
+
+---
+
+### Research Contributor | Vellore Institute of Technology
+**Jan 2025 – Nov 2025 | Vellore (On-campus)**
+
+- Contributed to research on **Blockchain-Based LLM Model Using Fully Homomorphic Encryption (FHE) for Academic Records** — FHE enables computation on encrypted data without decryption; directly applicable to **privacy-preserving compliance document processing** and identity verification workflows.
+- Evaluated architectural trade-offs between on-chain data storage and off-chain encrypted record pointers — relevant to **legal-tech data governance** and audit trail design.
+- Explored how model inference could operate on **privacy-preserving representations of sensitive data** using FHE-compatible cryptographic primitives.
 
 ---
 
@@ -68,13 +78,14 @@ Full-stack engineer with founding experience building **AI-powered automation sy
 **AI/LLM:** **OpenAI API · Google Gemini API · Groq API** · RAG Pipelines · **Vector Search** · LangChain.js · Vercel AI SDK · Prompt Engineering  
 **DevOps:** Docker · GitHub Actions · Vercel · CI/CD Pipelines · Git · Prisma ORM  
 **Tools:** Socket.IO · **Razorpay API** · Puppeteer · Postman · VideoSDK  
+**Patterns:** WebSocket (Socket.IO) · REST · Webhook Validation (HMAC-SHA256) · N+1 Query Optimization · Vector Similarity Search (cosine) · Provider-Agnostic LLM Layers · Idempotent Event Processing  
 
 ---
 
 ## EDUCATION
 
 **B.Tech — Computer Science & Engineering**  
-Vellore Institute of Technology (VIT), Vellore | Aug 2020 – Nov 2025  
+Vellore Institute of Technology (VIT), Vellore | Expected Graduation: May 2026  
 Focus: Full Stack Development, AI Systems, Information Security Management, Cyber Security
 
 ---
@@ -93,3 +104,7 @@ Focus: Full Stack Development, AI Systems, Information Security Management, Cybe
 
 **Target Companies:** RegisterKaro, Leegality  
 **GitHub:** [github.com/atinsharma24](https://github.com/atinsharma24/)
+
+---
+
+**Availability:** Immediate Joiner — 0-day notice period | **Work Mode:** Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai | **Expected CTC:** 15–18 LPA (INR) | **Work Authorization:** Indian Citizen — no sponsorship required

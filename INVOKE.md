@@ -52,6 +52,7 @@ Pick the best baseline resume using this routing table:
 | compliance, KYC, legal, identity, AML, document verification | `Backend_AI_Specialist` |
 | cloud, DevOps, Docker, Kubernetes, AWS, infra | `Cloud_Native_FullStack` |
 | full-stack, MERN, React, Next.js, product, founding | `AI_Integrated_FullStack` |
+| payments, payout, wallet, banking, fintech, Razorpay, billing | `AI_Integrated_FullStack` |
 
 Identify 3–5 keywords from the JD that are NOT already in the baseline resume's skills/profile section. These are `changed_keywords`.
 
