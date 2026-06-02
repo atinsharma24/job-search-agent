@@ -28,7 +28,9 @@
     "halt_on_captcha_or_security_alert": true,
     "never_store_credentials": true,
     "only_process_status": "approved",
-    "max_parallel_sends": 1
+    "max_parallel_sends": 1,
+    "require_personalization_check": true,
+    "min_personalization_score": 2
   },
   "persona_scope": [1,2,3,4,5],
   "notification": {

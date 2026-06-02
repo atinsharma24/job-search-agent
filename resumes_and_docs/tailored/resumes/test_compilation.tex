@@ -11,7 +11,7 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\input{glyphtounicode}
+\ifpdf\input{glyphtounicode}\fi
 
 % Font options
 \usepackage[sfdefault]{roboto}
@@ -39,7 +39,7 @@
   \vspace{-4pt}\scshape\raggedright\large\bfseries
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-\pdfgentounicode=1
+\ifpdf\pdfgentounicode=1\fi
 
 % Custom commands
 \newcommand{\resumeItem}[1]{
@@ -144,7 +144,7 @@
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {Vellore Institute of Technology}{Expected Graduation: May 2026}
+      {Vellore Institute of Technology}{Coursework Completed: Nov 2025 | Degree Conferred: May 2026}
       {B.Tech in Computer Science and Engineering}{Vellore}
       \resumeItemListStart
         \resumeItem{Focus on Full Stack Development and AI Systems.}

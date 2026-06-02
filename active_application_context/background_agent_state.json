@@ -1,5 +1,30 @@
 {
-  "seen_job_ids": [],
-  "applied_job_ids": [],
+  "seen_job_ids": ["sarvam-30259734-50c3-4f1c-81cd-8bff07e585e7"],
+  "applied_job_ids": [
+    "detanomics:solutions-engineer",
+    "aether-legals:frontend-engineer-legaltech",
+    "triveous:team-lead-fullstack",
+    "wishwish:frontend-engineer-ios-unity",
+    "talent-authority-partners:product-engineer-ai",
+    "reviewmycoach:technical-co-founder",
+    "blabber-ai:full-stack-engineer",
+    "invene:junior-data-engineer",
+    "trickcv:software-engineer",
+    "prodinit:full-stack-engineer-django-react",
+    "insettini:founding-full-stack-engineer",
+    "pyarsani-business-solutions:lead-mobile-developer-founding-engineer-role",
+    "bitnorm:full-stack-engineer",
+    "serokell:devops-engineer",
+    "strobes-security-inc:full-stack-engineer",
+    "careerxperts-consulting:associate-software-engineer",
+    "careerxperts-consulting:software-engineer",
+    "crossing-hurdles:software-developer-remote",
+    "navi:sde-i-backend",
+    "leadsoc-technologies-pvt-ltd:javascript-developer",
+    "tekit-software-solutions-pvt-ltd:full-stack-engineer",
+    "kipplo:software-engineer",
+    "zeabyte-limited:frontend-developer-react-next-js",
+    "postship-adbanana:founding-ai-engineer"
+  ],
   "blocked_jobs": []
 }

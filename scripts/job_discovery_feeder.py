@@ -8,12 +8,10 @@ from pathlib import Path
 from typing import Iterable
 from urllib.parse import quote
 
-from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
-from playwright.sync_api import sync_playwright
-
 
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 TRACKER_PATH = VAULT_ROOT / "active_application_context" / "job_applications_tracker.md"
+STATE_PATH = VAULT_ROOT / "active_application_context" / "background_agent_state.json"
 DISCOVERY_DEBUG_PATH = VAULT_ROOT / "logs" / "discovery_debug.png"
 
 MAX_RESULTS = 5
@@ -60,11 +58,36 @@ def parse_args() -> argparse.Namespace:
         help=f"Maximum jobs to emit. Default: {MAX_RESULTS}",
     )
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--no-browser",
+        action="store_true",
+        help="Skip Playwright entirely and return an empty result (for headless/display-less environments).",
+    )
     return parser.parse_args()
 
 
 def normalize(value: str) -> str:
     return re.sub(r"\s+", " ", (value or "")).strip().casefold()
+
+
+def slug(value: str) -> str:
+    value = (value or "").casefold()
+    value = re.sub(r"[^a-z0-9]+", "-", value)
+    return value.strip("-")
+
+
+def slug_key(company: str, title: str) -> str:
+    return f"{slug(company)}:{slug(title)}"
+
+
+def load_applied_slug_ids() -> set[str]:
+    if not STATE_PATH.exists():
+        return set()
+    try:
+        state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        return set(state.get("applied_job_ids", []))
+    except (json.JSONDecodeError, OSError):
+        return set()
 
 
 def load_applied_pairs() -> set[tuple[str, str]]:
@@ -115,7 +138,7 @@ def wellfound_search_url() -> str:
     return f"https://wellfound.com/jobs?query={query}"
 
 
-def collect_linkedin(page, applied_pairs: set[tuple[str, str]], limit: int) -> list[dict]:
+def collect_linkedin(page, applied_pairs: set[tuple[str, str]], applied_slug_ids: set[str], limit: int) -> list[dict]:
     jobs: list[dict] = []
     seen: set[tuple[str, str]] = set()
 
@@ -181,7 +204,7 @@ def collect_linkedin(page, applied_pairs: set[tuple[str, str]], limit: int) -> l
                 url = href
 
         key = dedupe_key(title, company)
-        if not title or not company or key in applied_pairs or key in seen:
+        if not title or not company or key in applied_pairs or slug_key(company, title) in applied_slug_ids or key in seen:
             continue
 
         required_stack = extract_required_stack(f"{card_text}\n{details_text}") or SEARCH_TERMS
@@ -198,7 +221,7 @@ def collect_linkedin(page, applied_pairs: set[tuple[str, str]], limit: int) -> l
     return jobs
 
 
-def collect_wellfound(page, applied_pairs: set[tuple[str, str]], limit: int) -> list[dict]:
+def collect_wellfound(page, applied_pairs: set[tuple[str, str]], applied_slug_ids: set[str], limit: int) -> list[dict]:
     jobs: list[dict] = []
     seen: set[tuple[str, str]] = set()
 
@@ -255,7 +278,7 @@ def collect_wellfound(page, applied_pairs: set[tuple[str, str]], limit: int) -> 
                         break
 
             key = dedupe_key(title, company)
-            if not title or not company or key in applied_pairs or key in seen:
+            if not title or not company or key in applied_pairs or slug_key(company, title) in applied_slug_ids or key in seen:
                 continue
 
             required_stack = extract_required_stack(container_text or text) or SEARCH_TERMS
@@ -291,63 +314,69 @@ def trim_jobs(jobs: Iterable[dict], limit: int) -> list[dict]:
 def main() -> int:
     args = parse_args()
     applied_pairs = load_applied_pairs()
+    applied_slug_ids = load_applied_slug_ids()
 
-    # LinkedIn uses a persistent context so the logged-in session is reused.
-    linkedin_headless = os.environ.get("LINKEDIN_PLAYWRIGHT_HEADLESS", "1").lower() not in {"0", "false", "no"}
-    linkedin_profile_dir = Path(
-        os.environ.get(
-            "LINKEDIN_PLAYWRIGHT_PROFILE_DIR",
-            str(VAULT_ROOT / "active_application_context" / "playwright" / "linkedin-profile"),
-        )
-    ).expanduser()
-    linkedin_profile_dir.mkdir(parents=True, exist_ok=True)
+    jobs: list[dict] = []
 
-    with sync_playwright() as playwright:
-        # Persistent context for LinkedIn — carries the saved login session.
-        linkedin_context = playwright.chromium.launch_persistent_context(
-            user_data_dir=str(linkedin_profile_dir),
-            headless=linkedin_headless,
-            channel=os.environ.get("LINKEDIN_PLAYWRIGHT_CHANNEL") or None,
-            viewport={"width": 1440, "height": 1200},
-        )
-        # Wellfound public listings are accessible without auth.
-        wellfound_browser = playwright.chromium.launch(headless=True)
-        wellfound_context = wellfound_browser.new_context(viewport={"width": 1440, "height": 1200})
-        try:
-            linkedin_page = linkedin_context.new_page()
-            wellfound_page = wellfound_context.new_page()
+    if not args.no_browser:
+        from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+        from playwright.sync_api import sync_playwright
 
-            jobs: list[dict] = []
+        linkedin_headless = os.environ.get("LINKEDIN_PLAYWRIGHT_HEADLESS", "1").lower() not in {"0", "false", "no"}
+        linkedin_profile_dir = Path(
+            os.environ.get(
+                "LINKEDIN_PLAYWRIGHT_PROFILE_DIR",
+                str(VAULT_ROOT / "active_application_context" / "playwright" / "linkedin-profile"),
+            )
+        ).expanduser()
+        linkedin_profile_dir.mkdir(parents=True, exist_ok=True)
+
+        with sync_playwright() as playwright:
+            # Persistent context for LinkedIn — carries the saved login session.
+            linkedin_context = playwright.chromium.launch_persistent_context(
+                user_data_dir=str(linkedin_profile_dir),
+                headless=linkedin_headless,
+                channel=os.environ.get("LINKEDIN_PLAYWRIGHT_CHANNEL") or None,
+                viewport={"width": 1440, "height": 1200},
+            )
+            # Wellfound public listings are accessible without auth.
+            wellfound_browser = playwright.chromium.launch(headless=True)
+            wellfound_context = wellfound_browser.new_context(viewport={"width": 1440, "height": 1200})
             try:
-                jobs.extend(collect_linkedin(linkedin_page, applied_pairs, args.limit))
-            except PlaywrightTimeoutError:
-                pass
-            except Exception:
-                pass
+                linkedin_page = linkedin_context.new_page()
+                wellfound_page = wellfound_context.new_page()
 
-            remaining = max(0, args.limit - len(jobs))
-            if remaining > 0:
                 try:
-                    jobs.extend(collect_wellfound(wellfound_page, applied_pairs, remaining))
+                    jobs.extend(collect_linkedin(linkedin_page, applied_pairs, applied_slug_ids, args.limit))
                 except PlaywrightTimeoutError:
                     pass
                 except Exception:
                     pass
 
-            jobs = trim_jobs(jobs, args.limit)
-            if args.dry_run:
-                DISCOVERY_DEBUG_PATH.parent.mkdir(parents=True, exist_ok=True)
-                target_page = linkedin_page if jobs else wellfound_page
-                target_page.screenshot(path=str(DISCOVERY_DEBUG_PATH), full_page=False)
-            output = json.dumps(jobs, indent=2)
-            if args.output_file:
-                args.output_file.write_text(output + "\n", encoding="utf-8")
-            print(output)
-            return 0
-        finally:
-            linkedin_context.close()
-            wellfound_context.close()
-            wellfound_browser.close()
+                remaining = max(0, args.limit - len(jobs))
+                if remaining > 0:
+                    try:
+                        jobs.extend(collect_wellfound(wellfound_page, applied_pairs, applied_slug_ids, remaining))
+                    except PlaywrightTimeoutError:
+                        pass
+                    except Exception:
+                        pass
+
+                jobs = trim_jobs(jobs, args.limit)
+                if args.dry_run:
+                    DISCOVERY_DEBUG_PATH.parent.mkdir(parents=True, exist_ok=True)
+                    target_page = linkedin_page if jobs else wellfound_page
+                    target_page.screenshot(path=str(DISCOVERY_DEBUG_PATH), full_page=False)
+            finally:
+                linkedin_context.close()
+                wellfound_context.close()
+                wellfound_browser.close()
+
+    output = json.dumps(jobs, indent=2)
+    if args.output_file:
+        args.output_file.write_text(output + "\n", encoding="utf-8")
+    print(output)
+    return 0
 
 
 if __name__ == "__main__":
