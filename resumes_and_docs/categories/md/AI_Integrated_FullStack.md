@@ -22,4 +22,4 @@ React 19, TypeScript, Node.js, Next.js, OpenAI, Gemini, PostgreSQL, Vercel, Dock
 
 **Patterns:** WebSocket (Socket.IO), REST, Webhook Validation (HMAC-SHA256), N+1 Query Optimization, Vector Similarity Search (cosine), Provider-Agnostic LLM Layers, Idempotent Event Processing.
 
-**Profile Snapshot:** Immediate Joiner · Remote-first · 15–18 LPA · Indian Citizen · github.com/atinsharma24
+**Profile Snapshot:** Immediate Joiner · Remote-first · 15L+ (negotiable) · Indian Citizen · github.com/atinsharma24

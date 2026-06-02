@@ -195,7 +195,7 @@ function profileTable() {
   const rows = [
     ["Availability",        "Immediate Joiner — 0-day notice period"],
     ["Work Mode",           "Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai"],
-    ["Expected CTC",        "15–18 LPA (INR) — negotiable for high-ownership roles with equity"],
+    ["Expected CTC",        "15L+ (negotiable, no hard ceiling) — INR"],
     ["Work Authorization",  "Indian Citizen — no sponsorship required"],
     ["GitHub",              "github.com/atinsharma24/"],
     ["LinkedIn",            "linkedin.com/in/atinsharma24/"],
@@ -285,7 +285,7 @@ const doc = new Document({
       sectionHeading("PROFESSIONAL SUMMARY"),
       new Paragraph({
         children: [new TextRun({
-          text: "Founding engineer with 12 months of production experience building AI-powered full-stack systems at OpenBiz Software India Pvt Ltd — one of three engineers who shipped two commercial products from zero to 1,000+ active Indian SMB users. Specializes in MERN + AI stacks (TypeScript, Node.js, Python, PostgreSQL) with hands-on production delivery across conversational AI (VyaparGPT, WhatsApp-native LLM assistant for 40+ SMB pilot businesses), production RAG pipelines (Nimbus on pgvector + Groq; DocGPT on ChromaDB), and resilient DevOps (GitHub Actions + Vercel CI/CD reducing deployment cycle time by 30%). Technical scope spans full-stack product engineering, dual-model LLM provider-fallback (OpenAI ↔ Gemini), idempotent Razorpay billing, real-time Socket.IO infrastructure, and autonomous multi-agent web automation (Claude 3.5 Sonnet + MCP). Immediate joiner (0-day notice) targeting 15–18 LPA in founding-stage or early-product roles with full-stack ownership. VIT Vellore, B.Tech Computer Science Engineering, graduating May 2026.",
+          text: "Founding engineer with 12 months of production experience building AI-powered full-stack systems at OpenBiz Software India Pvt Ltd — one of three engineers who shipped two commercial products from zero to 1,000+ active Indian SMB users. Specializes in MERN + AI stacks (TypeScript, Node.js, Python, PostgreSQL) with hands-on production delivery across conversational AI (VyaparGPT, WhatsApp-native LLM assistant for 40+ SMB pilot businesses), production RAG pipelines (Nimbus on pgvector + Groq; DocGPT on ChromaDB), and resilient DevOps (GitHub Actions + Vercel CI/CD reducing deployment cycle time by 30%). Technical scope spans full-stack product engineering, dual-model LLM provider-fallback (OpenAI ↔ Gemini), idempotent Razorpay billing, real-time Socket.IO infrastructure, and autonomous multi-agent web automation (Claude 3.5 Sonnet + MCP). Immediate joiner (0-day notice) targeting 15L+ (negotiable, no hard ceiling) in founding-stage or early-product roles with full-stack ownership. VIT Vellore, B.Tech Computer Science Engineering, graduating May 2026.",
           font: F, size: SZ_BODY,
         })],
         spacing: { before: 80, after: 80, line: LS, lineRule: "auto" },

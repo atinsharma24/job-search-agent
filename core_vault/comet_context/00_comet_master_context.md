@@ -245,7 +245,7 @@ I'm a Full-Stack Product Engineer with ~12 months of founding-team experience at
 |---|---|
 | Availability | Immediate Joiner — 0-day notice period |
 | Work Mode | Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai |
-| Expected CTC | 15–18 LPA (INR) — negotiable for high-ownership roles with equity |
+| Expected CTC | 15L+ (negotiable, no hard ceiling) — INR |
 | Work Authorization | Indian Citizen — no sponsorship required |
 | GitHub | github.com/atinsharma24 |
 | LinkedIn | linkedin.com/in/atinsharma24 |

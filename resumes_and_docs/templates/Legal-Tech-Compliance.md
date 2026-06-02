@@ -107,4 +107,4 @@ Focus: Full Stack Development, AI Systems, Information Security Management, Cybe
 
 ---
 
-**Availability:** Immediate Joiner — 0-day notice period | **Work Mode:** Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai | **Expected CTC:** 15–18 LPA (INR) | **Work Authorization:** Indian Citizen — no sponsorship required
+**Availability:** Immediate Joiner — 0-day notice period | **Work Mode:** Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai | **Expected CTC:** 15L+ (negotiable, no hard ceiling) | **Work Authorization:** Indian Citizen — no sponsorship required
