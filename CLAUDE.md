@@ -38,7 +38,7 @@ scripts/setup_browser_sessions.sh   # One-time login helper
 
 ## Absolute Rules
 
-- Salary: always 15–18 LPA. Never outside this range. Current CTC = 0.
+- Salary: 15L+ (negotiable, no hard ceiling). Current CTC = 0.
 - Notice period: always 0 days / Immediate Joiner.
 - Location: Agra, Uttar Pradesh, India — unless the form asks for preferred work location (Remote).
 - GitHub: https://github.com/atinsharma24/

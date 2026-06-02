@@ -26,7 +26,7 @@
 * **Domain Gating:** Exclude positions centered on low-level Linux operating systems administration, kernel development, or hardware systems engineering.
 
 
-* **Core Metrics Graining:** Keep all automated or semi-automated screening variables locked exactly to the validated profile standards: Notice Period = Immediate (0 days), Expected Compensation = 15–18 LPA, Total Professional Experience = ~1 year.
+* **Core Metrics Graining:** Keep all automated or semi-automated screening variables locked exactly to the validated profile standards: Notice Period = Immediate (0 days), Expected Compensation = 15L+ (negotiable, no hard ceiling), Total Professional Experience = ~1 year.
 
 
 

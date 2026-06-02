@@ -8,7 +8,7 @@ Agra, Uttar Pradesh, India — Open to Remote & Relocation
 
 ## PROFESSIONAL SUMMARY
 
-Founding engineer with 12 months of production experience building AI-powered full-stack systems at OpenBiz Software India Pvt Ltd, where I was one of three engineers who shipped two commercial products from zero to 1,000+ active Indian SMB users. I specialize in MERN + AI stacks — TypeScript, Node.js, Python, PostgreSQL — with hands-on production delivery across conversational AI (VyaparGPT, a WhatsApp-native LLM assistant for 40+ SMB pilot businesses), RAG pipelines (Nimbus on pgvector + Groq; DocGPT on ChromaDB), and resilient DevOps (GitHub Actions + Vercel CI/CD reducing deployment cycle time by 30%). My technical scope spans full-stack web, LLM orchestration with dual-model provider-fallback (OpenAI ↔ Gemini), idempotent payment billing, and autonomous multi-agent web automation. I am an immediate joiner (0-day notice) targeting 15–18 LPA in founding-stage or early-product roles where I can own the stack end-to-end. VIT Vellore B.Tech in Computer Science, graduating May 2026.
+Founding engineer with 12 months of production experience building AI-powered full-stack systems at OpenBiz Software India Pvt Ltd, where I was one of three engineers who shipped two commercial products from zero to 1,000+ active Indian SMB users. I specialize in MERN + AI stacks — TypeScript, Node.js, Python, PostgreSQL — with hands-on production delivery across conversational AI (VyaparGPT, a WhatsApp-native LLM assistant for 40+ SMB pilot businesses), RAG pipelines (Nimbus on pgvector + Groq; DocGPT on ChromaDB), and resilient DevOps (GitHub Actions + Vercel CI/CD reducing deployment cycle time by 30%). My technical scope spans full-stack web, LLM orchestration with dual-model provider-fallback (OpenAI ↔ Gemini), idempotent payment billing, and autonomous multi-agent web automation. I am an immediate joiner (0-day notice) targeting 15L+ (negotiable, no hard ceiling) in founding-stage or early-product roles where I can own the stack end-to-end. VIT Vellore, B.Tech Computer Science Engineering (Coursework Completed: Nov 2025, Degree Conferred: May 2026).
 
 ---
 
@@ -120,7 +120,7 @@ One of three founding technical leads responsible for architecting and shipping 
 ## EDUCATION
 
 **Vellore Institute of Technology, Vellore**
-B.Tech in Computer Science and Engineering | Graduating May 2026
+B.Tech in Computer Science and Engineering | Coursework Completed: Nov 2025 | Degree Conferred: May 2026
 Focus: Full Stack Development, AI Systems
 
 **Delhi Public School, Agra**
@@ -134,7 +134,7 @@ Secondary & Senior Secondary
 |---|---|
 | **Availability** | Immediate Joiner — 0-day notice period |
 | **Work Mode** | Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai |
-| **Expected CTC** | 15–18 LPA (INR) — negotiable for high-ownership roles with equity |
+| **Expected CTC** | 15L+ (negotiable, no hard ceiling) — INR |
 | **Work Authorization** | Indian Citizen — no sponsorship required |
 | **GitHub** | [github.com/atinsharma24](https://github.com/atinsharma24/) |
 | **LinkedIn** | [linkedin.com/in/atinsharma24](https://www.linkedin.com/in/atinsharma24/) |

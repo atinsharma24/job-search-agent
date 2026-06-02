@@ -1,4 +1,4 @@
-# Job Search — Single Run Invoke
+# Job Search — Stage Run (Steps 1–3)
 
 You are a job application agent for Atin Sharma operating from this vault.
 Vault root: `/Users/atinsharma/job_search_vault`
@@ -42,9 +42,9 @@ For each job in the array:
 
 ---
 
-## Step 3 — Stage the Resume
+## Step 3 — Stage All Payloads
 
-Pick the best baseline resume using this routing table:
+Pick the best baseline resume for each qualifying job using this routing table:
 
 | JD signals | Resume category |
 |---|---|
@@ -52,11 +52,10 @@ Pick the best baseline resume using this routing table:
 | compliance, KYC, legal, identity, AML, document verification | `Backend_AI_Specialist` |
 | cloud, DevOps, Docker, Kubernetes, AWS, infra | `Cloud_Native_FullStack` |
 | full-stack, MERN, React, Next.js, product, founding | `AI_Integrated_FullStack` |
-| payments, payout, wallet, banking, fintech, Razorpay, billing | `AI_Integrated_FullStack` |
 
 Identify 3–5 keywords from the JD that are NOT already in the baseline resume's skills/profile section. These are `changed_keywords`.
 
-Write a payload JSON to `/tmp/payload_<company>.json`:
+Build a payload object for each qualifying job:
 ```json
 {
   "job_title": "...",
@@ -69,60 +68,24 @@ Write a payload JSON to `/tmp/payload_<company>.json`:
 }
 ```
 
-Run the stager:
-```bash
-python3 scripts/apply_io_handler.py --payload-file /tmp/payload_<company>.json
+Determine today's date (YYYY-MM-DD format). Write **all** qualifying payloads as a JSON array to:
+```
+active_application_context/daily_queue_{date}.json
 ```
 
-This produces `active_application_context/staged_application_resume.pdf` and appends a row to the tracker.
+Example for 2026-06-02:
+```
+active_application_context/daily_queue_2026-06-02.json
+```
+
+Do **not** run `apply_io_handler.py`. Do **not** launch any browser. Stop here.
+
+Output a staging summary table:
+
+| Company | Job Title | Resume Category | stack_match | Queued / Skipped |
+|---|---|---|---|---|
+| ... | ... | ... | ... | ... |
 
 ---
 
-## Step 4 — Apply
-
-```bash
-bash scripts/browseros_apply_macro.sh \
-  /tmp/payload_<company>.json \
-  active_application_context/staged_application_resume.pdf
-```
-
-The macro auto-routes by URL:
-- `linkedin.com` → `playwright_linkedin_easy_apply.py`
-- `wellfound.com` / `angel.co` → `playwright_wellfound_apply.py`
-- `naukri.com` → `playwright_naukri_apply.py`
-- Anything else → `claude` CLI visual fallback (you will be prompted to complete it)
-
-Exit codes:
-- `0` = applied successfully
-- `1` = generic failure
-- `10` = CAPTCHA detected — log `blocked`, skip
-- `11` = external redirect / non-standard ATS — log `blocked`, skip
-- `12` = login wall — session expired, run `setup_browser_sessions.sh`
-
----
-
-## Step 5 — Report
-
-After processing all jobs, output a summary table:
-
-| Company | Job Title | Action | Reason |
-|---|---|---|---|
-| ... | ... | applied / skipped / blocked | ... |
-
-Then verify `active_application_context/job_applications_tracker.md` has a row for every `applied` entry.
-
----
-
-## Supplemental: Apply to a Specific Job (Skip Discovery)
-
-If you already have a job URL and want to apply directly, provide this input:
-
-```
-Apply to this job on my behalf:
-  Job title: [title]
-  Company: [company]
-  URL: [url]
-  Required stack: [comma-separated techs from the JD]
-
-Run Steps 2–5 from INVOKE.md.
-```
+> **Run INVOKE_APPLY.md locally to execute Steps 4–5.**

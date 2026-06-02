@@ -232,7 +232,7 @@ Source:
 Use:
 - Location: Agra, Uttar Pradesh, India
 - Notice period: 0 days / Immediate Joiner
-- Expected CTC: 15-18 LPA
+- Expected CTC: 15L+ (negotiable, no hard ceiling)
 - Work authorization: Indian citizen, no sponsorship required for India
 
 ### Behavioral Questions

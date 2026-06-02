@@ -23,8 +23,8 @@
 
     "compensation": {
       "expected_ctc_inr_lpa_min": 15,
-      "expected_ctc_inr_lpa_max": 18,
-      "expected_ctc_label": "15–18 LPA",
+      "expected_ctc_inr_lpa_max": 30,
+      "expected_ctc_label": "15L+ (negotiable, no hard ceiling)",
       "currency": "INR",
       "unit": "LPA (Lakhs Per Annum)",
       "current_ctc_inr_lpa": null,

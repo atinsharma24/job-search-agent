@@ -30,7 +30,7 @@
 | Work Authorization | Indian Citizen — no visa sponsorship required |
 | Currently Employed | Yes (OpenBiz, ending 20 May 2026) |
 | Available From | Immediately / 20 May 2026 |
-| Expected CTC | 15–18 LPA (INR) — negotiable for high-ownership roles |
+| Expected CTC | 15L+ (negotiable, no hard ceiling) — INR |
 | Current CTC | Not applicable / fresher rate |
 | Work Mode Preference | Remote (primary) · Bangalore hybrid (secondary) |
 | Open to Relocation | Yes — Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai |
@@ -201,7 +201,7 @@ Yes — Indian Citizen, no visa sponsorship required.
 Immediate / 0 days.
 
 ### "What is your expected salary / CTC?"
-15–18 LPA (INR). Open to discussion for high-ownership or equity-bearing roles.
+15L+ (negotiable, no hard ceiling).
 
 ### "How many years of experience do you have?"
 ~1 year (12 months as Founding Engineer at OpenBiz Software India Pvt Ltd).
@@ -254,7 +254,7 @@ I'm a Full-Stack Product Engineer with ~12 months of founding-team experience at
 
 > **COMET USAGE RULES:**
 > 1. Never enter values not present in this document or the specialist files.
-> 2. For salary fields: always use 15–18 LPA unless the form forces a single number → use 1500000 (INR/year) or 15 (LPA).
+> 2. For salary fields: always use 15L+ (negotiable, no hard ceiling) unless the form forces a single number → use 1500000 (INR/year) or 15 (LPA).
 > 3. For experience in years: use 1.
 > 4. For graduation year: 2026.
 > 5. For "current employer": OpenBiz Software India Pvt Ltd.

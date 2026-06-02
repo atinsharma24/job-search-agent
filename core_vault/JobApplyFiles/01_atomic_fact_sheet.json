@@ -15,7 +15,7 @@
     "availability": "Immediate",
     "salary_expectation_inr_lpa": {
       "min": 15,
-      "max": 18,
+      "max": 30,
       "currency": "INR",
       "unit": "LPA"
     },
