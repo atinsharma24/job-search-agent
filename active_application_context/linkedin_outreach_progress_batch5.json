@@ -1,0 +1,402 @@
+{
+  "1": {
+    "name": "Deepinder Goyal",
+    "company": "Zomato",
+    "url": "https://www.linkedin.com/in/deepindergoyal",
+    "status": "SKIPPED_404",
+    "note": "None",
+    "timestamp": "2026-06-09T00:56:39.664109"
+  },
+  "2": {
+    "name": "Sriharsha Majety",
+    "company": "Swiggy",
+    "url": "https://www.linkedin.com/in/sriharsha",
+    "status": "SENT",
+    "note": "Hey Sriharsha, I am a Full Stack and AI engineer. Built LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring AI engineering roles at Swiggy. Would you be open to referring me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T00:57:01.522866"
+  },
+  "3": {
+    "name": "Nandan Reddy",
+    "company": "Swiggy",
+    "url": "https://www.linkedin.com/in/nandanreddy",
+    "status": "SENT",
+    "note": "Hey Nandan, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring engineering roles at Swiggy. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.",
+    "timestamp": "2026-06-09T00:58:00.100905"
+  },
+  "4": {
+    "name": "Sahil Barua",
+    "company": "Delhivery",
+    "url": "https://www.linkedin.com/in/sahilbarua",
+    "status": "SKIPPED_404",
+    "note": "None",
+    "timestamp": "2026-06-09T00:58:50.111155"
+  },
+  "5": {
+    "name": "Suraj Saharan",
+    "company": "Delhivery",
+    "url": "https://www.linkedin.com/in/surajsaharan",
+    "status": "SKIPPED_404",
+    "note": "None",
+    "timestamp": "2026-06-09T00:59:02.848838"
+  },
+  "6": {
+    "name": "Reeju Datta",
+    "company": "Cashfree Payments",
+    "url": "https://www.linkedin.com/in/reejudatta",
+    "status": "SENT",
+    "note": "Hey Reeju, I am a Full Stack engineer. Shipped idempotent payment webhook billing (100% consistency) and cut API latency 40% at OpenBiz. Exploring engineering roles at Cashfree. Would you refer me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T00:59:22.239660"
+  },
+  "7": {
+    "name": "Akash Sinha",
+    "company": "Cashfree Payments",
+    "url": "https://www.linkedin.com/in/akashsinha",
+    "status": "SENT",
+    "note": "Hey Akash, I am a Full Stack engineer. Built idempotent payment webhook billing and LangGraph agents at OpenBiz. Exploring fintech engineering roles at Cashfree. Would you be open to referring me if there are openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:00:17.633628"
+  },
+  "8": {
+    "name": "Anish Achuthan",
+    "company": "Open Financial",
+    "url": "https://www.linkedin.com/in/anishachuthan",
+    "status": "SENT",
+    "note": "Hey Anish, I am a Full Stack engineer. Shipped idempotent payment webhook billing and LangGraph AI agents at OpenBiz. Exploring fintech engineering roles at Open. Would you be open to referring me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:01:29.267732"
+  },
+  "9": {
+    "name": "Mabel Chacko",
+    "company": "Open Financial",
+    "url": "https://www.linkedin.com/in/mabelchacko",
+    "status": "SENT",
+    "note": "Hey Mabel, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring fintech engineering roles at Open Financial. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.",
+    "timestamp": "2026-06-09T01:02:58.037411"
+  },
+  "10": {
+    "name": "Sachin Bansal",
+    "company": "Navi Technologies",
+    "url": "https://www.linkedin.com/in/sachinbansal",
+    "status": "SENT",
+    "note": "Hey Sachin, I am a Full Stack engineer. Built idempotent payment webhook systems and LangGraph agents at OpenBiz. Exploring fintech engineering roles at Navi. Would you be open to referring me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:03:59.800914"
+  },
+  "11": {
+    "name": "Nithin Kamath",
+    "company": "Zerodha",
+    "url": "https://www.linkedin.com/in/nithinkamath",
+    "status": "SKIPPED_404",
+    "note": "None",
+    "timestamp": "2026-06-09T01:06:40.373578"
+  },
+  "12": {
+    "name": "Krish Subramanian",
+    "company": "Chargebee",
+    "url": "https://www.linkedin.com/in/krishsubramanian",
+    "status": "SENT",
+    "note": "Hey Krish, I am a Full Stack engineer. Shipped idempotent payment webhook billing (100% consistency) and LangGraph agents at OpenBiz. Exploring engineering roles at Chargebee. Would you refer me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:06:59.836565"
+  },
+  "13": {
+    "name": "Rajaraman Santhanam",
+    "company": "Chargebee",
+    "url": "https://www.linkedin.com/in/rajaramansanthanam",
+    "status": "SENT",
+    "note": "Hey Rajaraman, I am a Full Stack engineer. Built idempotent payment webhook billing and LangGraph AI agents at OpenBiz. Exploring engineering roles at Chargebee. Would you be open to referring me if there are openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:08:24.456057"
+  },
+  "14": {
+    "name": "Nilesh Patel",
+    "company": "LeadSquared",
+    "url": "https://www.linkedin.com/in/nileshpatel",
+    "status": "SENT",
+    "note": "Hey Nilesh, I am a Full Stack and AI engineer. Built LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at LeadSquared. Would you be open to referring me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:09:37.370756"
+  },
+  "15": {
+    "name": "Aneesh Reddy",
+    "company": "Capillary Technologies",
+    "url": "https://www.linkedin.com/in/aneeshreddy",
+    "status": "SENT",
+    "note": "Hey Aneesh, I am a Full Stack and AI engineer. Shipped LangGraph agents and a pgvector RAG pipeline at OpenBiz. Exploring AI engineering roles at Capillary. Would you refer me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:10:58.982870"
+  },
+  "16": {
+    "name": "Naveen Tewari",
+    "company": "InMobi",
+    "url": "https://www.linkedin.com/in/naveentewari",
+    "status": "SKIPPED_NO_CONNECT",
+    "note": "None",
+    "timestamp": "2026-06-09T01:12:10.374554"
+  },
+  "17": {
+    "name": "Ankush Sachdeva",
+    "company": "ShareChat",
+    "url": "https://www.linkedin.com/in/ankushsachdeva",
+    "status": "SENT",
+    "note": "Hey Ankush, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring AI engineering roles at ShareChat. Would you be open to referring me if there are openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:12:29.973627"
+  },
+  "18": {
+    "name": "Farid Ahsan",
+    "company": "ShareChat",
+    "url": "https://www.linkedin.com/in/faridahsan",
+    "status": "SENT",
+    "note": "Hey Farid, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring AI engineering roles at ShareChat. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.",
+    "timestamp": "2026-06-09T01:13:39.908151"
+  },
+  "19": {
+    "name": "Vijay Shekar Sharma",
+    "company": "Paytm",
+    "url": "https://www.linkedin.com/in/vijayshekarsharma",
+    "status": "SKIPPED_404",
+    "note": "None",
+    "timestamp": "2026-06-09T01:14:42.319379"
+  },
+  "20": {
+    "name": "Mayank Kumar",
+    "company": "UpGrad",
+    "url": "https://www.linkedin.com/in/mayankumar",
+    "status": "SENT",
+    "note": "Hey Mayank, I am a Full Stack and AI engineer. Built LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at UpGrad. Would you be open to referring me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:15:01.819561"
+  },
+  "21": {
+    "name": "Abhimanyu Saxena",
+    "company": "Scaler Academy",
+    "url": "https://www.linkedin.com/in/abhimanyusaxena",
+    "status": "SENT",
+    "note": "Hey Abhimanyu, I am a Full Stack and AI engineer. Shipped MERN TypeScript systems and LangGraph agents at OpenBiz. Exploring engineering roles at Scaler Academy. Would you refer me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:16:16.330785"
+  },
+  "22": {
+    "name": "Anshuman Singh",
+    "company": "Scaler Academy",
+    "url": "https://www.linkedin.com/in/anshumansingh",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311687"
+  },
+  "23": {
+    "name": "Alakh Pandey",
+    "company": "PhysicsWallah",
+    "url": "https://www.linkedin.com/in/alakhpandey",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311697"
+  },
+  "26": {
+    "name": "Aloke Bajpai",
+    "company": "Ixigo",
+    "url": "https://www.linkedin.com/in/alokebajpai",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311700"
+  },
+  "28": {
+    "name": "Kalyan Krishnamurthy",
+    "company": "Flipkart",
+    "url": "https://www.linkedin.com/in/kalyankrishnamurthy",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311703"
+  },
+  "29": {
+    "name": "Nandita Sinha",
+    "company": "Myntra",
+    "url": "https://www.linkedin.com/in/nanditasinha",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311706"
+  },
+  "30": {
+    "name": "Abhinav Shashank",
+    "company": "Innovaccer",
+    "url": "https://www.linkedin.com/in/abhinavshashank",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311708"
+  },
+  "31": {
+    "name": "Kanav Hasija",
+    "company": "Innovaccer",
+    "url": "https://www.linkedin.com/in/kanavhasija",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311710"
+  },
+  "32": {
+    "name": "Rajesh Yabaji",
+    "company": "BlackBuck",
+    "url": "https://www.linkedin.com/in/rajeshyabaji",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311712"
+  },
+  "35": {
+    "name": "Bharat Goenka",
+    "company": "Tally Solutions",
+    "url": "https://www.linkedin.com/in/bharatgoenka",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311715"
+  },
+  "36": {
+    "name": "Vikas Malpani",
+    "company": "Porter",
+    "url": "https://www.linkedin.com/in/vikasmalpani",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311717"
+  },
+  "38": {
+    "name": "Ramakant Sharma",
+    "company": "Livspace",
+    "url": "https://www.linkedin.com/in/ramakantsharma",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311719"
+  },
+  "39": {
+    "name": "Anuj Srivastava",
+    "company": "Livspace",
+    "url": "https://www.linkedin.com/in/anujsrivastava",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311721"
+  },
+  "40": {
+    "name": "Saahil Goel",
+    "company": "Shiprocket",
+    "url": "https://www.linkedin.com/in/saahilgoel",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311724"
+  },
+  "41": {
+    "name": "Vishesh Khurana",
+    "company": "Shiprocket",
+    "url": "https://www.linkedin.com/in/visheshkhurana",
+    "status": "SKIPPED_LOW_SIGNAL",
+    "note": "None",
+    "timestamp": "2026-06-09T01:16:36.311726"
+  },
+  "24": {
+    "name": "Mihir Gupta",
+    "company": "Teachmint",
+    "url": "https://www.linkedin.com/in/mihirgupta",
+    "status": "SENT",
+    "note": "Hey Mihir, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at Teachmint. Would you be open to referring me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:16:55.913928"
+  },
+  "25": {
+    "name": "Payoj Jain",
+    "company": "Teachmint",
+    "url": "https://www.linkedin.com/in/payojjain",
+    "status": "SKIPPED_404",
+    "note": "None",
+    "timestamp": "2026-06-09T01:18:13.905326"
+  },
+  "27": {
+    "name": "Ravish Naresh",
+    "company": "Khatabook",
+    "url": "https://www.linkedin.com/in/ravishn",
+    "status": "SENT",
+    "note": "Hey Ravish, I am a Full Stack and AI engineer. Built VyaparGPT (WhatsApp AI, LangGraph, 40 SMBs) at OpenBiz for Indian SMBs. Exploring engineering roles at Khatabook. Would you be open to referring me if there are openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:18:40.770524"
+  },
+  "33": {
+    "name": "Tarun Dua",
+    "company": "E2E Networks",
+    "url": "https://www.linkedin.com/in/tarundua",
+    "status": "SENT",
+    "note": "Hey Tarun, I am a Full Stack and AI engineer. Shipped LangGraph agents, pgvector RAG, and MERN TypeScript systems at OpenBiz. Exploring engineering roles at E2E Networks. Would you be open to referring me if there are openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:19:52.248268"
+  },
+  "34": {
+    "name": "Sumit Agarwal",
+    "company": "Vyapar",
+    "url": "https://www.linkedin.com/in/sumitagarwal",
+    "status": "SENT",
+    "note": "Hey Sumit, I am a Full Stack and AI engineer. Built VyaparGPT (WhatsApp AI, LangGraph, 40 SMBs) at OpenBiz as a conversational AI layer for businesses. Exploring roles at Vyapar. Would you refer me if there are openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:21:08.850681"
+  },
+  "37": {
+    "name": "Vimal Kumar",
+    "company": "Juspay",
+    "url": "https://www.linkedin.com/in/vimalkumar",
+    "status": "SENT",
+    "note": "Hey Vimal, I am a Full Stack engineer. Shipped idempotent payment webhook billing (100% consistency) and LangGraph agents at OpenBiz. Exploring engineering roles at Juspay. Would you be open to referring me if there are openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:22:14.430703"
+  },
+  "42": {
+    "name": "Rohit Taneja",
+    "company": "Decentro",
+    "url": "https://www.linkedin.com/in/rohittaneja",
+    "status": "SENT",
+    "note": "Hey Rohit, I am a Full Stack and AI engineer. Built LangGraph agents and idempotent payment webhook systems at OpenBiz. Exploring fintech API roles at Decentro. Would you be open to referring me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:23:08.921723"
+  },
+  "43": {
+    "name": "Pratik Gadekar",
+    "company": "Decentro",
+    "url": "https://www.linkedin.com/in/pratikgadekar",
+    "status": "SENT",
+    "note": "Hey Pratik, I am a Full Stack and AI engineer. Shipped idempotent payment webhook billing and LangGraph agents at OpenBiz. Exploring fintech engineering roles at Decentro. Would you be open to referring me if there openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:24:12.413404"
+  },
+  "44": {
+    "name": "Arpit Dave",
+    "company": "Recko",
+    "url": "https://www.linkedin.com/in/arpitdave",
+    "status": "SENT",
+    "note": "Hey Arpit, I am a Full Stack engineer. Shipped idempotent payment webhook billing (100% consistency) and LangGraph agents at OpenBiz. Exploring fintech engineering roles at Recko. Would you refer me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:25:34.051325"
+  },
+  "45": {
+    "name": "Sujay Nair",
+    "company": "Recko",
+    "url": "https://www.linkedin.com/in/sujaynair",
+    "status": "SENT",
+    "note": "Hey Sujay, I am a Full Stack engineer. Built idempotent payment webhook billing and LangGraph AI agents at OpenBiz. Exploring fintech engineering roles at Recko. Would you be open to referring me if there openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:26:54.708449"
+  },
+  "46": {
+    "name": "Naman Sarawagi",
+    "company": "RudderStack",
+    "url": "https://www.linkedin.com/in/namansarawagi",
+    "status": "SKIPPED_404",
+    "note": "None",
+    "timestamp": "2026-06-09T01:27:57.991798"
+  },
+  "47": {
+    "name": "Mrinal Sinha",
+    "company": "Instabase",
+    "url": "https://www.linkedin.com/in/mrinalsinha",
+    "status": "SENT",
+    "note": "Hey Mrinal, I am a Full Stack and AI engineer. Built Gemini Vision document extraction pipelines and LangGraph agents at OpenBiz. Exploring AI engineering roles at Instabase. Would you be open to referring me if there openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:28:17.501853"
+  },
+  "48": {
+    "name": "Prasad Varma",
+    "company": "Keka HR",
+    "url": "https://www.linkedin.com/in/prasadvarma",
+    "status": "SENT",
+    "note": "Hey Prasad, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at Keka HR. Would you be open to referring me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:29:20.407662"
+  },
+  "49": {
+    "name": "Saurabh Kumar Tiwari",
+    "company": "PhonePe",
+    "url": "https://www.linkedin.com/in/saurabhkumartiwari",
+    "status": "SENT",
+    "note": "Hey Saurabh, I am a Full Stack engineer. Shipped idempotent payment webhook billing and cut API latency 40% at OpenBiz. Exploring engineering roles at PhonePe. Would you be open to referring me if there are relevant openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:30:42.027450"
+  },
+  "50": {
+    "name": "Harish Kumar",
+    "company": "Cashfree Payments",
+    "url": "https://www.linkedin.com/in/harishkumar",
+    "status": "SENT",
+    "note": "Hey Harish, I am a Full Stack engineer. Built idempotent payment webhook billing (100% consistency) and LangGraph agents at OpenBiz. Exploring engineering roles at Cashfree. Would you be open to referring me if there openings? Happy to share my resume.",
+    "timestamp": "2026-06-09T01:31:42.611308"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "1": {
+    "name": "Madhav Vodnala",
+    "company": "Avaamo",
+    "url": "https://www.linkedin.com/in/madhav-vodnala-5423691",
+    "status": "SKIPPED_PENDING",
+    "message": "None",
+    "timestamp": "2026-06-09T00:44:33.746050"
+  },
+  "2": {
+    "name": "Sriram Chakravarthy",
+    "company": "Avaamo",
+    "url": "https://www.linkedin.com/in/sriram-chakravarthy-11b730268",
+    "status": "SKIPPED_PENDING",
+    "message": "None",
+    "timestamp": "2026-06-09T00:44:38.234675"
+  },
+  "3": {
+    "name": "Chirag Dagha",
+    "company": "BrowserStack",
+    "url": "https://www.linkedin.com/in/chirag-dagha",
+    "status": "SKIPPED_PENDING",
+    "message": "None",
+    "timestamp": "2026-06-09T00:44:43.199924"
+  },
+  "4": {
+    "name": "Nakul Aggarwal",
+    "company": "BrowserStack",
+    "url": "https://www.linkedin.com/in/nakulaggarwal",
+    "status": "SKIPPED_PENDING",
+    "message": "None",
+    "timestamp": "2026-06-09T00:44:47.803465"
+  },
+  "5": {
+    "name": "Rajendra Patta",
+    "company": "BrowserStack",
+    "url": "https://www.linkedin.com/in/rajpatta",
+    "status": "SKIPPED_PENDING",
+    "message": "None",
+    "timestamp": "2026-06-09T00:44:52.701939"
+  },
+  "6": {
+    "name": "Chaitanya Peddi",
+    "company": "Darwinbox",
+    "url": "https://www.linkedin.com/in/chaitanyapeddi",
+    "status": "SKIPPED_PENDING",
+    "message": "None",
+    "timestamp": "2026-06-09T00:44:57.785951"
+  },
+  "7": {
+    "name": "Akanksha Deswal",
+    "company": "DevRev",
+    "url": "https://www.linkedin.com/in/akankshadeswal",
+    "status": "SKIPPED_PENDING",
+    "message": "None",
+    "timestamp": "2026-06-09T00:45:02.378222"
+  },
+  "8": {
+    "name": "Sujith Narayanan",
+    "company": "Fi.Money",
+    "url": "https://www.linkedin.com/in/sujithnarayanan",
+    "status": "SKIPPED_PENDING",
+    "message": "None",
+    "timestamp": "2026-06-09T00:45:06.965007"
+  },
+  "9": {
+    "name": "Pranay Agrawal",
+    "company": "Fractal",
+    "url": "https://www.linkedin.com/in/pranayagrawal",
+    "status": "SKIPPED_PENDING",
+    "message": "None",
+    "timestamp": "2026-06-09T00:45:11.677001"
+  },
+  "10": {
+    "name": "Ananth Nagaraj",
+    "company": "Gnani.ai",
+    "url": "https://www.linkedin.com/in/ananth-nagaraj-gnani",
+    "status": "DRY_RUN_SUCCESS",
+    "message": "Hey Ananth, hope you are doing well. I am a Full Stack and AI Engineer and served as a Founding Engineer at OpenBiz. I recently shipped VyaparGPT, a WhatsApp native AI assistant for 40 SMBs, and Nimbus RAG, a pgvector pipeline with sub 800ms retrieval. I am exploring engineering roles at Gnani.ai and noticed we are connected. Would you be open to referring me for relevant technical openings? Happy to share my resume. Thank you!",
+    "timestamp": "2026-06-09T00:43:11.994713"
+  }
+}

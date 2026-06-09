@@ -1,0 +1,52 @@
+[2026-06-08T14:15:00Z] SKIPPED | Nutan Choudhary | Krutrim | already connected (1st-degree)
+[2026-06-08T14:16:00Z] SKIPPED | Ravi Ranjan Singh | Krutrim | request already pending
+[2026-06-08T14:17:00Z] SKIPPED | Azhagiri S | Krutrim | profile not found / page does not exist
+[2026-06-08T14:18:00Z] BLOCKED | Pratyush Kumar | Sarvam AI | supplied URL opens HCL Technologies profile; likely wrong recipient
+[2026-06-08T14:20:00Z] SENT | Azhagiri S | Krutrim | corrected URL https://www.linkedin.com/in/azhagiri-s-05361470 | referral-oriented note sent
+[2026-06-08T14:21:00Z] SKIPPED | Pratyush Kumar | Sarvam AI | corrected profile https://www.linkedin.com/in/pratyush-kumar-8844a8a3 already pending
+[2026-06-08T14:22:00Z] BLOCKED | Vivek Raghavan | Sarvam AI | supplied URL opens unrelated HSE profile; no strong corrected profile URL found
+[2026-06-08T14:23:00Z] SKIPPED | Aarif Noordeen | Mad Street Den | corrected profile https://www.linkedin.com/in/aarif-noordeen-9abbb9ba already pending
+[2026-06-08T14:24:00Z] SKIPPED | Mayank Bhanderi | Gupshup | corrected profile https://www.linkedin.com/in/mayank-bhanderi-5b8a6576 already pending
+[2026-06-08T14:25:00Z] SKIPPED | Madhav Vodnala | Avaamo | corrected profile https://www.linkedin.com/in/madhav-vodnala-5423691 already pending
+[2026-06-08T14:26:00Z] SENT | Jayanth G | Avaamo | corrected URL https://www.linkedin.com/in/jayanth-g-96b64035 | referral/open-roles note sent
+[2026-06-08T14:27:00Z] SKIPPED | Swapnil Jain | Observe.AI | corrected profile https://www.linkedin.com/in/voiceaiagent already pending
+[2026-06-08T14:28:00Z] SENT | Deepak Babu | Observe.AI | corrected URL https://www.linkedin.com/in/deepak-babu-2b8a324 | recruiter referral/open-roles note sent
+[2026-06-08T14:29:00Z] BLOCKED | Neeraj Agarwal | Observe.AI | supplied URL 404; no strong corrected Observe.AI profile found
+[2026-06-08T14:30:00Z] SENT | Ravi Saraogi | Uniphore | URL https://www.linkedin.com/in/ravisaraogi | referral/open-roles note sent
+[2026-06-08T14:31:00Z] SENT | Nidhi Kapoor | Uniphore | corrected URL https://www.linkedin.com/in/nidhi-kapoor-b6552874 | referral/open-roles note sent
+[2026-06-08T14:32:00Z] SENT | Vicky Nanda | Niramai | URL https://www.linkedin.com/in/vickynanda | referral/open-roles note sent
+[2026-06-08T14:33:00Z] SENT | Pallavi Garg | Pixis | corrected URL https://www.linkedin.com/in/pallavigarg19 | recruiter referral/open-roles note sent
+[2026-06-08T14:34:00Z] SENT | Vishnu Subramanian | JarvisLabs.ai | URL https://www.linkedin.com/in/vishnusubramanian | referral/open-roles note sent
+[2026-06-08T14:35:00Z] BLOCKED | Bharath Jayachandran | JarvisLabs.ai | supplied URL 404; no strong corrected JarvisLabs profile found
+[2026-06-08T14:36:00Z] FAILED | Muddu Sudhakar | Aisera/Salesforce Agentforce | corrected URL https://www.linkedin.com/in/muddusudhakar clicked send twice but profile did not become pending
+[2026-06-08T14:37:00Z] SENT | Aravind Sripada | Aisera | URL https://www.linkedin.com/in/aravindsripada | referral/open-roles note sent
+[2026-06-08T14:38:00Z] SENT | Srijesh Karthikeyan | Aisera | URL https://www.linkedin.com/in/srijeshkarthikeyan | recruiter referral/open-roles note sent
+[2026-06-08T14:40:00Z] SENT | Ganesh Gopalan | Gnani.ai | corrected URL https://www.linkedin.com/in/ganesh-gopalan | referral/open-roles note sent
+[2026-06-08T14:41:00Z] SENT | Ananth Nagaraj | Gnani.ai | corrected URL https://www.linkedin.com/in/ananth-nagaraj-gnani | referral/open-roles note sent
+[2026-06-08T14:42:00Z] SENT | Bharath Shankar | Gnani.ai | corrected URL https://www.linkedin.com/in/bharath-shankar-143b1914 | referral/open-roles note sent
+[2026-06-08T14:43:00Z] SENT | Sourabh Gupta | Skit.ai | corrected URL https://www.linkedin.com/in/sourabhsg | referral/open-roles note sent
+[2026-06-08T14:44:00Z] SENT | Akshay Deshraj | Skit.ai | URL https://www.linkedin.com/in/akshaydeshraj | referral/open-roles note sent
+[2026-06-08T14:45:00Z] SENT | Aditya Satyavada | Skit.ai | URL https://www.linkedin.com/in/adityasatyavada | referral/open-roles note sent
+[2026-06-08T14:46:00Z] SENT | Raison D'souza | Skit.ai | corrected URL https://www.linkedin.com/in/rdsoze | referral/open-roles note sent
+[2026-06-08T14:47:00Z] FAILED | Niyaz Ansari | Skit.ai | URL https://www.linkedin.com/in/niyazansari clicked send twice but profile did not become pending
+[2026-06-08T14:48:00Z] SENT | Ankush Sabharwal | CoRover.ai | URL https://www.linkedin.com/in/ankushsabharwal | referral/open-roles note sent
+[2026-06-08T14:49:00Z] SKIPPED | Ankur Thakur | CoRover.ai | corrected URL https://www.linkedin.com/in/ankur-thakur-1b242a192 already connected (1st-degree)
+[2026-06-08T14:50:00Z] SENT | Swapan Rajdev | Haptik | corrected URL https://www.linkedin.com/in/swapan-rajdev-64a0591a | referral/open-roles note sent
+[2026-06-08T14:51:00Z] SENT | Nishith Rastogi | Locus | URL https://www.linkedin.com/in/nishithrastogi | referral/open-roles note sent
+[2026-06-08T14:52:00Z] SENT | Sanjay Goel | Locus | corrected URL https://www.linkedin.com/in/goelsanjay | referral/open-roles note sent
+[2026-06-08T14:53:00Z] SENT | Abhilash Dhondalkar | Locus | corrected URL https://www.linkedin.com/in/abhilash-dhondalkar | referral/open-roles note sent
+[2026-06-08T14:54:00Z] SENT | Abhijit Kane | Postman | URL https://www.linkedin.com/in/abhijitkane | referral/open-roles note sent
+[2026-06-08T14:55:00Z] SENT | Pooja Sawant | Postman | corrected URL https://www.linkedin.com/in/sawantpooja | referral/open-roles note sent
+[2026-06-08T14:56:00Z] SENT | Pankaj Khandelwal | Postman | corrected URL https://www.linkedin.com/in/pankajk0791 | referral/open-roles note sent
+[2026-06-08T14:57:00Z] SENT | Ritesh Arora | BrowserStack | corrected URL https://www.linkedin.com/in/ritesh-arora-browserstack | referral/open-roles note sent
+[2026-06-08T14:58:00Z] SENT | Saransh Miglani | BrowserStack | corrected URL https://www.linkedin.com/in/saransh-miglani | referral/open-roles note sent
+[2026-06-08T14:59:00Z] BLOCKED | Anshul Gupta | BrowserStack | supplied URL opens unrelated Australian Government profile; no strong corrected BrowserStack profile found
+[2026-06-08T15:00:00Z] SENT | Rajendra Patta | BrowserStack | URL https://www.linkedin.com/in/rajpatta | referral/open-roles note sent
+[2026-06-08T15:01:00Z] SENT | Rajoshi Ghosh | Hasura/PromptQL | URL https://www.linkedin.com/in/rajoshighosh | referral/open-roles note sent
+[2026-06-08T15:02:00Z] SENT | Shashank Kumar | Razorpay | corrected URL https://www.linkedin.com/in/kumarshashank | referral/open-roles note sent
+[2026-06-08T15:04:00Z] SENT | Vivek Jha | Razorpay | corrected URL https://www.linkedin.com/in/jhavive | referral/open-roles note sent
+[2026-06-08T15:05:00Z] SENT | Jay Vijayan | Tekion | URL https://www.linkedin.com/in/jayvijayan | referral/open-roles note sent
+[2026-06-08T15:06:00Z] SENT | Sanket Shah | InVideo | corrected URL https://www.linkedin.com/in/sanketsh | referral/open-roles note sent
+[2026-06-08T15:07:00Z] SENT | Suresh Sambandam | Kissflow | URL https://www.linkedin.com/in/sureshsambandam | referral/open-roles note sent
+[2026-06-08T15:08:00Z] SENT | Dinesh Varadharajan | Kissflow | URL https://www.linkedin.com/in/dineshvaradharajan | referral/open-roles note sent
+[2026-06-08T15:09:00Z] SENT | Pratyaksh Sharma | Dashworks/HubSpot | corrected URL https://www.linkedin.com/in/pratyaksh | referral/open-roles note sent

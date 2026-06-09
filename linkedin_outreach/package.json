@@ -9,10 +9,11 @@
     "gmail:invoke": "ts-node --esm scripts/gmail_invoker.ts"
   },
   "dependencies": {
-    "papaparse": "^5.4.1",
+    "csv-parse": "^6.2.1",
     "enquirer": "^2.3.6",
-    "write-file-atomic": "^5.0.1",
-    "uuid": "^9.0.0"
+    "papaparse": "^5.4.1",
+    "uuid": "^9.0.0",
+    "write-file-atomic": "^5.0.1"
   },
   "devDependencies": {
     "@types/papaparse": "^5.2.7",

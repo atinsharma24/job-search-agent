@@ -1,0 +1,82 @@
+{
+  "1": {
+    "name": "Aakrit Vaish",
+    "company": "Haptik",
+    "url": "https://www.linkedin.com/in/aakritvaish",
+    "status": "SKIPPED_404",
+    "note": "None",
+    "timestamp": "2026-06-09T02:29:13.977408"
+  },
+  "2": {
+    "name": "Abhinav Asthana",
+    "company": "Postman",
+    "url": "https://www.linkedin.com/in/abhinavasthana",
+    "status": "SENT",
+    "note": "Hey Abhinav, built an autonomous web agent on Claude + MCP that translates local context schemas into DOM level interactions. Postman's developer workflow automation is the exact. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!",
+    "timestamp": "2026-06-09T02:29:33.551547"
+  },
+  "3": {
+    "name": "Akash Singh",
+    "company": "Observe.AI",
+    "url": "https://www.linkedin.com/in/akash-singh-0b57b916",
+    "status": "SENT",
+    "note": "Hey Akash, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Observe.AI is building and would love to connect and share ideas. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!",
+    "timestamp": "2026-06-09T02:30:33.102603"
+  },
+  "4": {
+    "name": "Anik Das",
+    "company": "Yellow.ai",
+    "url": "https://www.linkedin.com/in/anikdas/",
+    "status": "SENT",
+    "note": "Hey Anik, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Yellow.ai is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!",
+    "timestamp": "2026-06-09T02:31:27.709320"
+  },
+  "5": {
+    "name": "Ankit Ratan",
+    "company": "Signzy",
+    "url": "https://www.linkedin.com/in/ankitratan",
+    "status": "SENT",
+    "note": "Hey Ankit, built a Gemini Vision document extraction pipeline in prod at OpenBiz, GST certs, invoices, Aadhaar, unstructured doc fields. Signzy's digital KYC infra is exactly where this. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!",
+    "timestamp": "2026-06-09T02:32:40.243540"
+  },
+  "6": {
+    "name": "Chandra Khatri",
+    "company": "Krutrim",
+    "url": "https://www.linkedin.com/in/ckhatri",
+    "status": "SENT",
+    "note": "Hey Chandra, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Krutrim is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!",
+    "timestamp": "2026-06-09T02:33:40.952976"
+  },
+  "7": {
+    "name": "Christos Tryfonas",
+    "company": "Aisera",
+    "url": "https://www.linkedin.com/in/christos-tryfonas",
+    "status": "SKIPPED_404",
+    "note": "None",
+    "timestamp": "2026-06-09T02:34:43.395784"
+  },
+  "8": {
+    "name": "D P Siddharth",
+    "company": "Gupshup",
+    "url": "https://www.linkedin.com/in/dpsiddharth/",
+    "status": "SENT",
+    "note": "Hey Siddharth, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Gupshup is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume.",
+    "timestamp": "2026-06-09T02:35:02.835014"
+  },
+  "9": {
+    "name": "Deeksha Vashishtha",
+    "company": "Yellow.ai",
+    "url": "https://www.linkedin.com/in/deeksha-vashishtha-a48955133",
+    "status": "SENT",
+    "note": "Hey Deeksha, Full stack + AI eng, immediate joiner. Built VyaparGPT (WhatsApp AI, 40 SMBs) and pgvector RAG at OpenBiz. Targeting Yellow.ai's conversational AI roles. Stack: MERN, LangGraph,. Would you be open to referring me or sharing details on open tech roles? Happy to share resume. Thanks!",
+    "timestamp": "2026-06-09T02:36:02.471174"
+  },
+  "10": {
+    "name": "Dhritiparna Dhar",
+    "company": "Sarvam AI",
+    "url": "https://www.linkedin.com/in/dhriti",
+    "status": "SENT",
+    "note": "Hey Dhritiparna, Full stack + AI eng, immediate joiner. Nimbus RAG (sub 800ms pgvector) and dual model fallback (OpenAI\u2192Gemini) in prod. Targeting Sarvam AI's LLM infrastructure roles. Would you be open to referring me or sharing details on open tech roles? Happy to share resume. Thanks!",
+    "timestamp": "2026-06-09T02:37:21.024026"
+  }
+}

@@ -1,1 +1,342 @@
-[]
+[
+  {
+    "name": "Raghu Ravinutala",
+    "url": "https://www.linkedin.com/in/raghuravinutala",
+    "persona": "persona_1_founders",
+    "company": "Yellow.ai",
+    "message": "Hey Raghu \u2014 built VyaparGPT, a WhatsApp-native AI for 40+ SMBs using LangChain and provider fallback. Yellow.ai's orchestration layer is exactly the kind of infra I want to work on. Would value connecting.",
+    "personalization_score": 3,
+    "notes": "Tier 1 | assets: VyaparGPT+40SMBs | domain: orchestration layer | no template phrase",
+    "status": "approved",
+    "char_count": 205,
+    "score_flags": [
+      "+1: company name \"Yellow.ai\" found",
+      "+1: domain keyword \"orchestration\" found",
+      "+1: Atin asset keyword \"vyapargpt\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Uday T Kumar",
+    "url": "https://www.linkedin.com/in/uday-t-kumar",
+    "persona": "persona_3_eng_managers",
+    "company": "Yellow.ai",
+    "message": "Hey Uday \u2014 I shipped VyaparGPT (WhatsApp-native LLM, LangGraph state machines, 40 SMBs) and a pgvector RAG pipeline. Yellow.ai's enterprise conversational AI is where this experience maps directly. Open to connecting.",
+    "personalization_score": 3,
+    "notes": "Tier 1 | assets: VyaparGPT+LangGraph+pgvector | domain: enterprise conversational AI | no template phrase",
+    "status": "approved",
+    "char_count": 217,
+    "score_flags": [
+      "+1: company name \"Yellow.ai\" found",
+      "+1: domain keyword \"conversational\" found",
+      "+1: Atin asset keyword \"vyapargpt\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Deeksha Vashishtha",
+    "url": "https://www.linkedin.com/in/deeksha-vashishtha-a48955133",
+    "persona": "persona_5_recruiters",
+    "company": "Yellow.ai",
+    "message": "Hey Deeksha \u2014 Full-stack + AI eng, immediate joiner. Built VyaparGPT (WhatsApp AI, 40 SMBs) and pgvector RAG at OpenBiz. Targeting Yellow.ai's conversational AI roles. Stack: MERN, LangGraph, Python. 15L+ (negotiable).",
+    "personalization_score": 3,
+    "notes": "Tier 1 | assets: VyaparGPT+pgvector | domain: conversational AI roles | scannable format for recruiter",
+    "status": "approved",
+    "char_count": 218,
+    "score_flags": [
+      "+1: company name \"Yellow.ai\" found",
+      "+1: domain keyword \"conversational\" found",
+      "+1: Atin asset keyword \"vyapargpt\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Swapnil Jain",
+    "url": "https://www.linkedin.com/in/voiceaiagent",
+    "persona": "persona_1_founders",
+    "company": "Observe.AI",
+    "message": "Hey Swapnil \u2014 shipped LangGraph stateful agents and a WhatsApp LLM assistant for 40 SMBs at my last startup. Observe.AI's real-time agent guidance layer is the natural next problem. Would value connecting.",
+    "personalization_score": 3,
+    "notes": "Tier 1 | assets: LangGraph+VyaparGPT+40SMBs | domain: real-time agent guidance | no template phrase",
+    "status": "approved",
+    "char_count": 205,
+    "score_flags": [
+      "+1: company name \"Observe.AI\" found",
+      "+1: domain keyword \"agent guidance\" found",
+      "+1: Atin asset keyword \"langgraph\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Aakrit Vaish",
+    "url": "https://www.linkedin.com/in/aakritvaish",
+    "persona": "persona_1_founders",
+    "company": "Haptik",
+    "message": "Hey Aakrit \u2014 built VyaparGPT, a WhatsApp-native LLM for 40+ SMBs with LangGraph state machines and provider fallback. Haptik's WhatsApp commerce and agent orchestration maps exactly to this. Would connect.",
+    "personalization_score": 3,
+    "notes": "Tier 1 | assets: VyaparGPT+LangGraph+40SMBs | domain: WhatsApp commerce + agent orchestration | no template phrase",
+    "status": "approved",
+    "char_count": 205,
+    "score_flags": [
+      "+1: company name \"Haptik\" found",
+      "+1: domain keyword \"whatsapp commerce\" found",
+      "+1: Atin asset keyword \"vyapargpt\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Abhijeet Pustake",
+    "url": "https://www.linkedin.com/in/abhijeet-pustake-ab445915",
+    "persona": "persona_3_eng_managers",
+    "company": "Haptik",
+    "message": "Hey Abhijeet \u2014 own the full loop: VyaparGPT (WhatsApp AI, LangGraph, 40 SMBs in prod), pgvector RAG, MERN TypeScript. No ramp needed on Haptik's conversational AI backend. Would like to connect.",
+    "personalization_score": 3,
+    "notes": "Tier 1 | assets: VyaparGPT+LangGraph+pgvector | domain: conversational AI backend | day-one framing for eng manager",
+    "status": "approved",
+    "char_count": 194,
+    "score_flags": [
+      "+1: company name \"Haptik\" found",
+      "+1: domain keyword \"conversational ai\" found",
+      "+1: Atin asset keyword \"vyapargpt\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Manish Gupta",
+    "url": "https://www.linkedin.com/in/manish1",
+    "persona": "persona_1_founders",
+    "company": "Rezo.ai",
+    "message": "Hey Manish \u2014 built VyaparGPT (WhatsApp LLM, LangGraph, 40 SMBs) and a LangGraph AI CRM layer at OpenBiz. Rezo.ai's contact center automation is the exact domain. Would value connecting on this.",
+    "personalization_score": 3,
+    "notes": "Tier 1 | assets: VyaparGPT+LangGraph+AI CRM | domain: contact center automation | no template phrase",
+    "status": "approved",
+    "char_count": 193,
+    "score_flags": [
+      "+1: company name \"Rezo.ai\" found",
+      "+1: domain keyword \"contact center automation\" found",
+      "+1: Atin asset keyword \"vyapargpt\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Beerud Sheth",
+    "url": "https://www.linkedin.com/in/beerudsheth",
+    "persona": "persona_1_founders",
+    "company": "Gupshup",
+    "message": "Hey Beerud \u2014 shipped a WhatsApp-native LLM for 40+ SMBs (LangGraph, provider fallback, full webhook lifecycle). Gupshup's conversational messaging platform is the infrastructure I've been building on. Would connect.",
+    "personalization_score": 3,
+    "notes": "Tier 1 | assets: VyaparGPT+LangGraph+webhook | domain: conversational messaging platform | no template phrase",
+    "status": "approved",
+    "char_count": 215,
+    "score_flags": [
+      "+1: company name \"Gupshup\" found",
+      "+1: domain keyword \"conversational messaging\" found",
+      "+1: Atin asset keyword \"langgraph\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Ankit Ratan",
+    "url": "https://www.linkedin.com/in/ankitratan",
+    "persona": "persona_1_founders",
+    "company": "Signzy",
+    "message": "Hey Ankit \u2014 built a Gemini Vision document extraction pipeline in prod at OpenBiz \u2014 GST certs, invoices, Aadhaar, unstructured doc fields. Signzy's digital KYC infra is exactly where this applies. Would love to connect.",
+    "personalization_score": 3,
+    "notes": "Tier 2 | assets: Gemini Vision+GST+Aadhaar | domain: digital KYC infra | no template phrase",
+    "status": "approved",
+    "char_count": 219,
+    "score_flags": [
+      "+1: company name \"Signzy\" found",
+      "+1: domain keyword \"kyc\" found",
+      "+1: Atin asset keyword \"gemini vision\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Suresh Pattu",
+    "url": "https://www.linkedin.com/in/suresh-pattu",
+    "persona": "persona_3_eng_managers",
+    "company": "Signzy",
+    "message": "Hey Suresh \u2014 shipped a Gemini Vision doc extraction pipeline for GST, invoices, and Aadhaar at OpenBiz \u2014 plus N+1 fix that cut latency 40%. Ready to contribute to Signzy's KYC engineering stack from day one.",
+    "personalization_score": 3,
+    "notes": "Tier 2 | assets: Gemini Vision+N+1+40% | domain: KYC engineering stack | day-one framing for eng manager",
+    "status": "approved",
+    "char_count": 207,
+    "score_flags": [
+      "+1: company name \"Signzy\" found",
+      "+1: domain keyword \"kyc\" found",
+      "+1: Atin asset keyword \"40%\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Prathamesh Juvatkar",
+    "url": "https://www.linkedin.com/in/prathameshjuvatkar",
+    "persona": "persona_1_founders",
+    "company": "Nanonets",
+    "message": "Hey Prathamesh \u2014 shipped Gemini Vision document extraction in prod at OpenBiz (GST, invoices, Aadhaar \u2014 unstructured to structured in one pipeline). Nanonets does this at enterprise scale. Would value connecting.",
+    "personalization_score": 3,
+    "notes": "Tier 2 | assets: Gemini Vision+GST+invoices | domain: enterprise-scale document processing | no template phrase",
+    "status": "approved",
+    "char_count": 212,
+    "score_flags": [
+      "+1: company name \"Nanonets\" found",
+      "+1: domain keyword \"extraction\" found",
+      "+1: Atin asset keyword \"gemini vision\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Vivek Raghavan",
+    "url": "https://www.linkedin.com/in/vivek-raghavan-16005424",
+    "persona": "persona_1_founders",
+    "company": "Sarvam AI",
+    "message": "Hey Vivek \u2014 built dual-model fallback (OpenAI \u2192 Gemini on 5xx) and a provider-agnostic LLM layer at OpenBiz. Sarvam AI's work on Indian-language foundation models is the infra problem I want to be close to. Would connect.",
+    "personalization_score": 3,
+    "notes": "Tier 3 | assets: dual-model fallback+provider-agnostic LLM | domain: Indian-language foundation models | no template phrase",
+    "status": "approved",
+    "char_count": 221,
+    "score_flags": [
+      "+1: company name \"Sarvam AI\" found",
+      "+1: domain keyword \"indian-language\" found",
+      "+1: Atin asset keyword \"openai \u2192 gemini\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Pratyush Kumar",
+    "url": "https://www.linkedin.com/in/pratyush-kumar-8844a8a3",
+    "persona": "persona_1_founders",
+    "company": "Sarvam AI",
+    "message": "Hey Pratyush \u2014 shipped Nimbus RAG (sub-800ms on pgvector, Groq) and a provider-agnostic LLM layer at OpenBiz. Building for Indian-language models at Sarvam AI is the right problem space. Would connect.",
+    "personalization_score": 3,
+    "notes": "Tier 3 | assets: Nimbus+pgvector+sub-800ms+Groq | domain: Indian-language models | no template phrase",
+    "status": "approved",
+    "char_count": 201,
+    "score_flags": [
+      "+1: company name \"Sarvam AI\" found",
+      "+1: domain keyword \"indian-language\" found",
+      "+1: Atin asset keyword \"nimbus\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Dhritiparna Dhar",
+    "url": "https://www.linkedin.com/in/dhriti",
+    "persona": "persona_5_recruiters",
+    "company": "Sarvam AI",
+    "message": "Hey Dhritiparna \u2014 Full-stack + AI eng, immediate joiner. Nimbus RAG (sub-800ms pgvector) and dual-model fallback (OpenAI\u2192Gemini) in prod. Targeting Sarvam AI's LLM infrastructure roles. MERN, Python, LangGraph. 15L+ (negotiable).",
+    "personalization_score": 3,
+    "notes": "Tier 3 | assets: Nimbus+pgvector+dual-model fallback | domain: LLM infrastructure roles | scannable for recruiter",
+    "status": "approved",
+    "char_count": 229,
+    "score_flags": [
+      "+1: company name \"Sarvam AI\" found",
+      "+1: domain keyword \"llm infrastructure\" found",
+      "+1: Atin asset keyword \"nimbus\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Harshil Mathur",
+    "url": "https://www.linkedin.com/in/harshilmathur",
+    "persona": "persona_1_founders",
+    "company": "Razorpay",
+    "message": "Hey Harshil \u2014 shipped Razorpay idempotent webhook billing at OpenBiz (100% payment-state consistency, zero reconciliation) and resolved N+1 patterns cutting API latency 40%. Would value connecting with the Razorpay team.",
+    "personalization_score": 3,
+    "notes": "Tier 4 | assets: Razorpay webhooks+100% consistency+N+1+40% | domain: payments infrastructure | no template phrase",
+    "status": "approved",
+    "char_count": 220,
+    "score_flags": [
+      "+1: company name \"Razorpay\" found",
+      "+1: domain keyword \"payment\" found",
+      "+1: Atin asset keyword \"40%\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Harshit Rathi",
+    "url": "https://www.linkedin.com/in/harshit-rathi",
+    "persona": "persona_3_eng_managers",
+    "company": "Razorpay",
+    "message": "Hey Harshit \u2014 shipped idempotent Razorpay webhooks with 100% payment consistency and cut API latency 40% via N+1 resolution at OpenBiz. No ramp needed on Razorpay's payments infrastructure. Looking to connect.",
+    "personalization_score": 3,
+    "notes": "Tier 4 | assets: Razorpay webhooks+100%+N+1+40% | domain: payments infrastructure | day-one framing for eng manager",
+    "status": "approved",
+    "char_count": 209,
+    "score_flags": [
+      "+1: company name \"Razorpay\" found",
+      "+1: domain keyword \"payment\" found",
+      "+1: Atin asset keyword \"40%\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Tanmai Gopal",
+    "url": "https://www.linkedin.com/in/tanmaigopal",
+    "persona": "persona_1_founders",
+    "company": "Hasura",
+    "message": "Hey Tanmai \u2014 resolved deep N+1 query chains in Supabase (40% latency drop) and built a pgvector RAG pipeline with sub-800ms retrieval. Hasura's data API layer is where this expertise maps cleanly. Would connect.",
+    "personalization_score": 3,
+    "notes": "Tier 4 | assets: N+1+40%+pgvector+sub-800ms | domain: data API layer | no template phrase",
+    "status": "approved",
+    "char_count": 211,
+    "score_flags": [
+      "+1: company name \"Hasura\" found",
+      "+1: domain keyword \"data api\" found",
+      "+1: Atin asset keyword \"pgvector\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Abhinav Asthana",
+    "url": "https://www.linkedin.com/in/abhinavasthana",
+    "persona": "persona_1_founders",
+    "company": "Postman",
+    "message": "Hey Abhinav \u2014 built an autonomous web agent on Claude + MCP that translates local context schemas into DOM-level interactions. Postman's developer workflow automation is the exact adjacent space. Would value connecting.",
+    "personalization_score": 3,
+    "notes": "Tier 4 | assets: autonomous web agent+Claude+MCP | domain: developer workflow automation | no template phrase",
+    "status": "approved",
+    "char_count": 219,
+    "score_flags": [
+      "+1: company name \"Postman\" found",
+      "+1: domain keyword \"developer workflow\" found",
+      "+1: Atin asset keyword \"claude + mcp\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Asad Khan",
+    "url": "https://www.linkedin.com/in/asad0801",
+    "persona": "persona_1_founders",
+    "company": "LambdaTest",
+    "message": "Hey Asad \u2014 built an autonomous web agent on Claude 3.5 Sonnet + MCP that navigates DOM interactions and handles WAF/CAPTCHA detection. LambdaTest's automated browser testing infra is where this connects directly. Would connect.",
+    "personalization_score": 3,
+    "notes": "Tier 4 | assets: autonomous web agent+Claude+MCP+CAPTCHA | domain: automated browser testing infra | no template phrase",
+    "status": "approved",
+    "char_count": 227,
+    "score_flags": [
+      "+1: company name \"LambdaTest\" found",
+      "+1: domain keyword \"automated browser\" found",
+      "+1: Atin asset keyword \"autonomous web agent\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  },
+  {
+    "name": "Akanksha Deswal",
+    "url": "https://www.linkedin.com/in/akankshadeswal",
+    "persona": "persona_2_vp_eng",
+    "company": "DevRev",
+    "message": "Hey Akanksha \u2014 shipped LangGraph stateful agents for an AI CRM and an autonomous web agent on Claude + MCP at OpenBiz. DevRev's dev-centric customer platform is the natural application for this work. Would value connecting.",
+    "personalization_score": 3,
+    "notes": "Tier 4 | assets: LangGraph+AI CRM+autonomous agent+Claude+MCP | domain: dev-centric customer platform | no template phrase",
+    "status": "approved",
+    "char_count": 223,
+    "score_flags": [
+      "+1: company name \"DevRev\" found",
+      "+1: domain keyword \"dev-centric\" found",
+      "+1: Atin asset keyword \"langgraph\" found"
+    ],
+    "approved_at": "2026-06-08T13:40:08.747186Z"
+  }
+]

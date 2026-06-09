@@ -1,0 +1,140 @@
+[1] Aakrit Vaish · CEO/Exec/Eng @ Haptik
+PROFILE: https://www.linkedin.com/in/aakritvaish
+NOTE: Hey Aakrit, built VyaparGPT, a WhatsApp native LLM for 40+ SMBs with LangGraph state machines and provider fallback. Haptik's WhatsApp commerce and agent orchestration maps exactly. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[2] Abhinav Asthana · CEO/Exec/Eng @ Postman
+PROFILE: https://www.linkedin.com/in/abhinavasthana
+NOTE: Hey Abhinav, built an autonomous web agent on Claude + MCP that translates local context schemas into DOM level interactions. Postman's developer workflow automation is the exact. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[3] Akash Singh · CEO/Exec/Eng @ Observe.AI
+PROFILE: https://www.linkedin.com/in/akash-singh-0b57b916
+NOTE: Hey Akash, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Observe.AI is building and would love to connect and share ideas. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[4] Anik Das · CEO/Exec/Eng @ Yellow.ai
+PROFILE: https://www.linkedin.com/in/anikdas/
+NOTE: Hey Anik, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Yellow.ai is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[5] Ankit Ratan · CEO/Exec/Eng @ Signzy
+PROFILE: https://www.linkedin.com/in/ankitratan
+NOTE: Hey Ankit, built a Gemini Vision document extraction pipeline in prod at OpenBiz, GST certs, invoices, Aadhaar, unstructured doc fields. Signzy's digital KYC infra is exactly where this. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[6] Chandra Khatri · CEO/Exec/Eng @ Krutrim
+PROFILE: https://www.linkedin.com/in/ckhatri
+NOTE: Hey Chandra, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Krutrim is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[7] Christos Tryfonas · Eng Leader @ Aisera
+PROFILE: https://www.linkedin.com/in/christos-tryfonas
+NOTE: Building compliance/conversational AI at Aisera? I shipped a WhatsApp native LLM and pgvector RAG at a fintech. Stack: MERN, LangGraph, Docker. Open to technical roles. Would you be open to a referral? Happy to share my resume. Thanks!
+
+[8] D P Siddharth · CEO/Exec/Eng @ Gupshup
+PROFILE: https://www.linkedin.com/in/dpsiddharth/
+NOTE: Hey Siddharth, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Gupshup is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume.
+
+[9] Deeksha Vashishtha · Eng Leader @ Yellow.ai
+PROFILE: https://www.linkedin.com/in/deeksha-vashishtha-a48955133
+NOTE: Hey Deeksha, Full stack + AI eng, immediate joiner. Built VyaparGPT (WhatsApp AI, 40 SMBs) and pgvector RAG at OpenBiz. Targeting Yellow.ai's conversational AI roles. Stack: MERN, LangGraph,. Would you be open to referring me or sharing details on open tech roles? Happy to share resume. Thanks!
+
+[10] Dhritiparna Dhar · Eng Leader @ Sarvam AI
+PROFILE: https://www.linkedin.com/in/dhriti
+NOTE: Hey Dhritiparna, Full stack + AI eng, immediate joiner. Nimbus RAG (sub 800ms pgvector) and dual model fallback (OpenAI→Gemini) in prod. Targeting Sarvam AI's LLM infrastructure roles. Would you be open to referring me or sharing details on open tech roles? Happy to share resume. Thanks!
+
+[11] Harsha Madhavan · CEO/Exec/Eng @ Hasura
+PROFILE: https://www.linkedin.com/in/harsha-madhavan-48481416
+NOTE: Hey Harsha, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Hasura is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[12] Harshil Mathur · CEO/Exec/Eng @ Razorpay
+PROFILE: https://www.linkedin.com/in/harshilmathur
+NOTE: Hey Harshil, shipped Razorpay idempotent webhook billing at OpenBiz (100% payment state consistency, zero reconciliation) and resolved N+1 patterns cutting API latency 40%. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[13] Harshit Rathi · CEO/Exec/Eng @ Razorpay
+PROFILE: https://www.linkedin.com/in/harshit-rathi
+NOTE: Hey Harshit, shipped idempotent Razorpay webhooks with 100% payment consistency and cut API latency 40% via N+1 resolution at OpenBiz. No ramp needed on Razorpay's payments infrastructure. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[14] Kiran Kumar Reddy G · CEO/Exec/Eng @ Yellow.ai
+PROFILE: https://www.linkedin.com/in/kirankumarreddyg/
+NOTE: Hey Kiran, I build with TypeScript MERN and Python and enjoy shipping features end to end. I am exploring opportunities at Yellow.ai and would love to connect and learn from your. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[15] Kshemendra Jangir · CEO/Exec/Eng @ Rezo.ai
+PROFILE: https://www.linkedin.com/in/kshemendra-jangir-bb82bb41
+NOTE: Hey Kshemendra, I build with TypeScript MERN and Python and enjoy shipping features end to end. I am exploring opportunities at Rezo.ai and would love to connect and learn from your. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[16] Mayank Bhola · CEO/Exec/Eng @ LambdaTest
+PROFILE: https://www.linkedin.com/in/mayankbhola
+NOTE: Hey Mayank, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what LambdaTest is building and would love to connect and share ideas. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[17] Nikhil Goel · Eng Leader @ Salarybox
+PROFILE: https://www.linkedin.com/in/nikhil-goel-1a613636/
+NOTE: Building compliance/conversational AI at Salarybox? I shipped a WhatsApp native LLM and pgvector RAG at a fintech. Stack: MERN, LangGraph, Docker. Open to technical roles. Would you be open to a referral? Happy to share my resume. Thanks!
+
+[18] Pradeep Kumar Thummala · Eng Leader @ Qure.ai
+PROFILE: https://www.linkedin.com/in/pradeep-kumar-thummala-51515320/
+NOTE: Shipping LLM features into MERN backends without debt is a specific skill. I have done it (LangGraph, pgvector RAG, Docker). Building at Qure.ai looks like a great next problem. Open to backend/AI roles. Would you be open to a referral? Happy to share my resume. Thanks!
+
+[19] Pratyaksh Sharma · CEO/Exec/Eng @ Dashworks
+PROFILE: https://www.linkedin.com/in/pratyakshsharma/
+NOTE: Hey Pratyaksh, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Dashworks is building and would love to connect and share ideas. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[20] Priyanshi Khatri · CEO/Exec/Eng @ Haptik
+PROFILE: https://www.linkedin.com/in/priyanshikhatri/
+NOTE: Hey Priyanshi, I build with TypeScript MERN and Python and enjoy shipping features end to end. I am exploring opportunities at Haptik and would love to connect and learn from your. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[21] Raguraman Barathalwar · CEO/Exec/Eng @ Krutrim
+PROFILE: https://www.linkedin.com/in/raguraman-barathalwar/
+NOTE: Hey Raguraman, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Krutrim is building and would love to connect and share ideas. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[22] Rahul Kumar · CEO/Exec/Eng @ Krutrim
+PROFILE: https://www.linkedin.com/in/rahulkumar/
+NOTE: Hey Rahul, I build with TypeScript MERN and Python and enjoy shipping features end to end. I am exploring opportunities at Krutrim and would love to connect and learn from your. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[23] Ram Menon · CEO/Exec/Eng @ Avaamo
+PROFILE: https://www.linkedin.com/in/rammenon/
+NOTE: Hey Ram, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Avaamo is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[24] Rashid Khan · CEO/Exec/Eng @ Yellow.ai
+PROFILE: https://www.linkedin.com/in/rashoodkhan
+NOTE: Hey Rashid, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Yellow.ai is building and would love to connect and share ideas. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[25] Rizwanul Haque · CEO/Exec/Eng @ Razorpay
+PROFILE: https://www.linkedin.com/in/rizwanul-haque-736236
+NOTE: Hey Rizwanul, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Razorpay is building and would love to connect and share ideas. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[26] Roli Gupta · Eng Leader @ Babblebots AI
+PROFILE: https://www.linkedin.com/in/rolig/
+NOTE: Building compliance/conversational AI at Babblebots AI? I shipped a WhatsApp native LLM and pgvector RAG at a fintech. Stack: MERN, LangGraph, Docker. Open to technical roles. Would you be open to a referral? Happy to share my resume. Thanks!
+
+[27] Tanmai Gopal · Eng Leader @ Hasura
+PROFILE: https://www.linkedin.com/in/tanmaigopal
+NOTE: Hey Tanmai, resolved deep N+1 query chains in Supabase (40% latency drop) and built a pgvector RAG pipeline with sub 800ms retrieval. Hasura's data API layer is where this expertise maps. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[28] Uday T Kumar · Eng Leader @ Yellow.ai
+PROFILE: https://www.linkedin.com/in/uday-t-kumar
+NOTE: Hey Uday, I shipped VyaparGPT (WhatsApp native LLM, LangGraph state machines, 40 SMBs) and a pgvector RAG pipeline. Yellow.ai's enterprise conversational AI is where this experience maps. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[29] Umesh Sachdev · CEO/Exec/Eng @ Uniphore
+PROFILE: https://www.linkedin.com/in/umeshsachdev/
+NOTE: Hey Umesh, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Uniphore is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[30] Vara Kumar Namburu · CEO/Exec/Eng @ Whatfix
+PROFILE: https://www.linkedin.com/in/varakumarn
+NOTE: Hey Vara, I work on Full Stack and GenAI and have been building RAG systems as a Founding Engineer. I like what Whatfix is building and would love to connect and share ideas on product. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[31] Vijay Senapathi · Eng Leader @ Qure.ai
+PROFILE: https://www.linkedin.com/in/vijaysenapathi/
+NOTE: Shipping LLM features into MERN backends without debt is a specific skill. I have done it (LangGraph, pgvector RAG, Docker). Building at Qure.ai looks like a great next problem. Open to backend/AI roles. Would you be open to a referral? Happy to share my resume. Thanks!
+
+[32] Ankur Jain · CEO/Exec/Eng @ Haptik
+PROFILE: https://www.linkedin.com/in/imankurjain
+NOTE: Hey Ankur, I am building an open source RAG workspace and enjoy talking systems product engineering and clean architecture. Would love to connect and exchange notes on your work at Haptik. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+
+[33] Emily Yarrington · Eng Leader @ Aisera
+PROFILE: https://www.linkedin.com/in/emily-yarrington-aisera
+NOTE: Full stack + AI engineer, open to roles at Aisera. Stack: MERN, LangGraph, pgvector RAG, Docker, TypeScript. Targeting backend or AI roles. Would you be open to referring me? Happy to share my resume. Thanks!
+
+[34] Jared Lucas · Eng Leader @ Aisera
+PROFILE: https://www.linkedin.com/in/jaredlucas
+NOTE: Full stack + AI engineer, open to roles at Aisera. Stack: MERN, LangGraph, pgvector RAG, Docker, TypeScript. Targeting backend or AI roles. Would you be open to referring me? Happy to share my resume. Thanks!
+
+[35] Meenakshi Ravisankar · CEO/Exec/Eng @ Sarvam AI
+PROFILE: https://www.linkedin.com/in/meenakshiravisankar
+NOTE: Hey Meenakshi, I am building an open source RAG workspace and enjoy talking systems product engineering and clean architecture. Would love to connect and exchange notes on your work. Open to technical roles. Would you be open to a referral if there is an opening? Happy to share resume. Thanks!
+

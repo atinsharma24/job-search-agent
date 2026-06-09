@@ -1,0 +1,199 @@
+[1] Deepinder Goyal · CEO/Exec/Eng @ Zomato
+PROFILE: https://www.linkedin.com/in/deepindergoyal
+NOTE: Hey Deepinder, I am a Full Stack and AI engineer. Shipped MERN TypeScript systems and LangGraph agents at OpenBiz. Exploring AI engineering roles at Zomato. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[2] Sriharsha Majety · CEO/Exec/Eng @ Swiggy
+PROFILE: https://www.linkedin.com/in/sriharsha
+NOTE: Hey Sriharsha, I am a Full Stack and AI engineer. Built LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring AI engineering roles at Swiggy. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[3] Nandan Reddy · CEO/Exec/Eng @ Swiggy
+PROFILE: https://www.linkedin.com/in/nandanreddy
+NOTE: Hey Nandan, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring engineering roles at Swiggy. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.
+
+[4] Sahil Barua · CEO/Exec/Eng @ Delhivery
+PROFILE: https://www.linkedin.com/in/sahilbarua
+NOTE: Hey Sahil, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at Delhivery. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[5] Suraj Saharan · CEO/Exec/Eng @ Delhivery
+PROFILE: https://www.linkedin.com/in/surajsaharan
+NOTE: Hey Suraj, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring engineering roles at Delhivery. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.
+
+[6] Reeju Datta · CEO/Exec/Eng @ Cashfree Payments
+PROFILE: https://www.linkedin.com/in/reejudatta
+NOTE: Hey Reeju, I am a Full Stack engineer. Shipped idempotent payment webhook billing (100% consistency) and cut API latency 40% at OpenBiz. Exploring engineering roles at Cashfree. Would you refer me if there are relevant openings? Happy to share my resume.
+
+[7] Akash Sinha · CEO/Exec/Eng @ Cashfree Payments
+PROFILE: https://www.linkedin.com/in/akashsinha
+NOTE: Hey Akash, I am a Full Stack engineer. Built idempotent payment webhook billing and LangGraph agents at OpenBiz. Exploring fintech engineering roles at Cashfree. Would you be open to referring me if there are openings? Happy to share my resume.
+
+[8] Anish Achuthan · CEO/Exec/Eng @ Open Financial
+PROFILE: https://www.linkedin.com/in/anishachuthan
+NOTE: Hey Anish, I am a Full Stack engineer. Shipped idempotent payment webhook billing and LangGraph AI agents at OpenBiz. Exploring fintech engineering roles at Open. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[9] Mabel Chacko · CEO/Exec/Eng @ Open Financial
+PROFILE: https://www.linkedin.com/in/mabelchacko
+NOTE: Hey Mabel, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring fintech engineering roles at Open Financial. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.
+
+[10] Sachin Bansal · CEO/Exec/Eng @ Navi Technologies
+PROFILE: https://www.linkedin.com/in/sachinbansal
+NOTE: Hey Sachin, I am a Full Stack engineer. Built idempotent payment webhook systems and LangGraph agents at OpenBiz. Exploring fintech engineering roles at Navi. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[11] Nithin Kamath · CEO/Exec/Eng @ Zerodha
+PROFILE: https://www.linkedin.com/in/nithinkamath
+NOTE: Hey Nithin, I am a Full Stack and AI engineer. Shipped MERN TypeScript systems and LangGraph agents at OpenBiz. Exploring engineering roles at Zerodha. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[12] Krish Subramanian · CEO/Exec/Eng @ Chargebee
+PROFILE: https://www.linkedin.com/in/krishsubramanian
+NOTE: Hey Krish, I am a Full Stack engineer. Shipped idempotent payment webhook billing (100% consistency) and LangGraph agents at OpenBiz. Exploring engineering roles at Chargebee. Would you refer me if there are relevant openings? Happy to share my resume.
+
+[13] Rajaraman Santhanam · CEO/Exec/Eng @ Chargebee
+PROFILE: https://www.linkedin.com/in/rajaramansanthanam
+NOTE: Hey Rajaraman, I am a Full Stack engineer. Built idempotent payment webhook billing and LangGraph AI agents at OpenBiz. Exploring engineering roles at Chargebee. Would you be open to referring me if there are openings? Happy to share my resume.
+
+[14] Nilesh Patel · CEO/Exec/Eng @ LeadSquared
+PROFILE: https://www.linkedin.com/in/nileshpatel
+NOTE: Hey Nilesh, I am a Full Stack and AI engineer. Built LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at LeadSquared. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[15] Aneesh Reddy · CEO/Exec/Eng @ Capillary Technologies
+PROFILE: https://www.linkedin.com/in/aneeshreddy
+NOTE: Hey Aneesh, I am a Full Stack and AI engineer. Shipped LangGraph agents and a pgvector RAG pipeline at OpenBiz. Exploring AI engineering roles at Capillary. Would you refer me if there are relevant openings? Happy to share my resume.
+
+[16] Naveen Tewari · CEO/Exec/Eng @ InMobi
+PROFILE: https://www.linkedin.com/in/naveentewari
+NOTE: Hey Naveen, I am a Full Stack and AI engineer. Built LangGraph agents and a provider agnostic LLM layer at OpenBiz. Exploring AI engineering roles at InMobi. Would you be open to referring me if there are openings? Happy to share my resume.
+
+[17] Ankush Sachdeva · CEO/Exec/Eng @ ShareChat
+PROFILE: https://www.linkedin.com/in/ankushsachdeva
+NOTE: Hey Ankush, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring AI engineering roles at ShareChat. Would you be open to referring me if there are openings? Happy to share my resume.
+
+[18] Farid Ahsan · CEO/Exec/Eng @ ShareChat
+PROFILE: https://www.linkedin.com/in/faridahsan
+NOTE: Hey Farid, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring AI engineering roles at ShareChat. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.
+
+[19] Vijay Shekar Sharma · CEO/Exec/Eng @ Paytm
+PROFILE: https://www.linkedin.com/in/vijayshekarsharma
+NOTE: Hey Vijay, I am a Full Stack and AI engineer. Shipped LangGraph agents and idempotent payment webhook billing at OpenBiz. Exploring engineering roles at Paytm. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[20] Mayank Kumar · CEO/Exec/Eng @ UpGrad
+PROFILE: https://www.linkedin.com/in/mayankumar
+NOTE: Hey Mayank, I am a Full Stack and AI engineer. Built LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at UpGrad. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[21] Abhimanyu Saxena · CEO/Exec/Eng @ Scaler Academy
+PROFILE: https://www.linkedin.com/in/abhimanyusaxena
+NOTE: Hey Abhimanyu, I am a Full Stack and AI engineer. Shipped MERN TypeScript systems and LangGraph agents at OpenBiz. Exploring engineering roles at Scaler Academy. Would you refer me if there are relevant openings? Happy to share my resume.
+
+[22] Anshuman Singh · CEO/Exec/Eng @ Scaler Academy
+PROFILE: https://www.linkedin.com/in/anshumansingh
+NOTE: Hey Anshuman, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring engineering roles at Scaler Academy. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.
+
+[23] Alakh Pandey · CEO/Exec/Eng @ PhysicsWallah
+PROFILE: https://www.linkedin.com/in/alakhpandey
+NOTE: Hey Alakh, I am a Full Stack and AI engineer. Built LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at PhysicsWallah. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[24] Mihir Gupta · CEO/Exec/Eng @ Teachmint
+PROFILE: https://www.linkedin.com/in/mihirgupta
+NOTE: Hey Mihir, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at Teachmint. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[25] Payoj Jain · CEO/Exec/Eng @ Teachmint
+PROFILE: https://www.linkedin.com/in/payojjain
+NOTE: Hey Payoj, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring engineering roles at Teachmint. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.
+
+[26] Aloke Bajpai · CEO/Exec/Eng @ Ixigo
+PROFILE: https://www.linkedin.com/in/alokebajpai
+NOTE: Hey Aloke, I am a Full Stack and AI engineer. Built LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at Ixigo. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[27] Ravish Naresh · CEO/Exec/Eng @ Khatabook
+PROFILE: https://www.linkedin.com/in/ravishn
+NOTE: Hey Ravish, I am a Full Stack and AI engineer. Built VyaparGPT (WhatsApp AI, LangGraph, 40 SMBs) at OpenBiz for Indian SMBs. Exploring engineering roles at Khatabook. Would you be open to referring me if there are openings? Happy to share my resume.
+
+[28] Kalyan Krishnamurthy · CEO/Exec/Eng @ Flipkart
+PROFILE: https://www.linkedin.com/in/kalyankrishnamurthy
+NOTE: Hey Kalyan, I am a Full Stack and AI engineer. Built LangGraph agents and a pgvector RAG pipeline at OpenBiz. Exploring AI engineering roles at Flipkart. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[29] Nandita Sinha · CEO/Exec/Eng @ Myntra
+PROFILE: https://www.linkedin.com/in/nanditasinha
+NOTE: Hey Nandita, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring AI engineering roles at Myntra. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[30] Abhinav Shashank · CEO/Exec/Eng @ Innovaccer
+PROFILE: https://www.linkedin.com/in/abhinavshashank
+NOTE: Hey Abhinav, I am a Full Stack and AI engineer. Shipped LangGraph agents, pgvector RAG (sub 800ms), and Gemini Vision doc extraction at OpenBiz. Exploring AI roles at Innovaccer. Would you refer me if there are relevant openings? Happy to share my resume.
+
+[31] Kanav Hasija · CEO/Exec/Eng @ Innovaccer
+PROFILE: https://www.linkedin.com/in/kanavhasija
+NOTE: Hey Kanav, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring AI engineering roles at Innovaccer. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.
+
+[32] Rajesh Yabaji · CEO/Exec/Eng @ BlackBuck
+PROFILE: https://www.linkedin.com/in/rajeshyabaji
+NOTE: Hey Rajesh, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at BlackBuck. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[33] Tarun Dua · CEO/Exec/Eng @ E2E Networks
+PROFILE: https://www.linkedin.com/in/tarundua
+NOTE: Hey Tarun, I am a Full Stack and AI engineer. Shipped LangGraph agents, pgvector RAG, and MERN TypeScript systems at OpenBiz. Exploring engineering roles at E2E Networks. Would you be open to referring me if there are openings? Happy to share my resume.
+
+[34] Sumit Agarwal · CEO/Exec/Eng @ Vyapar
+PROFILE: https://www.linkedin.com/in/sumitagarwal
+NOTE: Hey Sumit, I am a Full Stack and AI engineer. Built VyaparGPT (WhatsApp AI, LangGraph, 40 SMBs) at OpenBiz as a conversational AI layer for businesses. Exploring roles at Vyapar. Would you refer me if there are openings? Happy to share my resume.
+
+[35] Bharat Goenka · CEO/Exec/Eng @ Tally Solutions
+PROFILE: https://www.linkedin.com/in/bharatgoenka
+NOTE: Hey Bharat, I am a Full Stack and AI engineer. Shipped VyaparGPT (WhatsApp AI, 40 SMBs) and LangGraph agents at OpenBiz. Exploring AI engineering roles at Tally. Would you refer me if there are relevant openings? Happy to share my resume.
+
+[36] Vikas Malpani · CEO/Exec/Eng @ Porter
+PROFILE: https://www.linkedin.com/in/vikasmalpani
+NOTE: Hey Vikas, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at Porter. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[37] Vimal Kumar · CEO/Exec/Eng @ Juspay
+PROFILE: https://www.linkedin.com/in/vimalkumar
+NOTE: Hey Vimal, I am a Full Stack engineer. Shipped idempotent payment webhook billing (100% consistency) and LangGraph agents at OpenBiz. Exploring engineering roles at Juspay. Would you be open to referring me if there are openings? Happy to share my resume.
+
+[38] Ramakant Sharma · CEO/Exec/Eng @ Livspace
+PROFILE: https://www.linkedin.com/in/ramakantsharma
+NOTE: Hey Ramakant, I am a Full Stack and AI engineer. Built LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at Livspace. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[39] Anuj Srivastava · CEO/Exec/Eng @ Livspace
+PROFILE: https://www.linkedin.com/in/anujsrivastava
+NOTE: Hey Anuj, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring engineering roles at Livspace. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.
+
+[40] Saahil Goel · CEO/Exec/Eng @ Shiprocket
+PROFILE: https://www.linkedin.com/in/saahilgoel
+NOTE: Hey Saahil, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at Shiprocket. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[41] Vishesh Khurana · CEO/Exec/Eng @ Shiprocket
+PROFILE: https://www.linkedin.com/in/visheshkhurana
+NOTE: Hey Vishesh, I am a Full Stack and AI engineer (MERN, TypeScript, Python, LangGraph). Exploring engineering roles at Shiprocket. Would you be open to referring me if there are relevant openings? Happy to share my resume. Thank you.
+
+[42] Rohit Taneja · CEO/Exec/Eng @ Decentro
+PROFILE: https://www.linkedin.com/in/rohittaneja
+NOTE: Hey Rohit, I am a Full Stack and AI engineer. Built LangGraph agents and idempotent payment webhook systems at OpenBiz. Exploring fintech API roles at Decentro. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[43] Pratik Gadekar · CEO/Exec/Eng @ Decentro
+PROFILE: https://www.linkedin.com/in/pratikgadekar
+NOTE: Hey Pratik, I am a Full Stack and AI engineer. Shipped idempotent payment webhook billing and LangGraph agents at OpenBiz. Exploring fintech engineering roles at Decentro. Would you be open to referring me if there openings? Happy to share my resume.
+
+[44] Arpit Dave · CEO/Exec/Eng @ Recko
+PROFILE: https://www.linkedin.com/in/arpitdave
+NOTE: Hey Arpit, I am a Full Stack engineer. Shipped idempotent payment webhook billing (100% consistency) and LangGraph agents at OpenBiz. Exploring fintech engineering roles at Recko. Would you refer me if there are relevant openings? Happy to share my resume.
+
+[45] Sujay Nair · CEO/Exec/Eng @ Recko
+PROFILE: https://www.linkedin.com/in/sujaynair
+NOTE: Hey Sujay, I am a Full Stack engineer. Built idempotent payment webhook billing and LangGraph AI agents at OpenBiz. Exploring fintech engineering roles at Recko. Would you be open to referring me if there openings? Happy to share my resume.
+
+[46] Naman Sarawagi · CEO/Exec/Eng @ RudderStack
+PROFILE: https://www.linkedin.com/in/namansarawagi
+NOTE: Hey Naman, I am a Full Stack and AI engineer. Shipped MERN TypeScript systems and pgvector RAG pipelines at OpenBiz. Exploring engineering roles at RudderStack. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[47] Mrinal Sinha · CEO/Exec/Eng @ Instabase
+PROFILE: https://www.linkedin.com/in/mrinalsinha
+NOTE: Hey Mrinal, I am a Full Stack and AI engineer. Built Gemini Vision document extraction pipelines and LangGraph agents at OpenBiz. Exploring AI engineering roles at Instabase. Would you be open to referring me if there openings? Happy to share my resume.
+
+[48] Prasad Varma · CEO/Exec/Eng @ Keka HR
+PROFILE: https://www.linkedin.com/in/prasadvarma
+NOTE: Hey Prasad, I am a Full Stack and AI engineer. Shipped LangGraph agents and MERN TypeScript systems at OpenBiz. Exploring engineering roles at Keka HR. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[49] Saurabh Kumar Tiwari · CEO/Exec/Eng @ PhonePe
+PROFILE: https://www.linkedin.com/in/saurabhkumartiwari
+NOTE: Hey Saurabh, I am a Full Stack engineer. Shipped idempotent payment webhook billing and cut API latency 40% at OpenBiz. Exploring engineering roles at PhonePe. Would you be open to referring me if there are relevant openings? Happy to share my resume.
+
+[50] Harish Kumar · CEO/Exec/Eng @ Cashfree Payments
+PROFILE: https://www.linkedin.com/in/harishkumar
+NOTE: Hey Harish, I am a Full Stack engineer. Built idempotent payment webhook billing (100% consistency) and LangGraph agents at OpenBiz. Exploring engineering roles at Cashfree. Would you be open to referring me if there openings? Happy to share my resume.

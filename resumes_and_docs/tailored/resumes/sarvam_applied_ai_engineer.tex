@@ -1,0 +1,146 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[rgb]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+% Font options
+\usepackage[sfdefault]{roboto}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+% -------------------------------------------
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Atin Sharma} \\ \vspace{1pt}
+    \small Agra, India $|$ \href{mailto:atinsharma24@gmail.com}{atinsharma24@gmail.com} $|$ +91 82185 02886 \\
+    \small \href{https://linkedin.com/in/atinsharma24}{linkedin.com/in/atinsharma24} $|$ \href{https://github.com/atinsharma24}{github.com/atinsharma24}
+\end{center}
+
+\section{Profile}
+\vspace{2pt}
+\small{Applied AI Engineer with production experience building agentic systems, RAG pipelines, and MCP server infrastructure. Shipped real-user AI products (LLM orchestration, WhatsApp automation, document extraction) and built agent runtime systems handling state management, retries, and structured LLM outputs. Strong Python backend foundation with hands-on production MCP orchestration, pgvector semantic search, and provider-agnostic LLM layers across OpenAI, Groq, and Gemini.}
+\vspace{-4pt}
+\resumeItemListStart
+    \resumeItem{Built production MCP orchestration layer (Claude 3.5 + BrowserOS MCP) for multi-step agentic workflows with state management and human-escalation.}
+    \resumeItem{Architected Nimbus AI: provider-agnostic RAG workspace with async ingestion, pgvector cosine retrieval, and streaming Groq responses.}
+    \resumeItem{Shipped VyaparGPT (WhatsApp AI assistant): full LLM orchestration pipeline with session-aware context and provider-fallback to 1,000+ SMB users.}
+\resumeItemListEnd
+
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {OpenBiz Software India Pvt Ltd}{Jul 2025 -- Mar 2026}
+      {Founding Engineer}{Remote/Bangalore}
+      \resumeItemListStart
+        \resumeItem{Architected VyaparGPT, a WhatsApp-native AI assistant: designed LLM orchestration pipeline from webhook ingestion $\rightarrow$ session context management $\rightarrow$ structured output generation $\rightarrow$ response delivery; implemented OpenAI-to-Gemini provider failover for production reliability.}
+        \resumeItem{Built an AI document verification agent using Google Gemini API, extracting structured data from unstructured SMB documents (GST certificates, vendor agreements) and eliminating a manual review step.}
+        \resumeItem{Implemented OAuth integrations and SaaS webhook systems (WhatsApp Business API, Razorpay) with idempotent validation, achieving 100\% payment-state consistency.}
+        \resumeItem{Diagnosed and resolved N+1 query patterns in Supabase (PostgreSQL), reducing API latency by 40\% through composite indexing and TTL-based response caching.}
+        \resumeItem{Owned CI/CD pipeline (GitHub Actions + Vercel), cutting deployment cycle time by 30\% and eliminating environment-drift incidents.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Autonomous Web Agent} $|$ \emph{Production MCP Server}}{2026}
+          \resumeItemListStart
+            \resumeItem{\emph{Stack: Python, Claude 3.5 Sonnet, BrowserOS MCP, Groq API}}
+            \resumeItem{Designed and deployed a production MCP server + Claude orchestration layer for multi-step agentic web workflows; translates structured schemas into DOM-level form interactions across dynamic portals.}
+            \resumeItem{Implemented agent runtime with local queue management, retry logic, state persistence, and WAF/Captcha detection with graceful human-escalation fallback.}
+            \resumeItem{Decoupled architecture: lightweight Groq-based "Watcher" agent for cost-efficient parsing; heavy "Executor" agent for complex multi-turn interactions.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Nimbus --- AI RAG Workspace} $|$ \href{https://github.com/atinsharma24/nimbus}{\underline{github.com/atinsharma24/nimbus}}}{In Development 2026}
+          \resumeItemListStart
+            \resumeItem{\emph{Stack: Next.js, Python, pgvector, Groq, Prisma, PostgreSQL}}
+            \resumeItem{Built production RAG pipeline (pgvector + Groq) with sub-800ms semantic retrieval, streaming LLM responses, and per-document ingestion status tracking.}
+            \resumeItem{Designed provider-agnostic LLM layer (Groq, OpenAI, Anthropic) with one-config switching; built evaluation harness for retrieval accuracy across document corpora.}
+            \resumeItem{Async ingestion with 429 retry logic, exponential backoff, and structured output schemas for production-grade rate-limit handling.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Automated Content Intelligence Pipeline}}{}
+          \resumeItemListStart
+            \resumeItem{\emph{Stack: Node.js, Python, OpenAI, Gemini, Docker, GitHub Actions, Puppeteer}}
+            \resumeItem{Built an autonomous agent pipeline with Puppeteer scraping, dual-model AI rewriting (Gemini + OpenAI failover), and microservices on Docker with scheduled GitHub Actions cron execution.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Agent / AI:}{ MCP Servers, LLM Orchestration, RAG Pipelines, Agentic Workflows, Prompt Engineering, Structured Outputs, Eval Frameworks, pgvector, ChromaDB} \\
+     \textbf{Languages:}{ Python, JavaScript/TypeScript, SQL} \\
+     \textbf{Backend/DB:}{ Node.js, Express, NestJS, Django, PostgreSQL, Redis, MongoDB, pgvector} \\
+     \textbf{LLM APIs:}{ OpenAI, Google Gemini, Groq API, Anthropic Claude, LangChain.js, Vercel AI SDK} \\
+     \textbf{Integrations:}{ OAuth 2.0, WhatsApp Business API, Razorpay, REST Webhooks, SaaS API connectors} \\
+     \textbf{DevOps:}{ Docker, GitHub Actions, Vercel, AWS S3/DynamoDB}
+    }}
+ \end{itemize}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Vellore Institute of Technology}{Coursework Completed: Nov 2025 | Degree Conferred: May 2026}
+      {B.Tech in Computer Science and Engineering}{Vellore}
+  \resumeSubHeadingListEnd
+
+\end{document}
