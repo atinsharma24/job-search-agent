@@ -108,10 +108,28 @@ def detect_external_redirect(page) -> bool:
 
 
 def find_action_button(dialog, names: list[str]):
+    # Check for direct data attributes and common button text first
+    if "Submit application" in names:
+        btn = dialog.locator("button[data-easy-apply-submit-button], button:has-text('Submit')")
+        if btn.count() > 0 and btn.first.is_visible():
+            return btn.first
+    if "Review your application" in names:
+        btn = dialog.locator("button:has-text('Review')")
+        if btn.count() > 0 and btn.first.is_visible():
+            return btn.first
+    if "Next" in names or "Continue to next step" in names:
+        btn = dialog.locator("button[data-easy-apply-next-button], button:has-text('Next'), button:has-text('Continue')")
+        if btn.count() > 0 and btn.first.is_visible():
+            return btn.first
+
     for name in names:
-        button = dialog.get_by_role("button", name=re.compile(rf"^{re.escape(name)}$", re.I))
+        # Fallback to accessible name and text matches
+        button = dialog.get_by_role("button", name=re.compile(re.escape(name), re.I))
         if button.count() > 0 and button.first.is_visible():
             return button.first
+        button_text = dialog.locator("button, [role='button']").filter(has_text=re.compile(re.escape(name), re.I))
+        if button_text.count() > 0 and button_text.first.is_visible():
+            return button_text.first
     return None
 
 
@@ -133,7 +151,9 @@ def execute_easy_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool
     if detect_external_redirect(page):
         return EXIT_EXTERNAL_REDIRECT
 
-    easy_apply = page.get_by_role("button", name=re.compile(r"Easy Apply", re.I))
+    easy_apply = page.locator("a, button, [role='button']").filter(has_text=re.compile(r"Easy Apply", re.I))
+    if easy_apply.count() == 0:
+        easy_apply = page.locator("text=/Easy Apply/i")
     if easy_apply.count() == 0:
         save_artifact(page, "linkedin_easy_apply_missing_button.png")
         return EXIT_GENERIC_FAILURE
@@ -217,24 +237,24 @@ def main() -> int:
         print(json.dumps({"status": "error", "reason": f"playwright import failed: {exc}"}), file=sys.stderr)
         return EXIT_GENERIC_FAILURE
 
-    headless = os.environ.get("LINKEDIN_PLAYWRIGHT_HEADLESS", "").lower() in {"1", "true", "yes"}
-    profile_dir = Path(
-        os.environ.get(
-            "LINKEDIN_PLAYWRIGHT_PROFILE_DIR",
-            str(VAULT_ROOT / "active_application_context" / "playwright" / "linkedin-profile"),
-        )
-    ).expanduser()
-    profile_dir.mkdir(parents=True, exist_ok=True)
+    use_cdp = os.environ.get("PLAYWRIGHT_USE_CDP", "").lower() in {"1", "true", "yes"}
+    cdp_url = os.environ.get("PLAYWRIGHT_CDP_URL", "http://localhost:9222")
 
     with sync_playwright() as playwright:
-        context = playwright.chromium.launch_persistent_context(
-            user_data_dir=str(profile_dir),
-            headless=headless,
-            channel=os.environ.get("LINKEDIN_PLAYWRIGHT_CHANNEL") or None,
-            viewport={"width": 1440, "height": 1200},
-        )
-        try:
+        if use_cdp:
+            browser = playwright.chromium.connect_over_cdp(cdp_url)
+            context = browser.contexts[0]
+            page = context.new_page()
+        else:
+            context = playwright.chromium.launch_persistent_context(
+                user_data_dir=str(profile_dir),
+                headless=headless,
+                channel=os.environ.get("LINKEDIN_PLAYWRIGHT_CHANNEL") or None,
+                viewport={"width": 1440, "height": 1200},
+            )
             page = context.pages[0] if context.pages else context.new_page()
+
+        try:
             page.goto(args.application_url, wait_until="domcontentloaded", timeout=60000)
             page.wait_for_timeout(2500)
             exit_code = execute_easy_apply(page, resume_path, answer_bank, args.dry_run)
@@ -248,7 +268,10 @@ def main() -> int:
             print(json.dumps(result), file=stream)
             return exit_code
         finally:
-            context.close()
+            if use_cdp:
+                page.close()
+            else:
+                context.close()
 
 
 if __name__ == "__main__":

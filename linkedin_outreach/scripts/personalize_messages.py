@@ -32,7 +32,7 @@ from datetime import datetime
 # ---------------------------------------------------------------------------
 
 ROOT = Path(__file__).resolve().parent.parent
-CONTACTS_CSV = ROOT / "contacts" / "LinkedIn Targets with Messages.csv"
+CONTACTS_CSV = ROOT / "contacts" / "targets.csv"
 DRAFT_CSV = ROOT / "contacts" / "personalized_draft.csv"
 ERRORS_LOG = ROOT / "logs" / "errors.log"
 
@@ -57,6 +57,7 @@ DOMAIN_KEYWORDS: dict[str, list[str]] = {
     "signzy": ["kyc", "identity verification", "digital kyc", "document verification"],
     "nanonets": ["document processing", "ocr", "intelligent document", "extraction"],
     "razorpay": ["payment", "billing", "fintech", "payment infrastructure", "payments"],
+    "juspay": ["payments", "checkout", "fintech", "banking", "payment gateway", "idempotent", "reconciliation"],
     "hasura": ["graphql", "data api", "real-time data", "api layer"],
     "postman": ["api", "developer workflow", "developer tooling", "api platform"],
     "browserstack": ["browser testing", "automated testing", "test automation", "cross-browser"],
@@ -157,6 +158,12 @@ SUGGESTIONS: dict[str, dict[str, str]] = {
     "devrev": {
         "persona_1": "Hey {name} — shipped LangGraph stateful agents for an AI CRM and an autonomous web agent on Claude + MCP at OpenBiz. DevRev's dev-centric customer platform is the natural application. Would value connecting.",
         "persona_2": "Hey {name} — built LangGraph AI CRM agents and autonomous web agent (Claude + MCP) at OpenBiz. DevRev's developer-first customer platform maps exactly to this intersection. Would connect.",
+    },
+    "juspay": {
+        "persona_1": "Hey {name} — shipped idempotent webhook billing (100% payment-state consistency, zero reconciliation) and resolved N+1 query chains cutting API latency 40% at OpenBiz. Juspay's massive checkout scale maps exactly to this. Would connect.",
+        "persona_2": "Hey {name} — built idempotent payments webhooks (100% consistency) and resolved N+1 query chains (40% latency drop) at OpenBiz. Juspay's payments infrastructure is a natural next domain. Would connect.",
+        "persona_3": "Hey {name} — shipped idempotent payments webhooks with 100% payment consistency and cut API latency 40% via N+1 resolution. No ramp on payments engineering stack. Looking to connect.",
+        "persona_4": "Hey {name} — building payment backends, curious how Juspay handles transaction state reconciliation under peak loads — custom ledger or database-level locking? Would value exchanging notes.",
     },
 }
 

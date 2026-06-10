@@ -126,3 +126,15 @@
 [2026-06-08T13:37:09.230Z] PERSONALIZATION_FAIL | Rahul Barwal | Appsmith | score=1 | chars=194 | flags: +1: company name "Appsmith" found; 0: no domain-specific keywords found (add entries to DOMAIN_KEYWORDS if needed); 0: no Atin asset keywords found
 [2026-06-08T13:37:09.230Z] PERSONALIZATION_FAIL | Pranav Kanade | Appsmith | score=1 | chars=195 | flags: +1: company name "Appsmith" found; 0: no domain-specific keywords found (add entries to DOMAIN_KEYWORDS if needed); 0: no Atin asset keywords found
 [2026-06-08T13:37:09.230Z] PERSONALIZATION_FAIL | Pratyaksh Sharma | Dashworks | score=1 | chars=208 | flags: +1: company name "Dashworks" found; 0: no domain-specific keywords found (add entries to DOMAIN_KEYWORDS if needed); +1: Atin asset keyword "founding engineer" found; -1: contains banned template phrase "I like what Dashworks is building"
+[2026-06-09T16:21:54.276131+00:00] ADD_NOTE_NOT_FOUND | Harshit Rajesh Dhamecha | modal may have closed
+[2026-06-09T16:22:54.916091+00:00] ADD_NOTE_NOT_FOUND | Harshit Rajesh Dhamecha | modal may have closed. Screenshot saved to /tmp/send_connection_error.png
+[2026-06-09T16:23:13.698746+00:00] ADD_NOTE_NOT_FOUND | Aryan Kumar | modal may have closed. Screenshot saved to /tmp/send_connection_error.png
+[2026-06-09T16:24:18.571226+00:00] BUTTON_NOT_FOUND | Harshit Rajesh Dhamecha | https://www.linkedin.com/in/harshitrajeshdhamecha/ | no Connect button found
+[2026-06-09T16:25:03.440546+00:00] BUTTON_NOT_FOUND | Harshit Rajesh Dhamecha | https://www.linkedin.com/in/harshitrajeshdhamecha/ | no Connect button found
+[2026-06-09T16:25:54.039102+00:00] BUTTON_NOT_FOUND | Harshit Rajesh Dhamecha | https://www.linkedin.com/in/harshitrajeshdhamecha/ | no Connect button found. Saved screenshot to /tmp/send_connection_error.png
+[2026-06-09T16:27:00.771381+00:00] BUTTON_NOT_FOUND | Harshit Rajesh Dhamecha | https://www.linkedin.com/in/harshitrajeshdhamecha/ | no Connect button found. Saved screenshot to /tmp/send_connection_error.png
+[2026-06-09T16:27:35.759581+00:00] ADD_NOTE_NOT_FOUND | Harshit Rajesh Dhamecha | modal may have closed. Screenshot saved to /tmp/send_connection_error.png
+[2026-06-09T16:35:07.176447+00:00] HUMAN_INTERVENTION_REQUIRED | security challenge on preload
+[2026-06-09T16:35:54.413552+00:00] SEND_BUTTON_DISABLED | Uday T Kumar | Send button is disabled (email verification required?)
+[2026-06-09T16:38:48.686620+00:00] SEND_BUTTON_DISABLED | Harshil Mathur | Send button is disabled (email verification required?)
+[2026-06-10T13:24:58.161212+00:00] MODAL_NOT_FOUND | MD MONAZIR HUSSAIN | Invite modal did not appear after clicking Connect.

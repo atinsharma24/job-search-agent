@@ -202,6 +202,9 @@ def find_action_button(root, names: list[str]):
         button = root.get_by_role("button", name=re.compile(re.escape(name), re.I))
         if button.count() > 0 and button.first.is_visible():
             return button.first
+        button_text = root.locator("button, [role='button']").filter(has_text=re.compile(re.escape(name), re.I))
+        if button_text.count() > 0 and button_text.first.is_visible():
+            return button_text.first
     return None
 
 
@@ -332,24 +335,24 @@ def main() -> int:
         print(json.dumps({"status": "error", "reason": f"playwright import failed: {exc}"}), file=sys.stderr)
         return EXIT_GENERIC_FAILURE
 
-    headless = os.environ.get("NAUKRI_PLAYWRIGHT_HEADLESS", "").lower() in {"1", "true", "yes"}
-    profile_dir = Path(
-        os.environ.get(
-            "NAUKRI_PLAYWRIGHT_PROFILE_DIR",
-            str(VAULT_ROOT / "active_application_context" / "playwright" / "naukri-profile"),
-        )
-    ).expanduser()
-    profile_dir.mkdir(parents=True, exist_ok=True)
+    use_cdp = os.environ.get("PLAYWRIGHT_USE_CDP", "").lower() in {"1", "true", "yes"}
+    cdp_url = os.environ.get("PLAYWRIGHT_CDP_URL", "http://localhost:9222")
 
     with sync_playwright() as playwright:
-        context = playwright.chromium.launch_persistent_context(
-            user_data_dir=str(profile_dir),
-            headless=headless,
-            channel=os.environ.get("NAUKRI_PLAYWRIGHT_CHANNEL") or None,
-            viewport={"width": 1440, "height": 1200},
-        )
-        try:
+        if use_cdp:
+            browser = playwright.chromium.connect_over_cdp(cdp_url)
+            context = browser.contexts[0]
+            page = context.new_page()
+        else:
+            context = playwright.chromium.launch_persistent_context(
+                user_data_dir=str(profile_dir),
+                headless=headless,
+                channel=os.environ.get("NAUKRI_PLAYWRIGHT_CHANNEL") or None,
+                viewport={"width": 1440, "height": 1200},
+            )
             page = context.pages[0] if context.pages else context.new_page()
+
+        try:
             page.goto(args.application_url, wait_until="domcontentloaded", timeout=60000)
             page.wait_for_timeout(2500)
             exit_code = execute_apply(page, resume_path, answer_bank, args.dry_run)
@@ -363,7 +366,10 @@ def main() -> int:
             print(json.dumps(result), file=stream)
             return exit_code
         finally:
-            context.close()
+            if use_cdp:
+                page.close()
+            else:
+                context.close()
 
 
 if __name__ == "__main__":

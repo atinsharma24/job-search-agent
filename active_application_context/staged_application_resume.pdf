@@ -3,24 +3,37 @@
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 2 0 obj
-<< /Length 1094 >>
+<< /Length 2613 >>
 stream
 BT
 /F1 10 Tf
 50 780 Td
 14 TL
-(# Backend AI Specialist) Tj
+(# AI-Integrated Full Stack Developer) Tj
 T* () Tj
 T* (**Profile:**) Tj
-T* (Backend Engineer specializing in AI-driven data systems, RAG pipeline architecture, and high-performance API development. Expert in Python \(Django/FastAPI\) and Node.js for building secure, scalable AI backends with advanced retrieval logic and semantic search. Experienced in optimizing database queries and managing large-scale vector embeddings for document intelligence and business automation. Target keywords: Medical AI.) Tj
+T* (Full-Stack Product Engineer with founding-team experience bridging the gap between sophisticated AI models and production web architectures. Specialized in MERN stack development and seamless integration of LLM APIs \(OpenAI, Gemini, Groq\) to build "AI-first" user experiences. Proven track record in reducing API latency by 40% and accelerating deployment cycles by 30% through TypeScript-driven microservices. Target keywords: Python, Django.) Tj
+T* () Tj
+T* (**OpenBiz \(Jun 2025 – May 2026\) | Founding Engineer | Remote / Bangalore**) Tj
 T* () Tj
 T* (**Key Experience Highlights:**) Tj
-T* (- Production RAG Pipeline: Achieved sub-800ms retrieval across multi-format corpora using pgvector and Groq.) Tj
-T* (- WhatsApp AI Lifecycle: Managed full-cycle message orchestration from webhook ingestion to LLM response delivery.) Tj
-T* (- Async Document Ingestion: Implemented robust retry logic and status tracking for production-grade rate limit handling.) Tj
+T* (- VyaparGPT: built full WhatsApp message lifecycle \(webhook ingestion → HMAC-SHA256 validation → session context → LLM dispatch → response delivery\), serving 40+ SMBs in closed pilot, scaling to 1,000+ active platform users.) Tj
+T* (- LLM provider-fallback: OpenAI → Google Gemini on HTTP 5xx, 429 rate-limit, or configurable timeout — zero failure surface exposed to users.) Tj
+T* (- N+1 fix: rewrote ORM calls to JOIN-based queries, composite indexes on high-frequency WHERE/JOIN columns, TTL-based response caching — **40% API latency reduction** at 1,000+ user scale.) Tj
+T* (- CI/CD: GitHub Actions + Vercel — **30% reduction in deployment cycle time**, zero broken-build incidents over four months.) Tj
+T* (- Website Builder: shipped within 6-week window reusing ~60% of shared infrastructure \(auth, Supabase layer, Razorpay billing, CI/CD\).) Tj
+T* (- VIT Research Contributor \(Jan–Nov 2025\): Blockchain-Based LLM Model Using Fully Homomorphic Encryption \(FHE\) for Academic Records.) Tj
+T* () Tj
+T* (**Projects:**) Tj
+T* (- **Nimbus** \(In Dev 2026\): Production RAG pipeline — pgvector cosine search, provider-agnostic LLM layer \(Groq/OpenAI/Anthropic\), SSE streaming, sub-800ms retrieval.) Tj
+T* (- **DocGPT**: Django RAG pipeline — PyPDF2 chunking, local all-MiniLM-L6-v2 embeddings \(zero API cost\), ChromaDB retrieval, GPT-4o-mini generation. Dockerized.) Tj
 T* () Tj
 T* (**Tech Focus:**) Tj
-T* (Python, FastAPI, Django, Node.js, PostgreSQL, pgvector, ChromaDB, OpenAI, LangChain, Redis, Medical AI, RAG.) Tj
+T* (React 19, TypeScript, Node.js, Next.js, OpenAI, Gemini, PostgreSQL, Vercel, Docker, Python, Django, MERN.) Tj
+T* () Tj
+T* (**Patterns:** WebSocket \(Socket.IO\), REST, Webhook Validation \(HMAC-SHA256\), N+1 Query Optimization, Vector Similarity Search \(cosine\), Provider-Agnostic LLM Layers, Idempotent Event Processing.) Tj
+T* () Tj
+T* (**Profile Snapshot:** Immediate Joiner · Remote-first · 15L+ \(negotiable\) · Indian Citizen · github.com/atinsharma24) Tj
 ET
 endstream
 endobj
@@ -38,11 +51,11 @@ xref
 0000000000 65535 f 
 0000000009 00000 n 
 0000000079 00000 n 
-0000001225 00000 n 
-0000001351 00000 n 
-0000001410 00000 n 
+0000002744 00000 n 
+0000002870 00000 n 
+0000002929 00000 n 
 trailer
 << /Size 6 /Root 5 0 R >>
 startxref
-1459
+2978
 %%EOF
