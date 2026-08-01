@@ -220,6 +220,14 @@ def fill_radio_groups(
                 break
 
 
+_RADIO_WIDGET = re.compile(
+    r"\b(pdf|docx?)\b.*\d{1,2}/\d{1,2}/\d{4}|"      # "PDF Resume.pdf 6/17/2026"
+    r"\.(pdf|docx?)\b.*\.(pdf|docx?)\b|"              # a list of files
+    r"\b(upload|choose|select)\s+(a\s+)?(new\s+)?(resume|cv)\b",
+    re.I,
+)
+
+
 def fill_radio_groups_by_input(root, answer_mapper) -> int:
     """Fill yes/no and choice radios without relying on <fieldset>.
 
@@ -234,15 +242,34 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
     matches the answer. Returns how many groups were filled.
     """
     filled = 0
+    # LinkedIn does not consistently use native inputs — some forms render custom
+    # components carrying role="radio". Searching only input[type=radio] found
+    # nothing and the function returned silently.
     try:
-        radios = root.locator("input[type='radio']")
+        radios = root.locator("input[type='radio'], [role='radio']")
         count = radios.count()
     except Exception:
         return 0
 
     if count == 0:
+        # Say what IS there, so a future empty result is diagnosable instead of
+        # looking identical to "this form had no radio questions".
+        try:
+            inv = root.evaluate("""el => {
+                const tally = {};
+                el.querySelectorAll('input,select,textarea,[role]').forEach(n => {
+                    const k = n.tagName.toLowerCase() +
+                              (n.getAttribute('type') ? ':' + n.getAttribute('type') : '') +
+                              (n.getAttribute('role') ? '[' + n.getAttribute('role') + ']' : '');
+                    tally[k] = (tally[k] || 0) + 1;
+                });
+                return tally;
+            }""")
+            print(f"  [radio] none found; dialog contains {inv}", flush=True)
+        except Exception:
+            print("  [radio] none found in scope", flush=True)
         return 0
-    print(f"  [radio] {count} radio input(s) in scope", flush=True)
+    print(f"  [radio] {count} radio control(s) in scope", flush=True)
 
     seen_groups: set[str] = set()
     for i in range(count):
@@ -296,6 +323,14 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
                 if lab and len(lab) < 30:
                     question = re.sub(rf"\b{re.escape(lab)}\b", " ", question)
             question = clean_label(question)
+
+            # LinkedIn's resume picker is a radio group with one option per stored
+            # file ("PDF Resume.pdf 6/17/2026"). It is a widget, not a question:
+            # evaluating each entry spams the log, and matching one by accident
+            # would attach an arbitrary old resume. We upload a validated file
+            # separately, so leave the picker alone.
+            if _RADIO_WIDGET.search(question):
+                continue
 
             answer = answer_mapper(question)
             if not answer:

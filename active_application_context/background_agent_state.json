@@ -216,6 +216,7 @@
     "codeacious:fullstack-developer",
     "coderound-ai:ai-engineer-up-to-50lpa",
     "coderound-ai:forward-deployed-engineer",
+    "coderound-ai:research-engineer-iii-up-to-60lpa",
     "coderound-ai:sde-iii-up-to-35lpa",
     "confidential:genai-agentic-ai-architect-aws",
     "create-agi-labs:react-js-next-js-web-developer",
@@ -250,6 +251,7 @@
     "fibr-ai:founding-product-engineer",
     "fibr-ai:senior-product-engineer",
     "finoit-inc:backend-developer-python-genai-with-verification",
+    "firstsource:senior-software-engineer",
     "flexton-inc:generative-ai-engineer",
     "fluid-ai:python-fullstack-agentic-ai-engineer-mumbai-onsite",
     "gapblue-software-labs-pvt-ltd:full-stack-developer-react-python",
@@ -387,9 +389,11 @@
     "triveous:team-lead-fullstack",
     "unified-infotech:senior-react-developer",
     "upgrad-rekrut:ai-engineer",
+    "valgenesis:senior-software-engineer-ai-ml",
     "vdart-digital:genai-engineer",
     "velodata-global-pvt-ltd:java-full-stack-developer",
     "viobe:lead-software-engineer",
+    "virtual-connect-solutions:ai-engineer-lead",
     "volkswagen-group-digital-solutions-india:python-developer",
     "vrs-intelligent-innovative-system:python-developer-ai-opencv-llm-backend-django-react",
     "vyntrapro-innovations-pvt-ltd:fullstack-developer-react-js-node-js-aws-docker",
@@ -541,6 +545,16 @@
       "reason": "blocked:unanswerable_question",
       "at": "2026-08-01T18:24:20",
       "url": "https://www.linkedin.com/jobs/view/4445595621/"
+    },
+    "virtual-connect-solutions:ai-engineer-lead": {
+      "reason": "max_attempts_exhausted (error:1)",
+      "at": "2026-08-01T18:29:55",
+      "url": "https://www.linkedin.com/jobs/view/4447473316/"
+    },
+    "firstsource:senior-software-engineer": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T18:30:34",
+      "url": "https://www.linkedin.com/jobs/view/4447197564/"
     }
   },
   "attempts": {
@@ -623,8 +637,8 @@
       "url": "https://www.linkedin.com/jobs/view/4447455959/"
     },
     "virtual-connect-solutions:ai-engineer-lead": {
-      "count": 1,
-      "last": "2026-08-01T18:22:53",
+      "count": 2,
+      "last": "2026-08-01T18:29:55",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447473316/"
     },
@@ -633,6 +647,12 @@
       "last": "2026-08-01T18:23:36",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447197564/"
+    },
+    "tata-consultancy-services:gen-ai-developer": {
+      "count": 1,
+      "last": "2026-08-01T18:31:17",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4447479641/"
     }
   }
 }
