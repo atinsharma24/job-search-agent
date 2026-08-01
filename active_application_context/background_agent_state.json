@@ -128,6 +128,7 @@
     "rivvun-ai:software-engineer-agentic-ai-platform",
     "robomq:full-stack-engineer-node-js-angular-react",
     "rootlet-solution-technology:artificial-intelligence-developer",
+    "saaki-argus-and-averil-consulting:ai-full-stack-developer-with-verification",
     "sage-it:ai-engineer",
     "scoutit:ai-engineer",
     "scoutit:full-stack-engineer",
@@ -235,6 +236,7 @@
     "emmvee-technologies:full-stack-engineer",
     "encharge-ai:principal-ai-compiler-engineer",
     "ericsson:junior-ai-agent-developer",
+    "esse-india-canada-immigration-consultants-in-delhi-visa-consultant-delhi:lead-nlp-engineer",
     "exicom:fullstack-developer",
     "exl:full-stack-engineer-with-gen-ai",
     "exl:genai-full-stack-developer",
@@ -282,6 +284,7 @@
     "keyy-pays:google-cloud-engineer",
     "kipplo:software-engineer",
     "kpi-partners:genai-engineer",
+    "kpmg-india:ai-genai-full-stack-developer-with-verification",
     "kwan-ventures:ai-engineer-forward-deployed-software-engineer-fdse",
     "lascade:product-engineer-full-stack",
     "leading-client:ai-developer",
@@ -332,6 +335,7 @@
     "rivvun-ai:software-engineer-agentic-ai-platform",
     "robomq:full-stack-engineer-node-js-angular-react",
     "rootlet-solution-technology:artificial-intelligence-developer",
+    "saaki-argus-and-averil-consulting:ai-full-stack-developer-with-verification",
     "sage-it:ai-engineer",
     "saicon:senior-python-pyspark-data-engineer",
     "scoutit:ai-engineer",
@@ -496,6 +500,11 @@
       "reason": "max_attempts_exhausted (error:1)",
       "at": "2026-08-01T18:10:53",
       "url": "https://www.linkedin.com/jobs/view/4447525464/"
+    },
+    "kpmg-india:ai-genai-full-stack-developer-with-verification": {
+      "reason": "max_attempts_exhausted (error:1)",
+      "at": "2026-08-01T18:15:08",
+      "url": "https://www.linkedin.com/jobs/view/4447798010/"
     }
   },
   "attempts": {
@@ -560,8 +569,8 @@
       "url": "https://www.linkedin.com/jobs/view/4447525464/"
     },
     "kpmg-india:ai-genai-full-stack-developer-with-verification": {
-      "count": 1,
-      "last": "2026-08-01T18:07:02",
+      "count": 2,
+      "last": "2026-08-01T18:15:08",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447798010/"
     },
