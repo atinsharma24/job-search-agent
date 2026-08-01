@@ -17,6 +17,7 @@ from playwright_form_helpers import (
     fill_textareas,
     map_answer,
     maybe_upload_file,
+    fill_radio_groups_by_input,
 )
 
 
@@ -364,6 +365,11 @@ def execute_easy_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool
             container_selector="fieldset",
             option_selector="label, span[data-test-text-selectable-option__label], div.fb-text-selectable__option",
         )
+        # LinkedIn's current forms render radio groups as plain divs, so the
+        # fieldset-scoped filler above finds nothing and required yes/no questions
+        # were left blank — the form then refused to advance and the application
+        # failed generically, despite the answer having been computed correctly.
+        fill_radio_groups_by_input(dialog, lambda label: answer_mapper(answer_bank, label))
         clear_follow_company(dialog)
 
         # Dismiss any open typeahead/autocomplete dropdown before clicking buttons.

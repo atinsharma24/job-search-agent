@@ -1,6 +1,6 @@
 # Live-Run Findings — 1 August 2026
 
-Defects found by **actually running the pipeline**, after the static audit
+Nine defects found by **actually running the pipeline**, after the static audit
 ([`01-findings.md`](01-findings.md)) was complete and its P0 fixes had landed.
 
 The static audit found what the code *said*. These are what it *did*. Every one of them
@@ -103,6 +103,30 @@ as widgets and ignored.
 Worth noting what that list contained: **many stale `2026New1.pdf` copies and one
 `staged_application_resume.pdf`** — the artifact that leaked the private 15L floor.
 
+## L8 · Yes/no radio questions were never answered — **P0**
+
+The most expensive defect of the session, and the hardest to see: **the policy computed the
+right answer and it was silently thrown away.**
+
+A screenshot of a failing Talentgigs application shows the question
+*"We must fill this position urgently. Can you start immediately?*"* with **both radios
+unselected** and `This field is required` in red — while `vault_answers` had already
+returned `No` (canonical notice is 15 days).
+
+`fill_radio_groups()` scopes to a `<fieldset>` container. LinkedIn's current Easy Apply
+forms render radio groups as plain `div`s, so the group was never found, the required
+question stayed blank, the form refused to advance, and the application ended as a generic
+`error:1`.
+
+This is insidious in a way the other defects are not. There was no wrong value to spot in a
+log — the answer simply never reached the page. Every symptom pointed at "form too complex"
+rather than "we did not click anything".
+
+`fill_radio_groups_by_input()` now works outward from the radio inputs: group by `name`,
+derive the question from the nearest ancestor carrying text, strip the option labels back
+out of that text so it reads as a question, then check the matching option. It runs
+alongside the fieldset-based filler, since some forms still use them.
+
 ## L7 · List virtualisation was discarding 18 of every 25 results — P1
 
 Only ~7 cards carry metadata at any moment. Unrendered cards were skipped outright.
@@ -140,6 +164,9 @@ and exactly why its `commitment` risk class is routed to a human, never auto-ans
 
 ## What this changes about the process
 
+0. **A computed answer is not a submitted answer.** The worst defect of the session (L8)
+   was the policy producing the correct value and the form filler never delivering it. Verify
+   at the point of contact with the page, not at the point of decision.
 1. **Never skip the dry run.** Five P0 defects were invisible to static review and obvious
    within minutes of running. The pipeline had been "working" for months while applying to
    nothing on LinkedIn.

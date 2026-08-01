@@ -10,21 +10,36 @@ did not work is stated plainly.
 
 ### Applications submitted
 
-Every submission was checked against the same four criteria before being counted:
-the recorded resume matches the file uploaded, expected CTC reads 18L, experience reads
-1 year, and state gained exactly one entry.
+Every submission was checked against the same four criteria before being counted: the
+recorded resume matches the file uploaded, expected CTC reads 18L, experience reads 1 year,
+and state gained exactly one entry.
 
-| Portal | Submitted | Blocked (abstained) | Failed | Notes |
-|---|--:|--:|--:|---|
-| LinkedIn | see tracker | high | some | Discovery was returning *zero* jobs before today |
-| Naukri | see tracker | some | some | Chatbot no longer types "10 LPA" |
-
-Exact current figures:
+Live figures:
 
 ```bash
 grep -c "2026-08-01.*Applied (confirmed)" active_application_context/job_applications_tracker.md
 python3 scripts/vault_state.py
 ```
+
+**On volume: the target was 40–60 and the realistic ceiling today was lower.** That is worth
+stating plainly rather than dressing up.
+
+Three constraints, in order of size:
+
+1. **The fresh pool is genuinely small.** LinkedIn Easy Apply roles matching this profile,
+   posted in the last 24h–7d, minus 167 already applied to historically, is a few dozen —
+   not hundreds. Later batches spent most of their time logging `SKIP (seen)` and
+   `SKIP (already applied)`, which is the dedup working correctly.
+2. **Naukri contributed almost nothing** because of the chatbot stall described below. It
+   would otherwise have been the largest source, with 62 search URLs.
+3. **Roughly half the session went into fixing defects** found while running — including
+   LinkedIn applying to nothing at all, and the radio-filler defect that was silently
+   discarding correct answers. Those were prerequisites: applying faster with a broken
+   pipeline reproduces the original problem, which was hundreds of confidently wrong
+   submissions.
+
+The correct next-day number should be higher, because the pipeline now works and the pool
+refreshes daily. `--max-apply` can go up once you have spot-checked a batch.
 
 ### Profiles updated
 

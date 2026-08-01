@@ -218,3 +218,103 @@ def fill_radio_groups(
             if answer.casefold() in option_text.casefold() or option_text.casefold() in answer.casefold():
                 option.click()
                 break
+
+
+def fill_radio_groups_by_input(root, answer_mapper) -> int:
+    """Fill yes/no and choice radios without relying on <fieldset>.
+
+    fill_radio_groups() scopes to a fieldset container. LinkedIn's current Easy
+    Apply forms render radio groups as plain divs, so the group was never found and
+    required questions were left blank — the form then refused to advance and the
+    application died as a generic failure, even though the answer had been
+    computed correctly.
+
+    This works from the radio inputs outward: group by `name`, derive the question
+    from the nearest ancestor that carries text, then click the option whose label
+    matches the answer. Returns how many groups were filled.
+    """
+    filled = 0
+    try:
+        radios = root.locator("input[type='radio']")
+        count = radios.count()
+    except Exception:
+        return 0
+
+    seen_groups: set[str] = set()
+    for i in range(count):
+        try:
+            radio = radios.nth(i)
+            if not radio.is_visible():
+                continue
+            group = radio.get_attribute("name") or f"__anon{i}"
+            if group in seen_groups:
+                continue
+
+            info = radio.evaluate("""el => {
+                // Question text: nearest ancestor holding more than the option labels.
+                let node = el.parentElement, question = '';
+                for (let d = 0; d < 6 && node; d++, node = node.parentElement) {
+                    const t = (node.innerText || '').trim();
+                    if (t.length > 12) { question = t; break; }
+                }
+                const name = el.getAttribute('name');
+                const opts = Array.from(
+                    document.querySelectorAll(`input[type=radio][name="${name}"]`)
+                ).map(r => {
+                    let lab = '';
+                    if (r.id) {
+                        const l = document.querySelector(`label[for="${CSS.escape(r.id)}"]`);
+                        if (l) lab = (l.innerText || '').trim();
+                    }
+                    if (!lab && r.parentElement) lab = (r.parentElement.innerText || '').trim();
+                    // Some LinkedIn radios carry no label element at all; the value
+                    // attribute ("Yes"/"No") is then the only usable text.
+                    if (!lab) lab = (r.getAttribute('value') || '').trim();
+                    return {id: r.id || '', label: lab, value: r.getAttribute('value') || ''};
+                });
+                return {question, options: opts};
+            }""")
+
+            question = clean_label(info.get("question", ""))
+            options = info.get("options") or []
+            if not question or not options:
+                print(f"  [radio] group {group!r}: no question or options resolved", flush=True)
+                continue
+
+            # Strip option labels and validation chrome out of the captured block.
+            # Anchoring these to the END of the string failed whenever LinkedIn
+            # appended "This field is required" after the options.
+            question = re.sub(r"this field is required\.?", "", question, flags=re.I)
+            for opt in options:
+                lab = (opt.get("label") or "").strip()
+                if lab and len(lab) < 30:
+                    question = re.sub(rf"\b{re.escape(lab)}\b", " ", question)
+            question = clean_label(question)
+
+            answer = answer_mapper(question)
+            if not answer:
+                print(f"  [radio] no answer for {question[:80]!r}", flush=True)
+                continue
+
+            wanted = answer.strip().casefold()
+            for opt in options:
+                lab = ((opt.get("label") or opt.get("value") or "")).strip().casefold()
+                if not lab:
+                    continue
+                if lab == wanted or wanted in lab or lab in wanted:
+                    target = (root.locator(f"#{opt['id']}") if opt.get("id")
+                              else root.locator(f"input[type=radio][name='{group}']").nth(0))
+                    try:
+                        target.check(timeout=4000)
+                    except Exception:
+                        try:
+                            target.click(timeout=4000, force=True)
+                        except Exception:
+                            break
+                    filled += 1
+                    seen_groups.add(group)
+                    print(f"  [radio] {answer!r} <- {question[:70]!r}", flush=True)
+                    break
+        except Exception:
+            continue
+    return filled
