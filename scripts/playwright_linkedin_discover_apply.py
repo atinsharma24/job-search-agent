@@ -351,13 +351,18 @@ def discover_and_apply(page, apply_page, context, search_url: str, state: dict, 
                                       reason="not_easy_apply", url=navigate_url)
                     state.record(job_id, vs.Outcome.BLOCKED_PERMANENT)
                     continue
-                if not metadata_resolved:
-                    log(f"  \u23ed  SKIP (card did not render) id={job_data_id}")
-                    continue  # deliberately NOT recorded — retry on a later run
+                # A card that never rendered still yields its job id, and we navigate
+                # to the job page below anyway for the description — so recover
+                # title/company from there instead of discarding the job. This was
+                # losing roughly 18 of every 25 results to list virtualisation.
+                if not metadata_resolved and not job_data_id:
+                    log("  \u23ed  SKIP (no id and no metadata)")
+                    continue
 
                 # Cheap title-only pre-filter so we do not pay a page load for
-                # obvious non-matches. The real score uses the full JD below.
-                pre_score = score_job(title, "", company)
+                # obvious non-matches. Skipped when the card never rendered —
+                # there is no title to filter on yet.
+                pre_score = score_job(title, "", company) if metadata_resolved else 1.0
                 if pre_score <= 0.0:
                     log(f"  \u23ed  SKIP (title pre-filter 0.00): {company} — {title}")
                     vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER,
@@ -391,6 +396,29 @@ def discover_and_apply(page, apply_page, context, search_url: str, state: dict, 
                             desc = el.first.inner_text()[:4000]
                             if desc.strip():
                                 break
+                    except Exception:
+                        pass
+
+                # Recover title/company from the job page for unrendered cards.
+                if not metadata_resolved:
+                    try:
+                        recovered = apply_page.evaluate("""() => {
+                            const h = document.querySelector('h1');
+                            const main = document.querySelector('main');
+                            const first = main ? (main.innerText || '').split('\\n').filter(Boolean) : [];
+                            return { title: h ? h.innerText.trim() : (first[1] || ''),
+                                     company: first[0] || '' };
+                        }""") or {}
+                        title = title or (recovered.get("title") or "").strip()
+                        company = company or (recovered.get("company") or "").strip()
+                        if title and company:
+                            new_id = make_job_id(company, title)
+                            skip2, why2 = state.should_skip(new_id)
+                            if skip2:
+                                log(f"  \u23ed  SKIP ({why2}): {company} — {title}")
+                                continue
+                            job_id = new_id
+                            log(f"  \u21bb Recovered from job page: {company} — {title}")
                     except Exception:
                         pass
 
