@@ -64,7 +64,7 @@ _HARD_NO = (
 _HARD_YES = (
     ("authorized_india", r"legally (authoriz|entitled)|eligible to work in india|indian citizen"),
     ("relocate_india", r"willing to relocate|open to relocat|comfortable relocat"),
-    ("work_mode", r"comfortable.*(remote|wfo|work from office|hybrid|onsite)"),
+    ("work_mode", r"comfortable.*(remote|wfo|work(ing)? from (the )?\w*\s*office|hybrid|onsite|in[- ]person|from office)|willing to work from"),
     ("terms", r"agree.*(terms|conditions|privacy|policy)|read and understood"),
     ("notice_ok", r"can you join|able to join|available to join"),
     # --- objectively verifiable facts about the candidate ---
@@ -128,6 +128,13 @@ _TECH_YOE = re.compile(
     r"(?:years?|experience|exp)\b[^?]*\b(?:in|with|of|using)\s+(?P<tech>[\w.+#/\- ]{2,40})",
     re.I,
 )
+_WORKED_WITH = re.compile(
+    r"(?:have you (?:ever )?(?:worked|used|built)(?:(?:\s+\w+){0,3}?\s+(?:with|using|in))?|"
+    r"do you have (?:hands[- ]on )?(?:experience|exposure)(?:\s+\w+){0,2}?\s+(?:with|using|in)|"
+    r"are you (?:familiar|comfortable) with)\s+(?P<techs>[^?]{2,160})",
+    re.I,
+)
+
 _TOTAL_YOE = re.compile(
     r"total.*experience|years? of experience|overall experience|\byoe\b|"
     r"how many years|experience.*in years",
@@ -205,6 +212,26 @@ def answer_for_question(question: str, *, bank: dict | None = None) -> Answer:
                 return Answer(Decision.ABSTAIN, rule=f"value_missing:{name}")
             return Answer(Decision.VALUE, vc.assert_no_private_floor(
                 str(value), context=f"answer[{name}]"), rule=f"value:{name}")
+
+    # "Have you worked with LangChain, LlamaIndex, CrewAI ...?" — answered from the
+    # canonical stack. Yes if any named technology is actually in it, No if none
+    # are. Both answers are verifiable; neither is a guess.
+    m_used = _WORKED_WITH.search(q)
+    if m_used:
+        # Word-level match. Chunk-level comparison failed on real phrasing:
+        # "AI frameworks such as LangChain, LlamaIndex, ..." splits into a chunk
+        # that "langchain.js" is not a substring of, in either direction.
+        blob = set(re.findall(r"[a-z0-9+#.]+", m_used.group("techs").casefold()))
+        blob |= {w.rstrip(".") for w in blob}
+        hit = None
+        for known in vc.tech_stack_flat():
+            head = re.split(r"[ ./(]", known.casefold(), 1)[0]
+            if len(head) >= 3 and (head in blob or known.casefold() in blob):
+                hit = head
+                break
+        if hit:
+            return Answer(Decision.YES, "Yes", rule=f"worked_with:{hit[:24]}")
+        return Answer(Decision.NO, "No", rule="worked_with:none_in_stack")
 
     # Tech-scoped YOE before total YOE — "experience with Java" is not total YOE.
     m = _TECH_YOE.search(q)

@@ -462,6 +462,7 @@
     "ecordon-solutions:ai-engineer",
     "edix-education:web-developer",
     "eg-innovations:senior-node-js-engineer",
+    "eidiko-systems-integrators-private-limited:ai-engineer-generative-ai-with-verification",
     "eklavya:full-stack-developer",
     "elantis:full-stack-ai-engineer",
     "ellicium-solutions:machine-learning-engineer-agentic-ai-llms",
@@ -1430,6 +1431,11 @@
       "reason": "max_attempts_exhausted (error:1)",
       "at": "2026-08-01T17:37:47",
       "url": "https://www.linkedin.com/jobs/view/4447516514/"
+    },
+    "eidiko-systems-integrators-private-limited:ai-engineer-generative-ai-with-verification": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T17:41:01",
+      "url": "https://www.linkedin.com/jobs/view/4447141224/"
     }
   },
   "attempts": {
