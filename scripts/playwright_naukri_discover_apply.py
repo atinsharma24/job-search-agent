@@ -1158,17 +1158,15 @@ def main():
         browser = pw.chromium.connect_over_cdp(args.cdp_url, no_defaults=True)
         context = browser.contexts[0] if browser.contexts else browser.new_context()
 
-        # ── Step 0: Close redundant tabs ──────────────────────────────────
-        log("\n── Step 0: Closing redundant tabs ──")
-        close_redundant_tabs(context, keep_domains=("naukri.com",), owned=_pages.values())
-
-        # ── Step 1: Queued jobs (from naukri_queue.md) ────────────────────
-        log("\n── Step 1: Applying queued jobs ──")
         # Own our tabs explicitly. The previous code took context.pages[0] and [1],
         # which grabs whatever tabs happen to exist — including the user's own and
         # any left by another tool. That both destroyed the search results mid-run
         # (search_page could be navigated away by the apply flow) and navigated the
         # user's tabs away from under them.
+        #
+        # There is deliberately no "close redundant tabs" step here any more: at
+        # this point we have opened nothing, so there is nothing of ours to close,
+        # and the old version closed the user's tabs instead.
         _pages = {}
         search_page = vb.named_page(context, "search", _pages)
         apply_page = vb.named_page(context, "apply", _pages)
