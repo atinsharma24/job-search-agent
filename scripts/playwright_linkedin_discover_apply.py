@@ -206,12 +206,20 @@ def build_answer_bank() -> dict:
     return vc.build_answer_bank()
 
 
-def apply_easy_apply(page, job_url: str, answer_bank: dict, dry_run: bool) -> str:
+def apply_easy_apply(page, job_url: str, answer_bank: dict, dry_run: bool,
+                     resume_path=None) -> str:
     """Apply to a LinkedIn Easy Apply job. Returns status string."""
     try:
         sys.path.insert(0, str(VAULT_ROOT / "scripts"))
         from playwright_linkedin_easy_apply import execute_easy_apply
-        exit_code = execute_easy_apply(page, RESUME_PATH, answer_bank, dry_run)
+        # Per-job resume, validated for extractable text. This used to pass the
+        # module constant, so the category selection computed above was discarded.
+        exit_code = execute_easy_apply(page, validate_resume(resume_path or RESUME_PATH),
+                                       answer_bank, dry_run)
+        if exit_code == 14:
+            return "blocked:unanswerable_question"
+        if exit_code == 11:
+            return "blocked:external_ats"
         if exit_code != 0:
             return f"error:{exit_code}"
         # execute_easy_apply returns EXIT_SUCCESS for a completed DRY RUN too — it
@@ -399,10 +407,12 @@ def discover_and_apply(page, apply_page, context, search_url: str, state: dict, 
 
                 # Navigate directly to the job URL for Easy Apply using reused apply_page
                 try:
-                    status = apply_easy_apply(apply_page, navigate_url, answer_bank, dry_run)
+                    chosen_resume = resume_for_job(desc, title)
+                    status = apply_easy_apply(apply_page, navigate_url, answer_bank, dry_run,
+                                              resume_path=chosen_resume)
                     log(f"  STATUS: {status}")
 
-                    tracker_note = f"Stack match: {match_score:.2f}. LinkedIn Easy Apply."
+                    tracker_note = f"Stack match: {match_score:.2f}. LinkedIn Easy Apply. Resume: {chosen_resume.name}."
                     outcome = vs.classify(status)
                     if outcome in (vs.Outcome.APPLIED, vs.Outcome.APPLIED_UNCONFIRMED):
                         append_tracker(company, title, navigate_url, "Applied (confirmed) ✅", tracker_note)

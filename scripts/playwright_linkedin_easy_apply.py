@@ -25,6 +25,7 @@ EXIT_GENERIC_FAILURE = 1
 EXIT_CAPTCHA = 10
 EXIT_EXTERNAL_REDIRECT = 11
 EXIT_LOGIN_REQUIRED = 12
+EXIT_UNANSWERABLE = 14   # required question outside answering policy
 
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
@@ -110,6 +111,11 @@ LINKEDIN_MAPPING = [
 ]
 
 
+# Labels this run declined to answer. A required one blocks the form, so the step
+# loop would otherwise spin to its limit re-reading the same dead page.
+UNANSWERED: list[str] = []
+
+
 def answer_mapper(answer_bank: dict, label_text: str) -> Optional[str]:
     """Resolve a form field label to an answer.
 
@@ -151,6 +157,7 @@ def answer_mapper(answer_bank: dict, label_text: str) -> Optional[str]:
         return val
 
     print(f"  \u26a0 No answer for field: {label[:110]!r} — leaving blank", flush=True)
+    UNANSWERED.append(label)
     return None
 
 
@@ -198,6 +205,14 @@ def find_action_button(dialog, names: list[str]):
 def save_artifact(page, name: str) -> None:
     ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
     page.screenshot(path=str(ARTIFACT_DIR / name), full_page=False)
+
+
+def step_signature(dialog) -> str:
+    """Cheap fingerprint of the current dialog, to detect a form that is stuck."""
+    try:
+        return dialog.inner_text()[:400]
+    except Exception:
+        return ""
 
 
 def save_dry_run_state(page, name: str) -> None:
@@ -285,8 +300,27 @@ def execute_easy_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool
             return EXIT_GENERIC_FAILURE
 
 
+    UNANSWERED.clear()
+    stalled_signature = None
+    stalled_count = 0
+
     for step in range(12):
         body_text = page.locator("body").inner_text()
+
+        # Bail out when the same dialog reappears with fields we refuse to answer.
+        # A required question outside our policy cannot be completed, so spinning
+        # to the step limit just re-reads a dead page 12 times.
+        if UNANSWERED:
+            signature = (step_signature(dialog), tuple(sorted(set(UNANSWERED))))
+            if signature == stalled_signature:
+                stalled_count += 1
+                if stalled_count >= 2:
+                    save_artifact(page, f"linkedin_unanswerable_{step}.png")
+                    print(f"  \U0001f6d1 Cannot complete: {len(set(UNANSWERED))} unanswerable "
+                          f"required field(s) — {sorted(set(UNANSWERED))[:2]}", flush=True)
+                    return EXIT_UNANSWERABLE
+            else:
+                stalled_signature, stalled_count = signature, 0
         text_status = detect_status_from_page(page) or detect_status_from_text(body_text)
         if text_status is not None:
             save_artifact(page, f"linkedin_easy_apply_status_{step}.png")
