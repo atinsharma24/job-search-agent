@@ -231,6 +231,35 @@ def _challenge_detection():
     return PASS, "captcha / waf / login detected; profile pages not false-positived"
 
 
+@check("linkedin_field_mapping")
+def _linkedin_field_mapping():
+    """LinkedIn's field mapper must defer to vault_answers, not guess.
+
+    It previously ran LINKEDIN_MAPPING first (whose blanket `\\bexperience\\b`
+    answered "years with PowerShell?" with total experience) and defaulted every
+    remaining question to "Yes". Both bypassed the screening policy entirely.
+    """
+    import playwright_linkedin_easy_apply as le
+    import vault_config as vc
+
+    bank = vc.build_answer_bank()
+    expect = {
+        "How many years of experience using PowerShell for M365?": "0",
+        "How many years of hands-on experience with Node.js?": "1",
+        "Do you require visa sponsorship?": "No",
+        "Mention your Expected CTC*": str(vc.expected_ctc_min_lpa()),
+    }
+    wrong = {q: le.answer_mapper(bank, q) for q, w in expect.items()
+             if le.answer_mapper(bank, q) != w}
+    if wrong:
+        return FAIL, f"field mapping regressed: {wrong}"
+    # Rating-style and unknown questions must be left blank, never guessed.
+    for q in ("Rate your leadership 1-10", "Some question nobody anticipated?"):
+        if le.answer_mapper(bank, q) is not None:
+            return FAIL, f"guessed an answer for {q!r} instead of leaving it blank"
+    return PASS, "defers to vault_answers; unknown fields left blank"
+
+
 @check("dry_run_isolation")
 def _dry_run_isolation():
     """A dry run must never be recorded as a real application.

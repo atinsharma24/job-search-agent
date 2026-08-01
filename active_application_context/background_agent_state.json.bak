@@ -133,7 +133,6 @@
     "symphonyai:full-stack-engineer",
     "talent-authority-partners:product-engineer-ai",
     "talent-support-india:fullstack-developer",
-    "talentgigs:lead-ai-engineer",
     "tata-consultancy-services:full-stack-engineer",
     "tata-consultancy-services:generative-ai-vertexai-google-adk-agenticai-rag-pipeline",
     "teamware-solutions:full-stack-engineer-backend",
@@ -318,6 +317,7 @@
     "bmc-software:ai-engineer",
     "boeing:experienced-software-engineer-fsd",
     "bookswagon:front-end-developer",
+    "boomerangfx:ai-nlp-engineer-with-verification",
     "brezq:python-developer",
     "bridge-global:junior-ai-engineer",
     "bright-matrix-global:ai-full-stack-engineer",
@@ -1160,6 +1160,7 @@
     "spmr-advisors:c-inventor-developers",
     "springreen:full-stack-developer-trainee",
     "spruko-technologies:javascript-developer",
+    "squash-apps:data-engineer-pyspark-6-8-years-exp",
     "srm-designs:artificial-intelligence-engineer",
     "stack-digital:genai-engineer",
     "statusneo-technology-consulting:artificial-intelligence-engineer",
@@ -1188,7 +1189,6 @@
     "talentgigs:back-end-developer-next-js",
     "talentgigs:full-stack-engineer",
     "talentgigs:full-stack-engineer-react-node-mongodb",
-    "talentgigs:lead-ai-engineer",
     "talentiser:lead-mechanical-design-engineer-ai-based-robotics-startup-up-to-20-lpa",
     "talentpluto:go-to-market-engineer",
     "talentpluto:research-engineer",
@@ -1211,6 +1211,7 @@
     "tech-inject:backend-engineer-node-js-typescript",
     "techathalon-software:software-developer",
     "techavidus:software-developer-intern-trainee",
+    "techgropse-next-gen-ai-services:chief-ai-officer-co-founder-with-verification",
     "techila-global-services:full-stack-developer",
     "techindo-systems:full-stack-developer",
     "techkareer:ai-engineer",
@@ -1379,5 +1380,24 @@
       "url": "https://www.linkedin.com/jobs/view/4447140361/"
     }
   },
-  "attempts": {}
+  "attempts": {
+    "aptivision-technologies:ai-full-stack-development": {
+      "count": 1,
+      "last": "2026-08-01T17:24:26",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4444564362/"
+    },
+    "sleek:principal-full-stack-engineer": {
+      "count": 1,
+      "last": "2026-08-01T17:24:42",
+      "last_status": "error:12",
+      "url": "https://www.linkedin.com/jobs/view/4447509174/"
+    },
+    "harp:node-js-developer-with-verification": {
+      "count": 1,
+      "last": "2026-08-01T17:25:38",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4445597562/"
+    }
+  }
 }
