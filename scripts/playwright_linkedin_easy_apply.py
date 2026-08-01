@@ -25,6 +25,7 @@ EXIT_GENERIC_FAILURE = 1
 EXIT_CAPTCHA = 10
 EXIT_EXTERNAL_REDIRECT = 11
 EXIT_LOGIN_REQUIRED = 12
+EXIT_UNANSWERABLE = 14   # required question outside answering policy
 
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
@@ -48,10 +49,35 @@ def build_answer_bank() -> dict:
 
 
 def detect_status_from_text(text: str) -> Optional[int]:
+    """Text-only fallback. Deliberately conservative.
+
+    The previous version returned EXIT_LOGIN_REQUIRED whenever the page contained
+    both "sign in" and "linkedin" — which is true of essentially every LinkedIn
+    page, logged in or not, because those words appear in footers and modals.
+    That produced spurious error:12 aborts on healthy sessions. Prefer
+    detect_status_from_page(), which checks the URL and a password field.
+    """
     lowered = text.casefold()
     if "captcha" in lowered or "security verification" in lowered or "suspicious activity" in lowered:
         return EXIT_CAPTCHA
-    if "sign in" in lowered and "linkedin" in lowered:
+    # Only unambiguous session-expiry phrasing; never bare "sign in".
+    for phrase in ("session expired", "you have been signed out", "you've been signed out",
+                   "please log in again", "sign in to continue"):
+        if phrase in lowered:
+            return EXIT_LOGIN_REQUIRED
+    return None
+
+
+def detect_status_from_page(page) -> Optional[int]:
+    """Structural check — URL and password field — rather than page prose."""
+    try:
+        import vault_browser as vb
+        kind = vb.detect_security_challenge(page)
+    except Exception:
+        return None
+    if kind in ("captcha", "waf"):
+        return EXIT_CAPTCHA
+    if kind == "login":
         return EXIT_LOGIN_REQUIRED
     return None
 
@@ -70,7 +96,6 @@ LINKEDIN_MAPPING = [
     ((r"\blinkedin\b",), "linkedin_profile"),
     ((r"\bnotice period\b", r"\bnotice\b"), "notice_period_days"),
     ((r"\bjoin\b", r"\bstart date\b", r"\bavailability\b"), "availability"),
-    ((r"\bexperience\b", r"\byears of\b"), "years_experience"),
     ((r"\bexpected salary\b", r"\bexpected ctc\b", r"\bdesired salary\b", r"\bcompensation\b"), "expected_ctc_min"),
     ((r"\bcurrent salary\b", r"\bcurrent ctc\b"), "current_ctc"),
     ((r"\bwork authorization\b", r"\blegally authorized\b"), "work_authorized"),
@@ -78,42 +103,81 @@ LINKEDIN_MAPPING = [
     ((r"\brelocat",), "open_to_relocate"),
     ((r"\bdegree\b",), "degree"),
     ((r"\buniversity\b", r"\binstitution\b", r"\bcollege\b"), "university"),
-    # Open-ended text / textarea questions — answered from qa_bank
-    ((r"\btell us about yourself\b", r"\babout yourself\b", r"\bintroduce yourself\b", r"\bbackground\b"), "qa_about_me"),
-    ((r"\btechnical challenge\b", r"\bcomplex bug\b", r"\bperformance issue\b", r"\bdifficult problem\b"), "qa_tech_challenge"),
-    ((r"\bproduct you built\b", r"\bside project\b", r"\bmost proud\b", r"\bbuild from scratch\b"), "qa_innovation"),
-    ((r"\bconflict\b", r"\binitiative\b", r"\bteam problem\b", r"\bleadership\b", r"\btook ownership\b"), "qa_leadership"),
-    ((r"\bproduct impact\b", r"\bend users\b", r"\bhow.*helped\b", r"\buser value\b"), "qa_product_impact"),
-    ((r"\bwhy.*role\b", r"\bwhy.*position\b", r"\bwhy.*company\b", r"\bwhy.*interest\b", r"\bmotivation\b"), "qa_why_role"),
-    ((r"\bcover letter\b", r"\bcover note\b", r"\badditional information\b", r"\banything else\b"), "qa_about_me"),
+    # NOTE: the qa_bank entries that used to live here have been removed.
+    # They matched on bare topic words — `\bleadership\b` answered
+    # "Rate your leadership 1-10" with a 500-word essay — and duplicated
+    # vault_answers, which now handles open-ended questions first and refuses
+    # rating-style prompts outright. This table is identity fields only.
 ]
 
 
+_WIDGET_LABEL = re.compile(
+    r"\.pdf\b.*\.pdf\b|\.docx?\b.*\.docx?\b|"          # a list of stored files
+    r"\b(upload|choose|select)\s+(a\s+)?(new\s+)?(resume|cv|file)|"
+    r"\bbe sure to include an updated resume\b|"
+    r"\bdrag and drop\b|\bsupported formats\b",
+    re.I,
+)
+
+
+def _is_widget_not_question(label: str) -> bool:
+    """True for file pickers and similar chrome that only look like fields."""
+    return bool(_WIDGET_LABEL.search(label or ""))
+
+
+# Labels this run declined to answer. A required one blocks the form, so the step
+# loop would otherwise spin to its limit re-reading the same dead page.
+UNANSWERED: list[str] = []
+
+
 def answer_mapper(answer_bank: dict, label_text: str) -> Optional[str]:
-    # First check standard mapping
-    val = map_answer(label_text, answer_bank, LINKEDIN_MAPPING)
+    """Resolve a form field label to an answer.
+
+    Order matters. This function previously did the opposite of what it should:
+    LINKEDIN_MAPPING ran first (its blanket `\\bexperience\\b` rule answered
+    "how many years with PowerShell?" with the candidate's TOTAL experience), and
+    anything left over fell into
+
+        is_yes_no = (... or "?" in label_lower or ...)
+        if is_yes_no: return "Yes"
+
+    — a blanket Yes for essentially every question on the form, which is how
+    sponsorship, bond and inflated-experience questions all got affirmed.
+
+    Now the question-aware policy in vault_answers decides first, and a field it
+    will not answer is left BLANK rather than guessed. A blank required field
+    fails the step visibly; a wrong answer does not.
+    """
+    label = clean_label(label_text)
+    if not label:
+        return None
+
+    try:
+        import vault_answers as va
+        ans = va.answer_for_question(label, bank=answer_bank)
+        if ans.decision is va.Decision.VALUE and ans.value:
+            return ans.value
+        if ans.decision is va.Decision.YES:
+            return "Yes"
+        if ans.decision is va.Decision.NO:
+            return "No"
+    except Exception as exc:  # never let policy failure fall through to a guess
+        print(f"  [answer_mapper] policy error on {label[:60]!r}: {exc}", flush=True)
+        return None
+
+    # Identity fields only — unambiguous, no judgement involved.
+    val = map_answer(label, answer_bank, LINKEDIN_MAPPING)
     if val is not None:
         return val
 
-    label_lower = label_text.casefold()
-    
-    # Check if this is a Yes/No question
-    is_yes_no = (
-        any(label_lower.startswith(prefix) for prefix in ["do you", "have you", "are you", "will you", "would you", "is ", "can "])
-        or "?" in label_lower
-        or "experience" in label_lower
-        or "worked on" in label_lower
-        or "willing to" in label_lower
-        or "authorized" in label_lower
-    )
+    # LinkedIn's resume picker is a radio list of previously uploaded files, not a
+    # question. We upload a fresh file separately, so it must not be counted as an
+    # unanswerable field — doing so blocked otherwise-valid applications.
+    if _is_widget_not_question(label):
+        return None
 
-    if is_yes_no:
-        # Sponsorship or other negative questions
-        if any(kw in label_lower for kw in ["sponsorship", "visa", "clearance", "convicted", "felony", "drug", "crime"]):
-            return "No"
-        # Standard yes/no questions (React, REST APIs, work authorization, relocation, etc.)
-        return "Yes"
-
+    print(f"  \u26a0 No answer for field: {label[:110]!r} — leaving blank", flush=True)
+    UNANSWERED.append(label)
     return None
 
 
@@ -163,13 +227,21 @@ def save_artifact(page, name: str) -> None:
     page.screenshot(path=str(ARTIFACT_DIR / name), full_page=False)
 
 
+def step_signature(dialog) -> str:
+    """Cheap fingerprint of the current dialog, to detect a form that is stuck."""
+    try:
+        return dialog.inner_text()[:400]
+    except Exception:
+        return ""
+
+
 def save_dry_run_state(page, name: str) -> None:
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     page.screenshot(path=str(LOG_DIR / name), full_page=False)
 
 
 def execute_easy_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool) -> int:
-    text_status = detect_status_from_text(page.locator("body").inner_text())
+    text_status = detect_status_from_page(page) or detect_status_from_text(page.locator("body").inner_text())
     if text_status is not None:
         return text_status
 
@@ -248,9 +320,28 @@ def execute_easy_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool
             return EXIT_GENERIC_FAILURE
 
 
+    UNANSWERED.clear()
+    stalled_signature = None
+    stalled_count = 0
+
     for step in range(12):
         body_text = page.locator("body").inner_text()
-        text_status = detect_status_from_text(body_text)
+
+        # Bail out when the same dialog reappears with fields we refuse to answer.
+        # A required question outside our policy cannot be completed, so spinning
+        # to the step limit just re-reads a dead page 12 times.
+        if UNANSWERED:
+            signature = (step_signature(dialog), tuple(sorted(set(UNANSWERED))))
+            if signature == stalled_signature:
+                stalled_count += 1
+                if stalled_count >= 2:
+                    save_artifact(page, f"linkedin_unanswerable_{step}.png")
+                    print(f"  \U0001f6d1 Cannot complete: {len(set(UNANSWERED))} unanswerable "
+                          f"required field(s) — {sorted(set(UNANSWERED))[:2]}", flush=True)
+                    return EXIT_UNANSWERABLE
+            else:
+                stalled_signature, stalled_count = signature, 0
+        text_status = detect_status_from_page(page) or detect_status_from_text(body_text)
         if text_status is not None:
             save_artifact(page, f"linkedin_easy_apply_status_{step}.png")
             return text_status

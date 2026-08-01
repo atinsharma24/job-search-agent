@@ -5,13 +5,13 @@ Naukri Discover + Apply — via CDP (Chrome on port 9222)
 1. Closes stale/redundant Chrome tabs
 2. Searches Naukri for fresh relevant jobs (AI/Full-Stack/GenAI, 0-3 yrs, India)
 3. Applies queued jobs from naukri_queue.md
-4. Uses NewResDocPdf.pdf for all applications
+4. Selects a category resume per JD (vault_resume), validated for extractable text
 5. Logs every result to job_applications_tracker.md
 
 Usage:
   python3 scripts/playwright_naukri_discover_apply.py [--dry-run] [--max-apply 20]
 
-CTC: Current 11.2 | Expected 16-22 LPA
+CTC and notice period are read from core_vault/JobApplyFiles/ via vault_config.
 """
 
 import argparse
@@ -24,17 +24,26 @@ from datetime import datetime
 from typing import Optional
 
 # ---------------------------------------------------------------------------
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import vault_config as vc
+import vault_answers as va
+from vault_resume import resume_for_job, validate_resume
+import vault_state as vs
+import vault_browser as vb
+
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH  = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
 LOGISTICS_PATH   = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "06_logistics_mapping.json"
 TRACKER_PATH     = VAULT_ROOT / "active_application_context" / "job_applications_tracker.md"
 STATE_PATH       = VAULT_ROOT / "active_application_context" / "background_agent_state.json"
-RESUME_PATH      = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "2026New1.pdf"
+# NOTE: last-resort fallback only. Per-job selection now goes through
+# vault_resume.resume_for_job(), which validates extractable text before upload.
+RESUME_PATH      = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "Atin_Sharma_Resume_2026.pdf"
 ARTIFACT_DIR     = VAULT_ROOT / "output" / "playwright"
 CDP_URL          = "http://localhost:9222"
 
-CURRENT_CTC  = 11.2   # LPA
-EXPECTED_CTC = 16   # LPA — 16 to 22 LPA (negotiable)
+CURRENT_CTC  = vc.current_ctc_lpa()       # canonical: 01_atomic_fact_sheet.json
+EXPECTED_CTC = vc.expected_ctc_numeric()  # stated floor; never the private floor
 
 # ---------------------------------------------------------------------------
 # Naukri search URLs (Slugified and filtered with experience=0 and jobAge=15)
@@ -79,7 +88,7 @@ QUEUED_JOBS = [
         "role": "LLM Engineer",
         "search_query": "LLM Engineer Qure.ai",
         "url": None,  # Will be discovered via search
-        "note": "Qure.ai's mission to deploy AI in real-world clinical workflows resonates with my experience shipping production LLM applications. I built VyaparGPT — a WhatsApp AI for SMBs serving 40+ pilots — using RAG pipelines with pgvector, LangChain.js, and OpenAI APIs on a FastAPI + Node.js stack. At OpenBiz I own end-to-end AI architecture including stateful multi-agent systems with LangGraph. I'm an immediate joiner eager to bring that production LLM depth to Qure's diagnostics AI.",
+        "note": "Qure.ai's mission to deploy AI in real-world clinical workflows resonates with my experience shipping production LLM applications. I built VyaparGPT — a WhatsApp AI for SMBs serving 40+ pilots — using RAG pipelines with pgvector, LangChain.js, and OpenAI APIs on a FastAPI + Node.js stack. At OpenBiz I owned end-to-end AI architecture including stateful multi-agent systems with LangGraph. I can join within 15 days, eager to bring that production LLM depth to Qure's diagnostics AI.",
     },
     {
         "id": "naukri_babblebots_genai",
@@ -87,7 +96,7 @@ QUEUED_JOBS = [
         "role": "GenAI Engineer",
         "search_query": "GenAI Engineer Babblebots",
         "url": None,
-        "note": "My work building VyaparGPT — a WhatsApp-native conversational AI for small businesses — used the same tech stack Babblebots AI is hiring for: LangChain.js orchestration, RAG with pgvector, OpenAI function calling, and production Node.js APIs. I built multi-turn stateful agents using LangGraph deployed to 40+ live pilots. As a founding engineer at OpenBiz I own the full stack. Can join immediately.",
+        "note": "My work building VyaparGPT — a WhatsApp-native conversational AI for small businesses — used the same tech stack Babblebots AI is hiring for: LangChain.js orchestration, RAG with pgvector, OpenAI function calling, and production Node.js APIs. I built multi-turn stateful agents using LangGraph deployed to 40+ live pilots. As founding engineer at OpenBiz I owned the full stack. Can join within 15 days.",
     },
     {
         "id": "naukri_techblocks_agentic",
@@ -95,7 +104,7 @@ QUEUED_JOBS = [
         "role": "Agentic Engineer",
         "search_query": "Agentic Engineer TechBlocks",
         "url": None,
-        "note": "Agentic AI is the core of my recent work — I designed a stateful multi-agent CRM system using LangGraph with agents for lead qualification, follow-up scheduling, and data enrichment. VyaparGPT further demonstrates my ability to build LangChain-orchestrated products serving real production users. Available to join immediately.",
+        "note": "Agentic AI is the core of my recent work — I designed a stateful multi-agent CRM system using LangGraph with agents for lead qualification, follow-up scheduling, and data enrichment. VyaparGPT further demonstrates my ability to build LangChain-orchestrated products serving real production users. Available to join within 15 days.",
     },
     {
         "id": "naukri_protectt_ai_red",
@@ -103,7 +112,7 @@ QUEUED_JOBS = [
         "role": "AI Red Teaming Engineer",
         "search_query": "AI Red Teaming Engineer PROTECTT",
         "url": None,
-        "note": "Building production LLM applications has given me deep intuition for where AI systems break — prompt injection in RAG pipelines, adversarial inputs in multi-agent flows. At OpenBiz we designed input sanitization and output validation layers for our WhatsApp AI. PROTECTT.AI Labs' red teaming focus is a compelling application of that production knowledge. Available immediately.",
+        "note": "Building production LLM applications has given me deep intuition for where AI systems break — prompt injection in RAG pipelines, adversarial inputs in multi-agent flows. At OpenBiz we designed input sanitization and output validation layers for our WhatsApp AI. PROTECTT.AI Labs' red teaming focus is a compelling application of that production knowledge. Available within 15 days.",
     },
     {
         "id": "naukri_aiotor_ai",
@@ -111,7 +120,7 @@ QUEUED_JOBS = [
         "role": "AI Engineer",
         "search_query": None,
         "url": "https://www.naukri.com/job-listings-ai-engineer-aiotor-labs-private-limited-pune-1-to-4-years-120526502847",
-        "note": "Aiotor Labs' focus on scalable AI solutions maps onto my end-to-end AI engineering experience. My primary strength is LLM application engineering (RAG, LangChain, agentic systems) backed by solid Python/ML fundamentals. Pune is a preferred city and I'm an immediate joiner.",
+        "note": "Aiotor Labs' focus on scalable AI solutions maps onto my end-to-end AI engineering experience. My primary strength is LLM application engineering (RAG, LangChain, agentic systems) backed by solid Python/ML fundamentals. Pune is a preferred city and I'm on a 15-day notice period.",
     },
     {
         "id": "naukri_aventior_genai",
@@ -119,7 +128,7 @@ QUEUED_JOBS = [
         "role": "GenAI Engineer",
         "search_query": "GenAI Engineer Aventior Digital",
         "url": None,
-        "note": "My GenAI product experience — VyaparGPT for SMB automation, AI CRM with LangGraph agents — maps well onto Aventior Digital's digital transformation practice. I bring production OpenAI/RAG architecture and full-stack TypeScript/Node.js skills. Available immediately for Hyderabad or remote.",
+        "note": "My GenAI product experience — VyaparGPT for SMB automation, AI CRM with LangGraph agents — maps well onto Aventior Digital's digital transformation practice. I bring production OpenAI/RAG architecture and full-stack TypeScript/Node.js skills. Available within 15 days for Hyderabad or remote.",
     },
 ]
 
@@ -157,7 +166,7 @@ def log(msg: str):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def load_state() -> dict:
+def _legacy_load_state() -> dict:
     if STATE_PATH.exists():
         return json.loads(STATE_PATH.read_text())
     return {"seen_job_ids": [], "applied_job_ids": [], "blocked_jobs": []}
@@ -268,33 +277,47 @@ def append_tracker(company: str, role: str, url: str, status: str, note: str = "
     log(f"  → Tracker: {status}")
 
 
-def close_redundant_tabs(context, keep_domains=("naukri.com",)):
-    """Close all page tabs that are not Naukri or new-tab."""
+def close_redundant_tabs(context, keep_domains=("naukri.com",), owned=None):
+    """Close ONLY tabs this script created.
+
+    This previously closed every tab that was not Naukri or blank — i.e. the
+    user's own browsing, in their own profile, without warning. One call site
+    passed keep_domains=() which made that "every non-blank tab in the browser".
+
+    We now own our tabs via vault_browser.named_page(), so `owned` is the only
+    thing we are entitled to close. Without it this is a no-op, which is the
+    correct default: never close a tab we did not open.
+    """
+    if not owned:
+        return
     closed = 0
-    for page in list(context.pages):
-        url = page.url.casefold()
-        is_new_tab = url in ("chrome://newtab/", "about:blank", "")
-        is_naukri  = any(d in url for d in keep_domains)
-        if not is_new_tab and not is_naukri:
-            try:
-                page.close()
-                closed += 1
-            except Exception:
-                pass
+    for page in list(owned):
+        try:
+            if page.is_closed():
+                continue
+            url = (page.url or "").casefold()
+            if url in ("chrome://newtab/", "about:blank", ""):
+                continue
+            if any(d in url for d in keep_domains):
+                continue
+            page.close()
+            closed += 1
+        except Exception:
+            pass
     if closed:
-        log(f"  🗑  Closed {closed} redundant tab(s)")
+        log(f"  🗑  Closed {closed} tab(s) this script opened")
 
 
 def build_answer_bank() -> dict:
-    sys.path.insert(0, str(VAULT_ROOT / "scripts"))
-    from playwright_form_helpers import build_base_answer_bank
-    bank = build_base_answer_bank(FACT_SHEET_PATH, LOGISTICS_PATH)
-    bank["current_ctc"]        = str(CURRENT_CTC)
-    bank["naukri_current_ctc"] = str(CURRENT_CTC)
-    bank["expected_ctc_min"]   = str(EXPECTED_CTC)
-    bank["naukri_expected_ctc"]= str(EXPECTED_CTC)
-    bank["expected_ctc_label"] = f"{EXPECTED_CTC} LPA"
-    bank["naukri_notice_period"] = "0"
+    """Canonical answers, plus Naukri-specific aliases.
+
+    `naukri_notice_period` was hardcoded to "0" here, contradicting the canonical
+    15-day notice on every Naukri application.
+    """
+    bank = vc.build_answer_bank()
+    bank["naukri_current_ctc"]   = bank["current_ctc"]
+    bank["naukri_expected_ctc"]  = bank["expected_ctc_min"]
+    bank["naukri_notice_period"] = str(vc.notice_period_days())
     return bank
 
 
@@ -344,16 +367,31 @@ def find_modal(page):
     return None
 
 
-def find_action_btn(root, names: list[str]):
-    for name in names:
-        btn = root.get_by_role("button", name=re.compile(re.escape(name), re.I))
-        if btn.count() > 0 and btn.first.is_visible():
-            return btn.first
-        btn2 = root.locator("button, [role='button']").filter(
-            has_text=re.compile(re.escape(name), re.I)
-        )
-        if btn2.count() > 0 and btn2.first.is_visible():
-            return btn2.first
+def find_action_btn(root, names: list[str], page=None):
+    """Find an action button, falling back to the whole page.
+
+    Naukri's chatbot renders its Save button at the bottom of a side drawer that
+    sits OUTSIDE the modal we scope `root` to. Searching only `root` meant the
+    answer was selected correctly but the step never advanced, and every such
+    application died at the step limit.
+    """
+    scopes = [root] + ([page] if page is not None else [])
+    for scope in scopes:
+        for name in names:
+            try:
+                btn = scope.get_by_role("button", name=re.compile(re.escape(name), re.I))
+                if btn.count() > 0 and btn.first.is_visible():
+                    return btn.first
+            except Exception:
+                pass
+            try:
+                btn2 = scope.locator("button, [role='button']").filter(
+                    has_text=re.compile(rf"^\s*{re.escape(name)}\s*$", re.I)
+                )
+                if btn2.count() > 0 and btn2.first.is_visible():
+                    return btn2.first
+            except Exception:
+                pass
     return None
 
 
@@ -394,6 +432,9 @@ def fill_notice_period(root):
 
 
 def upload_resume(root, resume_path: Path) -> bool:
+    # Validate first: an image-only PDF is invisible to ATS parsers, and one was
+    # uploaded 424 times before this check existed.
+    resume_path = validate_resume(resume_path)
     for sel in ['input[type="file"]', 'input[accept*="pdf"]', 'input[accept*=".pdf"]']:
         try:
             el = root.locator(sel)
@@ -433,6 +474,9 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
         notified_form_urls = set()
         last_clicked_question = ""
         last_clicked_answer = ""
+        # Questions we refused to guess at. A non-empty list means the job needs a
+        # human, and is reported as 'blocked:unanswerable' rather than submitted.
+        unanswered_questions: list[str] = []
         # Already applied?
         if already_applied(page):
             return "already_applied"
@@ -606,22 +650,32 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                 try:
                     log(f"  Detected chatbot input. Last question: '{question[:80]}'")
 
-                    if "skill" in question or "tech" in question or "stack" in question or "programming" in question or "primary" in question or "key" in question:
-                        val = "TypeScript, Node.js, React, Next.js, Python, RAG, LangChain, PostgreSQL"
+                    # Answers come from vault_answers, which reads the question.
+                    #
+                    # This block previously hardcoded a lookup table whose worst
+                    # entries were `"10 LPA"` for any salary question — below the
+                    # current CTC and 8 LPA under the stated floor — and a catch-all
+                    # `else` that typed a skills list into ANY unrecognised question.
+                    # It also answered "Immediate" for notice and named a former
+                    # employer as current.
+                    if "skill" in question or "tech" in question or "stack" in question \
+                            or "programming" in question or "primary" in question:
+                        val = ", ".join(sorted(vc.load_facts()["tech_stack"]["languages"]
+                                               + vc.load_facts()["tech_stack"]["frontend"][:3]))
                     elif "secondary" in question:
-                        val = "Docker, PostgreSQL, Redis, REST APIs, Microservices, Git, CI/CD, AWS"
-                    elif "notice" in question or "join" in question or "availability" in question:
-                        val = "Immediate"
-                    elif "ctc" in question or "salary" in question or "lpa" in question or "expect" in question or "package" in question:
-                        val = "10 LPA"
-                    elif "experience" in question or "years" in question or "yoe" in question or "mysql" in question or "react" in question or "node" in question:
-                        val = "1"
-                    elif "company" in question or "employer" in question or "current company" in question:
-                        val = "OpenBiz Software"
-                    elif "location" in question or "city" in question or "where" in question:
-                        val = "Remote"
+                        val = ", ".join(vc.load_facts()["tech_stack"]["devops_cloud"])
                     else:
-                        val = "TypeScript, Node.js, React, Next.js, Python, LLMs, RAG, LangChain"
+                        ans = va.answer_for_question(question, bank=answer_bank)
+                        if ans.decision is va.Decision.VALUE and ans.value:
+                            val = ans.value
+                        elif ans.decision in (va.Decision.YES, va.Decision.NO):
+                            val = ans.value
+                        else:
+                            # Abstain rather than guess. The job is surfaced for
+                            # human review instead of receiving a wrong answer.
+                            log(f"  ⚠ Unanswerable question, abstaining: '{question[:100]}'")
+                            unanswered_questions.append(question)
+                            break
 
                     log(f"  Typing answer: '{val}'")
                     inp.click()
@@ -716,9 +770,28 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                             page.wait_for_timeout(1000)
                             break
                             
-                        # Yes/No validation
-                        if txt_lower in ("yes", "y", "i agree", "agree", "confirm"):
-                            log(f"  Clicking yes/confirmation option: {txt}")
+                        # Yes/No — gated on the QUESTION, not just the option text.
+                        #
+                        # This branch used to click any option reading "yes"/"agree"
+                        # without ever inspecting `question`, so "Do you require visa
+                        # sponsorship?", "Will you sign a 2-year bond?" and "Do you
+                        # have 5+ years experience?" all got an unconditional Yes.
+                        if txt_lower in va.YES_TOKENS or txt_lower in va.NO_TOKENS:
+                            ans = va.answer_for_question(question, bank=answer_bank)
+                            want_yes = txt_lower in va.YES_TOKENS
+                            allowed = (
+                                (want_yes and ans.decision is va.Decision.YES)
+                                or (not want_yes and ans.decision is va.Decision.NO)
+                            )
+                            if not allowed:
+                                # Never affirm something we have not reasoned about.
+                                if ans.decision is va.Decision.ABSTAIN:
+                                    log(f"  ⚠ Won't answer '{txt}' — unrecognised question: "
+                                        f"'{question[:90]}'")
+                                    if question and question not in unanswered_questions:
+                                        unanswered_questions.append(question)
+                                continue
+                            log(f"  Clicking '{txt}' via rule [{ans.rule}] for: '{question[:70]}'")
                             el.click()
                             clicked_texts.append(txt_lower)
                             last_clicked_question = question
@@ -726,7 +799,7 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                             clicked_option = True
                             page.wait_for_timeout(1000)
                             break
- 
+
                         # Skip / Optional question validation
                         if "skip" in txt_lower:
                             log(f"  Clicking skip/optional option: {txt}")
@@ -744,13 +817,25 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
             if clicked_option:
                 continue
 
+            # Refuse to submit a form containing a question we would only be
+            # guessing at. Abstaining costs one application; a wrong answer to
+            # "do you have 5+ years" or a bond clause costs credibility.
+            if unanswered_questions:
+                ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
+                page.screenshot(path=str(ARTIFACT_DIR / f"naukri_unanswerable_step{step}.png"))
+                log(f"  🛑 Not submitting — {len(unanswered_questions)} unanswered question(s)")
+                for q in unanswered_questions[:3]:
+                    log(f"     · {q[:110]}")
+                return "blocked:unanswerable_question"
+
             if dry_run:
                 ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=str(ARTIFACT_DIR / f"naukri_dry_run_step{step}.png"))
                 return "dry_run"
 
             # Submit — 'Save' is also a submit button in Naukri chatbot
-            submit = find_action_btn(root, ["Apply", "Apply Now", "Submit", "Send Application", "Save and Apply", "Save & Apply", "Save"])
+            submit = find_action_btn(root, ["Apply", "Apply Now", "Submit", "Send Application",
+                                            "Save and Apply", "Save & Apply", "Save"], page=page)
             if submit:
                 try:
                     submit.scroll_into_view_if_needed(timeout=3000)
@@ -765,7 +850,8 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                 continue
 
             # Next / Continue / Skip in chatbot
-            nxt = find_action_btn(root, ["Next", "Continue", "Proceed", "OK", "Okay", "Skip this question", "Skip"])
+            nxt = find_action_btn(root, ["Next", "Continue", "Proceed", "OK", "Okay",
+                                         "Skip this question", "Skip"], page=page)
             if nxt:
                 try:
                     nxt.scroll_into_view_if_needed(timeout=3000)
@@ -788,6 +874,8 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
 
         return "error:step_limit"
 
+    except vb.SecurityChallenge:
+        raise  # must reach __main__ and abort the run, never be swallowed
     except Exception as exc:
         return f"error:{exc}"
 
@@ -892,8 +980,9 @@ def search_and_apply_queued(page, apply_page, context, state: dict, answer_bank:
         if applied_count[0] >= max_apply:
             break
         job_id = job["id"]
-        if job_id in state.get("applied_job_ids", []):
-            log(f"  ⏭  SKIP (already applied): {job['company']} — {job['role']}")
+        skip, why = state.should_skip(job_id)
+        if skip:
+            log(f"  ⏭  SKIP ({why}): {job['company']} — {job['role']}")
             continue
 
         # If direct URL, use it; else search
@@ -924,6 +1013,10 @@ def search_and_apply_queued(page, apply_page, context, state: dict, answer_bank:
             if not target_url:
                 log(f"  ❌ Could not find URL for: {job['company']} — {job['role']}")
                 append_tracker(job["company"], job["role"], "", "FAILED (no URL found)", "Job not listed or search mismatch")
+                # Previously recorded nothing here, so this path re-ran on every
+                # search URL and every future run — 89 duplicate tracker rows.
+                vs.record_outcome(job_id, vs.Outcome.BLOCKED_PERMANENT, reason="no_url_found")
+                state.record(job_id, vs.Outcome.BLOCKED_PERMANENT, reason="no_url_found")
                 continue
         else:
             log(f"  ⏭  SKIP (no URL or search): {job['company']}")
@@ -933,26 +1026,30 @@ def search_and_apply_queued(page, apply_page, context, state: dict, answer_bank:
         log(f"  URL: {target_url}")
 
         try:
-            apply_page.goto(target_url, wait_until="domcontentloaded", timeout=30000)
+            vb.guarded_goto(apply_page, target_url, timeout=30000,
+                            label=f"{job['company']} {job['role']}")
             apply_page.wait_for_timeout(3000)
-            status = execute_naukri_apply(apply_page, RESUME_PATH, answer_bank, dry_run, job.get("note", ""))
+            queued_resume = resume_for_job(job.get("note", ""), job.get("role", ""), explicit=job.get("resume"))
+            status = execute_naukri_apply(apply_page, queued_resume, answer_bank, dry_run, job.get("note", ""))
             log(f"  STATUS: {status}")
 
-            if status == "submitted":
-                append_tracker(job["company"], job["role"], target_url, "APPLIED ✅", "NewResDocPdf.pdf | queued job")
-                state.setdefault("applied_job_ids", []).append(job_id)
+            outcome = vs.classify(status)
+            if outcome in (vs.Outcome.APPLIED, vs.Outcome.APPLIED_UNCONFIRMED):
+                append_tracker(job["company"], job["role"], target_url, "APPLIED ✅", f"{queued_resume.name} | queued job")
                 applied_count[0] += 1
-            elif status == "dry_run":
+            elif outcome is vs.Outcome.DRY_RUN:
                 append_tracker(job["company"], job["role"], target_url, "DRY_RUN", "")
                 applied_count[0] += 1
-            elif status == "already_applied":
+            elif outcome is vs.Outcome.ALREADY_APPLIED:
                 append_tracker(job["company"], job["role"], target_url, "ALREADY_APPLIED ⏭️", "")
-                state.setdefault("applied_job_ids", []).append(job_id)
-            elif status.startswith("external"):
-                append_tracker(job["company"], job["role"], target_url, "EXTERNAL_ATS ⚠️", "Apply manually on company site")
+            elif outcome is vs.Outcome.BLOCKED_PERMANENT:
+                append_tracker(job["company"], job["role"], target_url, f"BLOCKED ⚠️ ({status})", "Needs manual review")
             else:
                 append_tracker(job["company"], job["role"], target_url, f"FAILED ({status})", "")
-            save_state(state)
+            # This branch chain used to write the tracker but never touch state on
+            # failure, so failures were retried forever (one URL logged 54 times).
+            vs.record_outcome(job_id, outcome, reason=status, url=target_url)
+            state.record(job_id, outcome, reason=status, url=target_url)
         finally:
             time.sleep(2)
 
@@ -981,63 +1078,68 @@ def discover_and_apply_search(page, apply_page, context, search_url: str, state:
             combined_desc = job.get("description", "")
             job_id  = make_job_id(company, title)
 
-            if job_id in state.get("applied_job_ids", []) or job_id in state.get("seen_job_ids", []):
-                log(f"  ⏭  SKIP (seen): {company} — {title}")
+            skip, why = state.should_skip(job_id)
+            if skip:
+                log(f"  ⏭  SKIP ({why}): {company} — {title}")
                 continue
 
             # Python-side filtering for relevancy
             if not is_experience_suitable(experience):
                 log(f"  ⏭  SKIP (experience filter: {experience}): {company} — {title}")
-                state.setdefault("seen_job_ids", []).append(job_id)
-                save_state(state)
+                vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER, reason="experience", url=url)
+                state.record(job_id, vs.Outcome.SKIPPED_FILTER)
                 continue
 
             if not is_location_suitable(location):
                 log(f"  ⏭  SKIP (location filter: {location}): {company} — {title}")
-                state.setdefault("seen_job_ids", []).append(job_id)
-                save_state(state)
+                vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER, reason="location", url=url)
+                state.record(job_id, vs.Outcome.SKIPPED_FILTER)
                 continue
 
             if not is_salary_suitable(salary):
                 log(f"  ⏭  SKIP (salary filter: {salary}): {company} — {title}")
-                state.setdefault("seen_job_ids", []).append(job_id)
-                save_state(state)
+                vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER, reason="salary", url=url)
+                state.record(job_id, vs.Outcome.SKIPPED_FILTER)
                 continue
 
             score = score_job(title, combined_desc, company)
 
             if score < SCORE_THRESHOLD:
                 log(f"  ⏭  SKIP (score {score:.2f}): {company} — {title}")
-                state.setdefault("seen_job_ids", []).append(job_id)
-                save_state(state)
+                vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER,
+                                  reason=f"score {score:.2f}", url=url)
+                state.record(job_id, vs.Outcome.SKIPPED_FILTER)
                 continue
 
             log(f"\n  ▶ APPLYING [{score:.2f}]: {company} — {title}")
             try:
-                apply_page.goto(url, wait_until="domcontentloaded", timeout=30000)
+                vb.guarded_goto(apply_page, url, timeout=30000, label=f"{company} {title}")
                 apply_page.wait_for_timeout(3000)
-                status = execute_naukri_apply(apply_page, RESUME_PATH, answer_bank, dry_run)
+                chosen_resume = resume_for_job(combined_desc if "combined_desc" in dir() else title, title)
+                status = execute_naukri_apply(apply_page, chosen_resume, answer_bank, dry_run)
                 log(f"  STATUS: {status}")
 
-                note_str = f"Score {score:.2f}. NewResDocPdf.pdf."
-                if status == "submitted":
+                note_str = f"Score {score:.2f}. {chosen_resume.name}."
+                outcome = vs.classify(status)
+                if outcome in (vs.Outcome.APPLIED, vs.Outcome.APPLIED_UNCONFIRMED):
                     append_tracker(company, title, url, "APPLIED ✅", note_str)
-                    state.setdefault("applied_job_ids", []).append(job_id)
                     applied_count[0] += 1
-                elif status == "dry_run":
+                elif outcome is vs.Outcome.DRY_RUN:
                     append_tracker(company, title, url, "DRY_RUN", note_str)
                     applied_count[0] += 1
-                elif status == "already_applied":
+                elif outcome is vs.Outcome.ALREADY_APPLIED:
                     append_tracker(company, title, url, "ALREADY_APPLIED ⏭️", "")
-                    state.setdefault("applied_job_ids", []).append(job_id)
-                elif status.startswith("external"):
-                    append_tracker(company, title, url, "EXTERNAL_ATS ⚠️", "Apply manually")
+                elif outcome is vs.Outcome.BLOCKED_PERMANENT:
+                    append_tracker(company, title, url, f"BLOCKED ⚠️ ({status})", note_str)
                 else:
                     append_tracker(company, title, url, f"FAILED ({status})", note_str)
-                save_state(state)
+                vs.record_outcome(job_id, outcome, reason=status, url=url)
+                state.record(job_id, outcome, reason=status, url=url)
             finally:
                 time.sleep(2)
 
+    except vb.SecurityChallenge:
+        raise
     except Exception as exc:
         log(f"  Search error: {exc}")
 
@@ -1065,7 +1167,7 @@ def main():
     log(f"Queued jobs: {len(QUEUED_JOBS)}  |  Max new: {args.max_apply}")
     log("=" * 65)
 
-    state  = load_state()
+    state  = vs.load_state()
     answer_bank = build_answer_bank()
     applied_count = [0]
 
@@ -1073,14 +1175,18 @@ def main():
         browser = pw.chromium.connect_over_cdp(args.cdp_url, no_defaults=True)
         context = browser.contexts[0] if browser.contexts else browser.new_context()
 
-        # ── Step 0: Close redundant tabs ──────────────────────────────────
-        log("\n── Step 0: Closing redundant tabs ──")
-        close_redundant_tabs(context, keep_domains=("naukri.com",))
-
-        # ── Step 1: Queued jobs (from naukri_queue.md) ────────────────────
-        log("\n── Step 1: Applying queued jobs ──")
-        search_page = context.pages[0] if context.pages else context.new_page()
-        apply_page = context.pages[1] if len(context.pages) > 1 else context.new_page()
+        # Own our tabs explicitly. The previous code took context.pages[0] and [1],
+        # which grabs whatever tabs happen to exist — including the user's own and
+        # any left by another tool. That both destroyed the search results mid-run
+        # (search_page could be navigated away by the apply flow) and navigated the
+        # user's tabs away from under them.
+        #
+        # There is deliberately no "close redundant tabs" step here any more: at
+        # this point we have opened nothing, so there is nothing of ours to close,
+        # and the old version closed the user's tabs instead.
+        _pages = {}
+        search_page = vb.named_page(context, "search", _pages)
+        apply_page = vb.named_page(context, "apply", _pages)
         try:
             search_and_apply_queued(search_page, apply_page, context, state, answer_bank,
                                     applied_count, args.max_apply, args.dry_run)
@@ -1096,11 +1202,17 @@ def main():
                                       answer_bank, applied_count, args.max_apply,
                                       args.dry_run)
             # Close extra tabs after each search batch (keeping search and apply tabs)
-            close_redundant_tabs(context, keep_domains=("naukri.com",))
+            close_redundant_tabs(context, keep_domains=("naukri.com",), owned=_pages.values())
             time.sleep(2)
 
         # Final cleanup
-        close_redundant_tabs(context, keep_domains=())
+        # Final cleanup: close the tabs we opened. The old call passed
+        # keep_domains=() which closed every non-blank tab in the browser.
+        for _pg in _pages.values():
+            try:
+                _pg.close()
+            except Exception:
+                pass
 
     log("\n" + "=" * 65)
     log(f"NAUKRI PIPELINE COMPLETE")
@@ -1110,4 +1222,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # A security challenge must abort the run with exit 10 (or 12 for a login
+    # wall) so run_apply_all.sh stops the whole pipeline. Continuing after a
+    # challenge deepens the flag on this IP/profile.
+    try:
+        main()
+    except vb.SecurityChallenge as _exc:
+        print(f"🛑 SECURITY CHALLENGE ({_exc.kind}): {_exc}", flush=True)
+        raise SystemExit(_exc.exit_code)
