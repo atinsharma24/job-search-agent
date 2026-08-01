@@ -29,6 +29,7 @@
     "cheers-interactive:full-stack-engineer",
     "cloud-angles-digital-transformation:ca0340-agentic-ai-engineer",
     "codeacious:fullstack-developer",
+    "coderound-ai:ai-engineer-up-to-50lpa",
     "coderound-ai:forward-deployed-engineer",
     "confidential:genai-agentic-ai-architect-aws",
     "create-agi-labs:react-js-next-js-web-developer",
@@ -171,6 +172,7 @@
     "accenture:full-stack-engineer",
     "aether-legals:frontend-engineer-legaltech",
     "aikya-connect:ai-backend-engineer-contractual",
+    "alternative-path:data-engineer-web-scraping",
     "an-early-stage-tech-startup-mumbai:full-stack-developer-react-node-sql-for-a-startup-mumbai-thane",
     "andor-tech:senior-software-engineer",
     "anti-swipe-club:founding-ai-ml-engineer",
@@ -200,9 +202,11 @@
     "cheers-interactive:full-stack-engineer",
     "cloud-angles-digital-transformation:ca0340-agentic-ai-engineer",
     "codeacious:fullstack-developer",
+    "coderound-ai:ai-engineer-up-to-50lpa",
     "coderound-ai:forward-deployed-engineer",
     "confidential:genai-agentic-ai-architect-aws",
     "create-agi-labs:react-js-next-js-web-developer",
+    "crossing-hurdles:devops-engineer-80-hr-remote",
     "crossing-hurdles:software-developer-remote",
     "ct-automotive:full-stack-ai-engineer",
     "cyurae:ai-product-engineer-ai-core-engineer",
@@ -234,6 +238,7 @@
     "gatitaa-technology:ai-engineer",
     "gemba-concepts:ai-ml-engineer",
     "generative-futures:software-engineer-remote-ai",
+    "giantmind-solutions:lead-python-developer-production-systems",
     "gruntwrk:software-engineer",
     "hcltech:walk-in-drive-for-gen-ai-developer-noida-sec-60-on-20th-june",
     "healthflex:react-native-professional",
@@ -499,6 +504,12 @@
       "last": "2026-08-01T17:58:50",
       "last_status": "error:step_limit",
       "url": "https://www.naukri.com/job-listings-full-stack-ai-engineers-cloudtechner-services-gurugram-3-to-8-years-240726024813"
+    },
+    "boomerangfx:ai-nlp-engineer": {
+      "count": 1,
+      "last": "2026-08-01T18:02:50",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4447525464/"
     }
   }
 }

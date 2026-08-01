@@ -47,6 +47,23 @@ python3 scripts/vault_state.py
 
 ## 2. What did not work, and why
 
+**Naukri applications largely do not complete.** This is the biggest functional gap left.
+The chatbot flow answers questions correctly — a screenshot showed *"Are you currently
+residing in Bengaluru or willing to relocate?"* with **Yes correctly selected** — but the
+step does not advance, and the run dies at the step limit.
+
+The immediate cause was that Naukri renders the chatbot's **Save** button in a side drawer
+*outside* the modal the code scopes its button search to. Widening the search fixed the
+stall but caused a worse failure: a "Save" outside the question flow got clicked before all
+mandatory questions were answered, and Naukri responded *"Your application was not accepted
+due to incomplete information."* Nothing incorrect reached an employer — Naukri rejected it
+rather than submitting it — but the trade is now explicit in the code: **advancing a step is
+safe to search page-wide; submitting is not.**
+
+Submitting is scoped back to the modal, which restores the stall. Properly fixing this needs
+a session of its own: the chatbot is a multi-step state machine and the current step loop
+treats it as a flat form. LinkedIn is unaffected and works.
+
 **Naukri Employment section is still empty.** This is the most consequential gap: recruiter
 searches filtered by current company or designation will not surface the profile at all. The
 add-employment modal dismisses itself when the suggestion dropdown is escaped, and three
