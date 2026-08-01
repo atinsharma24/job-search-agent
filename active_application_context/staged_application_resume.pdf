@@ -3,7 +3,7 @@
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 2 0 obj
-<< /Length 2613 >>
+<< /Length 2643 >>
 stream
 BT
 /F1 10 Tf
@@ -12,7 +12,7 @@ BT
 (# AI-Integrated Full Stack Developer) Tj
 T* () Tj
 T* (**Profile:**) Tj
-T* (Full-Stack Product Engineer with founding-team experience bridging the gap between sophisticated AI models and production web architectures. Specialized in MERN stack development and seamless integration of LLM APIs \(OpenAI, Gemini, Groq\) to build "AI-first" user experiences. Proven track record in reducing API latency by 40% and accelerating deployment cycles by 30% through TypeScript-driven microservices. Target keywords: Python, Django.) Tj
+T* (Full-Stack Product Engineer with founding-team experience bridging the gap between sophisticated AI models and production web architectures. Specialized in MERN stack development and seamless integration of LLM APIs \(OpenAI, Gemini, Groq\) to build "AI-first" user experiences. Proven track record in reducing API latency by 40% and accelerating deployment cycles by 30% through TypeScript-driven microservices. Target keywords: ServiceNow, AI Integration.) Tj
 T* () Tj
 T* (**OpenBiz \(Jun 2025 – May 2026\) | Founding Engineer | Remote / Bangalore**) Tj
 T* () Tj
@@ -29,7 +29,7 @@ T* (- **Nimbus** \(In Dev 2026\): Production RAG pipeline — pgvector cosine se
 T* (- **DocGPT**: Django RAG pipeline — PyPDF2 chunking, local all-MiniLM-L6-v2 embeddings \(zero API cost\), ChromaDB retrieval, GPT-4o-mini generation. Dockerized.) Tj
 T* () Tj
 T* (**Tech Focus:**) Tj
-T* (React 19, TypeScript, Node.js, Next.js, OpenAI, Gemini, PostgreSQL, Vercel, Docker, Python, Django, MERN.) Tj
+T* (React 19, TypeScript, Node.js, Next.js, OpenAI, Gemini, PostgreSQL, Vercel, Docker, ServiceNow, MERN Stack, AI Integration.) Tj
 T* () Tj
 T* (**Patterns:** WebSocket \(Socket.IO\), REST, Webhook Validation \(HMAC-SHA256\), N+1 Query Optimization, Vector Similarity Search \(cosine\), Provider-Agnostic LLM Layers, Idempotent Event Processing.) Tj
 T* () Tj
@@ -51,11 +51,11 @@ xref
 0000000000 65535 f 
 0000000009 00000 n 
 0000000079 00000 n 
-0000002744 00000 n 
-0000002870 00000 n 
-0000002929 00000 n 
+0000002774 00000 n 
+0000002900 00000 n 
+0000002959 00000 n 
 trailer
 << /Size 6 /Root 5 0 R >>
 startxref
-2978
+3008
 %%EOF

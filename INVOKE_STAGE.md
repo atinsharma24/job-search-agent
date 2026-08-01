@@ -6,8 +6,9 @@ Vault root: `/Users/atinsharma/job_search_vault`
 ## Safety Rules (read before anything else)
 
 - All field values MUST come from `core_vault/01_atomic_fact_sheet.json` or `core_vault/06_logistics_mapping.json`.
-- Salary: 15L+ (negotiable, no hard ceiling). Current CTC = 0.
-- Notice period: 0 days / Immediate Joiner. Always.
+- Salary: quote 18-24 LPA on all forms; 18L is the stated floor. Current CTC = 11.2 LPA.
+- Private walk-away minimum is 15 LPA — NEVER disclose or auto-fill it.
+- Notice period: 15 days.
 - If a required form field cannot be answered from the vault, log it as `blocked` and move to the next job.
 - Never submit without confirming the exit code from the Playwright script is 0.
 - Run with `--dry-run` first when testing a new portal or script version.

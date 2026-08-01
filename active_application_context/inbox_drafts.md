@@ -15,7 +15,7 @@
 - **Message type:** Recruiter outreach — RAG chatbot project
 - **Original message excerpt:** "Hi, we are creating a chatbot RAG for this website - https://thepadelcompany.in/ Where, anyone who n..."
 - **Proposed reply:**
-> Hi! This sounds right up my alley — RAG-powered chatbots are exactly what I enjoy building. I recently shipped VyaparGPT, a WhatsApp AI assistant for SMBs using LangChain.js, RAG, and pgvector, so I have direct experience here. I'm an immediate joiner targeting ₹15–18L. Could you share the full scope or a JD?
+> Hi! This sounds right up my alley — RAG-powered chatbots are exactly what I enjoy building. I recently shipped VyaparGPT, a WhatsApp AI assistant for SMBs using LangChain.js, RAG, and pgvector, so I have direct experience here. I'm on a 15-day notice period targeting ₹18–24L. Could you share the full scope or a JD?
 
 ---
 
@@ -23,7 +23,7 @@
 - **Message type:** Recruiter outreach — screening form (unanswered since May 17)
 - **Original message excerpt:** "Hey! Thank your for your interest in working for GoGrowth Labs. Please fill up the form at gogrowth..."
 - **Proposed reply:**
-> Hi Gurmeet, apologies for the delayed response! I'd be happy to fill the form — could you re-share the link? I'm an immediate joiner with a full-stack + AI background (TypeScript, LangChain, RAG, Node.js) and genuinely excited about what GoGrowth Labs is building. Thanks!
+> Hi Gurmeet, apologies for the delayed response! I'd be happy to fill the form — could you re-share the link? I'm on a 15-day notice period with a full-stack + AI background (TypeScript, LangChain, RAG, Node.js) and genuinely excited about what GoGrowth Labs is building. Thanks!
 
 ---
 

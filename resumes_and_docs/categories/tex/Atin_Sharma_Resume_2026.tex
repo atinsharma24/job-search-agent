@@ -1,0 +1,166 @@
+%% ============================================================================
+%% Atin Sharma — Master Resume (2026New1)
+%% Template : Jake's Resume (adapted) — matches resumes_and_docs/categories/tex/*
+%% Build    : tectonic 2026New1.tex -o ../pdf/
+%% Constraint: MUST render to exactly ONE page.
+%% Source of truth: core_vault/JobApplyFiles/01_atomic_fact_sheet.json
+%%                  atin-sharma-offer-letter.pdf (AGI Ready Inc.)
+%% ============================================================================
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[rgb]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+% Font options
+\usepackage[sfdefault]{roboto}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, noitemsep, topsep=0pt, parsep=0pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+% -------------------------------------------
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Atin Sharma} \\ \vspace{1pt}
+    \small Agra, India $|$ \href{mailto:atinsharma24@gmail.com}{atinsharma24@gmail.com} $|$ +91 82185 02886 \\
+    \small \href{https://linkedin.com/in/atinsharma24}{linkedin.com/in/atinsharma24} $|$ \href{https://github.com/atinsharma24}{github.com/atinsharma24}
+\end{center}
+
+\section{Profile}
+\vspace{2pt}
+\small{Full-Stack Engineer with end-to-end production ownership across Next.js/React frontends, Node.js and Python (FastAPI/Django) backends, PostgreSQL/Redis data layers, and real-time WebSocket systems. Specialised in production LLM agents (OpenAI, Gemini, Groq, Claude) with provider failover, prompt engineering, and RAG pipelines, built through an AI-native workflow with Claude Code and Codex. Track record: 40\% API latency reduction, 30\% faster deployments, 40+ SMB pilots, 1,000+ users served.}
+\vspace{-4pt}
+
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {AGI Ready Inc.}{Jun 2026 -- Present}
+      {Full-Stack Developer}{Remote / Delaware, US}
+      \resumeItemListStart
+        \resumeItem{Build and ship full-stack product features in Next.js, TypeScript, and Node.js across multiple concurrent client products, working directly with the founder and a small delivery team.}
+        \resumeItem{Architect and integrate service APIs across third-party platforms, AI/LLM providers, webhook receivers, and asynchronous background workflows.}
+        \resumeItem{Operate an AI-native development workflow with Claude Code and Codex --- directing agentic tooling with architectural judgement rather than prompt-level iteration.}
+        \resumeItem{Own production systems end-to-end --- debugging, deployment, and release --- decomposing ambiguous client problems into scoped deliverables shipped iteratively.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {OpenBiz Software India Pvt Ltd}{Jun 2025 -- May 2026}
+      {Founding Engineer}{Remote / Bangalore}
+      \resumeItemListStart
+        \resumeItem{Architected the zero-to-one MERN platform in strict TypeScript, scaling to 1,000+ active users; engineered a parallel Graph RAG pipeline with LangGraph state machines routing queries into async multi-threaded retrieval paths.}
+        \resumeItem{Built a dual-database ingestion router (Drizzle ORM) streaming large-scale datasets into Pinecone (hybrid dense/sparse) and Supabase/pgvector --- partitioning unstructured from structured compliance data.}
+        \resumeItem{Cut API latency 40\% at 1,000+ user scale by resolving N+1 chains with JOIN rewrites, composite indexes, and TTL caching; built fault-tolerant Razorpay billing with HMAC-SHA256 idempotent webhooks for 100\% payment-state consistency.}
+        \resumeItem{Owned the CI/CD pipeline (GitHub Actions + Vercel) with per-PR automated testing, staged merges, and approval-gated production --- cutting deployment time by 30\% with zero broken-build incidents.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Vellore Institute of Technology}{Jan 2025 -- Nov 2025}
+      {Research Contributor}{Vellore}
+      \resumeItemListStart
+        \resumeItem{Research on blockchain-based LLM integration with Fully Homomorphic Encryption (FHE) for encrypted-data inference without decryption.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Nimbus --- AI RAG Workspace} $|$ \href{https://github.com/atinsharma24/nimbus}{\textit{github.com/atinsharma24/nimbus}}}{In Development}
+          \resumeItemListStart
+            \resumeItem{\emph{Stack: Next.js 14, TypeScript, PostgreSQL, pgvector, Prisma, Groq API, OpenAI}}
+            \resumeItem{Engineered a production RAG pipeline (pgvector + Groq) delivering sub-800ms semantic retrieval over multi-format corpora with SSE streaming.}
+            \resumeItem{Provider-agnostic LLM layer (Groq/OpenAI/Anthropic) with async queue ingestion, exponential-backoff 429 retry, and per-document status tracking.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Autonomous Web Agent} $|$ \href{https://github.com/atinsharma24/auto-agent}{\textit{github.com/atinsharma24/auto-agent}}}{}
+          \resumeItemListStart
+            \resumeItem{\emph{Stack: Python, Groq, BrowserOS (MCP), Claude 3.5 Sonnet}}
+            \resumeItem{Orchestrated a dual-agent architecture: a Claude 3.5 Sonnet Executor for DOM/form reasoning plus a Groq Watcher for page-state validation between steps.}
+            \resumeItem{Integrated BrowserOS MCP for structured DOM access; persistent job queue with URL deduplication and WAF/CAPTCHA detection.}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{DocGPT --- RAG Document Assistant} $|$ \href{https://github.com/atinsharma24/docgpt}{\textit{github.com/atinsharma24/docgpt}}}{}
+          \resumeItemListStart
+            \resumeItem{\emph{Stack: React 19, Python (Django), ChromaDB, OpenAI, Docker}}
+            \resumeItem{Built an end-to-end Django RAG pipeline: PyPDF2 overlap chunking, local all-MiniLM-L6-v2 embeddings (zero API cost), ChromaDB cosine retrieval, and GPT-4o-mini generation.}
+            \resumeItem{Containerised Django + ChromaDB as independent Docker services for reproducible local deployment.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Focus Stack:}{ Next.js, React 19, TypeScript, Node.js, Python/FastAPI, PostgreSQL, Redis, LLM Agents, Docker} \\
+     \textbf{Languages \& Frontend:}{ JavaScript/TypeScript, Python, SQL, Java $|$ React (v18/19), Next.js, React Native, Redux Toolkit, TailwindCSS} \\
+     \textbf{Backend \& Data:}{ Node.js, Express, NestJS, FastAPI, Django, PostgreSQL, Supabase, Redis, MongoDB, pgvector, ChromaDB, Pinecone, WebSockets} \\
+     \textbf{AI/LLM:}{ OpenAI, Google Gemini, Groq, Anthropic Claude, RAG Pipelines, LangChain.js/LangGraph, Sentence Transformers, Prompt Engineering, MCP, Claude Code, Codex} \\
+     \textbf{DevOps \& Tools:}{ Docker, GitHub Actions, Vercel, AWS (S3, DynamoDB), Git, Postman, Socket.IO, Razorpay SDK, Puppeteer}
+    }}
+ \end{itemize}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Vellore Institute of Technology}{2026}
+      {B.Tech in Computer Science and Engineering --- Focus: Full-Stack Development \& AI Systems}{Vellore, India}
+  \resumeSubHeadingListEnd
+
+\end{document}

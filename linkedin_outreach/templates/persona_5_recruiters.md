@@ -41,7 +41,7 @@ Full-stack product engineer, founding-team background at an AI-first startup. On
 Mid-level Backend, Full-Stack, or AI Engineering role — conversational AI, document intelligence, or compliance automation domain — at [Company Name] specifically.
 
 **Compensation:** ₹15L–₹18L
-**Availability:** Immediate
+**Availability:** 15-day notice
 **Location:** Open to Bangalore; remote-first preferred
 
 If any of your open roles match this profile, I'd like to be in the process. Happy to do a technical screen at short notice.
@@ -61,7 +61,7 @@ Hi [Name] — quick follow-up on my previous message.
 
 If the timing on open roles has changed or a relevant position has come up, I'm still very interested in [Company Name]. I'm actively interviewing and moving fast — won't be available indefinitely.
 
-Single line summary for easy routing: **LangGraph + RAG + MERN, 1 year production AI systems, immediate joiner, ₹15–18L band.**
+Single line summary for easy routing: **LangGraph + RAG + MERN, ~14 months production AI systems, 15-day notice, ₹18–24L band.**
 
 Happy to clear any technical bar quickly.
 ---

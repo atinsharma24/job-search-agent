@@ -33,7 +33,7 @@ def build_base_answer_bank(fact_sheet_path: Path, logistics_path: Path) -> dict:
     months = 0
     for experience in fact_sheet.get("experience", []):
         months = max(months, int(experience.get("duration_months", 0) or 0))
-    years_experience = max(1, math.ceil(months / 12)) if months else 1
+    years_experience = 0  # Fresher — always submit as 0 YOE
 
     expected_min = candidate["salary_expectation_inr_lpa"]["min"]
     expected_max = candidate["salary_expectation_inr_lpa"]["max"]
@@ -62,7 +62,7 @@ def build_base_answer_bank(fact_sheet_path: Path, logistics_path: Path) -> dict:
         "expected_salary_max": str(expected_max),
         "expected_salary_range": f"{expected_min}-{expected_max}",
         "expected_salary_label": logistics["compensation"]["expected_ctc_label"],
-        "current_ctc": "0",
+        "current_ctc": str(candidate.get("current_ctc_inr_lpa", 0) or 0),
         "years_experience": str(years_experience),
         "work_authorized": "Yes",
         "requires_sponsorship": "No",
@@ -225,9 +225,28 @@ def fill_radio_groups(
         container = containers.nth(index)
         if not container.is_visible():
             continue
-        answer = answer_mapper(clean_label(container.inner_text()))
+        label_text = container.evaluate("""el => {
+            const legend = el.querySelector('legend');
+            if (legend && legend.innerText.trim()) return legend.innerText;
+            
+            let sibling = el.previousElementSibling;
+            while (sibling) {
+                if (sibling.innerText && sibling.innerText.trim()) {
+                    return sibling.innerText;
+                }
+                sibling = sibling.previousElementSibling;
+            }
+            
+            if (el.parentElement) {
+                return el.parentElement.innerText;
+            }
+            return el.innerText;
+        }""")
+        answer = answer_mapper(clean_label(label_text))
         if answer is None:
-            continue
+            answer = answer_mapper(clean_label(container.inner_text()))
+            if answer is None:
+                continue
         options = container.locator(option_selector)
         for option_index in range(options.count()):
             option = options.nth(option_index)

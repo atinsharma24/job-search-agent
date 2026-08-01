@@ -8,7 +8,7 @@ Agra, Uttar Pradesh, India — Open to Remote & Relocation
 
 ## PROFESSIONAL SUMMARY
 
-Founding engineer with 12 months of production experience building AI-powered full-stack systems at OpenBiz Software India Pvt Ltd, where I was one of three engineers who shipped two commercial products from zero to 1,000+ active Indian SMB users. I specialize in MERN + AI stacks — TypeScript, Node.js, Python, PostgreSQL — with hands-on production delivery across conversational AI (VyaparGPT, a WhatsApp-native LLM assistant for 40+ SMB pilot businesses), RAG pipelines (Nimbus on pgvector + Groq; DocGPT on ChromaDB), and resilient DevOps (GitHub Actions + Vercel CI/CD reducing deployment cycle time by 30%). My technical scope spans full-stack web, LLM orchestration with dual-model provider-fallback (OpenAI ↔ Gemini), idempotent payment billing, and autonomous multi-agent web automation. I am an immediate joiner (0-day notice) targeting 15L+ (negotiable, no hard ceiling) in founding-stage or early-product roles where I can own the stack end-to-end. VIT Vellore, B.Tech Computer Science Engineering (Coursework Completed: Nov 2025, Degree Conferred: May 2026).
+Full-stack engineer with ~14 months of production experience across two startups. Currently Full-Stack Developer at **AGI Ready Inc.** (Jun 2026 – present), a Delaware-incorporated AI-native development studio, building client products in Next.js/TypeScript/Node.js and operating an AI-native delivery workflow with Claude Code and Codex. Previously founding engineer at OpenBiz Software India Pvt Ltd, where I was one of three engineers who shipped two commercial products from zero to 1,000+ active Indian SMB users. I specialize in MERN + AI stacks — TypeScript, Node.js, Python, PostgreSQL — with hands-on production delivery across conversational AI (VyaparGPT, a WhatsApp-native LLM assistant for 40+ SMB pilot businesses), RAG pipelines (Nimbus on pgvector + Groq; DocGPT on ChromaDB), and resilient DevOps (GitHub Actions + Vercel CI/CD reducing deployment cycle time by 30%). My technical scope spans full-stack web, LLM orchestration with dual-model provider-fallback (OpenAI ↔ Gemini), idempotent payment billing, and autonomous multi-agent web automation. I am on a 15-day notice period targeting 18L+ (negotiable) in founding-stage or early-product roles where I can own the stack end-to-end. VIT Vellore, B.Tech Computer Science Engineering (Coursework Completed: Nov 2025, Degree Conferred: May 2026).
 
 ---
 
@@ -24,6 +24,22 @@ Founding engineer with 12 months of production experience building AI-powered fu
 ---
 
 ## PROFESSIONAL EXPERIENCE
+
+### AGI Ready Inc. | Full-Stack Developer | Jun 2026 – Present | Remote / Delaware, US
+
+AI-native development studio building custom AI products, automation, and agent systems for clients. Small team, reporting directly to the founder/CEO.
+
+> **Scope-derived.** The bullets below describe contracted responsibilities, not retrospective achievement claims — no shipped-outcome metrics are recorded yet. Replace with verified accomplishments as they land.
+>
+> **NDA:** one-way NDA plus a 12-month non-compete/non-solicitation. Never disclose client names, product specifics, or commercial terms — describe by stack, architecture pattern, and ownership scope only.
+
+- **Full-stack feature delivery** — build and ship product features end-to-end in **Next.js, TypeScript, and Node.js** across multiple concurrent client products, working directly with the founder and a tight delivery team.
+- **API and integration architecture** — design and integrate service APIs spanning third-party platforms, AI/LLM provider APIs, webhook receivers, and asynchronous background workflows.
+- **AI-native development practice** — operate with **Claude Code and Codex** as primary development tools: decomposing problems, directing agentic tooling with architectural judgement, and reviewing generated code against production standards.
+- **Production ownership** — debug, deploy, and own production systems end-to-end.
+- **Ambiguity-to-delivery** — break complex, loosely-specified client problems into scoped deliverables and ship iteratively.
+
+---
 
 ### OpenBiz Software India Pvt Ltd | Founding Engineer | Jun 2025 – May 2026 | Remote / Bangalore
 
@@ -132,9 +148,9 @@ Secondary & Senior Secondary
 
 | | |
 |---|---|
-| **Availability** | Immediate Joiner — 0-day notice period |
+| **Availability** | 15-day notice period |
 | **Work Mode** | Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai |
-| **Expected CTC** | 15L+ (negotiable, no hard ceiling) — INR |
+| **Expected CTC** | 18L+ strict floor (18-24 LPA, negotiable) — INR |
 | **Work Authorization** | Indian Citizen — no sponsorship required |
 | **GitHub** | [github.com/atinsharma24](https://github.com/atinsharma24/) |
 | **LinkedIn** | [linkedin.com/in/atinsharma24](https://www.linkedin.com/in/atinsharma24/) |

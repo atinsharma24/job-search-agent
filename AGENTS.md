@@ -38,8 +38,9 @@ scripts/setup_browser_sessions.sh   # One-time login helper
 
 ## Absolute Rules
 
-- Salary: 15L+ (negotiable, no hard ceiling). Current CTC = 0.
-- Notice period: always 0 days / Immediate Joiner.
+- Salary: quote 18-24 LPA on all forms; 18L is the stated floor. Current CTC = 11.2 LPA.
+- Private walk-away minimum is 15 LPA — NEVER disclose it, never auto-fill it, never put it in a message. Human-led negotiation only.
+- Notice period: always 15 days.
 - Location: Agra, Uttar Pradesh, India — unless the form asks for preferred work location (Remote).
 - GitHub: https://github.com/atinsharma24/
 - LinkedIn: https://www.linkedin.com/in/atinsharma24/
@@ -47,6 +48,7 @@ scripts/setup_browser_sessions.sh   # One-time login helper
 - Always run `--dry-run` on the first attempt at any new portal.
 - Always log results to `active_application_context/job_applications_tracker.md`.
 - For LinkedIn outreach notes: always remove all hyphens ("-" or "--") and any mentions of salary so the messages do not look AI-written.
+- Strictly do not apply to any internships or intern roles, except in FAANG-level companies (Google, Apple, Meta, Amazon, Microsoft, Netflix).
 
 ## Browser Sessions (First-Time Setup)
 

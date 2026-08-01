@@ -1,7 +1,7 @@
 # AI-Integrated Full Stack Developer
 
 **Profile:**
-Full-Stack Product Engineer with founding-team experience bridging the gap between sophisticated AI models and production web architectures. Specialized in MERN stack development and seamless integration of LLM APIs (OpenAI, Gemini, Groq) to build "AI-first" user experiences. Proven track record in reducing API latency by 40% and accelerating deployment cycles by 30% through TypeScript-driven microservices. Target keywords: Python, Django.
+Full-Stack Product Engineer with founding-team experience bridging the gap between sophisticated AI models and production web architectures. Specialized in MERN stack development and seamless integration of LLM APIs (OpenAI, Gemini, Groq) to build "AI-first" user experiences. Proven track record in reducing API latency by 40% and accelerating deployment cycles by 30% through TypeScript-driven microservices. Target keywords: ServiceNow, AI Integration.
 
 **OpenBiz (Jun 2025 – May 2026) | Founding Engineer | Remote / Bangalore**
 
@@ -18,8 +18,8 @@ Full-Stack Product Engineer with founding-team experience bridging the gap betwe
 - **DocGPT**: Django RAG pipeline — PyPDF2 chunking, local all-MiniLM-L6-v2 embeddings (zero API cost), ChromaDB retrieval, GPT-4o-mini generation. Dockerized.
 
 **Tech Focus:**
-React 19, TypeScript, Node.js, Next.js, OpenAI, Gemini, PostgreSQL, Vercel, Docker, Python, Django, MERN.
+React 19, TypeScript, Node.js, Next.js, OpenAI, Gemini, PostgreSQL, Vercel, Docker, ServiceNow, MERN Stack, AI Integration.
 
 **Patterns:** WebSocket (Socket.IO), REST, Webhook Validation (HMAC-SHA256), N+1 Query Optimization, Vector Similarity Search (cosine), Provider-Agnostic LLM Layers, Idempotent Event Processing.
 
-**Profile Snapshot:** Immediate Joiner · Remote-first · 15L+ (negotiable) · Indian Citizen · github.com/atinsharma24
+**Profile Snapshot:** 15-day notice · Remote-first · 18L+ (negotiable) · Indian Citizen · github.com/atinsharma24

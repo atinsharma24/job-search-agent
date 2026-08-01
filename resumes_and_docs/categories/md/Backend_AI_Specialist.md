@@ -3,6 +3,13 @@
 **Profile:**
 Backend Engineer specializing in AI-driven data systems, RAG pipeline architecture, and high-performance API development. Expert in Python (Django/FastAPI) and Node.js for building secure, scalable AI backends with advanced retrieval logic and semantic search. Experienced in optimizing database queries and managing large-scale vector embeddings for document intelligence and business automation.
 
+**AGI Ready Inc. (Jun 2026 – Present) | Full-Stack Developer | Remote / Delaware, US**
+
+**Current Role Highlights:**
+- Architect and integrate backend service APIs across third-party platforms, AI/LLM provider APIs, webhook receivers, and asynchronous background workflows for multiple concurrent client products.
+- Build and ship full-stack features in **Node.js, TypeScript, and Next.js**; own production systems end-to-end through debugging, deployment, and release.
+- Operate an AI-native development workflow with **Claude Code and Codex**, directing agentic tooling with architectural judgement and reviewing generated code against production standards.
+
 **OpenBiz (Jun 2025 – May 2026) | Founding Engineer | Remote / Bangalore**
 
 **Key Experience Highlights:**
@@ -21,4 +28,4 @@ Python, FastAPI, Django, Node.js, PostgreSQL, pgvector, ChromaDB, OpenAI, LangCh
 
 **Patterns:** WebSocket (Socket.IO), REST, Webhook Validation (HMAC-SHA256), N+1 Query Optimization, Vector Similarity Search (cosine), Provider-Agnostic LLM Layers, Idempotent Event Processing.
 
-**Profile Snapshot:** Immediate Joiner · Remote-first · 15L+ (negotiable) · Indian Citizen · github.com/atinsharma24
+**Profile Snapshot:** 15-day notice · Remote-first · 18L+ (negotiable) · Indian Citizen · github.com/atinsharma24

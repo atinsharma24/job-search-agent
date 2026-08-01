@@ -30,6 +30,7 @@ EXIT_LOGIN_REQUIRED = 12
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
 LOGISTICS_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "06_logistics_mapping.json"
+RESUME_PATH = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "2026New1.pdf"
 ARTIFACT_DIR = VAULT_ROOT / "output" / "playwright"
 LOG_DIR = VAULT_ROOT / "logs"
 WELLFOUND_DOMAINS = ("wellfound.com", "angel.co")
@@ -42,6 +43,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--application-url", required=True)
     parser.add_argument("--resume-path", required=True)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--cdp-url", default="http://localhost:9222")
     return parser.parse_args()
 
 
@@ -72,13 +74,19 @@ def detect_status_from_text(text: str) -> Optional[int]:
 
 
 def save_artifact(page, name: str) -> None:
-    ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
-    page.screenshot(path=str(ARTIFACT_DIR / name), full_page=False)
+    try:
+        ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
+        page.screenshot(path=str(ARTIFACT_DIR / name), full_page=False, timeout=5000)
+    except Exception as exc:
+        print(f"[Warning] Failed to save screenshot {name}: {exc}")
 
 
 def save_dry_run_state(page, name: str) -> None:
-    LOG_DIR.mkdir(parents=True, exist_ok=True)
-    page.screenshot(path=str(LOG_DIR / name), full_page=False)
+    try:
+        LOG_DIR.mkdir(parents=True, exist_ok=True)
+        page.screenshot(path=str(LOG_DIR / name), full_page=False, timeout=5000)
+    except Exception as exc:
+        print(f"[Warning] Failed to save dry run screenshot {name}: {exc}")
 
 
 WELLFOUND_MAPPING = [
@@ -281,12 +289,16 @@ def main() -> int:
     profile_dir.mkdir(parents=True, exist_ok=True)
 
     with sync_playwright() as playwright:
-        context = playwright.chromium.launch_persistent_context(
-            user_data_dir=str(profile_dir),
-            headless=headless,
-            channel=os.environ.get("WELLFOUND_PLAYWRIGHT_CHANNEL") or None,
-            viewport={"width": 1440, "height": 1200},
-        )
+        if args.cdp_url:
+            browser = playwright.chromium.connect_over_cdp(args.cdp_url, no_defaults=True)
+            context = browser.contexts[0] if browser.contexts else browser.new_context()
+        else:
+            context = playwright.chromium.launch_persistent_context(
+                user_data_dir=str(profile_dir),
+                headless=headless,
+                channel=os.environ.get("WELLFOUND_PLAYWRIGHT_CHANNEL") or None,
+                viewport={"width": 1440, "height": 1200},
+            )
         try:
             page = context.pages[0] if context.pages else context.new_page()
             page.goto(args.application_url, wait_until="domcontentloaded", timeout=60000)

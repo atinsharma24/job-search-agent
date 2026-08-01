@@ -65,7 +65,7 @@ Task:
 3. Read $VAULT_PATH/core_vault/06_logistics_mapping.json for logistics answers.
 4. Navigate to: $url
 5. Fill every visible form field using ONLY values from the two vault files above.
-   - Salary fields: use 15 LPA (min); no hard ceiling — negotiable. Current CTC = 0.
+   - Salary fields: use 16 LPA (min); no hard ceiling — negotiable. Current CTC = 0.
    - Notice period: 0 days / Immediate Joiner.
    - For open-ended text questions, read $VAULT_PATH/core_vault/02_situational_qa_library.md and use the 100-word answer that best fits the question.
 6. Upload resume: $RESUME_PATH
@@ -74,7 +74,7 @@ Task:
 9. Submit only after all fields are filled from vault data.
 10. Report: applied / blocked / error with reason.
 
-Safety: Never invent data. Never enter a salary below 15 LPA. Never claim experience beyond what is in the fact sheet.
+Safety: Never invent data. Never enter a salary below 16 LPA. Never claim experience beyond what is in the fact sheet.
 PROMPT
 )
 
@@ -115,6 +115,7 @@ if [[ "$APPLICATION_URL" == *"wellfound.com"* || "$APPLICATION_URL" == *"angel.c
   python3 "$WELLFOUND_RUNNER" \
     --application-url "$APPLICATION_URL" \
     --resume-path "$RESUME_PATH" \
+    --cdp-url "http://localhost:9222" \
     ${DRY_RUN_FLAG}
   PLAYWRIGHT_EXIT=$?
   set -e
