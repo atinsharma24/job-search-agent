@@ -267,7 +267,10 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
                         if (l) lab = (l.innerText || '').trim();
                     }
                     if (!lab && r.parentElement) lab = (r.parentElement.innerText || '').trim();
-                    return {id: r.id || '', label: lab};
+                    // Some LinkedIn radios carry no label element at all; the value
+                    // attribute ("Yes"/"No") is then the only usable text.
+                    if (!lab) lab = (r.getAttribute('value') || '').trim();
+                    return {id: r.id || '', label: lab, value: r.getAttribute('value') || ''};
                 });
                 return {question, options: opts};
             }""")
@@ -275,22 +278,27 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
             question = clean_label(info.get("question", ""))
             options = info.get("options") or []
             if not question or not options:
+                print(f"  [radio] group {group!r}: no question or options resolved", flush=True)
                 continue
 
-            # Strip the option labels out of the captured block so the question reads
-            # as a question rather than "Question? Yes No".
+            # Strip option labels and validation chrome out of the captured block.
+            # Anchoring these to the END of the string failed whenever LinkedIn
+            # appended "This field is required" after the options.
+            question = re.sub(r"this field is required\.?", "", question, flags=re.I)
             for opt in options:
                 lab = (opt.get("label") or "").strip()
-                if lab:
-                    question = re.sub(rf"\s*\b{re.escape(lab)}\b\s*$", "", question).strip()
+                if lab and len(lab) < 30:
+                    question = re.sub(rf"\b{re.escape(lab)}\b", " ", question)
+            question = clean_label(question)
 
             answer = answer_mapper(question)
             if not answer:
+                print(f"  [radio] no answer for {question[:80]!r}", flush=True)
                 continue
 
             wanted = answer.strip().casefold()
             for opt in options:
-                lab = (opt.get("label") or "").strip().casefold()
+                lab = ((opt.get("label") or opt.get("value") or "")).strip().casefold()
                 if not lab:
                     continue
                 if lab == wanted or wanted in lab or lab in wanted:
@@ -305,6 +313,7 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
                             break
                     filled += 1
                     seen_groups.add(group)
+                    print(f"  [radio] {answer!r} <- {question[:70]!r}", flush=True)
                     break
         except Exception:
             continue

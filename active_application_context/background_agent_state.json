@@ -357,6 +357,7 @@
     "symphonyai:full-stack-engineer",
     "talent-authority-partners:product-engineer-ai",
     "talent-support-india:fullstack-developer",
+    "talentgigs:agentic-ai-engineer",
     "talentgigs:lead-ai-engineer",
     "talentgigs:machine-learning-engineer",
     "tata-consultancy-services:full-stack-engineer",
@@ -383,6 +384,7 @@
     "vyntrapro-innovations-pvt-ltd:fullstack-developer-react-js-node-js-aws-docker",
     "wenger-watson:full-stack-engineer",
     "wishwish:frontend-engineer-ios-unity",
+    "wtw:artificial-intelligence-engineer",
     "yakbos-technologies-private-limited:founding-co-founder-opportunity-ai-deep-technology-bengaluru-preferred-globally-open",
     "yminds-ai:full-stack-developer-with-gen-ai-3-to-5-years-of-experience",
     "yminds-ai:senior-frontend-developer-react-nextjs-microfrontend-immediate-joiner-remote-upto-16lpa",
@@ -505,6 +507,16 @@
       "reason": "max_attempts_exhausted (error:1)",
       "at": "2026-08-01T18:15:08",
       "url": "https://www.linkedin.com/jobs/view/4447798010/"
+    },
+    "wtw:artificial-intelligence-engineer": {
+      "reason": "max_attempts_exhausted (error:1)",
+      "at": "2026-08-01T18:16:23",
+      "url": "https://www.linkedin.com/jobs/view/4447128412/"
+    },
+    "talentgigs:agentic-ai-engineer": {
+      "reason": "max_attempts_exhausted (error:1)",
+      "at": "2026-08-01T18:17:02",
+      "url": "https://www.linkedin.com/jobs/view/4447455959/"
     }
   },
   "attempts": {
@@ -575,14 +587,14 @@
       "url": "https://www.linkedin.com/jobs/view/4447798010/"
     },
     "wtw:artificial-intelligence-engineer": {
-      "count": 1,
-      "last": "2026-08-01T18:09:34",
+      "count": 2,
+      "last": "2026-08-01T18:16:23",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447128412/"
     },
     "talentgigs:agentic-ai-engineer": {
-      "count": 1,
-      "last": "2026-08-01T18:10:13",
+      "count": 2,
+      "last": "2026-08-01T18:17:02",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447455959/"
     }
