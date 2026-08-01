@@ -125,6 +125,8 @@ _VALUE_RULES = (
     ("grad_year", r"(year of|passing|graduation) ?(year|passout)?", "grad_year"),
     ("current_designation", r"current\s+(\w+\s+){0,2}(designation|title|role|position)|(designation|job title)\\b", "current_designation"),
     ("skills", r"\b(key |primary |core )?skills\b|technolog(y|ies) you", "primary_skills"),
+    ("english_level", r"(level of )?proficiency in english|english (proficiency|level|fluency)",
+     "english_proficiency"),
 )
 
 # "years of experience WITH <tech>" — answered honestly per technology rather than

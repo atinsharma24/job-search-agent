@@ -450,6 +450,10 @@ def discover_and_apply(page, apply_page, context, search_url: str, state: dict, 
                         applied_count[0] += 1
                     elif outcome is vs.Outcome.ALREADY_APPLIED:
                         append_tracker(company, title, navigate_url, "ALREADY_APPLIED ⏭️", tracker_note)
+                    elif outcome is vs.Outcome.BLOCKED_PERMANENT:
+                        # Not a failure — we declined to answer rather than guess.
+                        append_tracker(company, title, navigate_url,
+                                       f"BLOCKED ⚠️ ({status})", tracker_note)
                     else:
                         append_tracker(company, title, navigate_url, f"FAILED ({status})", tracker_note)
 

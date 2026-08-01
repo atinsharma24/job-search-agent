@@ -384,6 +384,7 @@ def build_answer_bank(**overrides) -> dict:
         "degree": education.get("degree", ""),
         "university": education.get("institution", ""),
         "linkedin_profile": c["linkedin"],
+        "english_proficiency": "Professional",
         "grad_year": str((facts.get("education") or [{}])[0].get("end_date", "") or "")[:4],
         "current_designation": _current_title(),
         "primary_skills": ", ".join(
