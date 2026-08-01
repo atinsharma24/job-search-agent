@@ -226,6 +226,7 @@
     "elife-transfer:forward-deployed-ai-engineer-with-verification",
     "eliterecruitments:full-stack-engineer",
     "emmvee-technologies:full-stack-engineer",
+    "encharge-ai:principal-ai-compiler-engineer",
     "ericsson:junior-ai-agent-developer",
     "exicom:fullstack-developer",
     "exl:full-stack-engineer-with-gen-ai",
@@ -257,6 +258,7 @@
     "innoterra-india:full-stack-platform-engineer-python-react-native",
     "innova-esi:agentic-ai-engineer-python-llm-rag-langchain",
     "insettini:founding-full-stack-engineer",
+    "insight-global:google-cloud-data-engineer-immediate-joiners",
     "invene:junior-data-engineer",
     "invictron:ai-ml-engineer",
     "itc:genai-llm-engineer",
@@ -283,6 +285,7 @@
     "legal-experts-ai:full-stack-developer",
     "legal-experts-ai:software-developer-20-hr-remote",
     "luxoft-india:senior-python-ai-engineer-langgraph-mcp-must-immediate-joiner",
+    "mantriai:ml-llm-ops-software-engineer",
     "mastech-digital:ai-engineer-agentic-ai-and-genai",
     "mindrift:freelance-full-stack-web-app-developer",
     "mindroit-technologies:full-stack-developer-react-js-node-js-laravel",
@@ -456,6 +459,11 @@
       "reason": "blocked:unanswerable_question",
       "at": "2026-08-01T18:01:09",
       "url": "https://www.linkedin.com/jobs/view/4445516986/"
+    },
+    "mantriai:ml-llm-ops-software-engineer": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T18:05:14",
+      "url": "https://www.linkedin.com/jobs/view/4447780207/"
     }
   },
   "attempts": {

@@ -66,6 +66,10 @@ _HARD_YES = (
     ("relocate_india", r"willing to relocate|open to relocat|comfortable relocat"),
     ("work_mode", r"comfortable.*(remote|wfo|work(ing)? from (the )?\w*\s*office|hybrid|onsite|in[- ]person|from office)|willing to work from"),
     ("terms", r"agree.*(terms|conditions|privacy|policy)|read and understood"),
+    # Consenting to be evaluated is what submitting an application already means.
+    # Same class as agreeing to terms; not a commitment beyond the act of applying.
+    ("data_consent", r"consent to .{0,60}(process|share|store|use).{0,40}(data|profile|"
+                     r"information|application)|processing (of )?(my|your) (personal )?data|consent to be contacted"),
     ("notice_ok", r"can you join|able to join|available to join"),
     # --- objectively verifiable facts about the candidate ---
     ("has_laptop", r"(own|personal).*(laptop|computer|system)|have.*laptop"),
