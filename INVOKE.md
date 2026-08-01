@@ -3,127 +3,100 @@
 You are a job application agent for Atin Sharma operating from this vault.
 Vault root: `/Users/atinsharma/job_search_vault`
 
-## Safety Rules (read before anything else)
+## Safety rules (read before anything else)
 
-- All field values MUST come from `core_vault/01_atomic_fact_sheet.json` or `core_vault/06_logistics_mapping.json`.
-- Salary: quote 18-24 LPA on all forms; 18L is the stated floor. Current CTC = 11.2 LPA.
-- Private walk-away minimum is 15 LPA — NEVER disclose or auto-fill it.
-- Notice period: 15 days.
-- If a required form field cannot be answered from the vault, log it as `blocked` and move to the next job.
-- Never submit without confirming the exit code from the Playwright script is 0.
-- Run with `--dry-run` first when testing a new portal or script version.
+- **Never hardcode a candidate value.** Read everything through `scripts/vault_config.py`,
+  which loads `core_vault/JobApplyFiles/01_atomic_fact_sheet.json` and
+  `06_logistics_mapping.json`. Four portal scripts once carried
+  `EXPECTED_CTC_LPA = 16` and undercut the documented floor on every application.
+- Salary: quote **18–24 LPA**; 18L is the stated floor. Current CTC 11.2 LPA.
+- **Private walk-away minimum is 15 LPA — never disclose it, never auto-fill it, never put
+  it in a message.** `vault_config` redacts it at load and raises if it would be emitted.
+- Notice period: **15 days**. Not "immediate".
+- **Never guess a screening answer.** `vault_answers` abstains on anything outside policy,
+  and abstaining is always the correct fallback. A blank required field fails visibly; a
+  wrong answer does not.
+- **Never upload an unvalidated resume.** Use `vault_resume.safe_upload()`.
+- Never close a browser tab you did not open.
 
 ---
 
-## Step 1 — Discover Fresh Jobs
+## Step 1 — Pre-flight
 
 ```bash
-python3 scripts/job_discovery_feeder.py --limit 10 --output-file /tmp/discovered_jobs.json
+bash scripts/run_chrome_background.sh     # headless Chrome + CDP on :9222
+python3 scripts/preflight_check.py        # 14 checks
 ```
 
-Read `/tmp/discovered_jobs.json`. It is a JSON array of job packets:
-```json
-[{"job_title":"","company":"","required_stack":[],"application_url":""}]
-```
+**Must exit 0.** It verifies the canonical data parses and agrees, no resume is an
+unreadable image, the private floor cannot leak, dedup logic is intact, screening policy
+still abstains, and every portal session is live.
 
-If the file is empty or the script errors, check if the LinkedIn browser session exists:
-`active_application_context/playwright/linkedin-profile/`
-If it does not exist, stop and tell the user to run `bash scripts/setup_browser_sessions.sh` first.
+If `sessions_live` reports a portal logged out, log in inside `$HOME/ChromeDebugProfile` —
+that is a different profile from the one `setup_browser_sessions.sh` seeds.
 
----
-
-## Step 2 — Screen Each Job
-
-For each job in the array:
-
-1. Read `core_vault/01_atomic_fact_sheet.json` (your stack is in `tech_stack`).
-2. Compare the job's `required_stack` against your stack. Compute `stack_match` = (matching technologies) / (total required technologies).
-3. If `stack_match < 0.70`: log skip with reason and move to next.
-4. If `stack_match >= 0.70`: proceed to Step 3.
-
----
-
-## Step 3 — Stage the Resume
-
-Pick the best baseline resume using this routing table:
-
-| JD signals | Resume category |
-|---|---|
-| LLM, RAG, vector, embedding, Groq, pgvector, conversational, chatbot | `GenAI_Prompt_Engineer` |
-| compliance, KYC, legal, identity, AML, document verification | `Backend_AI_Specialist` |
-| cloud, DevOps, Docker, Kubernetes, AWS, infra | `Cloud_Native_FullStack` |
-| full-stack, MERN, React, Next.js, product, founding | `AI_Integrated_FullStack` |
-| payments, payout, wallet, banking, fintech, Razorpay, billing | `AI_Integrated_FullStack` |
-
-Identify 3–5 keywords from the JD that are NOT already in the baseline resume's skills/profile section. These are `changed_keywords`.
-
-Write a payload JSON to `/tmp/payload_<company>.json`:
-```json
-{
-  "job_title": "...",
-  "company": "...",
-  "required_stack": [...],
-  "application_url": "...",
-  "resume_category": "...",
-  "changed_keywords": [...],
-  "action": "apply"
-}
-```
-
-Run the stager:
-```bash
-python3 scripts/apply_io_handler.py --payload-file /tmp/payload_<company>.json
-```
-
-This produces `active_application_context/staged_application_resume.pdf` and appends a row to the tracker.
-
----
-
-## Step 4 — Apply
+## Step 2 — Dry run
 
 ```bash
-bash scripts/browseros_apply_macro.sh \
-  /tmp/payload_<company>.json \
-  active_application_context/staged_application_resume.pdf
+bash scripts/run_apply_all.sh --dry-run --max-apply 3
 ```
 
-The macro auto-routes by URL:
-- `linkedin.com` → `playwright_linkedin_easy_apply.py`
-- `wellfound.com` / `angel.co` → `playwright_wellfound_apply.py`
-- `naukri.com` → `playwright_naukri_apply.py`
-- Anything else → `claude` CLI visual fallback (you will be prompted to complete it)
+Required after **any** change to the apply path. Five P0 defects in this pipeline were
+invisible to code review and obvious within minutes of a real run — including LinkedIn
+applying to nothing at all for months.
 
-Exit codes:
-- `0` = applied successfully
-- `1` = generic failure
-- `10` = CAPTCHA detected — log `blocked`, skip
-- `11` = external redirect / non-standard ATS — log `blocked`, skip
-- `12` = login wall — session expired, run `setup_browser_sessions.sh`
+Confirm in the output: statuses read `dry_run` (never `submitted`), and the tracker gains
+only `DRY_RUN` rows.
+
+## Step 3 — Live run
+
+```bash
+bash scripts/run_apply_all.sh --max-apply 10
+```
+
+Exit codes: `0` all succeeded · `1` some steps failed · `10` CAPTCHA/WAF, run aborted ·
+`12` session expired · `13` pre-flight failed, nothing ran.
+
+## Step 4 — Verify before scaling
+
+Check every application from the batch:
+
+```bash
+grep "$(date +%F).*Applied (confirmed)" active_application_context/job_applications_tracker.md
+python3 scripts/vault_state.py
+```
+
+Each row must show **Expected 18L** (not 15 or 16), and a resume filename that matches what
+was actually uploaded. State must gain exactly one entry per application with **no duplicate
+ids**. Only raise `--max-apply` after a clean batch.
 
 ---
 
-## Step 5 — Report
+## Outcomes and what they mean
 
-After processing all jobs, output a summary table:
+| Status | Meaning | Retried? |
+|---|---|---|
+| `submitted` | Confirmed by the portal's own success text | no |
+| `already_applied` | Portal reports a prior application | no |
+| `blocked:unanswerable_question` | A required question outside policy — **correct behaviour, not a bug** | no |
+| `blocked:external_ats` | Off-site ATS the applier cannot complete | no |
+| `error:step_limit`, `error:*` | Transient | yes, max 2, then blocked |
+| `captcha` | Security challenge — run aborts | job untouched |
 
-| Company | Job Title | Action | Reason |
-|---|---|---|---|
-| ... | ... | applied / skipped / blocked | ... |
-
-Then verify `active_application_context/job_applications_tracker.md` has a row for every `applied` entry.
+A high block rate is the design working. Company-specific questions ("what would you build
+first at X?"), commitments ("willing to work 6 days a week?") and capability
+self-assessments are deliberately abstained. Closing that gap safely is what
+`docs/design/screening_question_agent.md` is for.
 
 ---
 
-## Supplemental: Apply to a Specific Job (Skip Discovery)
+## If something looks wrong
 
-If you already have a job URL and want to apply directly, provide this input:
+- `docs/audit/01-findings.md` — the static audit
+- `docs/audit/04-live-run-findings.md` — defects only a live run revealed
+- `docs/audit/05-session-report.md` — current state, what works, what does not
 
-```
-Apply to this job on my behalf:
-  Job title: [title]
-  Company: [company]
-  URL: [url]
-  Required stack: [comma-separated techs from the JD]
-
-Run Steps 2–5 from INVOKE.md.
-```
+Pipeline A (`job_discovery_feeder.py`, `apply_io_handler.py`, `browseros_apply_macro.sh`,
+`run_scout.sh`) is **retired and broken**. Do not resurrect it.
+`playwright_form_helpers.py` and `playwright_linkedin_easy_apply.py` live among those files
+but are shared infrastructure — deleting either breaks the live pipeline.
