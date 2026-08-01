@@ -28,6 +28,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import vault_config as vc
 import vault_answers as va
 from vault_resume import resume_for_job, validate_resume
+import vault_state as vs
+import vault_browser as vb
 
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH  = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
@@ -164,7 +166,7 @@ def log(msg: str):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def load_state() -> dict:
+def _legacy_load_state() -> dict:
     if STATE_PATH.exists():
         return json.loads(STATE_PATH.read_text())
     return {"seen_job_ids": [], "applied_job_ids": [], "blocked_jobs": []}
@@ -841,6 +843,8 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
 
         return "error:step_limit"
 
+    except vb.SecurityChallenge:
+        raise  # must reach __main__ and abort the run, never be swallowed
     except Exception as exc:
         return f"error:{exc}"
 
@@ -945,8 +949,9 @@ def search_and_apply_queued(page, apply_page, context, state: dict, answer_bank:
         if applied_count[0] >= max_apply:
             break
         job_id = job["id"]
-        if job_id in state.get("applied_job_ids", []):
-            log(f"  ⏭  SKIP (already applied): {job['company']} — {job['role']}")
+        skip, why = state.should_skip(job_id)
+        if skip:
+            log(f"  ⏭  SKIP ({why}): {job['company']} — {job['role']}")
             continue
 
         # If direct URL, use it; else search
@@ -977,6 +982,10 @@ def search_and_apply_queued(page, apply_page, context, state: dict, answer_bank:
             if not target_url:
                 log(f"  ❌ Could not find URL for: {job['company']} — {job['role']}")
                 append_tracker(job["company"], job["role"], "", "FAILED (no URL found)", "Job not listed or search mismatch")
+                # Previously recorded nothing here, so this path re-ran on every
+                # search URL and every future run — 89 duplicate tracker rows.
+                vs.record_outcome(job_id, vs.Outcome.BLOCKED_PERMANENT, reason="no_url_found")
+                state.record(job_id, vs.Outcome.BLOCKED_PERMANENT, reason="no_url_found")
                 continue
         else:
             log(f"  ⏭  SKIP (no URL or search): {job['company']}")
@@ -986,27 +995,30 @@ def search_and_apply_queued(page, apply_page, context, state: dict, answer_bank:
         log(f"  URL: {target_url}")
 
         try:
-            apply_page.goto(target_url, wait_until="domcontentloaded", timeout=30000)
+            vb.guarded_goto(apply_page, target_url, timeout=30000,
+                            label=f"{job['company']} {job['role']}")
             apply_page.wait_for_timeout(3000)
             queued_resume = resume_for_job(job.get("note", ""), job.get("role", ""), explicit=job.get("resume"))
             status = execute_naukri_apply(apply_page, queued_resume, answer_bank, dry_run, job.get("note", ""))
             log(f"  STATUS: {status}")
 
-            if status == "submitted":
+            outcome = vs.classify(status)
+            if outcome in (vs.Outcome.APPLIED, vs.Outcome.APPLIED_UNCONFIRMED):
                 append_tracker(job["company"], job["role"], target_url, "APPLIED ✅", f"{queued_resume.name} | queued job")
-                state.setdefault("applied_job_ids", []).append(job_id)
                 applied_count[0] += 1
-            elif status == "dry_run":
+            elif outcome is vs.Outcome.DRY_RUN:
                 append_tracker(job["company"], job["role"], target_url, "DRY_RUN", "")
                 applied_count[0] += 1
-            elif status == "already_applied":
+            elif outcome is vs.Outcome.ALREADY_APPLIED:
                 append_tracker(job["company"], job["role"], target_url, "ALREADY_APPLIED ⏭️", "")
-                state.setdefault("applied_job_ids", []).append(job_id)
-            elif status.startswith("external"):
-                append_tracker(job["company"], job["role"], target_url, "EXTERNAL_ATS ⚠️", "Apply manually on company site")
+            elif outcome is vs.Outcome.BLOCKED_PERMANENT:
+                append_tracker(job["company"], job["role"], target_url, f"BLOCKED ⚠️ ({status})", "Needs manual review")
             else:
                 append_tracker(job["company"], job["role"], target_url, f"FAILED ({status})", "")
-            save_state(state)
+            # This branch chain used to write the tracker but never touch state on
+            # failure, so failures were retried forever (one URL logged 54 times).
+            vs.record_outcome(job_id, outcome, reason=status, url=target_url)
+            state.record(job_id, outcome, reason=status, url=target_url)
         finally:
             time.sleep(2)
 
@@ -1035,64 +1047,68 @@ def discover_and_apply_search(page, apply_page, context, search_url: str, state:
             combined_desc = job.get("description", "")
             job_id  = make_job_id(company, title)
 
-            if job_id in state.get("applied_job_ids", []) or job_id in state.get("seen_job_ids", []):
-                log(f"  ⏭  SKIP (seen): {company} — {title}")
+            skip, why = state.should_skip(job_id)
+            if skip:
+                log(f"  ⏭  SKIP ({why}): {company} — {title}")
                 continue
 
             # Python-side filtering for relevancy
             if not is_experience_suitable(experience):
                 log(f"  ⏭  SKIP (experience filter: {experience}): {company} — {title}")
-                state.setdefault("seen_job_ids", []).append(job_id)
-                save_state(state)
+                vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER, reason="experience", url=url)
+                state.record(job_id, vs.Outcome.SKIPPED_FILTER)
                 continue
 
             if not is_location_suitable(location):
                 log(f"  ⏭  SKIP (location filter: {location}): {company} — {title}")
-                state.setdefault("seen_job_ids", []).append(job_id)
-                save_state(state)
+                vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER, reason="location", url=url)
+                state.record(job_id, vs.Outcome.SKIPPED_FILTER)
                 continue
 
             if not is_salary_suitable(salary):
                 log(f"  ⏭  SKIP (salary filter: {salary}): {company} — {title}")
-                state.setdefault("seen_job_ids", []).append(job_id)
-                save_state(state)
+                vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER, reason="salary", url=url)
+                state.record(job_id, vs.Outcome.SKIPPED_FILTER)
                 continue
 
             score = score_job(title, combined_desc, company)
 
             if score < SCORE_THRESHOLD:
                 log(f"  ⏭  SKIP (score {score:.2f}): {company} — {title}")
-                state.setdefault("seen_job_ids", []).append(job_id)
-                save_state(state)
+                vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER,
+                                  reason=f"score {score:.2f}", url=url)
+                state.record(job_id, vs.Outcome.SKIPPED_FILTER)
                 continue
 
             log(f"\n  ▶ APPLYING [{score:.2f}]: {company} — {title}")
             try:
-                apply_page.goto(url, wait_until="domcontentloaded", timeout=30000)
+                vb.guarded_goto(apply_page, url, timeout=30000, label=f"{company} {title}")
                 apply_page.wait_for_timeout(3000)
                 chosen_resume = resume_for_job(combined_desc if "combined_desc" in dir() else title, title)
                 status = execute_naukri_apply(apply_page, chosen_resume, answer_bank, dry_run)
                 log(f"  STATUS: {status}")
 
                 note_str = f"Score {score:.2f}. {chosen_resume.name}."
-                if status == "submitted":
+                outcome = vs.classify(status)
+                if outcome in (vs.Outcome.APPLIED, vs.Outcome.APPLIED_UNCONFIRMED):
                     append_tracker(company, title, url, "APPLIED ✅", note_str)
-                    state.setdefault("applied_job_ids", []).append(job_id)
                     applied_count[0] += 1
-                elif status == "dry_run":
+                elif outcome is vs.Outcome.DRY_RUN:
                     append_tracker(company, title, url, "DRY_RUN", note_str)
                     applied_count[0] += 1
-                elif status == "already_applied":
+                elif outcome is vs.Outcome.ALREADY_APPLIED:
                     append_tracker(company, title, url, "ALREADY_APPLIED ⏭️", "")
-                    state.setdefault("applied_job_ids", []).append(job_id)
-                elif status.startswith("external"):
-                    append_tracker(company, title, url, "EXTERNAL_ATS ⚠️", "Apply manually")
+                elif outcome is vs.Outcome.BLOCKED_PERMANENT:
+                    append_tracker(company, title, url, f"BLOCKED ⚠️ ({status})", note_str)
                 else:
                     append_tracker(company, title, url, f"FAILED ({status})", note_str)
-                save_state(state)
+                vs.record_outcome(job_id, outcome, reason=status, url=url)
+                state.record(job_id, outcome, reason=status, url=url)
             finally:
                 time.sleep(2)
 
+    except vb.SecurityChallenge:
+        raise
     except Exception as exc:
         log(f"  Search error: {exc}")
 
@@ -1120,7 +1136,7 @@ def main():
     log(f"Queued jobs: {len(QUEUED_JOBS)}  |  Max new: {args.max_apply}")
     log("=" * 65)
 
-    state  = load_state()
+    state  = vs.load_state()
     answer_bank = build_answer_bank()
     applied_count = [0]
 
@@ -1165,4 +1181,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # A security challenge must abort the run with exit 10 (or 12 for a login
+    # wall) so run_apply_all.sh stops the whole pipeline. Continuing after a
+    # challenge deepens the flag on this IP/profile.
+    try:
+        main()
+    except vb.SecurityChallenge as _exc:
+        print(f"🛑 SECURITY CHALLENGE ({_exc.kind}): {_exc}", flush=True)
+        raise SystemExit(_exc.exit_code)

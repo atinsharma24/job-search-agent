@@ -22,6 +22,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import vault_config as vc
 import vault_answers as va
 from vault_resume import resume_for_job, validate_resume
+import vault_state as vs
+import vault_browser as vb
 
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
@@ -111,7 +113,7 @@ def log(msg: str):
     print(f"[{ts}] {msg}", flush=True)
 
 
-def load_state() -> dict:
+def _legacy_load_state() -> dict:
     if STATE_PATH.exists():
         return json.loads(STATE_PATH.read_text())
     return {"seen_job_ids": [], "applied_job_ids": [], "blocked_jobs": []}
@@ -211,6 +213,8 @@ def apply_easy_apply(page, job_url: str, answer_bank: dict, dry_run: bool) -> st
         from playwright_linkedin_easy_apply import execute_easy_apply
         exit_code = execute_easy_apply(page, RESUME_PATH, answer_bank, dry_run)
         return "submitted" if exit_code == 0 else f"error:{exit_code}"
+    except vb.SecurityChallenge:
+        raise  # must reach __main__ and abort the run, never be swallowed
     except Exception as exc:
         return f"exception:{exc}"
 
@@ -337,16 +341,18 @@ def discover_and_apply(page, apply_page, context, search_url: str, state: dict, 
                 if not title and not job_direct_url:
                     continue
 
-                if job_id in state["applied_job_ids"] or job_id in state.get("seen_job_ids", []):
-                    log(f"  ⏭  SKIP (already seen): {company} — {title}")
+                skip, why = state.should_skip(job_id)
+                if skip:
+                    log(f"  ⏭  SKIP ({why}): {company} — {title}")
                     continue
 
                 # Score the job
                 match_score = score_job(title, desc, company)
                 if match_score < STACK_MATCH_THRESHOLD:
                     log(f"  ⏭  SKIP (low match {match_score:.2f}): {company} — {title}")
-                    state.setdefault("seen_job_ids", []).append(job_id)
-                    save_state(state)
+                    vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER,
+                                      reason=f"score {match_score:.2f}", url=navigate_url)
+                    state.record(job_id, vs.Outcome.SKIPPED_FILTER)
                     continue
 
                 log(f"\n  ▶ APPLYING [{match_score:.2f}]: {company or 'Unknown'} — {title or job_direct_url}")
@@ -354,31 +360,40 @@ def discover_and_apply(page, apply_page, context, search_url: str, state: dict, 
 
                 # Navigate directly to the job URL for Easy Apply using reused apply_page
                 try:
-                    apply_page.goto(navigate_url, wait_until="domcontentloaded", timeout=30000)
+                    vb.guarded_goto(apply_page, navigate_url, timeout=30000,
+                                    label=f"{company} {title}")
                     apply_page.wait_for_timeout(6000)
                     status = apply_easy_apply(apply_page, navigate_url, answer_bank, dry_run)
                     log(f"  STATUS: {status}")
 
                     tracker_note = f"Stack match: {match_score:.2f}. LinkedIn Easy Apply."
-                    if "submitted" in status or status == "0":
+                    outcome = vs.classify(status)
+                    if outcome in (vs.Outcome.APPLIED, vs.Outcome.APPLIED_UNCONFIRMED):
                         append_tracker(company, title, navigate_url, "Applied (confirmed) ✅", tracker_note)
-                        state["applied_job_ids"].append(job_id)
                         applied_count[0] += 1
-                    elif "dry_run" in status:
+                    elif outcome is vs.Outcome.DRY_RUN:
                         append_tracker(company, title, navigate_url, "DRY_RUN", tracker_note)
                         applied_count[0] += 1
+                    elif outcome is vs.Outcome.ALREADY_APPLIED:
+                        append_tracker(company, title, navigate_url, "ALREADY_APPLIED ⏭️", tracker_note)
                     else:
                         append_tracker(company, title, navigate_url, f"FAILED ({status})", tracker_note)
 
-                    state.setdefault("seen_job_ids", []).append(job_id)
-                    save_state(state)
+                    # Outcome-driven bookkeeping. This used to mark EVERY outcome
+                    # seen, so one transient CAPTCHA blacklisted a job forever.
+                    vs.record_outcome(job_id, outcome, reason=status, url=navigate_url)
+                    state.record(job_id, outcome, reason=status, url=navigate_url)
                 finally:
                     time.sleep(2)
 
+            except vb.SecurityChallenge:
+                raise  # abort the run; do not move on to the next card
             except Exception as exc:
                 log(f"  Card {idx} error: {exc}")
                 continue
 
+    except vb.SecurityChallenge:
+        raise
     except Exception as exc:
         log(f"  Search page error: {exc}")
 
@@ -398,7 +413,7 @@ def main():
     log(f"Max applications: {args.max_apply}")
     log("=" * 60)
 
-    state = load_state()
+    state = vs.load_state()
     answer_bank = build_answer_bank()
     applied_count = [0]  # mutable for nested function
 
@@ -426,4 +441,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # A security challenge must abort the run with exit 10 (or 12 for a login
+    # wall) so run_apply_all.sh stops the whole pipeline. Continuing after a
+    # challenge deepens the flag on this IP/profile.
+    try:
+        main()
+    except vb.SecurityChallenge as _exc:
+        print(f"🛑 SECURITY CHALLENGE ({_exc.kind}): {_exc}", flush=True)
+        raise SystemExit(_exc.exit_code)

@@ -173,27 +173,70 @@ def _answers_sane():
 
 @check("state_health")
 def _state_health():
-    path = VAULT_ROOT / "active_application_context" / "background_agent_state.json"
-    if not path.exists():
-        return WARN, "no state file yet (first run)"
+    import vault_state as vs
+
     try:
-        state = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
-        return FAIL, f"state file is corrupt: {exc}"
-    applied = state.get("applied_job_ids", [])
-    seen = state.get("seen_job_ids", [])
-    dupes = len(applied) - len(set(applied))
-    detail = f"{len(applied)} applied, {len(seen)} seen, {len(state.get('blocked_jobs') or [])} blocked"
-    if dupes:
-        return WARN, detail + f" — {dupes} duplicate applied id(s)"
+        state = vs.load_state(strict=True)
+    except vs.StateUnavailable as exc:
+        return FAIL, str(exc)
+    raw = json.loads(vs.STATE_PATH.read_text(encoding="utf-8")) if vs.STATE_PATH.exists() else {}
+    detail = state.summary()
+    if raw.get("version") != vs.SCHEMA_VERSION:
+        return WARN, detail + " — still schema v1; run `python3 scripts/vault_state.py --migrate --yes`"
     return PASS, detail
+
+
+@check("state_dedup_logic")
+def _state_dedup_logic():
+    """The two mirror bugs must stay fixed: bounded retry, and CAPTCHA never blacklists."""
+    import vault_state as vs
+
+    s = vs.VaultState()
+    s.record("x", vs.Outcome.FAILED_RETRYABLE, reason="error:step_limit")
+    if s.should_skip("x")[0]:
+        return FAIL, "a single failure blacklists a job (LinkedIn's bug is back)"
+    s.record("x", vs.Outcome.FAILED_RETRYABLE, reason="error:step_limit")
+    if not s.should_skip("x")[0]:
+        return FAIL, "failures retry unbounded (Naukri's bug is back)"
+    s.record("y", vs.Outcome.CAPTCHA)
+    if s.should_skip("y")[0]:
+        return FAIL, "a CAPTCHA blacklists a job it never attempted"
+    return PASS, f"bounded retry at {vs.MAX_ATTEMPTS} attempts; captcha does not blacklist"
+
+
+@check("challenge_detection")
+def _challenge_detection():
+    import vault_browser as vb
+
+    class _P:
+        def __init__(s, u, t="", b=""): s._u, s._t, s._b = u, t, b
+        @property
+        def url(s): return s._u
+        def title(s): return s._t
+        def locator(s, *a, **k):
+            body = s._b
+            class L:
+                def inner_text(self, **_): return body
+                def count(self): return 0
+            return L()
+
+    cases = [("https://www.linkedin.com/checkpoint/challenge", "", "", "captcha"),
+             ("https://naukri.com/x", "Just a moment...", "", "waf"),
+             ("https://www.linkedin.com/in/x", "", "captcha help", None),
+             ("https://x.com/y", "", "Session expired, please sign in", "login")]
+    bad = [u for u, t, b, want in cases
+           if vb.detect_security_challenge(_P(u, t, b)) != want]
+    if bad:
+        return FAIL, f"detector regression on: {bad}"
+    return PASS, "captcha / waf / login detected; profile pages not false-positived"
 
 
 @check("imports")
 def _imports():
     import importlib
 
-    mods = ["vault_config", "vault_answers", "vault_resume", "playwright_form_helpers"]
+    mods = ["vault_config", "vault_answers", "vault_resume", "vault_state",
+            "vault_browser", "playwright_form_helpers"]
     for m in mods:
         importlib.import_module(m)
     return PASS, f"{len(mods)} modules import cleanly"
