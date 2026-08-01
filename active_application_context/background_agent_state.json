@@ -196,8 +196,10 @@
     "bitnorm:full-stack-engineer",
     "blabber-ai:full-stack-engineer",
     "black-white-business-solutions:gen-ai-engineer",
+    "boomerangfx:ai-nlp-engineer",
     "brezq:python-developer",
     "bridgeai:senior-agentic-rag-engineer",
+    "candata-ai:ai-native-automation-test-engineer",
     "capgemini:ai-engineer-genai-developer-python",
     "capitalxb:fullstack-developer",
     "careait-health-services:fullstack-developer",
@@ -215,6 +217,7 @@
     "create-agi-labs:react-js-next-js-web-developer",
     "crossing-hurdles:devops-engineer-80-hr-remote",
     "crossing-hurdles:software-developer-remote",
+    "crossing-hurdles:ui-engineer-90-hr-remote",
     "ct-automotive:full-stack-ai-engineer",
     "cyurae:ai-product-engineer-ai-core-engineer",
     "data-eminence:ai-full-stack-developer",
@@ -374,6 +377,7 @@
     "vyntrapro-innovations-pvt-ltd:fullstack-developer-react-js-node-js-aws-docker",
     "wenger-watson:full-stack-engineer",
     "wishwish:frontend-engineer-ios-unity",
+    "yakbos-technologies-private-limited:founding-co-founder-opportunity-ai-deep-technology-bengaluru-preferred-globally-open",
     "yminds-ai:full-stack-developer-with-gen-ai-3-to-5-years-of-experience",
     "yminds-ai:senior-frontend-developer-react-nextjs-microfrontend-immediate-joiner-remote-upto-16lpa",
     "zafify:software-engineer",
@@ -485,6 +489,11 @@
       "reason": "blocked:unanswerable_question",
       "at": "2026-08-01T18:07:28",
       "url": "https://www.linkedin.com/jobs/view/4447492290/"
+    },
+    "boomerangfx:ai-nlp-engineer": {
+      "reason": "max_attempts_exhausted (error:1)",
+      "at": "2026-08-01T18:10:53",
+      "url": "https://www.linkedin.com/jobs/view/4447525464/"
     }
   },
   "attempts": {
@@ -543,8 +552,8 @@
       "url": "https://www.naukri.com/job-listings-full-stack-ai-engineers-cloudtechner-services-gurugram-3-to-8-years-240726024813"
     },
     "boomerangfx:ai-nlp-engineer": {
-      "count": 1,
-      "last": "2026-08-01T18:02:50",
+      "count": 2,
+      "last": "2026-08-01T18:10:53",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447525464/"
     },
@@ -553,6 +562,18 @@
       "last": "2026-08-01T18:07:02",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447798010/"
+    },
+    "wtw:artificial-intelligence-engineer": {
+      "count": 1,
+      "last": "2026-08-01T18:09:34",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4447128412/"
+    },
+    "talentgigs:agentic-ai-engineer": {
+      "count": 1,
+      "last": "2026-08-01T18:10:13",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4447455959/"
     }
   }
 }

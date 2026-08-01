@@ -218,3 +218,94 @@ def fill_radio_groups(
             if answer.casefold() in option_text.casefold() or option_text.casefold() in answer.casefold():
                 option.click()
                 break
+
+
+def fill_radio_groups_by_input(root, answer_mapper) -> int:
+    """Fill yes/no and choice radios without relying on <fieldset>.
+
+    fill_radio_groups() scopes to a fieldset container. LinkedIn's current Easy
+    Apply forms render radio groups as plain divs, so the group was never found and
+    required questions were left blank — the form then refused to advance and the
+    application died as a generic failure, even though the answer had been
+    computed correctly.
+
+    This works from the radio inputs outward: group by `name`, derive the question
+    from the nearest ancestor that carries text, then click the option whose label
+    matches the answer. Returns how many groups were filled.
+    """
+    filled = 0
+    try:
+        radios = root.locator("input[type='radio']")
+        count = radios.count()
+    except Exception:
+        return 0
+
+    seen_groups: set[str] = set()
+    for i in range(count):
+        try:
+            radio = radios.nth(i)
+            if not radio.is_visible():
+                continue
+            group = radio.get_attribute("name") or f"__anon{i}"
+            if group in seen_groups:
+                continue
+
+            info = radio.evaluate("""el => {
+                // Question text: nearest ancestor holding more than the option labels.
+                let node = el.parentElement, question = '';
+                for (let d = 0; d < 6 && node; d++, node = node.parentElement) {
+                    const t = (node.innerText || '').trim();
+                    if (t.length > 12) { question = t; break; }
+                }
+                const name = el.getAttribute('name');
+                const opts = Array.from(
+                    document.querySelectorAll(`input[type=radio][name="${name}"]`)
+                ).map(r => {
+                    let lab = '';
+                    if (r.id) {
+                        const l = document.querySelector(`label[for="${CSS.escape(r.id)}"]`);
+                        if (l) lab = (l.innerText || '').trim();
+                    }
+                    if (!lab && r.parentElement) lab = (r.parentElement.innerText || '').trim();
+                    return {id: r.id || '', label: lab};
+                });
+                return {question, options: opts};
+            }""")
+
+            question = clean_label(info.get("question", ""))
+            options = info.get("options") or []
+            if not question or not options:
+                continue
+
+            # Strip the option labels out of the captured block so the question reads
+            # as a question rather than "Question? Yes No".
+            for opt in options:
+                lab = (opt.get("label") or "").strip()
+                if lab:
+                    question = re.sub(rf"\s*\b{re.escape(lab)}\b\s*$", "", question).strip()
+
+            answer = answer_mapper(question)
+            if not answer:
+                continue
+
+            wanted = answer.strip().casefold()
+            for opt in options:
+                lab = (opt.get("label") or "").strip().casefold()
+                if not lab:
+                    continue
+                if lab == wanted or wanted in lab or lab in wanted:
+                    target = (root.locator(f"#{opt['id']}") if opt.get("id")
+                              else root.locator(f"input[type=radio][name='{group}']").nth(0))
+                    try:
+                        target.check(timeout=4000)
+                    except Exception:
+                        try:
+                            target.click(timeout=4000, force=True)
+                        except Exception:
+                            break
+                    filled += 1
+                    seen_groups.add(group)
+                    break
+        except Exception:
+            continue
+    return filled
