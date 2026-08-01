@@ -286,6 +286,34 @@ def _tab_safety():
     return PASS, "live scripts own their tabs and close only what they opened"
 
 
+@check("radio_filler_reachable")
+def _radio_filler_reachable():
+    """The radio filler must be wired in and must not gate on input visibility.
+
+    LinkedIn hides the real <input type=radio> and styles the <label>. A loop
+    gated on radio.is_visible() therefore skips every input and returns 0 without
+    logging anything — required questions stay blank while the correct answer sits
+    unused, and the failure looks like "form too complex" rather than "we never
+    clicked".
+    """
+    import inspect
+    import playwright_form_helpers as fh
+    import playwright_linkedin_easy_apply as le
+
+    if not hasattr(fh, "fill_radio_groups_by_input"):
+        return FAIL, "fill_radio_groups_by_input is missing"
+    if "fill_radio_groups_by_input" not in inspect.getsource(le.execute_easy_apply):
+        return FAIL, "radio filler is not called from execute_easy_apply"
+
+    src = inspect.getsource(fh.fill_radio_groups_by_input)
+    if re.search(r"if\s+not\s+radio\.is_visible\(\)\s*:\s*\n\s*continue", src):
+        return FAIL, ("radio loop gates on input visibility — LinkedIn hides the input, "
+                      "so every group would be skipped silently")
+    if "label[for=" not in src:
+        return FAIL, "radio filler does not click the label, which is the visible control"
+    return PASS, "wired into execute_easy_apply; clicks labels; not gated on input visibility"
+
+
 @check("dry_run_isolation")
 def _dry_run_isolation():
     """A dry run must never be recorded as a real application.
