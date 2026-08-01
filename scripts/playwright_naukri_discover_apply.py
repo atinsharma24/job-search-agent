@@ -1150,8 +1150,14 @@ def main():
 
         # ── Step 1: Queued jobs (from naukri_queue.md) ────────────────────
         log("\n── Step 1: Applying queued jobs ──")
-        search_page = context.pages[0] if context.pages else context.new_page()
-        apply_page = context.pages[1] if len(context.pages) > 1 else context.new_page()
+        # Own our tabs explicitly. The previous code took context.pages[0] and [1],
+        # which grabs whatever tabs happen to exist — including the user's own and
+        # any left by another tool. That both destroyed the search results mid-run
+        # (search_page could be navigated away by the apply flow) and navigated the
+        # user's tabs away from under them.
+        _pages = {}
+        search_page = vb.named_page(context, "search", _pages)
+        apply_page = vb.named_page(context, "apply", _pages)
         try:
             search_and_apply_queued(search_page, apply_page, context, state, answer_bank,
                                     applied_count, args.max_apply, args.dry_run)

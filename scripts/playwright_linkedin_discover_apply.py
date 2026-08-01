@@ -212,7 +212,12 @@ def apply_easy_apply(page, job_url: str, answer_bank: dict, dry_run: bool) -> st
         sys.path.insert(0, str(VAULT_ROOT / "scripts"))
         from playwright_linkedin_easy_apply import execute_easy_apply
         exit_code = execute_easy_apply(page, RESUME_PATH, answer_bank, dry_run)
-        return "submitted" if exit_code == 0 else f"error:{exit_code}"
+        if exit_code != 0:
+            return f"error:{exit_code}"
+        # execute_easy_apply returns EXIT_SUCCESS for a completed DRY RUN too — it
+        # returns before clicking submit. Mapping that to "submitted" wrote false
+        # "Applied" rows to the tracker and poisoned the dedup state.
+        return "dry_run" if dry_run else "submitted"
     except vb.SecurityChallenge:
         raise  # must reach __main__ and abort the run, never be swallowed
     except Exception as exc:
@@ -250,9 +255,34 @@ def discover_and_apply(page, apply_page, context, search_url: str, state: dict, 
         page.wait_for_timeout(1000)
 
         # Collect job cards
-        job_cards = page.locator("li.jobs-search-results__list-item, [data-job-id], li:has(a[href*='/jobs/view/'])")
+        # LinkedIn's stable card container. The previous selector list matched only
+        # 7-9 of 25 cards, and none of them carried the attributes we need.
+        job_cards = page.locator("[data-occludable-job-id]")
         count = job_cards.count()
-        log(f"  Found {count} job cards")
+
+        # Read every card's metadata in ONE pass, before any clicking. The old code
+        # clicked each card and waited 2.5s just to read the right-hand panel, then
+        # found the panel selectors stale and got blank strings — so every job
+        # collapsed to the same id and skipped as "seen".
+        cards_meta = page.evaluate("""() => {
+            return Array.from(document.querySelectorAll('[data-occludable-job-id]')).map(li => {
+                const a = li.querySelector("a[href*='/jobs/view/']");
+                const sub = li.querySelector('.artdeco-entity-lockup__subtitle, [class*="subtitle"]');
+                const cap = li.querySelector('.artdeco-entity-lockup__caption, [class*="caption"]');
+                const txt = li.innerText || '';
+                return {
+                    id: li.getAttribute('data-occludable-job-id') || '',
+                    title: (a && a.getAttribute('aria-label')) || '',
+                    company: sub ? sub.innerText.trim() : '',
+                    location: cap ? cap.innerText.trim() : '',
+                    easy: txt.includes('Easy Apply'),
+                };
+            });
+        }""")
+        usable = sum(1 for c in cards_meta if c.get("id") and c.get("title"))
+        log(f"  Found {count} job cards ({usable} with usable metadata)")
+        if count and not usable:
+            log("  \u26a0 No card metadata extracted — LinkedIn DOM may have changed again.")
 
         for idx in range(min(count, 25)):
             if applied_count[0] >= max_apply:
@@ -260,96 +290,105 @@ def discover_and_apply(page, apply_page, context, search_url: str, state: dict, 
                 return
 
             card = job_cards.nth(idx)
-            try:
-                # Scroll into view then JS-click to avoid viewport issues
+            meta = cards_meta[idx] if idx < len(cards_meta) else {}
+
+            # LinkedIn virtualizes the results list: cards below the fold carry no
+            # content until scrolled into view. The upfront pass only populates the
+            # rendered ones, so re-read this card individually when it came back empty.
+            if not (meta.get("title") and meta.get("company")):
                 try:
                     card.scroll_into_view_if_needed(timeout=3000)
-                    page.wait_for_timeout(300)
-                except Exception:
-                    pass
-                try:
-                    card.click(timeout=8000)
-                except Exception:
-                    card.evaluate("el => el.click()")
-                page.wait_for_timeout(2500)
-
-                # Get job title, company, and direct URL from card attributes
-                title = ""
-                company = ""
-                job_direct_url = ""
-
-                # Try to extract job ID from the card for a direct URL
-                try:
-                    job_data_id = card.evaluate("""el => {
-                        // 1. Try to find a link containing /jobs/view/ and extract the numeric ID
-                        const anchors = el.querySelectorAll('a[href*="/jobs/view/"]');
-                        for (const a of anchors) {
-                            const href = a.getAttribute('href') || '';
-                            const match = href.match(/\\/jobs\\/view\\/(\\d+)/);
-                            if (match && match[1]) {
-                                return match[1];
-                            }
-                        }
-                        // 2. Try to get data-job-id or data-occludable-job-id
-                        const li = el.closest('[data-job-id], [data-occludable-job-id]') || 
-                                   el.querySelector('[data-job-id], [data-occludable-job-id]') || el;
-                        const jobId = li.getAttribute('data-job-id') || li.getAttribute('data-occludable-job-id') || '';
-                        if (jobId && jobId !== 'search') {
-                            return jobId;
-                        }
-                        return '';
-                    }""")
-                    if job_data_id:
-                        job_direct_url = f"https://www.linkedin.com/jobs/view/{job_data_id}/"
+                    page.wait_for_timeout(400)
+                    meta = card.evaluate("""li => {
+                        const a = li.querySelector("a[href*='/jobs/view/']");
+                        const sub = li.querySelector('.artdeco-entity-lockup__subtitle, [class*="subtitle"]');
+                        const cap = li.querySelector('.artdeco-entity-lockup__caption, [class*="caption"]');
+                        const txt = li.innerText || '';
+                        return {
+                            id: li.getAttribute('data-occludable-job-id') || '',
+                            title: (a && a.getAttribute('aria-label')) || '',
+                            company: sub ? sub.innerText.trim() : '',
+                            location: cap ? cap.innerText.trim() : '',
+                            easy: txt.includes('Easy Apply'),
+                        };
+                    }""") or meta
                 except Exception:
                     pass
 
-                # Get title from right-panel detail view
-                for title_sel in [
-                    ".job-details-jobs-unified-top-card__job-title h1",
-                    ".jobs-unified-top-card__job-title h1",
-                    "h1.t-24", ".t-24.t-bold", "h1",
-                ]:
-                    el = page.locator(title_sel)
-                    if el.count() > 0 and el.first.is_visible():
-                        title = el.first.inner_text().strip()
-                        break
+            try:
+                title = (meta.get("title") or "").strip()
+                company = (meta.get("company") or "").strip()
+                location = (meta.get("location") or "").strip()
+                job_data_id = (meta.get("id") or "").strip()
+                job_direct_url = f"https://www.linkedin.com/jobs/view/{job_data_id}/" if job_data_id else ""
 
-                for comp_sel in [
-                    ".job-details-jobs-unified-top-card__company-name a",
-                    ".jobs-unified-top-card__company-name a",
-                    ".job-details-jobs-unified-top-card__company-name",
-                    ".t-16.t-black.t-bold",
-                ]:
-                    el = page.locator(comp_sel)
-                    if el.count() > 0 and el.first.is_visible():
-                        company = el.first.inner_text().strip()
-                        break
+                if not job_data_id and not title:
+                    continue  # unusable card, nothing to dedupe on
 
-                # Get job description for scoring
-                desc = ""
-                for desc_sel in [".jobs-description__content", ".job-description", "#job-details", ".jobs-box__html-content"]:
-                    el = page.locator(desc_sel)
-                    if el.count() > 0:
-                        desc = el.first.inner_text()[:2000]
-                        break
-
-                # Fall back to current URL if no direct URL extracted
                 navigate_url = job_direct_url or page.url
-                job_id = make_job_id(company, title) if (company and title) else f"job:{job_direct_url}"
-
-                if not title and not job_direct_url:
-                    continue
+                job_id = make_job_id(company, title) if (company and title) else f"job:{job_data_id}"
 
                 skip, why = state.should_skip(job_id)
                 if skip:
-                    log(f"  ⏭  SKIP ({why}): {company} — {title}")
+                    log(f"  \u23ed  SKIP ({why}): {company} — {title}")
                     continue
 
-                # Score the job
+                # Easy Apply only. Applied ONLY when the card actually rendered —
+                # an unresolved card says nothing about the job, and recording it as
+                # permanently blocked would blacklist it forever on a rendering glitch.
+                metadata_resolved = bool(title and company)
+                if metadata_resolved and meta.get("easy") is False:
+                    log(f"  \u23ed  SKIP (not Easy Apply): {company} — {title}")
+                    vs.record_outcome(job_id, vs.Outcome.BLOCKED_PERMANENT,
+                                      reason="not_easy_apply", url=navigate_url)
+                    state.record(job_id, vs.Outcome.BLOCKED_PERMANENT)
+                    continue
+                if not metadata_resolved:
+                    log(f"  \u23ed  SKIP (card did not render) id={job_data_id}")
+                    continue  # deliberately NOT recorded — retry on a later run
+
+                # Cheap title-only pre-filter so we do not pay a page load for
+                # obvious non-matches. The real score uses the full JD below.
+                pre_score = score_job(title, "", company)
+                if pre_score <= 0.0:
+                    log(f"  \u23ed  SKIP (title pre-filter 0.00): {company} — {title}")
+                    vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER,
+                                      reason="title_prefilter", url=navigate_url)
+                    state.record(job_id, vs.Outcome.SKIPPED_FILTER)
+                    continue
+
+                # Navigate once, then score on the real description. Previously the
+                # code clicked every card to read a side panel whose selectors were
+                # stale, so desc was always empty and everything scored title-only.
+                try:
+                    vb.guarded_goto(apply_page, navigate_url, timeout=30000,
+                                    label=f"{company} {title}")
+                    apply_page.wait_for_timeout(2500)
+                except vb.SecurityChallenge:
+                    raise
+                except Exception as exc:
+                    log(f"  \u26a0 Could not open job: {exc}")
+                    vs.record_outcome(job_id, vs.Outcome.FAILED_RETRYABLE,
+                                      reason="navigation", url=navigate_url)
+                    state.record(job_id, vs.Outcome.FAILED_RETRYABLE)
+                    continue
+
+                # LinkedIn now ships hashed CSS class names, so class selectors are
+                # unreliable. These two anchors are structural and survive redeploys.
+                desc = ""
+                for desc_sel in ['[id^="JobDetails_AboutTheJob"]', "main"]:
+                    try:
+                        el = apply_page.locator(desc_sel)
+                        if el.count() > 0:
+                            desc = el.first.inner_text()[:4000]
+                            if desc.strip():
+                                break
+                    except Exception:
+                        pass
+
                 match_score = score_job(title, desc, company)
                 if match_score < STACK_MATCH_THRESHOLD:
-                    log(f"  ⏭  SKIP (low match {match_score:.2f}): {company} — {title}")
+                    log(f"  \u23ed  SKIP (low match {match_score:.2f}): {company} — {title}")
                     vs.record_outcome(job_id, vs.Outcome.SKIPPED_FILTER,
                                       reason=f"score {match_score:.2f}", url=navigate_url)
                     state.record(job_id, vs.Outcome.SKIPPED_FILTER)
@@ -360,9 +399,6 @@ def discover_and_apply(page, apply_page, context, search_url: str, state: dict, 
 
                 # Navigate directly to the job URL for Easy Apply using reused apply_page
                 try:
-                    vb.guarded_goto(apply_page, navigate_url, timeout=30000,
-                                    label=f"{company} {title}")
-                    apply_page.wait_for_timeout(6000)
                     status = apply_easy_apply(apply_page, navigate_url, answer_bank, dry_run)
                     log(f"  STATUS: {status}")
 
@@ -421,8 +457,14 @@ def main():
         browser = pw.chromium.connect_over_cdp(args.cdp_url, no_defaults=True)
         context = browser.contexts[0] if browser.contexts else browser.new_context()
 
-        search_page = context.pages[0] if context.pages else context.new_page()
-        apply_page = context.pages[1] if len(context.pages) > 1 else context.new_page()
+        # Own our tabs explicitly. The previous code took context.pages[0] and [1],
+        # which grabs whatever tabs happen to exist — including the user's own and
+        # any left by another tool. That both destroyed the search results mid-run
+        # (search_page could be navigated away by the apply flow) and navigated the
+        # user's tabs away from under them.
+        _pages = {}
+        search_page = vb.named_page(context, "search", _pages)
+        apply_page = vb.named_page(context, "apply", _pages)
         try:
             for search_url in LINKEDIN_SEARCH_URLS:
                 if applied_count[0] >= args.max_apply:
@@ -433,7 +475,12 @@ def main():
                 )
                 time.sleep(2)
         finally:
-            pass  # Keep reused pages open cleanly without closing the main browser window tabs
+            # Close only the tabs we created; never touch the user's.
+            for _pg in _pages.values():
+                try:
+                    _pg.close()
+                except Exception:
+                    pass
 
     log("\n" + "=" * 60)
     log(f"LINKEDIN PIPELINE COMPLETE: {applied_count[0]} applications submitted")

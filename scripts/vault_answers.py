@@ -67,6 +67,26 @@ _HARD_YES = (
     ("work_mode", r"comfortable.*(remote|wfo|work from office|hybrid|onsite)"),
     ("terms", r"agree.*(terms|conditions|privacy|policy)|read and understood"),
     ("notice_ok", r"can you join|able to join|available to join"),
+    # --- objectively verifiable facts about the candidate ---
+    ("has_laptop", r"(own|personal).*(laptop|computer|system)|have.*laptop"),
+    ("has_internet", r"stable.*(internet|broadband|connection)|reliable internet"),
+    ("wfh_setup", r"work from home setup|home office setup|dedicated workspace"),
+    ("graduate", r"\b(are you|do you have).*(graduat\w*|bachelor|b\.?tech|degree)\b"),
+    ("full_time_avail", r"available (for|to work) full[- ]time|full[- ]time (role|position|basis)"),
+    ("english", r"(fluent|proficient|comfortable).*(english|communication)"),
+    ("own_transport", r"own (vehicle|transport|conveyance)"),
+    ("background_check", r"(willing|consent).*(background (check|verification)|bgv)"),
+    ("start_immediately_15", r"join within (15|fifteen|30|thirty) days|join in (a|1) month"),
+)
+
+# Objectively verifiable NO. Distinct from _HARD_NO (which is about consequence) —
+# these are simple facts that happen to be false.
+_FACT_NO = (
+    ("no_gap", r"(career|employment) (gap|break)"),
+    ("not_fresher", r"\bare you a fresher\b"),
+    ("no_pending_offer", r"any (other )?(pending|active) offer"),
+    ("not_currently_unemployed", r"currently (unemployed|not working|without a job)"),
+    ("no_notice_buyout_needed", r"require.*notice.*buy[- ]?out"),
 )
 
 # question-pattern -> answer-bank key
@@ -84,6 +104,15 @@ _VALUE_RULES = (
     ("full_name", r"\b(full name|your name)\b", "full_name"),
     ("degree", r"\b(degree|qualification)\b", "degree"),
     ("university", r"\b(university|college|institut)\b", "university"),
+    # --- additional factual lookups ---
+    ("state", r"\b(state|province)\b", "state"),
+    ("country", r"\bcountry\b", "country"),
+    ("pincode", r"\b(pin ?code|postal code|zip)\b", "pincode"),
+    ("first_name", r"\bfirst name\b", "first_name"),
+    ("last_name", r"\b(last|sur)\s?name\b", "last_name"),
+    ("grad_year", r"(year of|passing|graduation) ?(year|passout)?", "grad_year"),
+    ("current_designation", r"current (designation|title|role|position)", "current_designation"),
+    ("skills", r"\b(key |primary |core )?skills\b|technolog(y|ies) you", "primary_skills"),
 )
 
 # "years of experience WITH <tech>" — answered honestly per technology rather than
@@ -98,6 +127,40 @@ _TECH_YOE = re.compile(
 _TOTAL_YOE = re.compile(
     r"total.*experience|years? of experience|overall experience|\byoe\b|"
     r"how many years|experience.*in years",
+    re.I,
+)
+
+# Explicit prompts per qa_bank entry. Matching on the key name ("qa_about_me" ->
+# "about me") never fired, because real questions say "tell us about yourself".
+_QA_PATTERNS = (
+    ("qa_why_leaving",   r"reason for leaving|why (are you )?leav|why looking|"
+                         r"why (are you )?(looking|searching) for (a )?(new|change)"),
+    ("qa_why_role",      r"why (do you want|are you interested|this (role|company|position)|"
+                         r"should we hire|apply)|what interests you|what attracts you"),
+    ("qa_current_role",  r"(describe|tell).*(current|present) role|what do you (currently )?do|"
+                         r"current responsibilit"),
+    ("qa_tech_challenge",r"technical challenge|difficult (problem|bug|technical)|hardest|"
+                         r"most challenging|complex problem|toughest"),
+    ("qa_leadership",    r"leadership|led a team|influence without|mentor|"
+                         r"took ownership|drove a (change|decision)"),
+    ("qa_product_impact",r"(product|user|business|customer) impact|impact (you|of your)|"
+                         r"measurable (impact|outcome)"),
+    ("qa_innovation",    r"innovat|creative solution|side project|built on your own|"
+                         r"proud of|best (project|work)"),
+    ("qa_about_me",      r"about (yourself|you)\b|introduce yourself|tell us about you|"
+                         r"your background|walk (us|me) through your"),
+)
+
+# Numeric/scale questions must never receive a prose answer.
+_RATING_STYLE = re.compile(
+    r"\brate\b|\bscale of\b|out of (5|10|100)|\b1\s*-\s*(5|10)\b|"
+    r"proficiency level|on a scale",
+    re.I,
+)
+# A qa_bank essay only fits a genuinely open-ended prompt.
+_OPEN_ENDED = re.compile(
+    r"\b(describe|explain|tell us|tell me|why|how|what makes|share|elaborate|"
+    r"walk us through|give an example|about yourself)\b",
     re.I,
 )
 
@@ -121,6 +184,10 @@ def answer_for_question(question: str, *, bank: dict | None = None) -> Answer:
     for name, pattern in _HARD_NO:
         if re.search(pattern, q, re.I):
             return Answer(Decision.NO, "No", rule=f"hard_no:{name}")
+
+    for name, pattern in _FACT_NO:
+        if re.search(pattern, q, re.I):
+            return Answer(Decision.NO, "No", rule=f"fact_no:{name}")
 
     for name, pattern in _HARD_YES:
         if re.search(pattern, q, re.I):
@@ -149,12 +216,14 @@ def answer_for_question(question: str, *, bank: dict | None = None) -> Answer:
         return Answer(Decision.VALUE, vc.years_experience(), rule="total_yoe")
 
     # Long-form behavioural questions from the canonical qa_bank.
-    for key, text in (bank or {}).items():
-        if not key.startswith("qa_") or not isinstance(text, str):
-            continue
-        topic = key[3:].replace("_", " ")
-        if topic and topic in q:
-            return Answer(Decision.VALUE, text, rule=f"qa_bank:{key}")
+    #
+    # Gated on the question actually being open-ended. Matching a bare topic word
+    # meant "Rate yourself 1-10 on leadership" returned the full leadership essay.
+    if not _RATING_STYLE.search(q) and len(q) >= 12:
+        for key, pattern in _QA_PATTERNS:
+            text = (bank or {}).get(key)
+            if isinstance(text, str) and text and re.search(pattern, q, re.I):
+                return Answer(Decision.VALUE, text, rule=f"qa_bank:{key}")
 
     # Rule 7 — unrecognised. Abstain; the caller surfaces it for human review.
     return Answer(Decision.ABSTAIN, rule="unrecognised")

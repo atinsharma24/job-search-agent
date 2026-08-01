@@ -17,6 +17,7 @@ from datetime import datetime
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import vault_config as vc
+import vault_browser as vb
 import vault_answers as va
 from vault_resume import resume_for_job, safe_upload, validate_resume
 from playwright_form_helpers import maybe_upload_file
@@ -323,7 +324,9 @@ def main():
         context = browser.contexts[0] if browser.contexts else browser.new_context()
 
         # Reuse single tab instead of opening/closing tabs repeatedly
-        apply_page = context.pages[0] if context.pages else context.new_page()
+        # Own our tab; context.pages[0] is whatever the user happens to have open.
+        _pages = {}
+        apply_page = vb.named_page(context, "apply", _pages)
 
         for job in JOBS:
             log(f"\n▶ [{job['id']}] {job['company']} — {job['role']}")

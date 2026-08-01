@@ -231,6 +231,30 @@ def _challenge_detection():
     return PASS, "captcha / waf / login detected; profile pages not false-positived"
 
 
+@check("dry_run_isolation")
+def _dry_run_isolation():
+    """A dry run must never be recorded as a real application.
+
+    execute_easy_apply() returns EXIT_SUCCESS for a completed dry run (it returns
+    before clicking submit). Mapping that to "submitted" wrote false
+    "Applied (confirmed)" rows to the tracker and marked jobs applied in state,
+    permanently hiding them from future real runs.
+    """
+    import vault_state as vs
+
+    if vs.classify("dry_run") is not vs.Outcome.DRY_RUN:
+        return FAIL, "classify('dry_run') no longer maps to Outcome.DRY_RUN"
+    applied, seen, blocked, attempts = vs._EFFECTS[vs.Outcome.DRY_RUN]
+    if applied or seen or blocked or attempts:
+        return FAIL, "Outcome.DRY_RUN mutates state — a dry run would poison dedup"
+
+    src = (SCRIPTS / "playwright_linkedin_discover_apply.py").read_text(encoding="utf-8")
+    if 'return "dry_run" if dry_run else "submitted"' not in src:
+        return FAIL, ("apply_easy_apply maps exit 0 to 'submitted' without checking "
+                      "dry_run — dry runs will be recorded as real applications")
+    return PASS, "dry runs cannot be recorded as applications"
+
+
 @check("imports")
 def _imports():
     import importlib

@@ -313,6 +313,13 @@ def current_employer() -> str:
     return ""
 
 
+def _current_title() -> str:
+    for exp in load_facts().get("experience", []):
+        if exp.get("is_current") or exp.get("end_date") is None:
+            return str(exp.get("title", ""))
+    return ""
+
+
 def contact() -> dict:
     c = load_facts()["candidate"]
     first, last = _split_name(c["full_name"])
@@ -377,6 +384,12 @@ def build_answer_bank(**overrides) -> dict:
         "degree": education.get("degree", ""),
         "university": education.get("institution", ""),
         "linkedin_profile": c["linkedin"],
+        "grad_year": str((facts.get("education") or [{}])[0].get("end_date", "") or "")[:4],
+        "current_designation": _current_title(),
+        "primary_skills": ", ".join(
+            (facts.get("tech_stack", {}).get("languages") or [])[:4]
+            + (facts.get("tech_stack", {}).get("frontend") or [])[:3]
+        ),
     }
     bank.update(log.get("qa_bank", {}))
     bank.update(overrides)
