@@ -220,6 +220,14 @@ def fill_radio_groups(
                 break
 
 
+_RADIO_WIDGET = re.compile(
+    r"\b(pdf|docx?)\b.*\d{1,2}/\d{1,2}/\d{4}|"      # "PDF Resume.pdf 6/17/2026"
+    r"\.(pdf|docx?)\b.*\.(pdf|docx?)\b|"              # a list of files
+    r"\b(upload|choose|select)\s+(a\s+)?(new\s+)?(resume|cv)\b",
+    re.I,
+)
+
+
 def fill_radio_groups_by_input(root, answer_mapper) -> int:
     """Fill yes/no and choice radios without relying on <fieldset>.
 
@@ -234,20 +242,46 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
     matches the answer. Returns how many groups were filled.
     """
     filled = 0
+    # LinkedIn does not consistently use native inputs — some forms render custom
+    # components carrying role="radio". Searching only input[type=radio] found
+    # nothing and the function returned silently.
     try:
-        radios = root.locator("input[type='radio']")
+        radios = root.locator("input[type='radio'], [role='radio']")
         count = radios.count()
     except Exception:
         return 0
 
+    if count == 0:
+        # Say what IS there, so a future empty result is diagnosable instead of
+        # looking identical to "this form had no radio questions".
+        try:
+            inv = root.evaluate("""el => {
+                const tally = {};
+                el.querySelectorAll('input,select,textarea,[role]').forEach(n => {
+                    const k = n.tagName.toLowerCase() +
+                              (n.getAttribute('type') ? ':' + n.getAttribute('type') : '') +
+                              (n.getAttribute('role') ? '[' + n.getAttribute('role') + ']' : '');
+                    tally[k] = (tally[k] || 0) + 1;
+                });
+                return tally;
+            }""")
+            print(f"  [radio] none found; dialog contains {inv}", flush=True)
+        except Exception:
+            print("  [radio] none found in scope", flush=True)
+        return 0
+    print(f"  [radio] {count} radio control(s) in scope", flush=True)
+
     seen_groups: set[str] = set()
+    unresolved = 0
     for i in range(count):
         try:
             radio = radios.nth(i)
-            if not radio.is_visible():
-                continue
-            group = radio.get_attribute("name") or f"__anon{i}"
-            if group in seen_groups:
+            # NOT gated on is_visible(): LinkedIn hides the real <input> and styles
+            # the <label>, so every input reports invisible and the whole loop
+            # silently did nothing — no logs, no clicks, and a required question
+            # left blank while the correct answer sat unused.
+            group = radio.get_attribute("name") or ""
+            if group and group in seen_groups:
                 continue
 
             info = radio.evaluate("""el => {
@@ -257,10 +291,23 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
                     const t = (node.innerText || '').trim();
                     if (t.length > 12) { question = t; break; }
                 }
+                // Group siblings. LinkedIn radios frequently carry NO name
+                // attribute, so a name-based query returns nothing and no options
+                // resolve — the group then looks unreadable rather than ungrouped.
                 const name = el.getAttribute('name');
-                const opts = Array.from(
-                    document.querySelectorAll(`input[type=radio][name="${name}"]`)
-                ).map(r => {
+                let siblings;
+                if (name) {
+                    siblings = Array.from(
+                        document.querySelectorAll(`input[type=radio][name="${name}"]`));
+                } else {
+                    const scope = el.closest('fieldset, [role="radiogroup"], [data-test-form-builder-radio-button-form-component]')
+                                  || el.parentElement?.parentElement
+                                  || el.parentElement;
+                    siblings = scope
+                        ? Array.from(scope.querySelectorAll('input[type=radio], [role="radio"]'))
+                        : [el];
+                }
+                const opts = siblings.map(r => {
                     let lab = '';
                     if (r.id) {
                         const l = document.querySelector(`label[for="${CSS.escape(r.id)}"]`);
@@ -278,7 +325,9 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
             question = clean_label(info.get("question", ""))
             options = info.get("options") or []
             if not question or not options:
-                print(f"  [radio] group {group!r}: no question or options resolved", flush=True)
+                # Silent: the resume picker alone produces 100+ of these, and a
+                # group with no readable question is not actionable anyway.
+                unresolved += 1
                 continue
 
             # Strip option labels and validation chrome out of the captured block.
@@ -290,6 +339,14 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
                 if lab and len(lab) < 30:
                     question = re.sub(rf"\b{re.escape(lab)}\b", " ", question)
             question = clean_label(question)
+
+            # LinkedIn's resume picker is a radio group with one option per stored
+            # file ("PDF Resume.pdf 6/17/2026"). It is a widget, not a question:
+            # evaluating each entry spams the log, and matching one by accident
+            # would attach an arbitrary old resume. We upload a validated file
+            # separately, so leave the picker alone.
+            if _RADIO_WIDGET.search(question):
+                continue
 
             answer = answer_mapper(question)
             if not answer:
@@ -304,15 +361,30 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
                 if lab == wanted or wanted in lab or lab in wanted:
                     target = (root.locator(f"#{opt['id']}") if opt.get("id")
                               else root.locator(f"input[type=radio][name='{group}']").nth(0))
-                    try:
-                        target.check(timeout=4000)
-                    except Exception:
+                    clicked = False
+                    # The visible control is the label, not the input.
+                    for attempt in (
+                        lambda: root.locator(f"label[for='{opt['id']}']").first.click(timeout=4000),
+                        lambda: target.check(timeout=4000, force=True),
+                        lambda: target.click(timeout=4000, force=True),
+                        lambda: target.evaluate(
+                            "el => { el.checked = true; "
+                            "el.dispatchEvent(new Event('change', {bubbles: true})); }"),
+                    ):
                         try:
-                            target.click(timeout=4000, force=True)
-                        except Exception:
+                            attempt()
+                            clicked = True
                             break
+                        except Exception:
+                            continue
+                    if not clicked:
+                        print(f"  [radio] could not click {lab!r}", flush=True)
+                        break
                     filled += 1
-                    seen_groups.add(group)
+                    if group:
+                        seen_groups.add(group)
+                    # Unnamed groups are deduped by their question text instead.
+                    seen_groups.add(question[:60])
                     print(f"  [radio] {answer!r} <- {question[:70]!r}", flush=True)
                     break
         except Exception:

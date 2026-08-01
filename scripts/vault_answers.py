@@ -75,7 +75,9 @@ _HARD_YES = (
     ("has_laptop", r"(own|personal).*(laptop|computer|system)|have.*laptop"),
     ("has_internet", r"stable.*(internet|broadband|connection)|reliable internet"),
     ("wfh_setup", r"work from home setup|home office setup|dedicated workspace"),
-    ("graduate", r"\b(are you|do you have).*(graduat\w*|bachelor|b\.?tech|degree)\b"),
+    ("graduate", r"\b(are you|do you have|have you (completed|obtained|earned)|"
+                 r"did you (complete|graduate))\b.*(graduat\w*|bachelor|b\.?tech|"
+                 r"b\.?e\b|degree|engineering)"),
     ("full_time_avail", r"available (for|to work) full[- ]time|full[- ]time (role|position|basis)"),
     ("english", r"(fluent|proficient|comfortable).*(english|communication)"),
     ("own_transport", r"own (vehicle|transport|conveyance)"),

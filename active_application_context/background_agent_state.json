@@ -174,12 +174,14 @@
     "zhappiens-ai:software-engineer"
   ],
   "seen_job_ids": [
+    "10x10-booths:webflow-developer",
     ":",
     "accenture:full-stack-engineer",
     "aether-legals:frontend-engineer-legaltech",
     "ai-startup-impact:software-engineer-intern",
     "aikya-connect:ai-backend-engineer-contractual",
     "alternative-path:data-engineer-web-scraping",
+    "alternative-path:data-engineer-web-scraping-with-verification",
     "an-early-stage-tech-startup-mumbai:full-stack-developer-react-node-sql-for-a-startup-mumbai-thane",
     "andor-tech:senior-software-engineer",
     "anti-swipe-club:founding-ai-ml-engineer",
@@ -207,6 +209,7 @@
     "capitalxb:fullstack-developer",
     "careait-health-services:fullstack-developer",
     "careerxperts-consulting:associate-software-engineer",
+    "careerxperts-consulting:associate-software-engineer-with-verification",
     "careerxperts-consulting:software-engineer",
     "careerxperts-consulting:software-engineer-remote-with-verification",
     "carnation-infotech:python-ai-engineer-llm",
@@ -216,8 +219,12 @@
     "codeacious:fullstack-developer",
     "coderound-ai:ai-engineer-up-to-50lpa",
     "coderound-ai:forward-deployed-engineer",
+    "coderound-ai:research-engineer-iii-up-to-60lpa",
+    "coderound-ai:sde-iii-up-to-35lpa",
     "confidential:genai-agentic-ai-architect-aws",
+    "cosmos-ai:generative-ai-and-automation-engineer-intern",
     "create-agi-labs:react-js-next-js-web-developer",
+    "crossing-hurdles:ai-engineer-90-hr-remote",
     "crossing-hurdles:devops-engineer-80-hr-remote",
     "crossing-hurdles:software-developer-remote",
     "crossing-hurdles:ui-engineer-90-hr-remote",
@@ -248,6 +255,7 @@
     "fibr-ai:founding-product-engineer",
     "fibr-ai:senior-product-engineer",
     "finoit-inc:backend-developer-python-genai-with-verification",
+    "firstsource:senior-software-engineer",
     "flexton-inc:generative-ai-engineer",
     "fluid-ai:python-fullstack-agentic-ai-engineer-mumbai-onsite",
     "gapblue-software-labs-pvt-ltd:full-stack-developer-react-python",
@@ -257,7 +265,9 @@
     "giantmind-solutions:lead-python-developer-product-based",
     "giantmind-solutions:lead-python-developer-production-systems",
     "gruntwrk:software-engineer",
+    "harp:c-developer",
     "harp:node-js-developer",
+    "haystek-technologies:ai-developer-with-verification",
     "hcltech:walk-in-drive-for-gen-ai-developer-noida-sec-60-on-20th-june",
     "healthflex:react-native-professional",
     "hindavi-technologies:fullstack-developer",
@@ -267,6 +277,7 @@
     "iaverse:senior-full-stack-ai-developer",
     "iitmatrix:senior-ai-engineer",
     "indexnine:fullstack-developer",
+    "info-origin-inc:python-developer-cloud-ai",
     "infosys:fullstack-react-js-node-js-engineer",
     "infovision-inc:full-stack-engineer",
     "innoterra-india:full-stack-platform-engineer-python-react-native",
@@ -274,6 +285,7 @@
     "insettini:founding-full-stack-engineer",
     "insight-global:ai-software-engineer-with-verification",
     "insight-global:google-cloud-data-engineer-immediate-joiners",
+    "international-institute-of-hotel-management-iihm:computer-science-teacher-for-ai",
     "invene:junior-data-engineer",
     "invictron:ai-ml-engineer",
     "itc:genai-llm-engineer",
@@ -281,6 +293,7 @@
     "k-hawk-capital:junior-python-developer-trading-infrastructure",
     "kake:senior-full-stack-engineer-node-react-remote-with-verification",
     "kamakhya-analytics-private-limited:backend-engineer",
+    "kaseya:sr-software-developer-engineer-i",
     "kasparro-ai:full-stack-engineer-i-ai-platform",
     "kavia-ai:senior-software-engineer-ai-native-product-platform",
     "key-talent-solutions:full-stack-engineer-ai-product-engineering",
@@ -318,11 +331,13 @@
     "navgurukul:ai-engineer",
     "navi:sde-i-backend",
     "nextgenpros-inc:python-genai-developer",
+    "onebyzero:senior-applied-scientist",
     "onit-india:ai-engineer",
     "onit-india:senior-ai-engineer",
     "opensource-technologies:ai-enabled-full-stack-developer",
     "osv-solutions:react-js-developer",
     "people-prime-worldwide:python-developer",
+    "pharmatek-solutions-inc:backend-ai-engineering-intern",
     "postship-adbanana:founding-ai-engineer",
     "prentis:product-engineer",
     "pricesenz:react-native-full-stack-developer",
@@ -349,9 +364,11 @@
     "scoutit:gen-ai-developer",
     "serokell:devops-engineer",
     "servion-global-solutions:software-engineer",
+    "shuru:rust-engineer",
     "sleek:principal-full-stack-engineer",
     "sonata-software:ai-engineer",
     "sonata-software:genai-engineer",
+    "spearsoft:knowledge-graph-engineer",
     "spydra:full-stack-developer-ai-assist-and-integrations",
     "stealth-startup:software-engineer",
     "strobes-security-inc:full-stack-engineer",
@@ -365,8 +382,10 @@
     "talentgigs:agentic-ai-engineer",
     "talentgigs:lead-ai-engineer",
     "talentgigs:machine-learning-engineer",
+    "talentteno-institute:ai-ml",
     "tata-consultancy-services:full-stack-engineer",
     "tata-consultancy-services:generative-ai-vertexai-google-adk-agenticai-rag-pipeline",
+    "tata-consultancy-services:python-developer-with-verification",
     "teamware-solutions:full-stack-engineer-backend",
     "tech-mahindra:ai-engineer",
     "tech-silicon:python-api",
@@ -382,19 +401,26 @@
     "triveous:team-lead-fullstack",
     "unified-infotech:senior-react-developer",
     "upgrad-rekrut:ai-engineer",
+    "valgenesis:senior-software-engineer-ai-ml",
     "vdart-digital:genai-engineer",
+    "velodata-global-pvt-ltd:java-full-stack-developer",
     "viobe:lead-software-engineer",
+    "virtual-connect-solutions:ai-engineer-lead",
     "volkswagen-group-digital-solutions-india:python-developer",
     "vrs-intelligent-innovative-system:python-developer-ai-opencv-llm-backend-django-react",
     "vyntrapro-innovations-pvt-ltd:fullstack-developer-react-js-node-js-aws-docker",
     "wenger-watson:full-stack-engineer",
     "wishwish:frontend-engineer-ios-unity",
+    "workfabric-ai:senior-software-engineer",
     "wtw:artificial-intelligence-engineer",
     "yakbos-technologies-private-limited:founding-co-founder-opportunity-ai-deep-technology-bengaluru-preferred-globally-open",
     "yminds-ai:full-stack-developer-with-gen-ai-3-to-5-years-of-experience",
     "yminds-ai:senior-frontend-developer-react-nextjs-microfrontend-immediate-joiner-remote-upto-16lpa",
+    "yminds-ai:senior-full-stack-engineer-bangalore-hyderabad-5-8-years-immediate-joiner",
+    "ytcventures-com:ai-startup-co-founder-investment-equity-build-the-future-of-investment-intelligence-bengaluru-preferred",
     "zafify:software-engineer",
     "zeabyte-limited:frontend-developer-react-next-js",
+    "zenia-mobile:full-stack-developer-intern-junior",
     "zhappiens-ai:software-engineer"
   ],
   "blocked_jobs": {
@@ -527,6 +553,26 @@
       "reason": "blocked:unanswerable_question",
       "at": "2026-08-01T18:17:39",
       "url": "https://www.linkedin.com/jobs/view/4447492290/"
+    },
+    "workfabric-ai:senior-software-engineer": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T18:24:20",
+      "url": "https://www.linkedin.com/jobs/view/4445595621/"
+    },
+    "virtual-connect-solutions:ai-engineer-lead": {
+      "reason": "max_attempts_exhausted (error:1)",
+      "at": "2026-08-01T18:29:55",
+      "url": "https://www.linkedin.com/jobs/view/4447473316/"
+    },
+    "firstsource:senior-software-engineer": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T18:30:34",
+      "url": "https://www.linkedin.com/jobs/view/4447197564/"
+    },
+    "yminds-ai:senior-full-stack-engineer-bangalore-hyderabad-5-8-years-immediate-joiner": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T18:37:24",
+      "url": "https://www.linkedin.com/jobs/view/4447786802/"
     }
   },
   "attempts": {
@@ -607,6 +653,24 @@
       "last": "2026-08-01T18:17:02",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447455959/"
+    },
+    "virtual-connect-solutions:ai-engineer-lead": {
+      "count": 2,
+      "last": "2026-08-01T18:29:55",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4447473316/"
+    },
+    "firstsource:senior-software-engineer": {
+      "count": 1,
+      "last": "2026-08-01T18:23:36",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4447197564/"
+    },
+    "tata-consultancy-services:gen-ai-developer": {
+      "count": 1,
+      "last": "2026-08-01T18:31:17",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4447479641/"
     }
   }
 }
