@@ -367,16 +367,31 @@ def find_modal(page):
     return None
 
 
-def find_action_btn(root, names: list[str]):
-    for name in names:
-        btn = root.get_by_role("button", name=re.compile(re.escape(name), re.I))
-        if btn.count() > 0 and btn.first.is_visible():
-            return btn.first
-        btn2 = root.locator("button, [role='button']").filter(
-            has_text=re.compile(re.escape(name), re.I)
-        )
-        if btn2.count() > 0 and btn2.first.is_visible():
-            return btn2.first
+def find_action_btn(root, names: list[str], page=None):
+    """Find an action button, falling back to the whole page.
+
+    Naukri's chatbot renders its Save button at the bottom of a side drawer that
+    sits OUTSIDE the modal we scope `root` to. Searching only `root` meant the
+    answer was selected correctly but the step never advanced, and every such
+    application died at the step limit.
+    """
+    scopes = [root] + ([page] if page is not None else [])
+    for scope in scopes:
+        for name in names:
+            try:
+                btn = scope.get_by_role("button", name=re.compile(re.escape(name), re.I))
+                if btn.count() > 0 and btn.first.is_visible():
+                    return btn.first
+            except Exception:
+                pass
+            try:
+                btn2 = scope.locator("button, [role='button']").filter(
+                    has_text=re.compile(rf"^\s*{re.escape(name)}\s*$", re.I)
+                )
+                if btn2.count() > 0 and btn2.first.is_visible():
+                    return btn2.first
+            except Exception:
+                pass
     return None
 
 
@@ -819,7 +834,8 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                 return "dry_run"
 
             # Submit — 'Save' is also a submit button in Naukri chatbot
-            submit = find_action_btn(root, ["Apply", "Apply Now", "Submit", "Send Application", "Save and Apply", "Save & Apply", "Save"])
+            submit = find_action_btn(root, ["Apply", "Apply Now", "Submit", "Send Application",
+                                            "Save and Apply", "Save & Apply", "Save"], page=page)
             if submit:
                 try:
                     submit.scroll_into_view_if_needed(timeout=3000)
@@ -834,7 +850,8 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                 continue
 
             # Next / Continue / Skip in chatbot
-            nxt = find_action_btn(root, ["Next", "Continue", "Proceed", "OK", "Okay", "Skip this question", "Skip"])
+            nxt = find_action_btn(root, ["Next", "Continue", "Proceed", "OK", "Okay",
+                                         "Skip this question", "Skip"], page=page)
             if nxt:
                 try:
                     nxt.scroll_into_view_if_needed(timeout=3000)

@@ -281,6 +281,8 @@
     "ascendion-engineering:genai-engineer",
     "ascendion:senior-software-engineer",
     "aspiringit:junior-python-developer",
+    "asset-chain-techlligence:fullstack-developer",
+    "astes-healthcare-solutions:software-developer-ai-ml",
     "asvia-technologies-private-limited:developer-ai-applications-full-stack-development",
     "atigro:expert-python-and-web-admin-django-developer-for-ai-erp",
     "atsmantra:full-stack-developer",
@@ -447,6 +449,7 @@
     "deloitte:full-stack-engineer",
     "delostyle-studio:artificial-intelligence-engineer",
     "dentsu-webchutney:magnolia-full-stack-engineer",
+    "dentsu-webchutney:technical-lead",
     "devfixr:full-stack-developer-ai-native",
     "dexiot-technologies-private-limited:node-js-developer",
     "dexter-tech-labs:python-developer",
@@ -465,6 +468,7 @@
     "e-edge-technology:ai-engineer-python-ai-agents-machine-learning-0729",
     "e-software-solutions:prompt-engineer",
     "e2m-solutions:associate-ai-engineer",
+    "e4-software-services:full-stack-quantitative-developer",
     "ease-account:backend-engineer-go-golang-preferred-early-stage-startup",
     "easemytrip-com:full-stack-engineer",
     "eclerx:associate-process-manager",
@@ -861,6 +865,7 @@
     "jpmorgan-chase-bank:software-engineer-iii-python-developer-llm-gen-ai",
     "jugla-technologies:java-full-stack-developer-react-0-1-years",
     "just-call:software-development-engineer-i",
+    "k-zen-studio:senior-frontend-developer",
     "k12-techno-services:fullstack-engineer",
     "kake:senior-full-stack-engineer-node-react-remote-with-verification",
     "kalolytic-solutions:walk-in-react-js-developer",
@@ -915,6 +920,7 @@
     "levrez-technologies:node-js-developer",
     "lightrains-technolabs:full-stack-engineer-lightrains",
     "lightrains-technolabs:node-js-backend-developer",
+    "lightrains-technolabs:react-frontend-developer-lightrains",
     "live-connections:walk-in-drive-python-developers",
     "love-in-store:web-crawling-python-developer",
     "lrr-technologies:node-js-developer-for-top-mnc",
@@ -926,6 +932,7 @@
     "macquarie:senior-associate-full-stack-ai-enigneer",
     "macshell-informatics-pvt-ltd:software-developer",
     "madhav-corporation:ai-software-developer",
+    "mafatlal-industries:sr-react-developer",
     "magure:full-stack-ai-engineer",
     "mahle:ci-cd-engineer",
     "makers-mind-soft-solutions:react-developer",
@@ -940,6 +947,7 @@
     "mediaradar-inc:data-quality-engineer",
     "menstrupedia:software-developer-intern",
     "meshdefend:full-stack-engineer",
+    "meslova:python-developer-delhi-work-location",
     "metlife:ai-engineer",
     "millennium-consulting:ai-engineer",
     "mindmach-technologies:machine-learning-engineer-ai-ml-genai-python-1-6-yrs",
@@ -949,6 +957,7 @@
     "mnc:fullstack-developer",
     "mnc:software-developer",
     "mnc:web-developer",
+    "mobileware-technologies:artificial-intelligence-engineer",
     "modus-business-transformation-platform:artificial-intelligence-engineer",
     "mongodb:associate-tse-ii",
     "moon-technolabs:trainee-node-js-developer",
@@ -1044,6 +1053,7 @@
     "phoenix-contact-i-pvt-ltd:ai-product-engineer",
     "physicswallah:sst-associate",
     "pierian:engineer",
+    "pkc-management-consulting:junior-backend-engineer",
     "plivo:software-development-engineer-core-systems",
     "pluswealth-capital-management-llp:python-developer",
     "poly-medicure-ltd:r-d-engineer",
@@ -1379,6 +1389,7 @@
     "vrinda-international-noida:genai-engineer",
     "vrinda-international:genai-engineer",
     "vrisva-space:mechanical-engineer",
+    "vrs-intelligent-innovative-system:python-developer-ai-opencv-llm-backend-django-react",
     "vueverse:full-stack-engineer-react-node-js-typescript",
     "wartin-labs:artificial-intelligence-engineer",
     "webassic-it-solutions:lead-ai-product-engineer-enterprise-agents-ai-assisted-legacy-modernization",
@@ -1506,6 +1517,11 @@
       "reason": "max_attempts_exhausted (error:step_limit)",
       "at": "2026-08-01T17:54:13",
       "url": "https://www.naukri.com/job-listings-junior-software-developer-hyperworks-imaging-bengaluru-2-to-5-years-280726018701"
+    },
+    "vrs-intelligent-innovative-system:python-developer-ai-opencv-llm-backend-django-react": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T17:55:28",
+      "url": "https://www.naukri.com/job-listings-python-developer-ai-opencv-llm-backend-django-react-vrs-intelligent-innovative-system-noida-1-to-4-years-010826009998"
     }
   },
   "attempts": {
@@ -1550,6 +1566,12 @@
       "last": "2026-08-01T17:54:13",
       "last_status": "error:step_limit",
       "url": "https://www.naukri.com/job-listings-junior-software-developer-hyperworks-imaging-bengaluru-2-to-5-years-280726018701"
+    },
+    "bayone-solutions:agentic-ai-engineer-bayone": {
+      "count": 1,
+      "last": "2026-08-01T17:54:49",
+      "last_status": "error:step_limit",
+      "url": "https://www.naukri.com/job-listings-agentic-ai-engineer-bayone-bayone-solutions-gurugram-0-to-3-years-300726501480"
     }
   }
 }
