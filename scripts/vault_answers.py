@@ -87,6 +87,10 @@ _FACT_NO = (
     ("no_pending_offer", r"any (other )?(pending|active) offer"),
     ("not_currently_unemployed", r"currently (unemployed|not working|without a job)"),
     ("no_notice_buyout_needed", r"require.*notice.*buy[- ]?out"),
+    # Canonical notice is 15 days, so "immediate" is factually No. The vault used
+    # to claim Immediate Joiner; that was corrected, and this answer follows it.
+    ("not_immediate_joiner", r"\bimmediate joiner\b|join(ing)? immediately|"
+                             r"can you join (immediately|right away)|zero notice"),
 )
 
 # question-pattern -> answer-bank key

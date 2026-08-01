@@ -52,6 +52,7 @@
     "fcs-software-solutions:ai-engineer",
     "fibr-ai:founding-product-engineer",
     "fibr-ai:senior-product-engineer",
+    "finoit-inc:backend-developer-python-genai-with-verification",
     "flexton-inc:generative-ai-engineer",
     "fluid-ai:python-fullstack-agentic-ai-engineer-mumbai-onsite",
     "gapblue-software-labs-pvt-ltd:full-stack-developer-react-python",
@@ -104,6 +105,7 @@
     "navgurukul:ai-engineer",
     "navi:sde-i-backend",
     "nextgenpros-inc:python-genai-developer",
+    "onit-india:ai-engineer",
     "onit-india:senior-ai-engineer",
     "opensource-technologies:ai-enabled-full-stack-developer",
     "osv-solutions:react-js-developer",
@@ -133,6 +135,7 @@
     "symphonyai:full-stack-engineer",
     "talent-authority-partners:product-engineer-ai",
     "talent-support-india:fullstack-developer",
+    "talentgigs:lead-ai-engineer",
     "tata-consultancy-services:full-stack-engineer",
     "tata-consultancy-services:generative-ai-vertexai-google-adk-agenticai-rag-pipeline",
     "teamware-solutions:full-stack-engineer-backend",
@@ -496,6 +499,7 @@
     "fibr-ai:senior-product-engineer",
     "fidelity-international:ai-engineer",
     "fieldnerve:product-engineer-frontend",
+    "finoit-inc:backend-developer-python-genai-with-verification",
     "firesky-media-technologies:react-native-professional",
     "firstsource:gen-ai-engineer",
     "flex:developer",
@@ -603,6 +607,7 @@
     "iflow:engineer",
     "ignitefortune-tech:software-developer-java-with-python-knowledge",
     "iifl-home-finance:digital-credit-manager",
+    "iitmatrix:senior-ai-engineer",
     "impelsys:software-engineer",
     "impetus:full-stack-engineer",
     "improva:software-engineer-intern",
@@ -847,6 +852,7 @@
     "kdk-software:genai-engineer-llm-python-rag-langchain-ai-integration",
     "key-talent-solutions:full-stack-engineer-ai-product-engineering",
     "keywords-studios:ai-engineer-fresher-entry-level",
+    "keyy-pays:google-cloud-engineer",
     "kilwar:backend-engineer-typescript-ai-first-team",
     "kodeinfotech:back-end-developer",
     "kodeinfotech:front-end-developer",
@@ -970,6 +976,7 @@
     "omni-hire-recruitment-solutions:software-developer-ruby-python",
     "omokai:robotics-ai-engineer",
     "omvrti-ai:lead-founding-product-engineer",
+    "onit-india:ai-engineer",
     "onit-india:senior-ai-engineer",
     "oodles-technologies:blockchain-developer",
     "open-idea:ai-llm-systems-engineer-innovation-intelligence",
@@ -1169,6 +1176,7 @@
     "spmr-advisors:c-inventor-developers",
     "springreen:full-stack-developer-trainee",
     "spruko-technologies:javascript-developer",
+    "spydra:full-stack-developer-ai-assist-and-integrations",
     "squash-apps:data-engineer-pyspark-6-8-years-exp",
     "srm-designs:artificial-intelligence-engineer",
     "stack-digital:genai-engineer",
@@ -1198,6 +1206,7 @@
     "talentgigs:back-end-developer-next-js",
     "talentgigs:full-stack-engineer",
     "talentgigs:full-stack-engineer-react-node-mongodb",
+    "talentgigs:lead-ai-engineer",
     "talentiser:lead-mechanical-design-engineer-ai-based-robotics-startup-up-to-20-lpa",
     "talentpluto:go-to-market-engineer",
     "talentpluto:research-engineer",
@@ -1323,6 +1332,7 @@
     "verve-systems:full-stack-developer-react-node",
     "vibry-business-solutions:developer",
     "vinkon:frontend-developer",
+    "viobe:lead-software-engineer",
     "visa-consolidated-support-services-india:senior-sw-engineer-python-genai",
     "visa-consolidated-support-services-india:staff-software-engineer-python-react-bigdata-cloud-genai",
     "visibilitystack:full-stack-engineer",
@@ -1359,6 +1369,7 @@
     "xencia-technology-solutions:ai-engineer",
     "xtransmatrix-consulting-services:walk-in-ai-operator-aipo-voice-and-ai-training",
     "yajentio-software:angular-professional",
+    "yminds-ai:senior-frontend-developer-react-nextjs-microfrontend-immediate-joiner-remote-upto-16lpa",
     "yourdost:customer-success-intern",
     "yurik-technologies:web-developer",
     "zackriya-solutions:product-engineer",
@@ -1402,6 +1413,21 @@
       "reason": "blocked:unanswerable_question",
       "at": "2026-08-01T17:34:30",
       "url": "https://www.linkedin.com/jobs/view/4447456479/"
+    },
+    "viobe:lead-software-engineer": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T17:36:09",
+      "url": "https://www.linkedin.com/jobs/view/4447481400/"
+    },
+    "yminds-ai:senior-frontend-developer-react-nextjs-microfrontend-immediate-joiner-remote-upto-16lpa": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T17:36:39",
+      "url": "https://www.linkedin.com/jobs/view/4447798615/"
+    },
+    "iitmatrix:senior-ai-engineer": {
+      "reason": "max_attempts_exhausted (error:1)",
+      "at": "2026-08-01T17:37:47",
+      "url": "https://www.linkedin.com/jobs/view/4447516514/"
     }
   },
   "attempts": {
@@ -1430,8 +1456,8 @@
       "url": "https://www.linkedin.com/jobs/view/4445525561/"
     },
     "iitmatrix:senior-ai-engineer": {
-      "count": 1,
-      "last": "2026-08-01T17:31:06",
+      "count": 2,
+      "last": "2026-08-01T17:37:47",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447516514/"
     }
