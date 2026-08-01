@@ -240,12 +240,18 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
     except Exception:
         return 0
 
+    if count == 0:
+        return 0
+    print(f"  [radio] {count} radio input(s) in scope", flush=True)
+
     seen_groups: set[str] = set()
     for i in range(count):
         try:
             radio = radios.nth(i)
-            if not radio.is_visible():
-                continue
+            # NOT gated on is_visible(): LinkedIn hides the real <input> and styles
+            # the <label>, so every input reports invisible and the whole loop
+            # silently did nothing — no logs, no clicks, and a required question
+            # left blank while the correct answer sat unused.
             group = radio.get_attribute("name") or f"__anon{i}"
             if group in seen_groups:
                 continue
@@ -304,13 +310,25 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
                 if lab == wanted or wanted in lab or lab in wanted:
                     target = (root.locator(f"#{opt['id']}") if opt.get("id")
                               else root.locator(f"input[type=radio][name='{group}']").nth(0))
-                    try:
-                        target.check(timeout=4000)
-                    except Exception:
+                    clicked = False
+                    # The visible control is the label, not the input.
+                    for attempt in (
+                        lambda: root.locator(f"label[for='{opt['id']}']").first.click(timeout=4000),
+                        lambda: target.check(timeout=4000, force=True),
+                        lambda: target.click(timeout=4000, force=True),
+                        lambda: target.evaluate(
+                            "el => { el.checked = true; "
+                            "el.dispatchEvent(new Event('change', {bubbles: true})); }"),
+                    ):
                         try:
-                            target.click(timeout=4000, force=True)
-                        except Exception:
+                            attempt()
+                            clicked = True
                             break
+                        except Exception:
+                            continue
+                    if not clicked:
+                        print(f"  [radio] could not click {lab!r}", flush=True)
+                        break
                     filled += 1
                     seen_groups.add(group)
                     print(f"  [radio] {answer!r} <- {question[:70]!r}", flush=True)
