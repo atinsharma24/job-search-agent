@@ -198,6 +198,7 @@
     "blabber-ai:full-stack-engineer",
     "black-white-business-solutions:gen-ai-engineer",
     "boomerangfx:ai-nlp-engineer",
+    "boomerangfx:ai-nlp-engineer-with-verification",
     "brezq:python-developer",
     "bridgeai:senior-agentic-rag-engineer",
     "candata-ai:ai-native-automation-test-engineer",
@@ -321,6 +322,7 @@
     "osv-solutions:react-js-developer",
     "people-prime-worldwide:python-developer",
     "postship-adbanana:founding-ai-engineer",
+    "pricesenz:react-native-full-stack-developer",
     "pricesenz:react-native-full-stack-developer-with-verification",
     "procal-technologies:full-stack-developer-react-angular-node-js-python-flask",
     "prodinit:full-stack-engineer-django-react",
@@ -517,6 +519,11 @@
       "reason": "max_attempts_exhausted (error:1)",
       "at": "2026-08-01T18:17:02",
       "url": "https://www.linkedin.com/jobs/view/4447455959/"
+    },
+    "pricesenz:react-native-full-stack-developer": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T18:17:39",
+      "url": "https://www.linkedin.com/jobs/view/4447492290/"
     }
   },
   "attempts": {
