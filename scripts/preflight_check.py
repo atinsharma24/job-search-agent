@@ -260,6 +260,32 @@ def _linkedin_field_mapping():
     return PASS, "defers to vault_answers; unknown fields left blank"
 
 
+@check("tab_safety")
+def _tab_safety():
+    """No script may close a tab it did not open.
+
+    close_redundant_tabs() used to close every tab that was not Naukri, in the
+    user's own browser profile, and one call site passed keep_domains=() which
+    made that every non-blank tab in the browser.
+    """
+    bad = []
+    for py in sorted(SCRIPTS.glob("playwright_*.py")):
+        src = py.read_text(encoding="utf-8")
+        if "context.pages[0]" in src and "named_page" not in src:
+            bad.append(f"{py.name}: takes context.pages[0]")
+        # Match the CALL, not prose — the fix's own docstring mentions the old
+        # signature while explaining why it was wrong.
+        if re.search(r"close_redundant_tabs\([^)]*keep_domains=\(\)", src):
+            bad.append(f"{py.name}: close_redundant_tabs called with empty keep_domains")
+    # Retired Pipeline A files are allowed to keep their old behaviour.
+    live = {"playwright_linkedin_discover_apply.py", "playwright_naukri_discover_apply.py",
+            "playwright_cutshort_apply.py", "playwright_instahyre_apply.py"}
+    bad = [b for b in bad if b.split(":")[0] in live]
+    if bad:
+        return FAIL, f"tab-hostile code in live scripts: {bad}"
+    return PASS, "live scripts own their tabs and close only what they opened"
+
+
 @check("dry_run_isolation")
 def _dry_run_isolation():
     """A dry run must never be recorded as a real application.

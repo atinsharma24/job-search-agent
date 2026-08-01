@@ -277,21 +277,35 @@ def append_tracker(company: str, role: str, url: str, status: str, note: str = "
     log(f"  → Tracker: {status}")
 
 
-def close_redundant_tabs(context, keep_domains=("naukri.com",)):
-    """Close all page tabs that are not Naukri or new-tab."""
+def close_redundant_tabs(context, keep_domains=("naukri.com",), owned=None):
+    """Close ONLY tabs this script created.
+
+    This previously closed every tab that was not Naukri or blank — i.e. the
+    user's own browsing, in their own profile, without warning. One call site
+    passed keep_domains=() which made that "every non-blank tab in the browser".
+
+    We now own our tabs via vault_browser.named_page(), so `owned` is the only
+    thing we are entitled to close. Without it this is a no-op, which is the
+    correct default: never close a tab we did not open.
+    """
+    if not owned:
+        return
     closed = 0
-    for page in list(context.pages):
-        url = page.url.casefold()
-        is_new_tab = url in ("chrome://newtab/", "about:blank", "")
-        is_naukri  = any(d in url for d in keep_domains)
-        if not is_new_tab and not is_naukri:
-            try:
-                page.close()
-                closed += 1
-            except Exception:
-                pass
+    for page in list(owned):
+        try:
+            if page.is_closed():
+                continue
+            url = (page.url or "").casefold()
+            if url in ("chrome://newtab/", "about:blank", ""):
+                continue
+            if any(d in url for d in keep_domains):
+                continue
+            page.close()
+            closed += 1
+        except Exception:
+            pass
     if closed:
-        log(f"  🗑  Closed {closed} redundant tab(s)")
+        log(f"  🗑  Closed {closed} tab(s) this script opened")
 
 
 def build_answer_bank() -> dict:
@@ -1146,7 +1160,7 @@ def main():
 
         # ── Step 0: Close redundant tabs ──────────────────────────────────
         log("\n── Step 0: Closing redundant tabs ──")
-        close_redundant_tabs(context, keep_domains=("naukri.com",))
+        close_redundant_tabs(context, keep_domains=("naukri.com",), owned=_pages.values())
 
         # ── Step 1: Queued jobs (from naukri_queue.md) ────────────────────
         log("\n── Step 1: Applying queued jobs ──")
@@ -1173,11 +1187,17 @@ def main():
                                       answer_bank, applied_count, args.max_apply,
                                       args.dry_run)
             # Close extra tabs after each search batch (keeping search and apply tabs)
-            close_redundant_tabs(context, keep_domains=("naukri.com",))
+            close_redundant_tabs(context, keep_domains=("naukri.com",), owned=_pages.values())
             time.sleep(2)
 
         # Final cleanup
-        close_redundant_tabs(context, keep_domains=())
+        # Final cleanup: close the tabs we opened. The old call passed
+        # keep_domains=() which closed every non-blank tab in the browser.
+        for _pg in _pages.values():
+            try:
+                _pg.close()
+            except Exception:
+                pass
 
     log("\n" + "=" * 65)
     log(f"NAUKRI PIPELINE COMPLETE")
