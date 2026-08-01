@@ -834,8 +834,13 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                 return "dry_run"
 
             # Submit — 'Save' is also a submit button in Naukri chatbot
+            # Scoped to the modal ON PURPOSE. Searching page-wide found a "Save"
+            # outside the question flow and submitted before every mandatory
+            # question was answered — Naukri then rejected the application with
+            # "not accepted due to incomplete information". Advancing is safe to
+            # widen; submitting is not.
             submit = find_action_btn(root, ["Apply", "Apply Now", "Submit", "Send Application",
-                                            "Save and Apply", "Save & Apply", "Save"], page=page)
+                                            "Save and Apply", "Save & Apply", "Save"])
             if submit:
                 try:
                     submit.scroll_into_view_if_needed(timeout=3000)

@@ -70,6 +70,7 @@
     "indexnine:fullstack-developer",
     "infosys:fullstack-react-js-node-js-engineer",
     "infovision-inc:full-stack-engineer",
+    "innoterra-india:full-stack-platform-engineer-python-react-native",
     "innova-esi:agentic-ai-engineer-python-llm-rag-langchain",
     "insettini:founding-full-stack-engineer",
     "invene:junior-data-engineer",
@@ -282,6 +283,7 @@
     "ascendion:senior-software-engineer",
     "aspiringit:junior-python-developer",
     "asset-chain-techlligence:fullstack-developer",
+    "astes-healthcare-solutions:software-developer-ai-ml",
     "asvia-technologies-private-limited:developer-ai-applications-full-stack-development",
     "atigro:expert-python-and-web-admin-django-developer-for-ai-erp",
     "atsmantra:full-stack-developer",
@@ -414,6 +416,7 @@
     "cornerstone:ai-engineer",
     "covasant-technologies:ai-engineer",
     "creative-hands-hr:junior-developer",
+    "creative-hands-hr:software-engineer",
     "crescenza-consulting-group:ai-developer-ai-engineer",
     "crewman-solution:web-developer",
     "crossing-hurdles:backend-developer-25-hr-remote",
@@ -540,6 +543,7 @@
     "gapblue-software-labs-pvt-ltd:full-stack-developer-react-python",
     "ge-vernova:ai-agent-engineer",
     "ge-vernova:staff-software-engineer-python-gen-ai-llm",
+    "geak-minds:software-developer-ansible-shell-scripting-geakminds-chennai",
     "genxhire-services:engineer",
     "genxhire:engineer",
     "geoserve:full-stack-engineer",
@@ -660,10 +664,12 @@
     "infosys:sitecore-engineer",
     "infovision-inc:full-stack-engineer",
     "infrabyte-consulting:python-developer-intern-remote-python-apis-automation-backend-development",
+    "infytrix-ecom:software-development-engineer-in-test-sdet-ai-full-stack",
     "ingersoll-rand:engineer",
     "ingram-micro-platform-technology-india-pvt-ltd:software-engineer-trainee",
     "innefu-labs:artificial-intelligence-engineer",
     "innomax-it-solutions:artificial-intelligence-developer",
+    "innoterra-india:full-stack-platform-engineer-python-react-native",
     "innotronix-labs:sr-lead-full-stack-developer",
     "innovative-incentives-rewards:senior-full-stack-developer",
     "innpact-solutions:full-stack-developer-3d-web-applications",
@@ -1060,6 +1066,7 @@
     "precisely:solution-engineer-product-demo-etl-engineer",
     "prem-packaging-ghaziabad:walk-in-react-native-developer",
     "prepladder:software-engineer",
+    "priceline:associate-software-engineer",
     "pricesenz:generative-ai-engineer",
     "pro5-ai:backend-engineer-algorithms",
     "probus-insurance-broker:urgent-hiring-ai-engineer-entry-level",
@@ -1269,6 +1276,7 @@
     "tech-inject:lead-full-stack-developer-sveltekit-typescript",
     "techathalon-software:software-developer",
     "techavidus:software-developer-intern-trainee",
+    "techfruits-solutions:software-developer",
     "techgropse-next-gen-ai-services:chief-ai-officer-co-founder-with-verification",
     "techila-global-services:full-stack-developer",
     "techindo-systems:full-stack-developer",
@@ -1571,6 +1579,12 @@
       "last": "2026-08-01T17:54:49",
       "last_status": "error:step_limit",
       "url": "https://www.naukri.com/job-listings-agentic-ai-engineer-bayone-bayone-solutions-gurugram-0-to-3-years-300726501480"
+    },
+    "cloudtechner-services:full-stack-ai-engineers": {
+      "count": 1,
+      "last": "2026-08-01T17:58:50",
+      "last_status": "error:step_limit",
+      "url": "https://www.naukri.com/job-listings-full-stack-ai-engineers-cloudtechner-services-gurugram-3-to-8-years-240726024813"
     }
   }
 }

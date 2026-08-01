@@ -24,6 +24,13 @@ __pycache__/
 .venv/
 venv/
 
+# Derived state backups — regenerated on every write, never worth versioning
+*.json.bak
+*.json.pre-rescan.*
+*.json.corrupt.*
+*.json.tmp.*
+*.json.lock
+
 # Build output & run artifacts
 out/
 output/
