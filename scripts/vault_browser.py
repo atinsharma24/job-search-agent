@@ -49,7 +49,16 @@ class SecurityChallenge(RuntimeError):
 
 
 # URL fragments that are challenges regardless of page content.
-_CHALLENGE_URL = re.compile(r"/checkpoint|/challenge|captcha|/authwall|/uas/login", re.I)
+_CHALLENGE_URL = re.compile(r"/checkpoint|/challenge|captcha|/authwall", re.I)
+
+# Auth redirects. Checked before the content markers, because a page mid-redirect
+# can render arbitrary transient content — an in-flight OAuth handshake was once
+# classified as a WAF block purely on body text.
+_LOGIN_URL = re.compile(
+    r"/authwall|/uas/login|/login(?:[/?]|$)|/signin(?:[/?]|$)|/nlogin|"
+    r"/accounts/login|/auth/login|[?&]next=/",
+    re.I,
+)
 
 # Body/title markers. Grouped by vendor so failures are attributable.
 _MARKERS: tuple[tuple[str, tuple[str, ...]], ...] = (
@@ -65,11 +74,18 @@ _MARKERS: tuple[tuple[str, tuple[str, ...]], ...] = (
         "request unsuccessful", "incapsula", "akamai",
         "you have been blocked", "rate limit", "too many requests",
     )),
+    # Only unambiguous phrases. Weaker ones like "sign in to continue" or
+    # "join linkedin" appear on plenty of *authenticated* pages (invite modules,
+    # footers), and a false login verdict aborts the whole run with exit 12.
+    # Anything softer must be corroborated by a password field — see below.
     ("login", (
-        "sign in to continue", "please sign in", "session expired",
-        "you've been signed out", "log in to continue", "join linkedin",
+        "session expired", "you've been signed out", "you have been signed out",
+        "your session has ended", "please log in again",
     )),
 )
+
+# Soft login hints: only believed when a password field is also present.
+_SOFT_LOGIN = ("sign in to continue", "please sign in", "log in to continue")
 
 
 def _safe(fn, default=""):
@@ -82,9 +98,12 @@ def _safe(fn, default=""):
 def detect_security_challenge(page) -> str | None:
     """Return 'captcha' | 'waf' | 'login' | None. Never raises."""
     url = _safe(lambda: page.url).casefold()
+    # Auth redirects first: a session problem, not a bot problem, and the two
+    # need different remedies (re-login vs back off).
+    if _LOGIN_URL.search(url):
+        return "login"
     if _CHALLENGE_URL.search(url):
-        # An authwall/login URL is a session problem, not a bot problem.
-        return "login" if ("authwall" in url or "/uas/login" in url) else "captcha"
+        return "captcha"
 
     title = _safe(lambda: page.title()).casefold()
     body = _safe(lambda: page.locator("body").inner_text(timeout=3000)).casefold()
@@ -99,13 +118,21 @@ def detect_security_challenge(page) -> str | None:
                     continue
                 return kind
 
-    # A visible password field on a page that should already be authenticated.
+    # Soft login phrases count only when a password field corroborates them, and a
+    # password field alone counts only when the page has no real content. A logged-in
+    # LinkedIn feed contains plenty of sign-in prose in modules and footers.
     try:
-        if page.locator("input[type='password']").count() > 0 and "login" not in url:
+        has_password = page.locator("input[type='password']").count() > 0
+    except Exception:
+        has_password = False
+    if has_password:
+        if any(hint in blob for hint in _SOFT_LOGIN):
+            return "login"
+        try:
             if page.locator("main, [role='main']").count() == 0:
                 return "login"
-    except Exception:
-        pass
+        except Exception:
+            pass
     return None
 
 

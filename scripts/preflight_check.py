@@ -253,6 +253,63 @@ def _network_checks() -> None:
             return FAIL, ("Chrome not reachable on :9222 — start it with "
                           "`bash scripts/run_chrome_background.sh --start`")
 
+    @check("sessions_live")
+    def _sessions():
+        """Confirm each portal is actually logged in.
+
+        Uses its own throwaway tab and closes it, so the user's open tabs are
+        never navigated away — the positional context.pages[0] access elsewhere
+        in the codebase does exactly that, and it is a real hazard.
+        """
+        try:
+            from playwright.sync_api import sync_playwright
+        except ImportError:
+            return WARN, "playwright not installed — cannot verify sessions"
+
+        import vault_browser as vb
+
+        portals = [
+            ("linkedin", "https://www.linkedin.com/feed/"),
+            ("naukri", "https://www.naukri.com/mnjuser/profile"),
+            ("cutshort", "https://cutshort.io/profile"),
+            ("instahyre", "https://www.instahyre.com/candidate/opportunities/"),
+        ]
+        live, dead, err = [], [], []
+        with sync_playwright() as pw:
+            try:
+                browser, context = vb.connect_cdp(pw, CDP_URL)
+            except Exception as exc:
+                return FAIL, f"cannot attach to Chrome: {exc}"
+            page = context.new_page()
+            try:
+                for name, url in portals:
+                    try:
+                        page.goto(url, wait_until="domcontentloaded", timeout=20000)
+                        page.wait_for_timeout(1500)
+                        kind = vb.detect_security_challenge(page)
+                        if kind in ("login", "captcha", "waf"):
+                            dead.append(f"{name}:{kind}")
+                        else:
+                            live.append(name)
+                    except Exception as exc:
+                        err.append(f"{name}:{type(exc).__name__}")
+            finally:
+                try:
+                    page.close()
+                except Exception:
+                    pass
+
+        detail = f"live: {', '.join(live) or 'none'}"
+        if dead:
+            detail += f" · NOT logged in: {', '.join(dead)}"
+        if err:
+            detail += f" · unreachable: {', '.join(err)}"
+        if not live:
+            return FAIL, detail + " — log in inside $HOME/ChromeDebugProfile"
+        if dead or err:
+            return WARN, detail
+        return PASS, detail
+
     @check("instahyre_profile_resume")
     def _instahyre():
         return WARN, ("Instahyre applies with the resume attached to your PROFILE, not an "
