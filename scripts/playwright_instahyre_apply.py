@@ -16,6 +16,10 @@ from datetime import datetime
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import vault_config as vc
+import vault_answers as va
+
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 TRACKER_PATH = VAULT_ROOT / "active_application_context" / "job_applications_tracker.md"
 ARTIFACT_DIR = VAULT_ROOT / "output" / "playwright"
@@ -24,8 +28,8 @@ CDP_URL = "http://localhost:9222"
 # ---------------------------------------------------------------------------
 # CTC values (override from user instruction)
 # ---------------------------------------------------------------------------
-CURRENT_CTC_LPA = 11.2
-EXPECTED_CTC_LPA = 16  # 16-22 LPA, negotiable
+CURRENT_CTC_LPA = vc.current_ctc_lpa()      # canonical: 01_atomic_fact_sheet.json
+EXPECTED_CTC_LPA = vc.expected_ctc_numeric()  # stated floor; never the private floor
 
 # ---------------------------------------------------------------------------
 # Jobs to apply (from instahyre_queue.md — Ready to Apply section)
@@ -36,7 +40,7 @@ JOBS = [
         "company": "Salarybox",
         "role": "Fullstack Engineer",
         "url": "https://www.instahyre.com/job-421962-fullstack-engineer-at-salarybox-gurgaon/",
-        "note": "Salarybox's mission of bringing financial inclusion to India's blue-collar workforce resonates with my work building VyaparGPT, an AI-powered WhatsApp platform for Indian SMBs that ran 40+ real-world pilots. I have hands-on experience with Python backends (FastAPI/Django patterns), React frontends, and PostgreSQL exactly the stack your JD calls out. I enjoy owning features end-to-end from API design through deployment, which suits a small team well. I'm an immediate joiner and excited to contribute at this growth stage.",
+        "note": "Salarybox's mission of bringing financial inclusion to India's blue-collar workforce resonates with my work building VyaparGPT, an AI-powered WhatsApp platform for Indian SMBs that ran 40+ real-world pilots. I have hands-on experience with Python backends (FastAPI/Django patterns), React frontends, and PostgreSQL exactly the stack your JD calls out. I enjoy owning features end-to-end from API design through deployment, which suits a small team well. I'm on a 15-day notice period and excited to contribute at this growth stage.",
         "resume": "AI_Integrated_FullStack",
     },
     {

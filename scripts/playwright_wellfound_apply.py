@@ -30,7 +30,7 @@ EXIT_LOGIN_REQUIRED = 12
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
 LOGISTICS_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "06_logistics_mapping.json"
-RESUME_PATH = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "2026New1.pdf"
+RESUME_PATH = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "Atin_Sharma_Resume_2026.pdf"
 ARTIFACT_DIR = VAULT_ROOT / "output" / "playwright"
 LOG_DIR = VAULT_ROOT / "logs"
 WELLFOUND_DOMAINS = ("wellfound.com", "angel.co")
@@ -53,7 +53,7 @@ def build_answer_bank() -> dict:
     pitch = (
         "Founding engineer with hands-on experience building production AI and full-stack "
         "systems at OpenBiz. Shipped WhatsApp-native LLM workflows, RAG pipelines, and "
-        "TypeScript backend systems with measurable latency improvements. Immediate joiner."
+        "TypeScript backend systems with measurable latency improvements. 15-day notice period."
     )
 
     answer_bank["pitch"] = pitch

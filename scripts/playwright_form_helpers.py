@@ -24,61 +24,23 @@ def clean_label(value: str) -> str:
     return re.sub(r"\s+", " ", value or "").strip()
 
 
-def build_base_answer_bank(fact_sheet_path: Path, logistics_path: Path) -> dict:
-    fact_sheet = load_json(fact_sheet_path)
-    logistics = load_json(logistics_path)["logistics"]
-    candidate = fact_sheet["candidate"]
-    first_name, last_name = split_name(candidate["full_name"])
+def build_base_answer_bank(fact_sheet_path: Path = None, logistics_path: Path = None) -> dict:
+    """Canonical answer bank. Delegates to vault_config.
 
-    months = 0
-    for experience in fact_sheet.get("experience", []):
-        months = max(months, int(experience.get("duration_months", 0) or 0))
-    years_experience = 0  # Fresher — always submit as 0 YOE
+    Previously this built the bank inline and did two harmful things:
 
-    expected_min = candidate["salary_expectation_inr_lpa"]["min"]
-    expected_max = candidate["salary_expectation_inr_lpa"]["max"]
+      * `years_experience = 0  # Fresher` — it computed real months from the fact
+        sheet, discarded them, and submitted 0 on every application.
+      * It embedded the raw `fact_sheet` and `logistics` dicts under those keys,
+        which carried the PRIVATE 15 LPA negotiation floor into every bank.
 
-    bank = {
-        "fact_sheet": fact_sheet,
-        "logistics": logistics,
-        "first_name": first_name,
-        "last_name": last_name,
-        "full_name": candidate["full_name"],
-        "email": candidate["email"],
-        "phone": candidate["phone"],
-        "city": candidate["location"]["city"],
-        "state": candidate["location"]["state"],
-        "country": candidate["location"]["country"],
-        "pincode": candidate["location"]["pincode"],
-        "github": candidate["github"],
-        "notice_period_days": str(candidate["notice_period_days"]),
-        "availability": candidate["availability"],
-        "immediate_joiner": logistics["availability"]["notice_period_label"],
-        "expected_ctc_min": str(expected_min),
-        "expected_ctc_max": str(expected_max),
-        "expected_ctc_range": f"{expected_min}-{expected_max}",
-        "expected_ctc_label": logistics["compensation"]["expected_ctc_label"],
-        "expected_salary_min": str(expected_min),
-        "expected_salary_max": str(expected_max),
-        "expected_salary_range": f"{expected_min}-{expected_max}",
-        "expected_salary_label": logistics["compensation"]["expected_ctc_label"],
-        "current_ctc": str(candidate.get("current_ctc_inr_lpa", 0) or 0),
-        "years_experience": str(years_experience),
-        "work_authorized": "Yes",
-        "requires_sponsorship": "No",
-        "open_to_relocate": "Yes",
-        "preferred_location": logistics["work_preference"]["primary"],
-        "secondary_location": logistics["work_preference"]["secondary"],
-        "degree": fact_sheet["education"][0]["degree"],
-        "university": fact_sheet["education"][0]["institution"],
-        "linkedin_profile": "https://www.linkedin.com/in/atinsharma24/",
-    }
+    vault_config redacts the floor at load and computes experience honestly. The
+    path arguments are accepted and ignored so the three existing call sites
+    (cutshort:19, linkedin_discover:192, naukri_discover:290) need no change.
+    """
+    import vault_config as vc
 
-    # Merge Q&A bank so all portal scripts can answer open-ended text fields.
-    qa_bank = logistics.get("qa_bank", {})
-    bank.update(qa_bank)
-
-    return bank
+    return vc.build_answer_bank()
 
 
 def build_field_key(locator, wrapper_selector: Optional[str] = None) -> str:

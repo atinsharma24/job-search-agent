@@ -16,6 +16,9 @@ from pathlib import Path
 from datetime import datetime
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import vault_config as vc
+import vault_answers as va
+from vault_resume import resume_for_job, safe_upload, validate_resume
 from playwright_form_helpers import maybe_upload_file
 
 # ---------------------------------------------------------------------------
@@ -26,15 +29,17 @@ FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_
 LOGISTICS_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "06_logistics_mapping.json"
 TRACKER_PATH = VAULT_ROOT / "active_application_context" / "job_applications_tracker.md"
 QUEUE_PATH = VAULT_ROOT / "active_application_context" / "cutshort_queue.md"
-RESUME_PATH = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "2026New1.pdf"
+# NOTE: last-resort fallback only. Per-job selection now goes through
+# vault_resume.resume_for_job(), which validates extractable text before upload.
+RESUME_PATH = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "Atin_Sharma_Resume_2026.pdf"
 ARTIFACT_DIR = VAULT_ROOT / "output" / "playwright"
 CDP_URL = "http://localhost:9222"
 
 # ---------------------------------------------------------------------------
 # CTC values (override from user instruction)
 # ---------------------------------------------------------------------------
-CURRENT_CTC_LPA = 11.2
-EXPECTED_CTC_LPA = 16  # 16-22 LPA, negotiable
+CURRENT_CTC_LPA = vc.current_ctc_lpa()      # canonical: 01_atomic_fact_sheet.json
+EXPECTED_CTC_LPA = vc.expected_ctc_numeric()  # stated floor; never the private floor
 
 # ---------------------------------------------------------------------------
 # Jobs to apply (from cutshort_queue.md — Ready to Apply section)
@@ -174,10 +179,15 @@ def fill_cutshort_apply_form(page, job: dict, dry_run: bool) -> str:
 
         root = form if form else page
 
-        # Upload resume if required
-        uploaded = maybe_upload_file(root, RESUME_PATH)
+        # Upload resume if required.
+        # The per-job "resume" key was previously logged to the tracker but never
+        # used for the actual upload, so the record named a file that was never sent.
+        chosen_resume = resume_for_job(
+            job.get("jd_text", ""), job.get("role", ""), explicit=job.get("resume")
+        )
+        uploaded = safe_upload(root, chosen_resume)
         if uploaded:
-            log("  ✓ Uploaded resume")
+            log(f"  ✓ Uploaded resume: {chosen_resume.name}")
             page.wait_for_timeout(4000)
 
         # Fill cover note / message textarea
@@ -322,7 +332,7 @@ def main():
                 log(f"  STATUS: {status}")
                 results.append({"job": job, "status": status})
 
-                tracker_note = f"Resume: {job['resume']}"
+                tracker_note = f"Resume: {resume_for_job(job.get('jd_text', ''), job.get('role', ''), explicit=job.get('resume')).name}"
                 if args.dry_run:
                     append_tracker(job, "DRY_RUN", tracker_note)
                 elif status == "submitted":

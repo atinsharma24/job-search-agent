@@ -18,17 +18,24 @@ from pathlib import Path
 from datetime import datetime
 from typing import Optional
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import vault_config as vc
+import vault_answers as va
+from vault_resume import resume_for_job, validate_resume
+
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
 LOGISTICS_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "06_logistics_mapping.json"
 TRACKER_PATH = VAULT_ROOT / "active_application_context" / "job_applications_tracker.md"
 STATE_PATH = VAULT_ROOT / "active_application_context" / "background_agent_state.json"
-RESUME_PATH = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "2026New1.pdf"
+# NOTE: last-resort fallback only. Per-job selection now goes through
+# vault_resume.resume_for_job(), which validates extractable text before upload.
+RESUME_PATH = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "Atin_Sharma_Resume_2026.pdf"
 ARTIFACT_DIR = VAULT_ROOT / "output" / "playwright"
 CDP_URL = "http://localhost:9222"
 
-CURRENT_CTC_LPA = 11.2
-EXPECTED_CTC_LPA = 16  # 16-22 LPA, negotiable
+CURRENT_CTC_LPA = vc.current_ctc_lpa()      # canonical: 01_atomic_fact_sheet.json
+EXPECTED_CTC_LPA = vc.expected_ctc_numeric()  # stated floor; never the private floor
 
 # LinkedIn search queries for Easy Apply jobs
 LINKEDIN_SEARCH_URLS = [
@@ -188,18 +195,13 @@ def append_tracker(company: str, role: str, url: str, status: str, note: str = "
 
 
 def build_answer_bank() -> dict:
-    sys.path.insert(0, str(VAULT_ROOT / "scripts"))
-    from playwright_form_helpers import build_base_answer_bank
-    bank = build_base_answer_bank(FACT_SHEET_PATH, LOGISTICS_PATH)
-    # Override CTC values with user instruction
-    bank["current_ctc"] = str(CURRENT_CTC_LPA)
-    bank["expected_ctc_min"] = str(EXPECTED_CTC_LPA)
-    bank["expected_ctc_max"] = str(EXPECTED_CTC_LPA)
-    bank["expected_ctc_label"] = f"{EXPECTED_CTC_LPA} LPA"
-    bank["expected_ctc_range"] = f"{EXPECTED_CTC_LPA}"
-    bank["expected_salary_min"] = str(EXPECTED_CTC_LPA)
-    bank["expected_salary_label"] = f"{EXPECTED_CTC_LPA} LPA"
-    return bank
+    """Canonical answers only.
+
+    This used to rebuild the bank and then overwrite all seven salary keys with
+    a hardcoded 16 LPA, which is how every LinkedIn application came to undercut
+    the documented floor by 2 LPA.
+    """
+    return vc.build_answer_bank()
 
 
 def apply_easy_apply(page, job_url: str, answer_bank: dict, dry_run: bool) -> str:

@@ -5,13 +5,13 @@ Naukri Discover + Apply — via CDP (Chrome on port 9222)
 1. Closes stale/redundant Chrome tabs
 2. Searches Naukri for fresh relevant jobs (AI/Full-Stack/GenAI, 0-3 yrs, India)
 3. Applies queued jobs from naukri_queue.md
-4. Uses NewResDocPdf.pdf for all applications
+4. Selects a category resume per JD (vault_resume), validated for extractable text
 5. Logs every result to job_applications_tracker.md
 
 Usage:
   python3 scripts/playwright_naukri_discover_apply.py [--dry-run] [--max-apply 20]
 
-CTC: Current 11.2 | Expected 16-22 LPA
+CTC and notice period are read from core_vault/JobApplyFiles/ via vault_config.
 """
 
 import argparse
@@ -24,17 +24,24 @@ from datetime import datetime
 from typing import Optional
 
 # ---------------------------------------------------------------------------
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import vault_config as vc
+import vault_answers as va
+from vault_resume import resume_for_job, validate_resume
+
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH  = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
 LOGISTICS_PATH   = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "06_logistics_mapping.json"
 TRACKER_PATH     = VAULT_ROOT / "active_application_context" / "job_applications_tracker.md"
 STATE_PATH       = VAULT_ROOT / "active_application_context" / "background_agent_state.json"
-RESUME_PATH      = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "2026New1.pdf"
+# NOTE: last-resort fallback only. Per-job selection now goes through
+# vault_resume.resume_for_job(), which validates extractable text before upload.
+RESUME_PATH      = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "Atin_Sharma_Resume_2026.pdf"
 ARTIFACT_DIR     = VAULT_ROOT / "output" / "playwright"
 CDP_URL          = "http://localhost:9222"
 
-CURRENT_CTC  = 11.2   # LPA
-EXPECTED_CTC = 16   # LPA — 16 to 22 LPA (negotiable)
+CURRENT_CTC  = vc.current_ctc_lpa()       # canonical: 01_atomic_fact_sheet.json
+EXPECTED_CTC = vc.expected_ctc_numeric()  # stated floor; never the private floor
 
 # ---------------------------------------------------------------------------
 # Naukri search URLs (Slugified and filtered with experience=0 and jobAge=15)
@@ -79,7 +86,7 @@ QUEUED_JOBS = [
         "role": "LLM Engineer",
         "search_query": "LLM Engineer Qure.ai",
         "url": None,  # Will be discovered via search
-        "note": "Qure.ai's mission to deploy AI in real-world clinical workflows resonates with my experience shipping production LLM applications. I built VyaparGPT — a WhatsApp AI for SMBs serving 40+ pilots — using RAG pipelines with pgvector, LangChain.js, and OpenAI APIs on a FastAPI + Node.js stack. At OpenBiz I own end-to-end AI architecture including stateful multi-agent systems with LangGraph. I'm an immediate joiner eager to bring that production LLM depth to Qure's diagnostics AI.",
+        "note": "Qure.ai's mission to deploy AI in real-world clinical workflows resonates with my experience shipping production LLM applications. I built VyaparGPT — a WhatsApp AI for SMBs serving 40+ pilots — using RAG pipelines with pgvector, LangChain.js, and OpenAI APIs on a FastAPI + Node.js stack. At OpenBiz I owned end-to-end AI architecture including stateful multi-agent systems with LangGraph. I can join within 15 days, eager to bring that production LLM depth to Qure's diagnostics AI.",
     },
     {
         "id": "naukri_babblebots_genai",
@@ -87,7 +94,7 @@ QUEUED_JOBS = [
         "role": "GenAI Engineer",
         "search_query": "GenAI Engineer Babblebots",
         "url": None,
-        "note": "My work building VyaparGPT — a WhatsApp-native conversational AI for small businesses — used the same tech stack Babblebots AI is hiring for: LangChain.js orchestration, RAG with pgvector, OpenAI function calling, and production Node.js APIs. I built multi-turn stateful agents using LangGraph deployed to 40+ live pilots. As a founding engineer at OpenBiz I own the full stack. Can join immediately.",
+        "note": "My work building VyaparGPT — a WhatsApp-native conversational AI for small businesses — used the same tech stack Babblebots AI is hiring for: LangChain.js orchestration, RAG with pgvector, OpenAI function calling, and production Node.js APIs. I built multi-turn stateful agents using LangGraph deployed to 40+ live pilots. As founding engineer at OpenBiz I owned the full stack. Can join within 15 days.",
     },
     {
         "id": "naukri_techblocks_agentic",
@@ -95,7 +102,7 @@ QUEUED_JOBS = [
         "role": "Agentic Engineer",
         "search_query": "Agentic Engineer TechBlocks",
         "url": None,
-        "note": "Agentic AI is the core of my recent work — I designed a stateful multi-agent CRM system using LangGraph with agents for lead qualification, follow-up scheduling, and data enrichment. VyaparGPT further demonstrates my ability to build LangChain-orchestrated products serving real production users. Available to join immediately.",
+        "note": "Agentic AI is the core of my recent work — I designed a stateful multi-agent CRM system using LangGraph with agents for lead qualification, follow-up scheduling, and data enrichment. VyaparGPT further demonstrates my ability to build LangChain-orchestrated products serving real production users. Available to join within 15 days.",
     },
     {
         "id": "naukri_protectt_ai_red",
@@ -103,7 +110,7 @@ QUEUED_JOBS = [
         "role": "AI Red Teaming Engineer",
         "search_query": "AI Red Teaming Engineer PROTECTT",
         "url": None,
-        "note": "Building production LLM applications has given me deep intuition for where AI systems break — prompt injection in RAG pipelines, adversarial inputs in multi-agent flows. At OpenBiz we designed input sanitization and output validation layers for our WhatsApp AI. PROTECTT.AI Labs' red teaming focus is a compelling application of that production knowledge. Available immediately.",
+        "note": "Building production LLM applications has given me deep intuition for where AI systems break — prompt injection in RAG pipelines, adversarial inputs in multi-agent flows. At OpenBiz we designed input sanitization and output validation layers for our WhatsApp AI. PROTECTT.AI Labs' red teaming focus is a compelling application of that production knowledge. Available within 15 days.",
     },
     {
         "id": "naukri_aiotor_ai",
@@ -111,7 +118,7 @@ QUEUED_JOBS = [
         "role": "AI Engineer",
         "search_query": None,
         "url": "https://www.naukri.com/job-listings-ai-engineer-aiotor-labs-private-limited-pune-1-to-4-years-120526502847",
-        "note": "Aiotor Labs' focus on scalable AI solutions maps onto my end-to-end AI engineering experience. My primary strength is LLM application engineering (RAG, LangChain, agentic systems) backed by solid Python/ML fundamentals. Pune is a preferred city and I'm an immediate joiner.",
+        "note": "Aiotor Labs' focus on scalable AI solutions maps onto my end-to-end AI engineering experience. My primary strength is LLM application engineering (RAG, LangChain, agentic systems) backed by solid Python/ML fundamentals. Pune is a preferred city and I'm on a 15-day notice period.",
     },
     {
         "id": "naukri_aventior_genai",
@@ -119,7 +126,7 @@ QUEUED_JOBS = [
         "role": "GenAI Engineer",
         "search_query": "GenAI Engineer Aventior Digital",
         "url": None,
-        "note": "My GenAI product experience — VyaparGPT for SMB automation, AI CRM with LangGraph agents — maps well onto Aventior Digital's digital transformation practice. I bring production OpenAI/RAG architecture and full-stack TypeScript/Node.js skills. Available immediately for Hyderabad or remote.",
+        "note": "My GenAI product experience — VyaparGPT for SMB automation, AI CRM with LangGraph agents — maps well onto Aventior Digital's digital transformation practice. I bring production OpenAI/RAG architecture and full-stack TypeScript/Node.js skills. Available within 15 days for Hyderabad or remote.",
     },
 ]
 
@@ -286,15 +293,15 @@ def close_redundant_tabs(context, keep_domains=("naukri.com",)):
 
 
 def build_answer_bank() -> dict:
-    sys.path.insert(0, str(VAULT_ROOT / "scripts"))
-    from playwright_form_helpers import build_base_answer_bank
-    bank = build_base_answer_bank(FACT_SHEET_PATH, LOGISTICS_PATH)
-    bank["current_ctc"]        = str(CURRENT_CTC)
-    bank["naukri_current_ctc"] = str(CURRENT_CTC)
-    bank["expected_ctc_min"]   = str(EXPECTED_CTC)
-    bank["naukri_expected_ctc"]= str(EXPECTED_CTC)
-    bank["expected_ctc_label"] = f"{EXPECTED_CTC} LPA"
-    bank["naukri_notice_period"] = "0"
+    """Canonical answers, plus Naukri-specific aliases.
+
+    `naukri_notice_period` was hardcoded to "0" here, contradicting the canonical
+    15-day notice on every Naukri application.
+    """
+    bank = vc.build_answer_bank()
+    bank["naukri_current_ctc"]   = bank["current_ctc"]
+    bank["naukri_expected_ctc"]  = bank["expected_ctc_min"]
+    bank["naukri_notice_period"] = str(vc.notice_period_days())
     return bank
 
 
@@ -394,6 +401,9 @@ def fill_notice_period(root):
 
 
 def upload_resume(root, resume_path: Path) -> bool:
+    # Validate first: an image-only PDF is invisible to ATS parsers, and one was
+    # uploaded 424 times before this check existed.
+    resume_path = validate_resume(resume_path)
     for sel in ['input[type="file"]', 'input[accept*="pdf"]', 'input[accept*=".pdf"]']:
         try:
             el = root.locator(sel)
@@ -433,6 +443,9 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
         notified_form_urls = set()
         last_clicked_question = ""
         last_clicked_answer = ""
+        # Questions we refused to guess at. A non-empty list means the job needs a
+        # human, and is reported as 'blocked:unanswerable' rather than submitted.
+        unanswered_questions: list[str] = []
         # Already applied?
         if already_applied(page):
             return "already_applied"
@@ -606,22 +619,32 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                 try:
                     log(f"  Detected chatbot input. Last question: '{question[:80]}'")
 
-                    if "skill" in question or "tech" in question or "stack" in question or "programming" in question or "primary" in question or "key" in question:
-                        val = "TypeScript, Node.js, React, Next.js, Python, RAG, LangChain, PostgreSQL"
+                    # Answers come from vault_answers, which reads the question.
+                    #
+                    # This block previously hardcoded a lookup table whose worst
+                    # entries were `"10 LPA"` for any salary question — below the
+                    # current CTC and 8 LPA under the stated floor — and a catch-all
+                    # `else` that typed a skills list into ANY unrecognised question.
+                    # It also answered "Immediate" for notice and named a former
+                    # employer as current.
+                    if "skill" in question or "tech" in question or "stack" in question \
+                            or "programming" in question or "primary" in question:
+                        val = ", ".join(sorted(vc.load_facts()["tech_stack"]["languages"]
+                                               + vc.load_facts()["tech_stack"]["frontend"][:3]))
                     elif "secondary" in question:
-                        val = "Docker, PostgreSQL, Redis, REST APIs, Microservices, Git, CI/CD, AWS"
-                    elif "notice" in question or "join" in question or "availability" in question:
-                        val = "Immediate"
-                    elif "ctc" in question or "salary" in question or "lpa" in question or "expect" in question or "package" in question:
-                        val = "10 LPA"
-                    elif "experience" in question or "years" in question or "yoe" in question or "mysql" in question or "react" in question or "node" in question:
-                        val = "1"
-                    elif "company" in question or "employer" in question or "current company" in question:
-                        val = "OpenBiz Software"
-                    elif "location" in question or "city" in question or "where" in question:
-                        val = "Remote"
+                        val = ", ".join(vc.load_facts()["tech_stack"]["devops_cloud"])
                     else:
-                        val = "TypeScript, Node.js, React, Next.js, Python, LLMs, RAG, LangChain"
+                        ans = va.answer_for_question(question, bank=answer_bank)
+                        if ans.decision is va.Decision.VALUE and ans.value:
+                            val = ans.value
+                        elif ans.decision in (va.Decision.YES, va.Decision.NO):
+                            val = ans.value
+                        else:
+                            # Abstain rather than guess. The job is surfaced for
+                            # human review instead of receiving a wrong answer.
+                            log(f"  ⚠ Unanswerable question, abstaining: '{question[:100]}'")
+                            unanswered_questions.append(question)
+                            break
 
                     log(f"  Typing answer: '{val}'")
                     inp.click()
@@ -716,9 +739,28 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                             page.wait_for_timeout(1000)
                             break
                             
-                        # Yes/No validation
-                        if txt_lower in ("yes", "y", "i agree", "agree", "confirm"):
-                            log(f"  Clicking yes/confirmation option: {txt}")
+                        # Yes/No — gated on the QUESTION, not just the option text.
+                        #
+                        # This branch used to click any option reading "yes"/"agree"
+                        # without ever inspecting `question`, so "Do you require visa
+                        # sponsorship?", "Will you sign a 2-year bond?" and "Do you
+                        # have 5+ years experience?" all got an unconditional Yes.
+                        if txt_lower in va.YES_TOKENS or txt_lower in va.NO_TOKENS:
+                            ans = va.answer_for_question(question, bank=answer_bank)
+                            want_yes = txt_lower in va.YES_TOKENS
+                            allowed = (
+                                (want_yes and ans.decision is va.Decision.YES)
+                                or (not want_yes and ans.decision is va.Decision.NO)
+                            )
+                            if not allowed:
+                                # Never affirm something we have not reasoned about.
+                                if ans.decision is va.Decision.ABSTAIN:
+                                    log(f"  ⚠ Won't answer '{txt}' — unrecognised question: "
+                                        f"'{question[:90]}'")
+                                    if question and question not in unanswered_questions:
+                                        unanswered_questions.append(question)
+                                continue
+                            log(f"  Clicking '{txt}' via rule [{ans.rule}] for: '{question[:70]}'")
                             el.click()
                             clicked_texts.append(txt_lower)
                             last_clicked_question = question
@@ -726,7 +768,7 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                             clicked_option = True
                             page.wait_for_timeout(1000)
                             break
- 
+
                         # Skip / Optional question validation
                         if "skip" in txt_lower:
                             log(f"  Clicking skip/optional option: {txt}")
@@ -743,6 +785,17 @@ def execute_naukri_apply(page, resume_path: Path, answer_bank: dict, dry_run: bo
                     pass
             if clicked_option:
                 continue
+
+            # Refuse to submit a form containing a question we would only be
+            # guessing at. Abstaining costs one application; a wrong answer to
+            # "do you have 5+ years" or a bond clause costs credibility.
+            if unanswered_questions:
+                ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
+                page.screenshot(path=str(ARTIFACT_DIR / f"naukri_unanswerable_step{step}.png"))
+                log(f"  🛑 Not submitting — {len(unanswered_questions)} unanswered question(s)")
+                for q in unanswered_questions[:3]:
+                    log(f"     · {q[:110]}")
+                return "blocked:unanswerable_question"
 
             if dry_run:
                 ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
@@ -935,11 +988,12 @@ def search_and_apply_queued(page, apply_page, context, state: dict, answer_bank:
         try:
             apply_page.goto(target_url, wait_until="domcontentloaded", timeout=30000)
             apply_page.wait_for_timeout(3000)
-            status = execute_naukri_apply(apply_page, RESUME_PATH, answer_bank, dry_run, job.get("note", ""))
+            queued_resume = resume_for_job(job.get("note", ""), job.get("role", ""), explicit=job.get("resume"))
+            status = execute_naukri_apply(apply_page, queued_resume, answer_bank, dry_run, job.get("note", ""))
             log(f"  STATUS: {status}")
 
             if status == "submitted":
-                append_tracker(job["company"], job["role"], target_url, "APPLIED ✅", "NewResDocPdf.pdf | queued job")
+                append_tracker(job["company"], job["role"], target_url, "APPLIED ✅", f"{queued_resume.name} | queued job")
                 state.setdefault("applied_job_ids", []).append(job_id)
                 applied_count[0] += 1
             elif status == "dry_run":
@@ -1016,10 +1070,11 @@ def discover_and_apply_search(page, apply_page, context, search_url: str, state:
             try:
                 apply_page.goto(url, wait_until="domcontentloaded", timeout=30000)
                 apply_page.wait_for_timeout(3000)
-                status = execute_naukri_apply(apply_page, RESUME_PATH, answer_bank, dry_run)
+                chosen_resume = resume_for_job(combined_desc if "combined_desc" in dir() else title, title)
+                status = execute_naukri_apply(apply_page, chosen_resume, answer_bank, dry_run)
                 log(f"  STATUS: {status}")
 
-                note_str = f"Score {score:.2f}. NewResDocPdf.pdf."
+                note_str = f"Score {score:.2f}. {chosen_resume.name}."
                 if status == "submitted":
                     append_tracker(company, title, url, "APPLIED ✅", note_str)
                     state.setdefault("applied_job_ids", []).append(job_id)
