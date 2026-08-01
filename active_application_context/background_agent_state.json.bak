@@ -76,6 +76,7 @@
     "itc:genai-llm-engineer",
     "joveo:software-engineer-intern",
     "k-hawk-capital:junior-python-developer-trading-infrastructure",
+    "kasparro-ai:full-stack-engineer-i-ai-platform",
     "kavia-ai:senior-software-engineer-ai-native-product-platform",
     "key-talent-solutions:full-stack-engineer-ai-product-engineering",
     "kipplo:software-engineer",
@@ -208,6 +209,7 @@
     "agiliztech-software-services:app-dev-engineer-fresher-ai-application-development-c2h-hyd",
     "ai-startup-impact:full-stack-engineer-intern-remote-paid",
     "ai-startup-impact:software-engineer-intern",
+    "aikya-connect:ai-backend-engineer-contractual",
     "aim:ai-application-engineer",
     "aionos:software-engineer-ai-agent-platform",
     "aiqod:mean-stack-intern-sw-developer-intern",
@@ -465,6 +467,7 @@
     "eidiko-systems-integrators-private-limited:ai-engineer-generative-ai-with-verification",
     "eklavya:full-stack-developer",
     "elantis:full-stack-ai-engineer",
+    "elife-transfer:forward-deployed-ai-engineer-with-verification",
     "ellicium-solutions:machine-learning-engineer-agentic-ai-llms",
     "emerson:staff-developer-node-js-react-pwa",
     "emmvee-technologies:full-stack-engineer",
@@ -850,6 +853,7 @@
     "kalolytic-solutions:walk-in-react-js-developer",
     "kanak-drishti-infotech:php-laravel-intern",
     "kapiital-kapslock:software-developer",
+    "kasparro-ai:full-stack-engineer-i-ai-platform",
     "katalytx:mlops-engineer",
     "kdk-software:genai-engineer-llm-python-rag-langchain-ai-integration",
     "key-talent-solutions:full-stack-engineer-ai-product-engineering",
@@ -1442,6 +1446,16 @@
       "reason": "blocked:unanswerable_question",
       "at": "2026-08-01T17:42:34",
       "url": "https://www.linkedin.com/jobs/view/4442804023/"
+    },
+    "elife-transfer:forward-deployed-ai-engineer-with-verification": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T17:42:57",
+      "url": "https://www.linkedin.com/jobs/view/4442556768/"
+    },
+    "aikya-connect:ai-backend-engineer-contractual": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T17:44:53",
+      "url": "https://www.linkedin.com/jobs/view/4444553743/"
     }
   },
   "attempts": {

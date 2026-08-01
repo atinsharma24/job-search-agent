@@ -96,8 +96,9 @@ _FACT_NO = (
     ("no_notice_buyout_needed", r"require.*notice.*buy[- ]?out"),
     # Canonical notice is 15 days, so "immediate" is factually No. The vault used
     # to claim Immediate Joiner; that was corrected, and this answer follows it.
-    ("not_immediate_joiner", r"\bimmediate joiner\b|join(ing)? immediately|"
-                             r"can you join (immediately|right away)|zero notice"),
+    ("not_immediate_joiner", r"\bimmediate joiner\b|(join|start)(ing)? immediately|"
+                             r"can you (join|start) (immediately|right away|at once)|"
+                             r"zero notice|available immediately"),
 )
 
 # question-pattern -> answer-bank key
