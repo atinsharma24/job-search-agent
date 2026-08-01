@@ -272,6 +272,7 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
     print(f"  [radio] {count} radio control(s) in scope", flush=True)
 
     seen_groups: set[str] = set()
+    unresolved = 0
     for i in range(count):
         try:
             radio = radios.nth(i)
@@ -279,8 +280,8 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
             # the <label>, so every input reports invisible and the whole loop
             # silently did nothing — no logs, no clicks, and a required question
             # left blank while the correct answer sat unused.
-            group = radio.get_attribute("name") or f"__anon{i}"
-            if group in seen_groups:
+            group = radio.get_attribute("name") or ""
+            if group and group in seen_groups:
                 continue
 
             info = radio.evaluate("""el => {
@@ -290,10 +291,23 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
                     const t = (node.innerText || '').trim();
                     if (t.length > 12) { question = t; break; }
                 }
+                // Group siblings. LinkedIn radios frequently carry NO name
+                // attribute, so a name-based query returns nothing and no options
+                // resolve — the group then looks unreadable rather than ungrouped.
                 const name = el.getAttribute('name');
-                const opts = Array.from(
-                    document.querySelectorAll(`input[type=radio][name="${name}"]`)
-                ).map(r => {
+                let siblings;
+                if (name) {
+                    siblings = Array.from(
+                        document.querySelectorAll(`input[type=radio][name="${name}"]`));
+                } else {
+                    const scope = el.closest('fieldset, [role="radiogroup"], [data-test-form-builder-radio-button-form-component]')
+                                  || el.parentElement?.parentElement
+                                  || el.parentElement;
+                    siblings = scope
+                        ? Array.from(scope.querySelectorAll('input[type=radio], [role="radio"]'))
+                        : [el];
+                }
+                const opts = siblings.map(r => {
                     let lab = '';
                     if (r.id) {
                         const l = document.querySelector(`label[for="${CSS.escape(r.id)}"]`);
@@ -311,7 +325,9 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
             question = clean_label(info.get("question", ""))
             options = info.get("options") or []
             if not question or not options:
-                print(f"  [radio] group {group!r}: no question or options resolved", flush=True)
+                # Silent: the resume picker alone produces 100+ of these, and a
+                # group with no readable question is not actionable anyway.
+                unresolved += 1
                 continue
 
             # Strip option labels and validation chrome out of the captured block.
@@ -365,7 +381,10 @@ def fill_radio_groups_by_input(root, answer_mapper) -> int:
                         print(f"  [radio] could not click {lab!r}", flush=True)
                         break
                     filled += 1
-                    seen_groups.add(group)
+                    if group:
+                        seen_groups.add(group)
+                    # Unnamed groups are deduped by their question text instead.
+                    seen_groups.add(question[:60])
                     print(f"  [radio] {answer!r} <- {question[:70]!r}", flush=True)
                     break
         except Exception:
