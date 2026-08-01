@@ -77,6 +77,13 @@ _HARD_YES = (
     ("own_transport", r"own (vehicle|transport|conveyance)"),
     ("background_check", r"(willing|consent).*(background (check|verification)|bgv)"),
     ("start_immediately_15", r"join within (15|fifteen|30|thirty) days|join in (a|1) month"),
+    # Current engagement is full-time Remote at AGI Ready — all verifiable.
+    ("currently_remote", r"currently working (in a )?remote|working remotely (now|currently)|"
+                         r"is your current (role|job) remote"),
+    ("currently_employed", r"are you (currently )?(employed|working)\b(?!.*remote)|"
+                           r"do you have a (current )?job"),
+    ("ok_with_startup", r"comfortable (working )?(in|at|with) (a )?(startup|early[- ]stage|fast[- ]paced)"),
+    ("ok_with_contract", r"open to (a )?(contract|contractual|c2h|freelance) (role|position|engagement)"),
 )
 
 # Objectively verifiable NO. Distinct from _HARD_NO (which is about consequence) —
