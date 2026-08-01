@@ -154,7 +154,7 @@ Search manually for:
 What to prioritize:
 - Teams with strong product ownership
 - Startups where broad engineering scope is expected
-- Roles where 0-day notice and startup-style execution are an advantage
+- Roles where short notice and startup-style execution are an advantage
 
 ## 6. UnseenRoles
 
@@ -180,7 +180,7 @@ For each job, verify in this order:
 2. Does it explicitly allow India or avoid excluding India?
 3. Is the title in-scope?
 4. Is the stack reasonably aligned?
-5. Is the seniority realistic for ~12 months of experience?
+5. Is the seniority realistic for ~14 months of experience?
 6. Can every required field be answered from the vault?
 7. Does the JD warrant a specific resume variant?
 
@@ -231,8 +231,8 @@ Source:
 
 Use:
 - Location: Agra, Uttar Pradesh, India
-- Notice period: 0 days / Immediate Joiner
-- Expected CTC: 15L+ (negotiable, no hard ceiling)
+- Notice period: 15 days
+- Expected CTC: 18L+ (18-24 LPA, negotiable)
 - Work authorization: Indian citizen, no sponsorship required for India
 
 ### Behavioral Questions

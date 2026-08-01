@@ -6,7 +6,7 @@
 # Usage:
 #   bash scripts/run_apply_all.sh [--dry-run]
 #
-# CTC: Current 11.2 LPA | Expected 15-20 LPA
+# CTC: Current 11.2 LPA | Expected 16-22 LPA
 # =============================================================================
 
 set -euo pipefail
@@ -37,7 +37,7 @@ LOG_FILE="$LOG_DIR/apply_all_${TIMESTAMP}.log"
 
 echo "============================================================"
 echo "MULTI-PORTAL APPLY PIPELINE"
-echo "Current CTC: 11.2 LPA | Expected CTC: 15-20 LPA (negotiable)"
+echo "Current CTC: 11.2 LPA | Expected CTC: 16-22 LPA (negotiable)"
 echo "Mode: ${DRY_RUN:-LIVE} ${AUTO_CHROME_MSG:-}"
 echo "Log: $LOG_FILE"
 echo "Time: $(date)"

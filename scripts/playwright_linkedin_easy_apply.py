@@ -68,7 +68,8 @@ LINKEDIN_MAPPING = [
     ((r"\bpin\b", r"\bpostal\b", r"\bzip\b"), "pincode"),
     ((r"\bgithub\b", r"\bportfolio\b", r"\bwebsite\b"), "github"),
     ((r"\blinkedin\b",), "linkedin_profile"),
-    ((r"\bnotice\b", r"\bjoin\b", r"\bstart date\b", r"\bavailability\b"), "availability"),
+    ((r"\bnotice period\b", r"\bnotice\b"), "notice_period_days"),
+    ((r"\bjoin\b", r"\bstart date\b", r"\bavailability\b"), "availability"),
     ((r"\bexperience\b", r"\byears of\b"), "years_experience"),
     ((r"\bexpected salary\b", r"\bexpected ctc\b", r"\bdesired salary\b", r"\bcompensation\b"), "expected_ctc_min"),
     ((r"\bcurrent salary\b", r"\bcurrent ctc\b"), "current_ctc"),
@@ -89,7 +90,31 @@ LINKEDIN_MAPPING = [
 
 
 def answer_mapper(answer_bank: dict, label_text: str) -> Optional[str]:
-    return map_answer(label_text, answer_bank, LINKEDIN_MAPPING)
+    # First check standard mapping
+    val = map_answer(label_text, answer_bank, LINKEDIN_MAPPING)
+    if val is not None:
+        return val
+
+    label_lower = label_text.casefold()
+    
+    # Check if this is a Yes/No question
+    is_yes_no = (
+        any(label_lower.startswith(prefix) for prefix in ["do you", "have you", "are you", "will you", "would you", "is ", "can "])
+        or "?" in label_lower
+        or "experience" in label_lower
+        or "worked on" in label_lower
+        or "willing to" in label_lower
+        or "authorized" in label_lower
+    )
+
+    if is_yes_no:
+        # Sponsorship or other negative questions
+        if any(kw in label_lower for kw in ["sponsorship", "visa", "clearance", "convicted", "felony", "drug", "crime"]):
+            return "No"
+        # Standard yes/no questions (React, REST APIs, work authorization, relocation, etc.)
+        return "Yes"
+
+    return None
 
 
 def clear_follow_company(dialog) -> None:
@@ -151,16 +176,77 @@ def execute_easy_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool
     if detect_external_redirect(page):
         return EXIT_EXTERNAL_REDIRECT
 
-    easy_apply = page.locator("a, button, [role='button']").filter(has_text=re.compile(r"Easy Apply", re.I))
-    if easy_apply.count() == 0:
-        easy_apply = page.locator("text=/Easy Apply/i")
-    if easy_apply.count() == 0:
+    details_pane = page.locator("main, div.jobs-search__job-details--wrapper, div.jobs-details").first
+    easy_apply = None
+    if details_pane.count() > 0:
+        easy_apply_locator = details_pane.locator("a, button, [role='button']").filter(has_text=re.compile(r"Easy Apply", re.I))
+        if easy_apply_locator.count() > 0:
+            easy_apply = easy_apply_locator.first
+        else:
+            easy_apply_locator = details_pane.locator("text=/Easy Apply/i")
+            if easy_apply_locator.count() > 0:
+                easy_apply = easy_apply_locator.first
+                
+    if easy_apply is None:
+        easy_apply_locator = page.locator("a, button, [role='button']").filter(has_text=re.compile(r"Easy Apply", re.I))
+        if easy_apply_locator.count() > 0:
+            easy_apply = easy_apply_locator.first
+        else:
+            easy_apply_locator = page.locator("text=/Easy Apply/i")
+            if easy_apply_locator.count() > 0:
+                easy_apply = easy_apply_locator.first
+
+    if easy_apply is None:
         save_artifact(page, "linkedin_easy_apply_missing_button.png")
         return EXIT_GENERIC_FAILURE
-    easy_apply.first.click()
+    try:
+        easy_apply.scroll_into_view_if_needed(timeout=3000)
+    except Exception:
+        pass
+    try:
+        easy_apply.click(timeout=8000)
+    except Exception:
+        try:
+            easy_apply.click(force=True, timeout=5000)
+        except Exception:
+            easy_apply.evaluate("el => el.click()")
+    page.wait_for_timeout(6000)
 
-    dialog = page.locator('[role="dialog"]').last
-    dialog.wait_for(timeout=15000)
+    dialog = None
+    try:
+        candidates = page.locator('dialog, .artdeco-modal, [role="dialog"]')
+        count = candidates.count()
+        for idx in reversed(range(count)):
+            candidate = candidates.nth(idx)
+            is_msg = candidate.evaluate(
+                "el => el.closest('#msg-overlay, .msg-overlay-container, .msg-overlay-bubble-header') !== null"
+            )
+            if not is_msg:
+                dialog = candidate
+                break
+        
+        if dialog is not None:
+            dialog.wait_for(timeout=5000)
+            print("Using matched non-message dialog container.")
+            # Wait for dialog contents/inputs to load (spinner to disappear)
+            try:
+                # Wait for any loaders to be hidden
+                dialog.locator('.artdeco-loader, .artdeco-loader__spinner, [aria-busy="true"]').first.wait_for(state="hidden", timeout=10000)
+                # Wait for form buttons to be visible
+                dialog.locator('button:has-text("Next"), button:has-text("Review"), button:has-text("Submit"), button:has-text("Continue")').first.wait_for(state="visible", timeout=10000)
+            except Exception:
+                pass
+        else:
+            raise Exception("No non-message dialog found")
+    except Exception:
+        # Fallback to main page if we navigated to a full-page apply form
+        if "/apply/" in page.url:
+            dialog = page
+            print("Using main page as dialog container.")
+        else:
+            save_artifact(page, "linkedin_easy_apply_dialog_missing.png")
+            return EXIT_GENERIC_FAILURE
+
 
     for step in range(12):
         body_text = page.locator("body").inner_text()
@@ -189,6 +275,15 @@ def execute_easy_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool
         )
         clear_follow_company(dialog)
 
+        # Dismiss any open typeahead/autocomplete dropdown before clicking buttons.
+        # LinkedIn's suggestion overlay intercepts pointer events on the Next button.
+        try:
+            if page.locator("[data-test-single-typeahead-entity-form-search-result]").count() > 0:
+                page.keyboard.press("Escape")
+                page.wait_for_timeout(400)
+        except Exception:
+            pass
+
         submit_button = find_action_button(dialog, ["Submit application"])
         if submit_button is not None:
             if dry_run:
@@ -212,7 +307,7 @@ def execute_easy_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool
         next_button = find_action_button(dialog, ["Continue to next step", "Next"])
         if next_button is not None:
             next_button.click()
-            page.wait_for_timeout(1500)
+            page.wait_for_timeout(1800)
             continue
 
         save_artifact(page, f"linkedin_easy_apply_unknown_step_{step}.png")
@@ -237,12 +332,20 @@ def main() -> int:
         print(json.dumps({"status": "error", "reason": f"playwright import failed: {exc}"}), file=sys.stderr)
         return EXIT_GENERIC_FAILURE
 
+    profile_dir = Path(
+        os.environ.get(
+            "LINKEDIN_PLAYWRIGHT_PROFILE_DIR",
+            str(VAULT_ROOT / "active_application_context" / "playwright" / "linkedin-profile"),
+        )
+    ).expanduser()
+    headless = os.environ.get("LINKEDIN_PLAYWRIGHT_HEADLESS", "1").lower() not in {"0", "false", "no"}
+
     use_cdp = os.environ.get("PLAYWRIGHT_USE_CDP", "").lower() in {"1", "true", "yes"}
     cdp_url = os.environ.get("PLAYWRIGHT_CDP_URL", "http://localhost:9222")
 
     with sync_playwright() as playwright:
         if use_cdp:
-            browser = playwright.chromium.connect_over_cdp(cdp_url)
+            browser = playwright.chromium.connect_over_cdp(cdp_url, no_defaults=True)
             context = browser.contexts[0]
             page = context.new_page()
         else:
@@ -256,7 +359,7 @@ def main() -> int:
 
         try:
             page.goto(args.application_url, wait_until="domcontentloaded", timeout=60000)
-            page.wait_for_timeout(2500)
+            page.wait_for_timeout(5000)
             exit_code = execute_easy_apply(page, resume_path, answer_bank, args.dry_run)
             result = {
                 "status": "ok" if exit_code == EXIT_SUCCESS else "error",

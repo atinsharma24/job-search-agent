@@ -1,0 +1,65 @@
+{
+  "ats": "ashby",
+  "base_endpoint": "https://api.ashbyhq.com/posting-api/job-board/{slug}",
+  "content_query_hint": "?includeCompensation=true",
+  "verified_on": "2026-07-01",
+  "count": 7,
+  "companies": [
+    {
+      "company": "Atlan",
+      "ats": "ashby",
+      "slug": "atlan",
+      "endpoint": "https://api.ashbyhq.com/posting-api/job-board/atlan",
+      "open_roles_at_verification": 4,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Bureau",
+      "ats": "ashby",
+      "slug": "bureau",
+      "endpoint": "https://api.ashbyhq.com/posting-api/job-board/bureau",
+      "open_roles_at_verification": 10,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Composio",
+      "ats": "ashby",
+      "slug": "composio",
+      "endpoint": "https://api.ashbyhq.com/posting-api/job-board/composio",
+      "open_roles_at_verification": 27,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Navi Technologies",
+      "ats": "ashby",
+      "slug": "navi",
+      "endpoint": "https://api.ashbyhq.com/posting-api/job-board/navi",
+      "open_roles_at_verification": 8,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Sarvam AI",
+      "ats": "ashby",
+      "slug": "sarvam",
+      "endpoint": "https://api.ashbyhq.com/posting-api/job-board/sarvam",
+      "open_roles_at_verification": 62,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "SigNoz",
+      "ats": "ashby",
+      "slug": "signoz",
+      "endpoint": "https://api.ashbyhq.com/posting-api/job-board/signoz",
+      "open_roles_at_verification": 19,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "SpotDraft",
+      "ats": "ashby",
+      "slug": "spotdraft",
+      "endpoint": "https://api.ashbyhq.com/posting-api/job-board/spotdraft",
+      "open_roles_at_verification": 15,
+      "verified_on": "2026-07-01"
+    }
+  ]
+}

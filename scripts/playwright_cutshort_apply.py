@@ -34,7 +34,7 @@ CDP_URL = "http://localhost:9222"
 # CTC values (override from user instruction)
 # ---------------------------------------------------------------------------
 CURRENT_CTC_LPA = 11.2
-EXPECTED_CTC_LPA = 15  # 15-20 LPA, negotiable
+EXPECTED_CTC_LPA = 16  # 16-22 LPA, negotiable
 
 # ---------------------------------------------------------------------------
 # Jobs to apply (from cutshort_queue.md — Ready to Apply section)

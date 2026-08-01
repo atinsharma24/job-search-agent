@@ -61,9 +61,9 @@
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, noitemsep, topsep=0pt, parsep=0pt]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 % -------------------------------------------
@@ -77,36 +77,42 @@
 
 \section{Profile}
 \vspace{2pt}
-\small{Full-Stack Founding Engineer with end-to-end ownership across React/React Native frontends, Python (FastAPI/Django) and Node.js backends, PostgreSQL/Redis data layers, and real-time WebSocket systems. Specialised in shipping production LLM agents (OpenAI, Gemini, Groq) with provider-fallback, prompt engineering, and RAG pipelines. Proven track record: 40\% API latency reduction, 30\% faster deployment cycles, 40+ SMB pilots, 1000+ users served.}
+\small{Full-Stack Engineer with end-to-end ownership across React/Next.js frontends, Python (FastAPI/Django) and Node.js backends, PostgreSQL/Redis data layers, and real-time WebSocket systems. Specialised in shipping production LLM agents (OpenAI, Gemini, Groq, Claude) with provider failover, prompt engineering, and RAG pipelines, built through an AI-native workflow with Claude Code and Codex. Proven track record: 40\% API latency reduction, 30\% faster deployment cycles, 40+ SMB pilots, 1000+ users served.}
 \vspace{-4pt}
 
 \section{Professional Experience}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {OpenBiz Software India Pvt Ltd}{Jun 2025 -- May 2026}
-      {Founding Engineer}{Remote/Bangalore}
+      {AGI Ready Inc.}{Jun 2026 -- Present}
+      {Full-Stack Developer}{Remote / Delaware, US}
       \resumeItemListStart
-        \resumeItem{Architected the zero-to-one core MERN platform with strict TypeScript practices, building a scalable, production-ready foundation serving 1000+ users.}
-        \resumeItem{Built VyaparGPT: WhatsApp-native LLM assistant for Indian SMBs — webhook ingestion $\rightarrow$ LLM orchestration $\rightarrow$ response delivery, deployed to 40+ closed-pilot businesses.}
-        \resumeItem{LLM provider-fallback: OpenAI $\rightarrow$ Google Gemini on HTTP 5xx/429/timeout with response-shape normalisation — zero failure surface exposed to users.}
-        \resumeItem{Engineered real-time bidirectional chat infrastructure using Socket.IO enabling live messaging between users.}
-        \resumeItem{Diagnosed and resolved N+1 query patterns in Supabase (PostgreSQL), reducing API latency by 40\% through indexing and response caching.}
-        \resumeItem{Owned CI/CD pipeline via GitHub Actions and Vercel, reducing deployment cycle time by 30\% and eliminating environment-drift bugs.}
-        \resumeItem{Engineered fault-tolerant Razorpay subscription billing with idempotent webhook validation, achieving 100\% payment-state consistency.}
+        \resumeItem{Build and ship full-stack product features in Next.js, TypeScript, and Node.js across multiple concurrent client products, working directly with the founder and a small delivery team.}
+        \resumeItem{Architect and integrate service APIs across third-party platforms, AI/LLM providers, webhook receivers, and asynchronous background workflows.}
+        \resumeItem{Own production systems end-to-end --- debugging, deployment, and release --- decomposing ambiguous client problems into scoped deliverables, with Claude Code and Codex as primary development tools.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {OpenBiz Software India Pvt Ltd}{Jun 2025 -- May 2026}
+      {Founding Engineer}{Remote / Bangalore}
+      \resumeItemListStart
+        \resumeItem{Architected the zero-to-one core MERN platform in strict TypeScript, scaling to 1,000+ active users; engineered a parallel Graph RAG pipeline with LangGraph state machines routing queries into async multi-threaded retrieval paths.}
+        \resumeItem{Implemented a dual-database ingestion router (Drizzle ORM) streaming large-scale business datasets --- unstructured data into Pinecone (hybrid dense/sparse) and structured compliance data into Supabase (PostgreSQL/pgvector).}
+        \resumeItem{Cut API latency 40\% at 1,000+ user scale via N+1 JOIN rewrites, composite indexes, and TTL caching; engineered fault-tolerant Razorpay billing with HMAC-SHA256 idempotent webhooks for 100\% payment-state consistency.}
+        \resumeItem{Owned the CI/CD pipeline (GitHub Actions + Vercel) with per-PR testing and approval-gated production --- 30\% faster deployments, zero broken-build incidents.}
       \resumeItemListEnd
 
     \resumeSubheading
       {Vellore Institute of Technology}{Jan 2025 -- Nov 2025}
       {Research Contributor}{Vellore}
       \resumeItemListStart
-        \resumeItem{Contributed to research on Blockchain-Based LLM Model Using Fully Homomorphic Encryption (FHE) for Academic Records.}
+        \resumeItem{Research on blockchain-based LLM integration with Fully Homomorphic Encryption (FHE) for encrypted-data inference without decryption.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
 \section{Projects}
     \resumeSubHeadingListStart
       \resumeProjectHeading
-          {\textbf{Nimbus --- AI RAG Workspace} $|$ \href{https://github.com/atinsharma24/nimbus}{\underline{github.com/atinsharma24/nimbus}}}{In Development 2026}
+          {\textbf{Nimbus --- AI RAG Workspace} $|$ \href{https://github.com/atinsharma24/nimbus}{\textit{github.com/atinsharma24/nimbus}}}{In Development 2026}
           \resumeItemListStart
             \resumeItem{\emph{Stack: Next.js, pgvector, Groq, Prisma}}
             \resumeItem{Architected a production RAG pipeline (pgvector + Groq) achieving sub-800ms semantic retrieval over multi-format corpora with streaming LLM responses.}
@@ -114,7 +120,7 @@
           \resumeItemListEnd
           
       \resumeProjectHeading
-          {\textbf{Autonomous Web Agent} $|$ \href{https://github.com/atinsharma24/autonomous-web-agent}{\underline{github.com/atinsharma24/auto-agent}}}{}
+          {\textbf{Autonomous Web Agent} $|$ \href{https://github.com/atinsharma24/autonomous-web-agent}{\textit{github.com/atinsharma24/auto-agent}}}{}
           \resumeItemListStart
             \resumeItem{\emph{Stack: OpenClaw, BrowserOS (MCP), Python, Groq}}
             \resumeItem{Claude 3.5 Sonnet + MCP orchestration layer translating structured context schemas into DOM-level form interactions for multi-step web workflows.}
@@ -122,7 +128,7 @@
           \resumeItemListEnd
 
       \resumeProjectHeading
-          {\textbf{DocGPT --- RAG Document Assistant} $|$ \href{https://github.com/atinsharma24/docgpt}{\underline{github.com/atinsharma24/docgpt}}}{}
+          {\textbf{DocGPT --- RAG Document Assistant} $|$ \href{https://github.com/atinsharma24/docgpt}{\textit{github.com/atinsharma24/docgpt}}}{}
           \resumeItemListStart
             \resumeItem{\emph{Stack: React 19, Python (Django), ChromaDB, OpenAI, Docker}}
             \resumeItem{Full Django RAG pipeline: PyPDF2 chunking, local all-MiniLM-L6-v2 embeddings (zero API cost), ChromaDB cosine retrieval, GPT-4o-mini generation.}

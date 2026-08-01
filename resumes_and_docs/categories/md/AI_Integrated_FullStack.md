@@ -3,6 +3,13 @@
 **Profile:**
 Full-Stack Product Engineer with founding-team experience bridging the gap between sophisticated AI models and production web architectures. Specialized in MERN stack development and seamless integration of LLM APIs (OpenAI, Gemini, Groq) to build "AI-first" user experiences. Proven track record in reducing API latency by 40% and accelerating deployment cycles by 30% through TypeScript-driven microservices.
 
+**AGI Ready Inc. (Jun 2026 – Present) | Full-Stack Developer | Remote / Delaware, US**
+
+**Current Role Highlights:**
+- Build and ship full-stack product features in **Next.js, TypeScript, and Node.js** across multiple concurrent client products, working directly with the founder and a small delivery team.
+- Architect and integrate service APIs across third-party platforms, AI/LLM providers, webhook receivers, and asynchronous background workflows.
+- Own production systems end-to-end — debugging, deployment, and release — decomposing ambiguous client problems into scoped deliverables, with **Claude Code and Codex** as primary development tools.
+
 **OpenBiz (Jun 2025 – May 2026) | Founding Engineer | Remote / Bangalore**
 
 **Key Experience Highlights:**
@@ -22,4 +29,4 @@ React 19, TypeScript, Node.js, Next.js, OpenAI, Gemini, PostgreSQL, Vercel, Dock
 
 **Patterns:** WebSocket (Socket.IO), REST, Webhook Validation (HMAC-SHA256), N+1 Query Optimization, Vector Similarity Search (cosine), Provider-Agnostic LLM Layers, Idempotent Event Processing.
 
-**Profile Snapshot:** Immediate Joiner · Remote-first · 15L+ (negotiable) · Indian Citizen · github.com/atinsharma24
+**Profile Snapshot:** 15-day notice · Remote-first · 18L+ (negotiable) · Indian Citizen · github.com/atinsharma24

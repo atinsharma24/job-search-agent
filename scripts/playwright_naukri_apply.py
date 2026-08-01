@@ -29,6 +29,7 @@ EXIT_LOGIN_REQUIRED = 12
 VAULT_ROOT = Path(__file__).resolve().parents[1]
 FACT_SHEET_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "01_atomic_fact_sheet.json"
 LOGISTICS_PATH = VAULT_ROOT / "core_vault" / "JobApplyFiles" / "06_logistics_mapping.json"
+RESUME_PATH = VAULT_ROOT / "resumes_and_docs" / "categories" / "pdf" / "2026New1.pdf"
 ARTIFACT_DIR = VAULT_ROOT / "output" / "playwright"
 LOG_DIR = VAULT_ROOT / "logs"
 
@@ -48,9 +49,9 @@ def parse_args() -> argparse.Namespace:
 def build_answer_bank() -> dict:
     answer_bank = build_base_answer_bank(FACT_SHEET_PATH, LOGISTICS_PATH)
     # Naukri CTC fields are in LPA as plain numbers
-    answer_bank["naukri_current_ctc"] = "0"
+    answer_bank["naukri_current_ctc"] = "11.2"
     answer_bank["naukri_expected_ctc"] = str(
-        answer_bank.get("expected_ctc_min", "15")
+        answer_bank.get("expected_ctc_min", "16")
     )
     answer_bank["naukri_notice_period"] = "0"  # 0 weeks / immediately
     return answer_bank
@@ -209,6 +210,7 @@ def find_action_button(root, names: list[str]):
 
 
 def execute_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool) -> int:
+    notified_form_urls = set()
     status = detect_status_from_text(page.locator("body").inner_text())
     if status is not None:
         return status
@@ -246,6 +248,36 @@ def execute_apply(page, resume_path: Path, answer_bank: dict, dry_run: bool) -> 
 
     for step in range(10):
         body_text = page.locator("body").inner_text()
+
+        # Scan text for external form links
+        try:
+            bubbles = page.locator("[class*='message'], [class*='bubble'], [class*='chat'], [class*='bot'], div[class*='text'] p, div[class*='text'], a")
+            for idx in range(bubbles.count()):
+                b = bubbles.nth(idx)
+                try:
+                    if b.is_visible(timeout=500):
+                        href = b.get_attribute("href")
+                        text = b.inner_text().strip()
+                        urls = re.findall(r'https?://[^\s<>"]+|www\.[^\s<>"]+', text)
+                        if href:
+                            urls.append(href)
+                        for url in urls:
+                            url_clean = url.rstrip(",.()\"'")
+                            if url_clean not in notified_form_urls:
+                                if any(domain in url_clean.casefold() for domain in ("form", "tally.so", "typeform.com", "gle/")):
+                                    if any(k in url_clean.casefold() for k in ("naukri.com", "naukrirecruiter")):
+                                        continue
+                                    notified_form_urls.add(url_clean)
+                                    print(f"\n========================================================")
+                                    print(f"⚠️ ACTION REQUIRED: Job application requires external form!")
+                                    print(f"URL: {url_clean}")
+                                    print(f"Please copy and fill it.")
+                                    print(f"========================================================\n", flush=True)
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
         status = detect_status_from_text(body_text)
         if status is not None:
             save_artifact(page, f"naukri_status_{step}.png")
@@ -340,7 +372,7 @@ def main() -> int:
 
     with sync_playwright() as playwright:
         if use_cdp:
-            browser = playwright.chromium.connect_over_cdp(cdp_url)
+            browser = playwright.chromium.connect_over_cdp(cdp_url, no_defaults=True)
             context = browser.contexts[0]
             page = context.new_page()
         else:

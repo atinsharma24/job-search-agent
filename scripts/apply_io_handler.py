@@ -42,6 +42,16 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         help="Path to a JSON payload file. If omitted, stdin is used.",
     )
+    parser.add_argument(
+        "--resume-path",
+        type=Path,
+        help="Optional existing resume file to stage without tailoring.",
+    )
+    parser.add_argument(
+        "--no-tailor",
+        action="store_true",
+        help="Copy the provided resume path to the staged artifact without injecting keywords.",
+    )
     return parser.parse_args()
 
 
@@ -322,11 +332,28 @@ def main() -> int:
         payload = load_payload(args)
         payload["changed_keywords"] = normalize_keywords(payload["changed_keywords"])
 
-        resume_path = resolve_resume_path(payload["resume_category"])
-        baseline = resume_path.read_text(encoding="utf-8")
-        staged = inject_keywords(baseline, payload["changed_keywords"])
-        STAGED_RESUME_PATH.write_text(staged, encoding="utf-8")
-        pdf_renderer = render_resume_pdf(STAGED_RESUME_PATH, STAGED_RESUME_PDF_PATH)
+        if args.no_tailor:
+            if args.resume_path is None:
+                raise ValueError("--resume-path is required with --no-tailor")
+            resume_path = args.resume_path.expanduser().resolve()
+            if not resume_path.exists():
+                raise FileNotFoundError(f"resume file not found: {resume_path}")
+            if resume_path.suffix.casefold() == ".pdf":
+                shutil.copyfile(resume_path, STAGED_RESUME_PDF_PATH)
+                STAGED_RESUME_PATH.write_text(
+                    f"# Non-tailored resume stage\n\nSource PDF: {resume_path}\n",
+                    encoding="utf-8",
+                )
+                pdf_renderer = "copied"
+            else:
+                STAGED_RESUME_PATH.write_text(resume_path.read_text(encoding="utf-8"), encoding="utf-8")
+                pdf_renderer = render_resume_pdf(STAGED_RESUME_PATH, STAGED_RESUME_PDF_PATH)
+        else:
+            resume_path = resolve_resume_path(payload["resume_category"])
+            baseline = resume_path.read_text(encoding="utf-8")
+            staged = inject_keywords(baseline, payload["changed_keywords"])
+            STAGED_RESUME_PATH.write_text(staged, encoding="utf-8")
+            pdf_renderer = render_resume_pdf(STAGED_RESUME_PATH, STAGED_RESUME_PDF_PATH)
 
         append_tracker_row(payload)
 

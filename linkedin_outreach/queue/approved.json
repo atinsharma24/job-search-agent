@@ -40,7 +40,7 @@
     "url": "https://www.linkedin.com/in/deeksha-vashishtha-a48955133",
     "persona": "persona_5_recruiters",
     "company": "Yellow.ai",
-    "message": "Hey Deeksha \u2014 Full-stack + AI eng, immediate joiner. Built VyaparGPT (WhatsApp AI, 40 SMBs) and pgvector RAG at OpenBiz. Targeting Yellow.ai's conversational AI roles. Stack: MERN, LangGraph, Python. 15L+ (negotiable).",
+    "message": "Hey Deeksha \u2014 Full-stack + AI eng, 15-day notice. Built VyaparGPT (WhatsApp AI, 40 SMBs) and pgvector RAG at OpenBiz. Targeting Yellow.ai's conversational AI roles. Stack: MERN, LangGraph, Python. 18L+ (negotiable).",
     "personalization_score": 3,
     "notes": "Tier 1 | assets: VyaparGPT+pgvector | domain: conversational AI roles | scannable format for recruiter",
     "status": "skipped",
@@ -238,7 +238,7 @@
     "url": "https://www.linkedin.com/in/dhriti",
     "persona": "persona_5_recruiters",
     "company": "Sarvam AI",
-    "message": "Hey Dhritiparna \u2014 Full-stack + AI eng, immediate joiner. Nimbus RAG (sub-800ms pgvector) and dual-model fallback (OpenAI\u2192Gemini) in prod. Targeting Sarvam AI's LLM infrastructure roles. MERN, Python, LangGraph. 15L+ (negotiable).",
+    "message": "Hey Dhritiparna \u2014 Full-stack + AI eng, 15-day notice. Nimbus RAG (sub-800ms pgvector) and dual-model fallback (OpenAI\u2192Gemini) in prod. Targeting Sarvam AI's LLM infrastructure roles. MERN, Python, LangGraph. 18L+ (negotiable).",
     "personalization_score": 3,
     "notes": "Tier 3 | assets: Nimbus+pgvector+dual-model fallback | domain: LLM infrastructure roles | scannable for recruiter",
     "status": "skipped",
@@ -1813,9 +1813,10 @@
     "company": "BrowserStack",
     "message": "Hey Subrato, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 194,
-    "approved_at": "2026-06-09T16:55:59.041073+00:00"
+    "approved_at": "2026-06-09T16:55:59.041073+00:00",
+    "sent_at": "2026-06-11T12:41:41.741354+00:00"
   },
   {
     "name": "Neha Harish",
@@ -1824,9 +1825,10 @@
     "company": "BrowserStack",
     "message": "Hey Neha, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 191,
-    "approved_at": "2026-06-09T16:55:59.041077+00:00"
+    "approved_at": "2026-06-09T16:55:59.041077+00:00",
+    "sent_at": "2026-06-11T12:42:51.610539+00:00"
   },
   {
     "name": "Brijendra Singh",
@@ -1835,9 +1837,10 @@
     "company": "BrowserStack",
     "message": "Hey Brijendra, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 196,
-    "approved_at": "2026-06-09T16:55:59.041082+00:00"
+    "approved_at": "2026-06-09T16:55:59.041082+00:00",
+    "sent_at": "2026-06-11T12:44:22.925664+00:00"
   },
   {
     "name": "Lakshmi Prasad Ravva",
@@ -1846,9 +1849,10 @@
     "company": "BrowserStack",
     "message": "Hey Lakshmi, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 194,
-    "approved_at": "2026-06-09T16:55:59.041101+00:00"
+    "approved_at": "2026-06-09T16:55:59.041101+00:00",
+    "sent_at": "2026-06-11T12:45:48.178557+00:00"
   },
   {
     "name": "Shreyas Kumar S",
@@ -1857,9 +1861,10 @@
     "company": "BrowserStack",
     "message": "Hey Shreyas, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 194,
-    "approved_at": "2026-06-09T16:55:59.041106+00:00"
+    "approved_at": "2026-06-09T16:55:59.041106+00:00",
+    "sent_at": "2026-06-11T12:47:32.751232+00:00"
   },
   {
     "name": "Hrishita Panjetha",
@@ -1868,9 +1873,10 @@
     "company": "BrowserStack",
     "message": "Hey Hrishita, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 195,
-    "approved_at": "2026-06-09T16:55:59.041111+00:00"
+    "approved_at": "2026-06-09T16:55:59.041111+00:00",
+    "sent_at": "2026-06-11T12:48:48.950101+00:00"
   },
   {
     "name": "Anirudh Reddy \u2022 2nd",
@@ -1879,9 +1885,10 @@
     "company": "BrowserStack",
     "message": "Hey Anirudh, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 194,
-    "approved_at": "2026-06-09T16:55:59.041116+00:00"
+    "approved_at": "2026-06-09T16:55:59.041116+00:00",
+    "sent_at": "2026-06-11T12:50:17.890391+00:00"
   },
   {
     "name": "Neha Bharati \u2022 3rd+",
@@ -1890,9 +1897,10 @@
     "company": "BrowserStack",
     "message": "Hey Neha, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 191,
-    "approved_at": "2026-06-09T16:55:59.041121+00:00"
+    "approved_at": "2026-06-09T16:55:59.041121+00:00",
+    "sent_at": "2026-06-11T12:51:35.500131+00:00"
   },
   {
     "name": "Saurabh Agrawal",
@@ -1901,9 +1909,10 @@
     "company": "BrowserStack",
     "message": "Hey Saurabh, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 194,
-    "approved_at": "2026-06-09T16:55:59.041126+00:00"
+    "approved_at": "2026-06-09T16:55:59.041126+00:00",
+    "sent_at": "2026-06-11T12:53:07.980443+00:00"
   },
   {
     "name": "Aman Sharma",
@@ -1924,9 +1933,10 @@
     "company": "BrowserStack",
     "message": "Hey Sushmita, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 195,
-    "approved_at": "2026-06-09T16:55:59.041134+00:00"
+    "approved_at": "2026-06-09T16:55:59.041134+00:00",
+    "sent_at": "2026-06-11T12:54:47.559952+00:00"
   },
   {
     "name": "Deepjyoti Behuria",
@@ -1935,9 +1945,10 @@
     "company": "BrowserStack",
     "message": "Hey Deepjyoti, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 196,
-    "approved_at": "2026-06-09T16:55:59.041139+00:00"
+    "approved_at": "2026-06-09T16:55:59.041139+00:00",
+    "sent_at": "2026-06-11T12:55:56.403930+00:00"
   },
   {
     "name": "Sumeet Pareek",
@@ -1946,9 +1957,10 @@
     "company": "BrowserStack",
     "message": "Hey Sumeet, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 193,
-    "approved_at": "2026-06-09T16:55:59.041144+00:00"
+    "approved_at": "2026-06-09T16:55:59.041144+00:00",
+    "sent_at": "2026-06-11T12:57:20.129398+00:00"
   },
   {
     "name": "Chirag Pandit",
@@ -1957,9 +1969,10 @@
     "company": "BrowserStack",
     "message": "Hey Chirag, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) and MERN platform serving 1000+ users. No ramp on BrowserStack's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 193,
-    "approved_at": "2026-06-09T16:55:59.041148+00:00"
+    "approved_at": "2026-06-09T16:55:59.041148+00:00",
+    "sent_at": "2026-06-11T12:58:51.294606+00:00"
   },
   {
     "name": "Ayan Ghazi",
@@ -1968,9 +1981,10 @@
     "company": "Signzy",
     "message": "Hey Ayan, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 204,
-    "approved_at": "2026-06-09T16:55:59.042264+00:00"
+    "approved_at": "2026-06-09T16:55:59.042264+00:00",
+    "sent_at": "2026-06-11T13:00:22.889445+00:00"
   },
   {
     "name": "Sandeep Dixit",
@@ -1979,9 +1993,10 @@
     "company": "Signzy",
     "message": "Hey Sandeep, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 207,
-    "approved_at": "2026-06-09T16:55:59.042268+00:00"
+    "approved_at": "2026-06-09T16:55:59.042268+00:00",
+    "sent_at": "2026-06-11T13:01:55.089825+00:00"
   },
   {
     "name": "Priyabrata Pradhan (Priyam)",
@@ -1990,9 +2005,10 @@
     "company": "Signzy",
     "message": "Hey Priyabrata, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 210,
-    "approved_at": "2026-06-09T16:55:59.042272+00:00"
+    "approved_at": "2026-06-09T16:55:59.042272+00:00",
+    "sent_at": "2026-06-11T13:06:54.673488+00:00"
   },
   {
     "name": "Himanshu Barak",
@@ -2001,9 +2017,10 @@
     "company": "Signzy",
     "message": "Hey Himanshu, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 208,
-    "approved_at": "2026-06-09T16:55:59.042276+00:00"
+    "approved_at": "2026-06-09T16:55:59.042276+00:00",
+    "sent_at": "2026-06-11T13:08:21.700598+00:00"
   },
   {
     "name": "Nishaant Sharma",
@@ -2012,9 +2029,10 @@
     "company": "Signzy",
     "message": "Hey Nishaant, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 208,
-    "approved_at": "2026-06-09T16:55:59.042295+00:00"
+    "approved_at": "2026-06-09T16:55:59.042295+00:00",
+    "sent_at": "2026-06-11T13:09:39.573542+00:00"
   },
   {
     "name": "Vijayendra Pagare",
@@ -2023,9 +2041,10 @@
     "company": "Signzy",
     "message": "Hey Vijayendra, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 210,
-    "approved_at": "2026-06-09T16:55:59.042300+00:00"
+    "approved_at": "2026-06-09T16:55:59.042300+00:00",
+    "sent_at": "2026-06-11T13:10:59.296010+00:00"
   },
   {
     "name": "Bharti Sharma",
@@ -2034,9 +2053,10 @@
     "company": "Signzy",
     "message": "Hey Bharti, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 206,
-    "approved_at": "2026-06-09T16:55:59.042304+00:00"
+    "approved_at": "2026-06-09T16:55:59.042304+00:00",
+    "sent_at": "2026-06-11T13:12:04.928509+00:00"
   },
   {
     "name": "Dakshita Dutta",
@@ -2045,9 +2065,10 @@
     "company": "Signzy",
     "message": "Hey Dakshita, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 208,
-    "approved_at": "2026-06-09T16:55:59.042308+00:00"
+    "approved_at": "2026-06-09T16:55:59.042308+00:00",
+    "sent_at": "2026-06-11T13:13:40.485517+00:00"
   },
   {
     "name": "Rahul Raj Pandey",
@@ -2068,9 +2089,10 @@
     "company": "Signzy",
     "message": "Hey Nikhil, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 206,
-    "approved_at": "2026-06-09T16:55:59.042317+00:00"
+    "approved_at": "2026-06-09T16:55:59.042317+00:00",
+    "sent_at": "2026-06-11T13:15:10.468917+00:00"
   },
   {
     "name": "Aftab Hussain",
@@ -2079,9 +2101,10 @@
     "company": "Signzy",
     "message": "Hey Aftab, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 205,
-    "approved_at": "2026-06-09T16:55:59.042321+00:00"
+    "approved_at": "2026-06-09T16:55:59.042321+00:00",
+    "sent_at": "2026-06-11T13:16:35.622574+00:00"
   },
   {
     "name": "Pranjal Sachan",
@@ -2090,9 +2113,10 @@
     "company": "Signzy",
     "message": "Hey Pranjal, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 207,
-    "approved_at": "2026-06-09T16:55:59.042326+00:00"
+    "approved_at": "2026-06-09T16:55:59.042326+00:00",
+    "sent_at": "2026-06-11T13:18:04.319745+00:00"
   },
   {
     "name": "Dishit Duggar",
@@ -2101,9 +2125,10 @@
     "company": "Signzy",
     "message": "Hey Dishit, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 206,
-    "approved_at": "2026-06-09T16:55:59.042330+00:00"
+    "approved_at": "2026-06-09T16:55:59.042330+00:00",
+    "sent_at": "2026-06-11T13:19:39.241680+00:00"
   },
   {
     "name": "Eeshan Pandey",
@@ -2112,9 +2137,10 @@
     "company": "Signzy",
     "message": "Hey Eeshan, fellow VIT alum here. Shipped Gemini Vision doc extraction (GST, invoices, Aadhaar) and N+1 fix (40% latency drop) at OpenBiz. Ready to contribute to Signzy's KYC engineering stack from day one.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 206,
-    "approved_at": "2026-06-09T16:55:59.042334+00:00"
+    "approved_at": "2026-06-09T16:55:59.042334+00:00",
+    "sent_at": "2026-06-11T13:21:10.157957+00:00"
   },
   {
     "name": "Garima Mathur",
@@ -2135,9 +2161,10 @@
     "company": "LambdaTest",
     "message": "Hey Swayam, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "failed",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041154+00:00"
+    "approved_at": "2026-06-09T16:55:59.041154+00:00",
+    "error": "Locator.press: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\".artdeco-modal\").first.locator(\"textarea\").first\n"
   },
   {
     "name": "Atul Rana",
@@ -2146,9 +2173,10 @@
     "company": "LambdaTest",
     "message": "Hey Atul, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 199,
-    "approved_at": "2026-06-09T16:55:59.041158+00:00"
+    "approved_at": "2026-06-09T16:55:59.041158+00:00",
+    "sent_at": "2026-06-11T13:23:56.835970+00:00"
   },
   {
     "name": "Jigyasa Bisht",
@@ -2157,9 +2185,10 @@
     "company": "LambdaTest",
     "message": "Hey Jigyasa, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 202,
-    "approved_at": "2026-06-09T16:55:59.041176+00:00"
+    "approved_at": "2026-06-09T16:55:59.041176+00:00",
+    "sent_at": "2026-06-11T13:25:23.267214+00:00"
   },
   {
     "name": "Sai Teja Reddy T",
@@ -2168,9 +2197,10 @@
     "company": "LambdaTest",
     "message": "Hey Sai, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 198,
-    "approved_at": "2026-06-09T16:55:59.041180+00:00"
+    "approved_at": "2026-06-09T16:55:59.041180+00:00",
+    "sent_at": "2026-06-11T13:26:52.781379+00:00"
   },
   {
     "name": "Nishaant Sharma",
@@ -2179,9 +2209,10 @@
     "company": "LambdaTest",
     "message": "Hey Nishaant, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 203,
-    "approved_at": "2026-06-09T16:55:59.041185+00:00"
+    "approved_at": "2026-06-09T16:55:59.041185+00:00",
+    "sent_at": "2026-06-11T13:28:00.697133+00:00"
   },
   {
     "name": "Sampanna Shalya",
@@ -2202,9 +2233,10 @@
     "company": "LambdaTest",
     "message": "Hey Avni, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 199,
-    "approved_at": "2026-06-09T16:55:59.041194+00:00"
+    "approved_at": "2026-06-09T16:55:59.041194+00:00",
+    "sent_at": "2026-06-11T13:33:57.876975+00:00"
   },
   {
     "name": "Deepthi M",
@@ -2213,9 +2245,10 @@
     "company": "LambdaTest",
     "message": "Hey Deepthi, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 202,
-    "approved_at": "2026-06-09T16:55:59.041198+00:00"
+    "approved_at": "2026-06-09T16:55:59.041198+00:00",
+    "sent_at": "2026-06-11T13:35:15.902911+00:00"
   },
   {
     "name": "Tushar Mulwani",
@@ -2224,9 +2257,10 @@
     "company": "LambdaTest",
     "message": "Hey Tushar, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041203+00:00"
+    "approved_at": "2026-06-09T16:55:59.041203+00:00",
+    "sent_at": "2026-06-11T13:36:48.953433+00:00"
   },
   {
     "name": "Shriya Jain",
@@ -2235,9 +2269,10 @@
     "company": "LambdaTest",
     "message": "Hey Shriya, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041207+00:00"
+    "approved_at": "2026-06-09T16:55:59.041207+00:00",
+    "sent_at": "2026-06-11T13:38:04.748354+00:00"
   },
   {
     "name": "Dakshita Dutta",
@@ -2246,9 +2281,10 @@
     "company": "LambdaTest",
     "message": "Hey Dakshita, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 203,
-    "approved_at": "2026-06-09T16:55:59.041211+00:00"
+    "approved_at": "2026-06-09T16:55:59.041211+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Harsh Detroja",
@@ -2257,9 +2293,10 @@
     "company": "LambdaTest",
     "message": "Hey Harsh, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 200,
-    "approved_at": "2026-06-09T16:55:59.041216+00:00"
+    "approved_at": "2026-06-09T16:55:59.041216+00:00",
+    "sent_at": "2026-06-11T13:39:15.270913+00:00"
   },
   {
     "name": "Dhruvil Patel",
@@ -2268,9 +2305,10 @@
     "company": "LambdaTest",
     "message": "Hey Dhruvil, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 202,
-    "approved_at": "2026-06-09T16:55:59.041220+00:00"
+    "approved_at": "2026-06-09T16:55:59.041220+00:00",
+    "sent_at": "2026-06-11T13:40:41.285697+00:00"
   },
   {
     "name": "Sai Rishikesh Marupudi",
@@ -2279,9 +2317,10 @@
     "company": "LambdaTest",
     "message": "Hey Sai, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 198,
-    "approved_at": "2026-06-09T16:55:59.041224+00:00"
+    "approved_at": "2026-06-09T16:55:59.041224+00:00",
+    "sent_at": "2026-06-11T13:42:18.852387+00:00"
   },
   {
     "name": "Gaurav Batra",
@@ -2302,9 +2341,10 @@
     "company": "LambdaTest",
     "message": "Hey Girish, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041233+00:00"
+    "approved_at": "2026-06-09T16:55:59.041233+00:00",
+    "sent_at": "2026-06-11T13:43:35.171594+00:00"
   },
   {
     "name": "Gaurav Jain",
@@ -2313,9 +2353,10 @@
     "company": "LambdaTest",
     "message": "Hey Gaurav, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041237+00:00"
+    "approved_at": "2026-06-09T16:55:59.041237+00:00",
+    "sent_at": "2026-06-11T13:45:04.580183+00:00"
   },
   {
     "name": "Arpan Gupta",
@@ -2324,9 +2365,10 @@
     "company": "LambdaTest",
     "message": "Hey Arpan, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 200,
-    "approved_at": "2026-06-09T16:55:59.041250+00:00"
+    "approved_at": "2026-06-09T16:55:59.041250+00:00",
+    "sent_at": "2026-06-11T13:46:33.532250+00:00"
   },
   {
     "name": "Yashraj Agarwal",
@@ -2335,9 +2377,10 @@
     "company": "LambdaTest",
     "message": "Hey Yashraj, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 202,
-    "approved_at": "2026-06-09T16:55:59.041255+00:00"
+    "approved_at": "2026-06-09T16:55:59.041255+00:00",
+    "sent_at": "2026-06-11T13:47:58.309308+00:00"
   },
   {
     "name": "Hanumanth Abhilash",
@@ -2346,9 +2389,10 @@
     "company": "LambdaTest",
     "message": "Hey Hanumanth, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 204,
-    "approved_at": "2026-06-09T16:55:59.041259+00:00"
+    "approved_at": "2026-06-09T16:55:59.041259+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Priya Gupta",
@@ -2357,9 +2401,10 @@
     "company": "LambdaTest",
     "message": "Hey Priya, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 200,
-    "approved_at": "2026-06-09T16:55:59.041263+00:00"
+    "approved_at": "2026-06-09T16:55:59.041263+00:00",
+    "sent_at": "2026-06-11T13:49:27.065377+00:00"
   },
   {
     "name": "Divyansh M.",
@@ -2368,9 +2413,10 @@
     "company": "LambdaTest",
     "message": "Hey Divyansh, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 203,
-    "approved_at": "2026-06-09T16:55:59.041267+00:00"
+    "approved_at": "2026-06-09T16:55:59.041267+00:00",
+    "sent_at": "2026-06-11T13:50:47.262162+00:00"
   },
   {
     "name": "Vaidehi Kaushik",
@@ -2379,9 +2425,10 @@
     "company": "LambdaTest",
     "message": "Hey Vaidehi, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 202,
-    "approved_at": "2026-06-09T16:55:59.041272+00:00"
+    "approved_at": "2026-06-09T16:55:59.041272+00:00",
+    "sent_at": "2026-06-11T13:52:25.800026+00:00"
   },
   {
     "name": "Jeet Bangoria",
@@ -2390,9 +2437,10 @@
     "company": "LambdaTest",
     "message": "Hey Jeet, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 199,
-    "approved_at": "2026-06-09T16:55:59.041276+00:00"
+    "approved_at": "2026-06-09T16:55:59.041276+00:00",
+    "sent_at": "2026-06-11T13:53:55.385547+00:00"
   },
   {
     "name": "Rishabh Jain",
@@ -2401,9 +2449,10 @@
     "company": "LambdaTest",
     "message": "Hey Rishabh, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 202,
-    "approved_at": "2026-06-09T16:55:59.041280+00:00"
+    "approved_at": "2026-06-09T16:55:59.041280+00:00",
+    "sent_at": "2026-06-21T17:48:53.379868+00:00"
   },
   {
     "name": "vishruth devan",
@@ -2412,9 +2461,10 @@
     "company": "LambdaTest",
     "message": "Hey vishruth, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "failed",
     "char_count": 203,
-    "approved_at": "2026-06-09T16:55:59.041284+00:00"
+    "approved_at": "2026-06-09T16:55:59.041284+00:00",
+    "error": "Message textarea not found"
   },
   {
     "name": "Bikash Chauhan",
@@ -2423,9 +2473,10 @@
     "company": "LambdaTest",
     "message": "Hey Bikash, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "failed",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041288+00:00"
+    "approved_at": "2026-06-09T16:55:59.041288+00:00",
+    "error": "Message textarea not found"
   },
   {
     "name": "Dev Tiwari",
@@ -2434,9 +2485,10 @@
     "company": "LambdaTest",
     "message": "Hey Dev, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 198,
-    "approved_at": "2026-06-09T16:55:59.041292+00:00"
+    "approved_at": "2026-06-09T16:55:59.041292+00:00",
+    "sent_at": "2026-06-21T17:51:50.007142+00:00"
   },
   {
     "name": "Ashish Anand",
@@ -2445,9 +2497,10 @@
     "company": "LambdaTest",
     "message": "Hey Ashish, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041296+00:00"
+    "approved_at": "2026-06-09T16:55:59.041296+00:00",
+    "sent_at": "2026-06-21T17:53:30.823964+00:00"
   },
   {
     "name": "Snehil Patel",
@@ -2456,9 +2509,10 @@
     "company": "LambdaTest",
     "message": "Hey Snehil, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041300+00:00"
+    "approved_at": "2026-06-09T16:55:59.041300+00:00",
+    "sent_at": "2026-06-21T17:55:44.336548+00:00"
   },
   {
     "name": "Murari Suthar",
@@ -2467,9 +2521,10 @@
     "company": "LambdaTest",
     "message": "Hey Murari, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041304+00:00"
+    "approved_at": "2026-06-09T16:55:59.041304+00:00",
+    "sent_at": "2026-06-21T17:58:04.428055+00:00"
   },
   {
     "name": "Vaibhav V.",
@@ -2478,9 +2533,10 @@
     "company": "LambdaTest",
     "message": "Hey Vaibhav, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 202,
-    "approved_at": "2026-06-09T16:55:59.041310+00:00"
+    "approved_at": "2026-06-09T16:55:59.041310+00:00",
+    "sent_at": "2026-06-21T17:59:54.425400+00:00"
   },
   {
     "name": "Nitesh Pratap Singh",
@@ -2501,9 +2557,10 @@
     "company": "LambdaTest",
     "message": "Hey ASMITA, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041324+00:00"
+    "approved_at": "2026-06-09T16:55:59.041324+00:00",
+    "sent_at": "2026-06-21T18:01:59.384003+00:00"
   },
   {
     "name": "Suryansh Thakur",
@@ -2524,9 +2581,10 @@
     "company": "LambdaTest",
     "message": "Hey Haider, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041331+00:00"
+    "approved_at": "2026-06-09T16:55:59.041331+00:00",
+    "sent_at": "2026-06-21T18:03:57.099013+00:00"
   },
   {
     "name": "Medha Sriram",
@@ -2535,9 +2593,10 @@
     "company": "LambdaTest",
     "message": "Hey Medha, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 200,
-    "approved_at": "2026-06-09T16:55:59.041336+00:00"
+    "approved_at": "2026-06-09T16:55:59.041336+00:00",
+    "sent_at": "2026-06-21T18:06:04.230160+00:00"
   },
   {
     "name": "Mohammad Sazeed",
@@ -2546,9 +2605,10 @@
     "company": "LambdaTest",
     "message": "Hey Mohammad, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 203,
-    "approved_at": "2026-06-09T16:55:59.041340+00:00"
+    "approved_at": "2026-06-09T16:55:59.041340+00:00",
+    "sent_at": "2026-06-21T18:07:55.773684+00:00"
   },
   {
     "name": "Aftaab Khan",
@@ -2557,9 +2617,10 @@
     "company": "LambdaTest",
     "message": "Hey Aftaab, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041344+00:00"
+    "approved_at": "2026-06-09T16:55:59.041344+00:00",
+    "sent_at": "2026-06-21T18:09:39.932724+00:00"
   },
   {
     "name": "Nisha Mani",
@@ -2580,9 +2641,10 @@
     "company": "LambdaTest",
     "message": "Hey Satyaprakash, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 207,
-    "approved_at": "2026-06-09T16:55:59.041353+00:00"
+    "approved_at": "2026-06-09T16:55:59.041353+00:00",
+    "sent_at": "2026-06-21T18:11:34.620858+00:00"
   },
   {
     "name": "Nidish Anand R",
@@ -2603,9 +2665,10 @@
     "company": "LambdaTest",
     "message": "Hey Adit, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 199,
-    "approved_at": "2026-06-09T16:55:59.041361+00:00"
+    "approved_at": "2026-06-09T16:55:59.041361+00:00",
+    "sent_at": "2026-06-21T18:13:32.346236+00:00"
   },
   {
     "name": "ADITYA MANDAL",
@@ -2626,9 +2689,10 @@
     "company": "LambdaTest",
     "message": "Hey Avani, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 200,
-    "approved_at": "2026-06-09T16:55:59.041368+00:00"
+    "approved_at": "2026-06-09T16:55:59.041368+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Piyush Rana",
@@ -2637,9 +2701,10 @@
     "company": "LambdaTest",
     "message": "Hey Piyush, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.041373+00:00"
+    "approved_at": "2026-06-09T16:55:59.041373+00:00",
+    "sent_at": "2026-06-21T18:15:53.132543+00:00"
   },
   {
     "name": "Kaushic K",
@@ -2672,9 +2737,10 @@
     "company": "LambdaTest",
     "message": "Hey Vishesh, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "sent",
     "char_count": 202,
-    "approved_at": "2026-06-09T16:55:59.041400+00:00"
+    "approved_at": "2026-06-09T16:55:59.041400+00:00",
+    "sent_at": "2026-06-21T18:18:10.019003+00:00"
   },
   {
     "name": "Aniket Agrawal",
@@ -2828,9 +2894,10 @@
     "company": "LambdaTest",
     "message": "Hey Hrishita, fellow VIT alum here. Shipped an autonomous web agent (Claude + MCP) handling DOM interactions and CAPTCHA detection. No ramp on LambdaTest's test automation backend. Would like to connect.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 203,
-    "approved_at": "2026-06-09T16:55:59.041477+00:00"
+    "approved_at": "2026-06-09T16:55:59.041477+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Shivam Dixit",
@@ -3559,9 +3626,10 @@
     "company": "Swiggy",
     "message": "Hey Hrishita, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 213,
-    "approved_at": "2026-06-09T16:55:59.041773+00:00"
+    "approved_at": "2026-06-09T16:55:59.041773+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Kratu Sharma",
@@ -3616,9 +3684,10 @@
     "company": "Swiggy",
     "message": "Hey Nikhil, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 211,
-    "approved_at": "2026-06-09T16:55:59.041793+00:00"
+    "approved_at": "2026-06-09T16:55:59.041793+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "MAYANK GUPTA",
@@ -3693,9 +3762,10 @@
     "company": "Swiggy",
     "message": "Hey Arpan, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 210,
-    "approved_at": "2026-06-09T16:55:59.041825+00:00"
+    "approved_at": "2026-06-09T16:55:59.041825+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Rishiraj Singh Chhabra",
@@ -3839,9 +3909,10 @@
     "company": "Swiggy",
     "message": "Hey Dhruvil, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 212,
-    "approved_at": "2026-06-09T16:55:59.041893+00:00"
+    "approved_at": "2026-06-09T16:55:59.041893+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Archit Kumar",
@@ -3950,9 +4021,10 @@
     "company": "Swiggy",
     "message": "Hey Priya, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 210,
-    "approved_at": "2026-06-09T16:55:59.041951+00:00"
+    "approved_at": "2026-06-09T16:55:59.041951+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Govind Kumar",
@@ -3972,9 +4044,10 @@
     "company": "Swiggy",
     "message": "Hey Dakshita, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 213,
-    "approved_at": "2026-06-09T16:55:59.041960+00:00"
+    "approved_at": "2026-06-09T16:55:59.041960+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "ANAGHA K G",
@@ -4005,9 +4078,10 @@
     "company": "Swiggy",
     "message": "Hey Vijayendra, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 215,
-    "approved_at": "2026-06-09T16:55:59.041972+00:00"
+    "approved_at": "2026-06-09T16:55:59.041972+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Anurag Sarkar",
@@ -4419,9 +4493,10 @@
     "company": "Swiggy",
     "message": "Hey Atul, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 209,
-    "approved_at": "2026-06-09T16:55:59.042185+00:00"
+    "approved_at": "2026-06-09T16:55:59.042185+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Kartik Agarwaal",
@@ -4441,9 +4516,10 @@
     "company": "Swiggy",
     "message": "Hey Nishaant, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 213,
-    "approved_at": "2026-06-09T16:55:59.042195+00:00"
+    "approved_at": "2026-06-09T16:55:59.042195+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Gagan Bhardwaj",
@@ -4463,9 +4539,10 @@
     "company": "Swiggy",
     "message": "Hey Hanumanth, fellow VIT alum here. Shipped idempotent payments webhooks (100% consistency) and cut API latency 40% via N+1 resolution at OpenBiz. Would value connecting to learn about engineering roles at Swiggy.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 214,
-    "approved_at": "2026-06-09T16:55:59.042205+00:00"
+    "approved_at": "2026-06-09T16:55:59.042205+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Venkata Rakesh N",
@@ -4641,9 +4718,10 @@
     "company": "Yellow.ai",
     "message": "Hey Dhruvil, fellow VIT alum here. Shipped VyaparGPT (WhatsApp native LLM, LangGraph, 40 SMBs) and pgvector RAG. Yellow.ai's conversational AI backend is the right next problem. Would value connecting.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 201,
-    "approved_at": "2026-06-09T16:55:59.042422+00:00"
+    "approved_at": "2026-06-09T16:55:59.042422+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Aniket Agrawal",
@@ -4809,9 +4887,10 @@
     "company": "Yellow.ai",
     "message": "Hey Priya, fellow VIT alum here. Shipped VyaparGPT (WhatsApp native LLM, LangGraph, 40 SMBs) and pgvector RAG. Yellow.ai's conversational AI backend is the right next problem. Would value connecting.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 199,
-    "approved_at": "2026-06-09T16:55:59.042504+00:00"
+    "approved_at": "2026-06-09T16:55:59.042504+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Suraksha Sadana",
@@ -4875,9 +4954,10 @@
     "company": "Yellow.ai",
     "message": "Hey Hanumanth, fellow VIT alum here. Shipped VyaparGPT (WhatsApp native LLM, LangGraph, 40 SMBs) and pgvector RAG. Yellow.ai's conversational AI backend is the right next problem. Would value connecting.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 203,
-    "approved_at": "2026-06-09T16:55:59.042537+00:00"
+    "approved_at": "2026-06-09T16:55:59.042537+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Gaurav Batra",
@@ -5222,9 +5302,10 @@
     "company": "Yellow.ai",
     "message": "Hey Girish, fellow VIT alum here. Shipped VyaparGPT (WhatsApp native LLM, LangGraph, 40 SMBs) and pgvector RAG. Yellow.ai's conversational AI backend is the right next problem. Would value connecting.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 200,
-    "approved_at": "2026-06-09T16:55:59.042731+00:00"
+    "approved_at": "2026-06-09T16:55:59.042731+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Aman Sharma",
@@ -5256,9 +5337,10 @@
     "company": "Yellow.ai",
     "message": "Hey Avani, fellow VIT alum here. Shipped VyaparGPT (WhatsApp native LLM, LangGraph, 40 SMBs) and pgvector RAG. Yellow.ai's conversational AI backend is the right next problem. Would value connecting.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 199,
-    "approved_at": "2026-06-09T16:55:59.042744+00:00"
+    "approved_at": "2026-06-09T16:55:59.042744+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Priya Sharma",
@@ -5345,9 +5427,10 @@
     "company": "Yellow.ai",
     "message": "Hey Hrishita, fellow VIT alum here. Shipped VyaparGPT (WhatsApp native LLM, LangGraph, 40 SMBs) and pgvector RAG. Yellow.ai's conversational AI backend is the right next problem. Would value connecting.",
     "personalization_score": 3,
-    "status": "approved",
+    "status": "skipped",
     "char_count": 202,
-    "approved_at": "2026-06-09T16:55:59.042793+00:00"
+    "approved_at": "2026-06-09T16:55:59.042793+00:00",
+    "error": "Already sent (dedup filter)"
   },
   {
     "name": "Harsha Illuri",

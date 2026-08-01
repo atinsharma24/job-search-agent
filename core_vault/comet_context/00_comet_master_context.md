@@ -26,19 +26,19 @@
 
 | Field | Value |
 |---|---|
-| Notice Period | 0 days — Immediate Joiner |
+| Notice Period | 15 days |
 | Work Authorization | Indian Citizen — no visa sponsorship required |
 | Currently Employed | Yes (OpenBiz, ending 20 May 2026) |
 | Available From | Immediately / 20 May 2026 |
-| Expected CTC | 15L+ (negotiable, no hard ceiling) — INR |
-| Current CTC | Not applicable / fresher rate |
+| Expected CTC | 18 to 24 LPA (negotiable, strict floor 18) — INR |
+| Current CTC | 11.2 LPA (base + post-probation bonus) |
 | Work Mode Preference | Remote (primary) · Bangalore hybrid (secondary) |
 | Open to Relocation | Yes — Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai |
 | Remote Setup | MacBook Air M4 — fully equipped home office |
 | Preferred Role Types | Full-time · Founding / early-stage |
 | Not Preferred | Contract-only · Internship |
-| Total Experience | ~12 months (OpenBiz Founding Engineer + VIT Research Contributor) |
-| Years of Experience | 1 |
+| Total Experience | ~14 months (AGI Ready Full-Stack Developer + OpenBiz Founding Engineer + VIT Research Contributor) |
+| Years of Experience | 1 (~14 months: OpenBiz + AGI Ready) |
 
 ---
 
@@ -198,13 +198,13 @@ Agra, Uttar Pradesh, India
 Yes — Indian Citizen, no visa sponsorship required.
 
 ### "What is your notice period?"
-Immediate / 0 days.
+15 days.
 
 ### "What is your expected salary / CTC?"
-15L+ (negotiable, no hard ceiling).
+18 to 24 LPA (negotiable, strict floor 18 LPA).
 
 ### "How many years of experience do you have?"
-~1 year (12 months as Founding Engineer at OpenBiz Software India Pvt Ltd).
+1 (~14 months)
 
 ### "Are you open to relocation?"
 Yes — open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai. Currently based in Agra.
@@ -213,7 +213,7 @@ Yes — open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai. Currently based i
 Yes, transitioning — current role ends 20 May 2026.
 
 ### "What is your current CTC?"
-Fresher-equivalent / not applicable in the traditional sense.
+11.2 LPA
 
 ### "LinkedIn URL"
 https://www.linkedin.com/in/atinsharma24
@@ -243,9 +243,9 @@ I'm a Full-Stack Product Engineer with ~12 months of founding-team experience at
 
 | Field | Value |
 |---|---|
-| Availability | Immediate Joiner — 0-day notice period |
+| Availability | 15-day notice period |
 | Work Mode | Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai |
-| Expected CTC | 15L+ (negotiable, no hard ceiling) — INR |
+| Expected CTC | 18L+ strict floor (18-24 LPA, negotiable) — INR |
 | Work Authorization | Indian Citizen — no sponsorship required |
 | GitHub | github.com/atinsharma24 |
 | LinkedIn | linkedin.com/in/atinsharma24 |
@@ -254,9 +254,10 @@ I'm a Full-Stack Product Engineer with ~12 months of founding-team experience at
 
 > **COMET USAGE RULES:**
 > 1. Never enter values not present in this document or the specialist files.
-> 2. For salary fields: always use 15L+ (negotiable, no hard ceiling) unless the form forces a single number → use 1500000 (INR/year) or 15 (LPA).
-> 3. For experience in years: use 1.
+> 2. For salary fields: always use 18 to 24 LPA (negotiable) unless the form forces a single number → use 18 (LPA) or 1800000 (INR/year). Never quote below 18 LPA.
+> 3. For experience in years: use 1 (~14 months across AGI Ready + OpenBiz). Never answer 'Fresher' — currently employed.
 > 4. For graduation year: 2026.
 > 5. For "current employer": OpenBiz Software India Pvt Ltd.
 > 6. Skip any application requiring unverifiable details (current CTC in exact rupees, official transcripts, etc.).
 > 7. Prefer "Founding Engineer" as title — not "Software Engineer" unless the form forces a generic title.
+> 8. Resume Upload: Since you do not have directory access to the local filesystem, do not try to input file paths. Pause and ask the user to manually upload/select the resume file "2026New1.pdf".

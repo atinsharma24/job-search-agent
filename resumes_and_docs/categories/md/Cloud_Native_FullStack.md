@@ -3,6 +3,13 @@
 **Profile:**
 Full-Stack Engineer with a focus on building resilient, cloud-native architectures and high-performance backend systems. Expert in TypeScript/MERN stack with extensive experience in CI/CD automation, Dockerized microservices, and database optimization. Founding engineer background in shipping scalable platforms from zero-to-one with 100% payment-state consistency and robust AWS/Vercel deployments.
 
+**AGI Ready Inc. (Jun 2026 – Present) | Full-Stack Developer | Remote / Delaware, US**
+
+**Current Role Highlights:**
+- Own production systems end-to-end — debugging, deployment, and release — across multiple concurrent client products.
+- Architect and integrate service APIs and asynchronous background workflows spanning third-party platforms, AI/LLM providers, and webhook receivers.
+- Build and ship full-stack features in **Next.js, TypeScript, and Node.js**, using **Claude Code and Codex** as primary development tools with architectural judgement over prompt-level iteration.
+
 **OpenBiz (Jun 2025 – May 2026) | Founding Engineer | Remote / Bangalore**
 
 **Key Experience Highlights:**
@@ -22,4 +29,4 @@ TypeScript, Node.js, NestJS, PostgreSQL, AWS (S3, DynamoDB), Docker, GitHub Acti
 
 **Patterns:** WebSocket (Socket.IO), REST, Webhook Validation (HMAC-SHA256), N+1 Query Optimization, Vector Similarity Search (cosine), Provider-Agnostic LLM Layers, Idempotent Event Processing.
 
-**Profile Snapshot:** Immediate Joiner · Remote-first · 15L+ (negotiable) · Indian Citizen · github.com/atinsharma24
+**Profile Snapshot:** 15-day notice · Remote-first · 18L+ (negotiable) · Indian Citizen · github.com/atinsharma24

@@ -1,7 +1,7 @@
 # Cutshort Application Queue — 2026-05-23
 
 ## ⚠️ Blocker Note
-Cutshort authenticated session is on a different tab. Agent used public job pages to scout. For best results, also manually check `cutshort.io/profile/candidate-jobs` filtered by AI/Full Stack, 0–3 yrs, ₹15L+.
+Cutshort authenticated session is on a different tab. Agent used public job pages to scout. For best results, also manually check `cutshort.io/profile/candidate-jobs` filtered by AI/Full Stack, 0–3 yrs, ₹18L+.
 
 ---
 
@@ -112,7 +112,7 @@ Cutshort authenticated session is on a different tab. Agent used public job page
 2. Automated job-search script in browser was redirecting tabs away from Cutshort every 2–3 seconds — personalized dashboard inaccessible
 3. Cloudflare Turnstile bot protection blocked dynamic API pages
 4. Most publicly-discoverable jobs show inactive recruiter warnings
-5. **Action for Atin:** Manually check `cutshort.io/profile/candidate-jobs` filtered by AI/Full Stack, 0–3 yrs, ₹15L+ for fresh personalized matches
+5. **Action for Atin:** Manually check `cutshort.io/profile/candidate-jobs` filtered by AI/Full Stack, 0–3 yrs, ₹18L+ for fresh personalized matches
 
 ---
 *Cutshort scout complete: 5 jobs queued, 2 flagged, 20 skipped*

@@ -13,7 +13,7 @@ A Chrome extension redirects most Naukri job-search URLs to Cutshort/Wellfound/I
 - **Salary shown:** Not listed (Qure.ai typically ₹18–30L at SDE level)
 - **Apply method:** Naukri Easy Apply — direct company posting
 - **Why this role fits:** AI-in-healthcare unicorn building LLM-powered radiology tools — direct match for production RAG/LangChain/OpenAI engineering experience.
-- **Tailored note:** "Qure.ai's mission to deploy AI in real-world clinical workflows resonates with my experience shipping production LLM applications. I built VyaparGPT — a WhatsApp AI for SMBs serving 40+ pilots — using RAG pipelines with pgvector, LangChain.js, and OpenAI APIs on a FastAPI + Node.js stack. At OpenBiz I own end-to-end AI architecture including stateful multi-agent systems with LangGraph. I'm an immediate joiner eager to bring that production LLM depth to Qure's next-generation diagnostics AI."
+- **Tailored note:** "Qure.ai's mission to deploy AI in real-world clinical workflows resonates with my experience shipping production LLM applications. I built VyaparGPT — a WhatsApp AI for SMBs serving 40+ pilots — using RAG pipelines with pgvector, LangChain.js, and OpenAI APIs on a FastAPI + Node.js stack. At OpenBiz I owned end-to-end AI architecture including stateful multi-agent systems with LangGraph. I'm on a 15-day notice period, eager to bring that production LLM depth to Qure's next-generation diagnostics AI."
 
 ---
 
@@ -53,7 +53,7 @@ A Chrome extension redirects most Naukri job-search URLs to Cutshort/Wellfound/I
 - **Salary shown:** Not disclosed
 - **Apply method:** External (company site) — ⚠️ FLAG: confirm role involves LLM/GenAI (JD uses TensorFlow/Keras/CV keywords)
 - **Why this role fits:** AI product company in preferred city, aligns with profile if LLM work is involved.
-- **Tailored note:** "Aiotor Labs' focus on scalable AI solutions maps onto my end-to-end AI engineering experience. My primary strength is LLM application engineering (RAG, LangChain, agentic systems) backed by solid Python/ML fundamentals. Pune is a preferred city and I'm an immediate joiner."
+- **Tailored note:** "Aiotor Labs' focus on scalable AI solutions maps onto my end-to-end AI engineering experience. My primary strength is LLM application engineering (RAG, LangChain, agentic systems) backed by solid Python/ML fundamentals. Pune is a preferred city and I'm on a 15-day notice period."
 
 ---
 

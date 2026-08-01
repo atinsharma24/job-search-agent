@@ -11,7 +11,7 @@ Naukri Discover + Apply — via CDP (Chrome on port 9222)
 Usage:
   python3 scripts/playwright_naukri_discover_apply.py [--dry-run] [--max-apply 20]
 
-CTC: Current 0 | Expected 8-12 LPA
+CTC: Current 11.2 | Expected 16-22 LPA
 """
 
 import argparse
@@ -34,7 +34,7 @@ ARTIFACT_DIR     = VAULT_ROOT / "output" / "playwright"
 CDP_URL          = "http://localhost:9222"
 
 CURRENT_CTC  = 11.2   # LPA
-EXPECTED_CTC = 15   # LPA — 15 to 20 LPA (negotiable)
+EXPECTED_CTC = 16   # LPA — 16 to 22 LPA (negotiable)
 
 # ---------------------------------------------------------------------------
 # Naukri search URLs (Slugified and filtered with experience=0 and jobAge=15)
@@ -57,7 +57,10 @@ def get_search_urls():
         "prompt engineer",
         "react node developer"
     ]
-    urls = []
+    urls = [
+        "https://www.naukri.com/recommendedjobs",
+        "https://www.naukri.com/mnj/recommendedjobs"
+    ]
     for kw in keywords:
         slug = re.sub(r'[^a-zA-Z0-9]+', '-', kw.strip().lower()).strip('-')
         # Generate URLs for experience range 0 to 3
@@ -318,12 +321,12 @@ def find_apply_button(page):
                 try:
                     if btn.is_visible():
                         txt = btn.inner_text().strip().casefold()
-                        if txt in ("apply", "apply now", "easy apply"):
+                        if "apply" in txt or "easy" in txt:
                             return btn
                 except Exception:
                     pass
-    for text in ["Apply Now", "Apply now", "Easy Apply"]:
-        btn = page.get_by_role("button", name=re.compile(re.escape(text), re.I))
+    for text in ["Apply", "Apply Now", "Easy Apply"]:
+        btn = page.get_by_role("button", name=re.compile(text, re.I))
         if btn.count() > 0 and btn.first.is_visible():
             return btn.first
     return None

@@ -138,3 +138,9 @@
 [2026-06-09T16:35:54.413552+00:00] SEND_BUTTON_DISABLED | Uday T Kumar | Send button is disabled (email verification required?)
 [2026-06-09T16:38:48.686620+00:00] SEND_BUTTON_DISABLED | Harshil Mathur | Send button is disabled (email verification required?)
 [2026-06-10T13:24:58.161212+00:00] MODAL_NOT_FOUND | MD MONAZIR HUSSAIN | Invite modal did not appear after clicking Connect.
+[2026-06-11T13:23:06.616672+00:00] SEND_ERROR | Swayam Shresth Mohapatra | LambdaTest | Locator.press: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator(".artdeco-modal").first.locator("textarea").first
+
+[2026-06-21T17:50:21.206595+00:00] TEXTAREA_NOT_FOUND | vishruth devan
+[2026-06-21T17:50:50.399161+00:00] TEXTAREA_NOT_FOUND | Bikash Chauhan

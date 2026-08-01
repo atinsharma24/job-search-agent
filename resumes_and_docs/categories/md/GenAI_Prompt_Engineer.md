@@ -3,6 +3,13 @@
 **Profile:**
 Specialized Generative AI Engineer focused on LLM orchestration, agentic workflows, and high-fidelity RAG pipelines. Expert in prompt engineering, dual-model failover architectures (Gemini + OpenAI), and semantic search optimization using pgvector and ChromaDB. Experienced in designing resilient AI infrastructures with sub-800ms retrieval times and fault-tolerant message lifecycles.
 
+**AGI Ready Inc. (Jun 2026 – Present) | Full-Stack Developer | Remote / Delaware, US**
+
+**Current Role Highlights:**
+- Operate an AI-native development workflow with **Claude Code and Codex** — decomposing problems, directing agentic tooling with architectural judgement, and reviewing generated output against production standards.
+- Architect and integrate **AI/LLM provider APIs**, webhook receivers, and asynchronous background workflows across multiple concurrent client products.
+- Build and ship full-stack features in **Next.js, TypeScript, and Node.js**; own production systems end-to-end through debugging, deployment, and release.
+
 **OpenBiz (Jun 2025 – May 2026) | Founding Engineer | Remote / Bangalore**
 
 **Key Experience Highlights:**
@@ -22,4 +29,4 @@ Python, LangChain, Groq API, pgvector, ChromaDB, OpenAI, Google Gemini, Prompt E
 
 **Patterns:** WebSocket (Socket.IO), REST, Webhook Validation (HMAC-SHA256), N+1 Query Optimization, Vector Similarity Search (cosine), Provider-Agnostic LLM Layers, Idempotent Event Processing.
 
-**Profile Snapshot:** Immediate Joiner · Remote-first · 15L+ (negotiable) · Indian Citizen · github.com/atinsharma24
+**Profile Snapshot:** 15-day notice · Remote-first · 18L+ (negotiable) · Indian Citizen · github.com/atinsharma24

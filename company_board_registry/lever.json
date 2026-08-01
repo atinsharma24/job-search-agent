@@ -1,0 +1,89 @@
+{
+  "ats": "lever",
+  "base_endpoint": "https://api.lever.co/v0/postings/{slug}",
+  "content_query_hint": "?mode=json",
+  "verified_on": "2026-07-01",
+  "count": 10,
+  "companies": [
+    {
+      "company": "CRED",
+      "ats": "lever",
+      "slug": "cred",
+      "endpoint": "https://api.lever.co/v0/postings/cred",
+      "open_roles_at_verification": 5,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Docsumo",
+      "ats": "lever",
+      "slug": "docsumo",
+      "endpoint": "https://api.lever.co/v0/postings/docsumo",
+      "open_roles_at_verification": 7,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "FamPay",
+      "ats": "lever",
+      "slug": "fampay",
+      "endpoint": "https://api.lever.co/v0/postings/fampay",
+      "open_roles_at_verification": 18,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Fi.Money",
+      "ats": "lever",
+      "slug": "fi",
+      "endpoint": "https://api.lever.co/v0/postings/fi",
+      "open_roles_at_verification": 8,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Hevo Data",
+      "ats": "lever",
+      "slug": "hevo",
+      "endpoint": "https://api.lever.co/v0/postings/hevo",
+      "open_roles_at_verification": 1,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Meesho",
+      "ats": "lever",
+      "slug": "meesho",
+      "endpoint": "https://api.lever.co/v0/postings/meesho",
+      "open_roles_at_verification": 42,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Paytm",
+      "ats": "lever",
+      "slug": "paytm",
+      "endpoint": "https://api.lever.co/v0/postings/paytm",
+      "open_roles_at_verification": 234,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Porter",
+      "ats": "lever",
+      "slug": "porter",
+      "endpoint": "https://api.lever.co/v0/postings/porter",
+      "open_roles_at_verification": 19,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Zeta",
+      "ats": "lever",
+      "slug": "zeta",
+      "endpoint": "https://api.lever.co/v0/postings/zeta",
+      "open_roles_at_verification": 19,
+      "verified_on": "2026-07-01"
+    },
+    {
+      "company": "Zomato",
+      "ats": "lever",
+      "slug": "eternal",
+      "endpoint": "https://api.lever.co/v0/postings/eternal",
+      "open_roles_at_verification": 4,
+      "verified_on": "2026-07-01"
+    }
+  ]
+}

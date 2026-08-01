@@ -1,0 +1,205 @@
+[
+  {
+    "name": "Sarvam AI",
+    "ats": "ashby",
+    "slug": "sarvam",
+    "endpoint": "https://api.ashbyhq.com/posting-api/job-board/sarvam",
+    "open_roles": 62
+  },
+  {
+    "name": "Bureau",
+    "ats": "ashby",
+    "slug": "bureau",
+    "endpoint": "https://api.ashbyhq.com/posting-api/job-board/bureau",
+    "open_roles": 11
+  },
+  {
+    "name": "Postman",
+    "ats": "greenhouse",
+    "slug": "postman",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/postman/jobs",
+    "open_roles": 121
+  },
+  {
+    "name": "Razorpay",
+    "ats": "greenhouse",
+    "slug": "razorpaysoftwareprivatelimited",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/razorpaysoftwareprivatelimited/jobs",
+    "open_roles": 32
+  },
+  {
+    "name": "Observe.AI",
+    "ats": "greenhouse",
+    "slug": "observeai",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/observeai/jobs",
+    "open_roles": 13
+  },
+  {
+    "name": "Tekion",
+    "ats": "greenhouse",
+    "slug": "tekion",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/tekion/jobs",
+    "open_roles": 54
+  },
+  {
+    "name": "PhonePe",
+    "ats": "greenhouse",
+    "slug": "phonepe",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/phonepe/jobs",
+    "open_roles": 60
+  },
+  {
+    "name": "Nanonets",
+    "ats": "greenhouse",
+    "slug": "nanonets",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/nanonets/jobs",
+    "open_roles": 12
+  },
+  {
+    "name": "DevRev",
+    "ats": "greenhouse",
+    "slug": "devrev",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/devrev/jobs",
+    "open_roles": 37
+  },
+  {
+    "name": "Meesho",
+    "ats": "lever",
+    "slug": "meesho",
+    "endpoint": "https://api.lever.co/v0/postings/meesho",
+    "open_roles": 43
+  },
+  {
+    "name": "Zeta",
+    "ats": "lever",
+    "slug": "zeta",
+    "endpoint": "https://api.lever.co/v0/postings/zeta",
+    "open_roles": 19
+  },
+  {
+    "name": "Fi.Money",
+    "ats": "lever",
+    "slug": "fi",
+    "endpoint": "https://api.lever.co/v0/postings/fi",
+    "open_roles": 8
+  },
+  {
+    "name": "SigNoz",
+    "ats": "ashby",
+    "slug": "signoz",
+    "endpoint": "https://api.ashbyhq.com/posting-api/job-board/signoz",
+    "open_roles": 19
+  },
+  {
+    "name": "Zomato",
+    "ats": "lever",
+    "slug": "eternal",
+    "endpoint": "https://api.lever.co/v0/postings/eternal",
+    "open_roles": 4
+  },
+  {
+    "name": "Navi Technologies",
+    "ats": "ashby",
+    "slug": "navi",
+    "endpoint": "https://api.ashbyhq.com/posting-api/job-board/navi",
+    "open_roles": 8
+  },
+  {
+    "name": "InMobi",
+    "ats": "greenhouse",
+    "slug": "inmobi",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/inmobi/jobs",
+    "open_roles": 70
+  },
+  {
+    "name": "Paytm",
+    "ats": "lever",
+    "slug": "paytm",
+    "endpoint": "https://api.lever.co/v0/postings/paytm",
+    "open_roles": 234
+  },
+  {
+    "name": "Porter",
+    "ats": "lever",
+    "slug": "porter",
+    "endpoint": "https://api.lever.co/v0/postings/porter",
+    "open_roles": 17
+  },
+  {
+    "name": "Instabase",
+    "ats": "greenhouse",
+    "slug": "instabase",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/instabase/jobs",
+    "open_roles": 14
+  },
+  {
+    "name": "CRED",
+    "ats": "lever",
+    "slug": "cred",
+    "endpoint": "https://api.lever.co/v0/postings/cred",
+    "open_roles": 5
+  },
+  {
+    "name": "Groww",
+    "ats": "greenhouse",
+    "slug": "groww",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/groww/jobs",
+    "open_roles": 16
+  },
+  {
+    "name": "Slice",
+    "ats": "greenhouse",
+    "slug": "slice",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/slice/jobs",
+    "open_roles": 75
+  },
+  {
+    "name": "FamPay",
+    "ats": "lever",
+    "slug": "fampay",
+    "endpoint": "https://api.lever.co/v0/postings/fampay",
+    "open_roles": 18
+  },
+  {
+    "name": "SquadStack",
+    "ats": "greenhouse",
+    "slug": "squad",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/squad/jobs",
+    "open_roles": 34
+  },
+  {
+    "name": "Atlan",
+    "ats": "ashby",
+    "slug": "atlan",
+    "endpoint": "https://api.ashbyhq.com/posting-api/job-board/atlan",
+    "open_roles": 4
+  },
+  {
+    "name": "Hevo Data",
+    "ats": "lever",
+    "slug": "hevo",
+    "endpoint": "https://api.lever.co/v0/postings/hevo",
+    "open_roles": 1
+  },
+  {
+    "name": "Attentive.ai",
+    "ats": "greenhouse",
+    "slug": "attentive",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/attentive/jobs",
+    "open_roles": 48
+  },
+  {
+    "name": "Enterpret",
+    "ats": "greenhouse",
+    "slug": "enterpret",
+    "endpoint": "https://boards-api.greenhouse.io/v1/boards/enterpret/jobs",
+    "open_roles": 7
+  },
+  {
+    "name": "Composio",
+    "ats": "ashby",
+    "slug": "composio",
+    "endpoint": "https://api.ashbyhq.com/posting-api/job-board/composio",
+    "open_roles": 27
+  }
+]

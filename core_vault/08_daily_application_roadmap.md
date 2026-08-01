@@ -154,7 +154,7 @@ Search manually for:
 What to prioritize:
 - Teams with strong product ownership
 - Startups where broad engineering scope is expected
-- Roles where 0-day notice and startup-style execution are an advantage
+- Roles where short notice and startup-style execution are an advantage
 
 ## 6. UnseenRoles
 
@@ -231,8 +231,8 @@ Source:
 
 Use:
 - Location: Agra, Uttar Pradesh, India
-- Notice period: 0 days / Immediate Joiner
-- Expected CTC: 15L+ (negotiable, no hard ceiling)
+- Notice period: 15 days
+- Expected CTC: 18L+ (18-24 LPA, negotiable)
 - Work authorization: Indian citizen, no sponsorship required for India
 
 ### Behavioral Questions

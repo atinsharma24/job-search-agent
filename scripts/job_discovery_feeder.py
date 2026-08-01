@@ -323,6 +323,8 @@ def main() -> int:
         from playwright.sync_api import sync_playwright
 
         linkedin_headless = os.environ.get("LINKEDIN_PLAYWRIGHT_HEADLESS", "1").lower() not in {"0", "false", "no"}
+        use_cdp = os.environ.get("PLAYWRIGHT_USE_CDP", "").lower() in {"1", "true", "yes"}
+        cdp_url = os.environ.get("PLAYWRIGHT_CDP_URL", "http://127.0.0.1:9222")
         linkedin_profile_dir = Path(
             os.environ.get(
                 "LINKEDIN_PLAYWRIGHT_PROFILE_DIR",
@@ -332,13 +334,17 @@ def main() -> int:
         linkedin_profile_dir.mkdir(parents=True, exist_ok=True)
 
         with sync_playwright() as playwright:
-            # Persistent context for LinkedIn — carries the saved login session.
-            linkedin_context = playwright.chromium.launch_persistent_context(
-                user_data_dir=str(linkedin_profile_dir),
-                headless=linkedin_headless,
-                channel=os.environ.get("LINKEDIN_PLAYWRIGHT_CHANNEL") or None,
-                viewport={"width": 1440, "height": 1200},
-            )
+            if use_cdp:
+                browser = playwright.chromium.connect_over_cdp(cdp_url, no_defaults=True)
+                linkedin_context = browser.contexts[0] if browser.contexts else browser.new_context(viewport={"width": 1440, "height": 1200})
+            else:
+                # Persistent context for LinkedIn — carries the saved login session.
+                linkedin_context = playwright.chromium.launch_persistent_context(
+                    user_data_dir=str(linkedin_profile_dir),
+                    headless=linkedin_headless,
+                    channel=os.environ.get("LINKEDIN_PLAYWRIGHT_CHANNEL") or None,
+                    viewport={"width": 1440, "height": 1200},
+                )
             # Wellfound public listings are accessible without auth.
             wellfound_browser = playwright.chromium.launch(headless=True)
             wellfound_context = wellfound_browser.new_context(viewport={"width": 1440, "height": 1200})
@@ -368,7 +374,10 @@ def main() -> int:
                     target_page = linkedin_page if jobs else wellfound_page
                     target_page.screenshot(path=str(DISCOVERY_DEBUG_PATH), full_page=False)
             finally:
-                linkedin_context.close()
+                if use_cdp:
+                    browser.close()
+                else:
+                    linkedin_context.close()
                 wellfound_context.close()
                 wellfound_browser.close()
 

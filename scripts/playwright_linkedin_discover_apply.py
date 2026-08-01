@@ -28,7 +28,7 @@ ARTIFACT_DIR = VAULT_ROOT / "output" / "playwright"
 CDP_URL = "http://localhost:9222"
 
 CURRENT_CTC_LPA = 11.2
-EXPECTED_CTC_LPA = 15  # 15-20 LPA, negotiable
+EXPECTED_CTC_LPA = 16  # 16-22 LPA, negotiable
 
 # LinkedIn search queries for Easy Apply jobs
 LINKEDIN_SEARCH_URLS = [

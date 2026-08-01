@@ -594,11 +594,24 @@ def main():
 
         print(f"\n  Logged in. Starting sends...\n")
 
+        session_names = set()
+        session_slugs = set()
+
         for entry in pending_send:
             if sent_count >= DAILY_CAP:
                 print(f"\n[HALT] Daily cap of {DAILY_CAP} reached. Re-run tomorrow.")
                 log_outreach(f"DAILY_CAP_REACHED | {sent_count} sent this session")
                 break
+
+            slug = get_slug(entry.get("url", ""))
+            name_clean = entry.get("name", "").strip().lower()
+
+            if (name_clean and name_clean in session_names) or (slug and slug in session_slugs):
+                print(f"Skipping duplicate in current session queue: {entry.get('name')}")
+                entry["status"] = "skipped"
+                entry["error"] = "Duplicate in session"
+                save_json(APPROVED_JSON, approved)
+                continue
 
             success = send_connection(page, entry, dry_run)
 
@@ -606,6 +619,10 @@ def main():
                 sent.append(entry)
                 sent_count += 1
                 sends_since_break += 1
+                if name_clean:
+                    session_names.add(name_clean)
+                if slug:
+                    session_slugs.add(slug)
             elif entry["status"] == "failed":
                 pass  # stays in approved.json for retry
 

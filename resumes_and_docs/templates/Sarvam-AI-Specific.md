@@ -117,4 +117,4 @@ Focus: Full Stack Development, AI Systems, Information Security Management
 
 ---
 
-**Availability:** Immediate Joiner — 0-day notice period | **Work Mode:** Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai | **Expected CTC:** 15L+ (negotiable, no hard ceiling) | **Work Authorization:** Indian Citizen — no sponsorship required
+**Availability:** 15-day notice period | **Work Mode:** Remote-first; open to Bangalore, Hyderabad, Pune, Delhi NCR, Mumbai | **Expected CTC:** 18L+ (18-24 LPA, negotiable) | **Work Authorization:** Indian Citizen — no sponsorship required

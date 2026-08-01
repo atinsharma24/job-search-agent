@@ -1,7 +1,7 @@
 {
   "candidate": {
     "full_name": "Atin Sharma",
-    "title": "Full-Stack Product Engineer | AI Systems - WhatsApp Automation - RAG Pipelines",
+    "title": "Full-Stack Engineer | AI Systems - RAG Pipelines - LLM Agents - AI-Native Development",
     "email": "atinsharma24@gmail.com",
     "phone": "+91 82185 02886",
     "location": {
@@ -11,14 +11,18 @@
       "country": "India"
     },
     "github": "https://github.com/atinsharma24/",
-    "notice_period_days": 0,
-    "availability": "Immediate",
+    "notice_period_days": 15,
+    "availability": "15 days notice",
     "salary_expectation_inr_lpa": {
-      "min": 15,
-      "max": 30,
+      "min": 18,
+      "max": 24,
       "currency": "INR",
-      "unit": "LPA"
+      "unit": "LPA",
+      "negotiable": true,
+      "negotiation_floor_private": 15,
+      "negotiation_floor_note": "PRIVATE walk-away minimum. Never disclose or auto-fill. Forms always quote 18 LPA as the stated floor."
     },
+    "current_ctc_inr_lpa": 11.2,
     "work_authorization": "Indian Citizen — no sponsorship required"
   },
 
@@ -43,6 +47,29 @@
   ],
 
   "experience": [
+    {
+      "company": "AGI Ready Inc.",
+      "company_type": "Delaware C-Corporation — AI-Native Development Studio",
+      "title": "Full-Stack Developer",
+      "title_contracted": "Full-Stack Developer — Pathways Program",
+      "employment_type": "Independent Contractor, full-time",
+      "work_mode": "Remote",
+      "start_date": "2026-06",
+      "start_date_contracted": "2026-07-02",
+      "start_date_note": "Presented as Jun 2026 per candidate instruction; engagement letter states 2026-07-02",
+      "end_date": null,
+      "is_current": true,
+      "reports_to": "Amardeep Singh Pal, CEO",
+      "scope_of_work": [
+        "Build and ship full-stack product features in Next.js, TypeScript, and Node.js across multiple concurrent client products",
+        "Architect and integrate service APIs: third-party platforms, AI/LLM provider APIs, webhook receivers, asynchronous background workflows",
+        "Operate an AI-native development workflow with Claude Code and Codex, directing agentic tooling with architectural judgement",
+        "Own production systems end-to-end: debugging, deployment, and release",
+        "Decompose ambiguous client problems into scoped deliverables shipped iteratively"
+      ],
+      "confidentiality": "One-way NDA; 12-month non-compete limited to AGI Ready clients and directly competing AI dev studios; 12-month non-solicitation. Do NOT disclose client names, product specifics, or commercial terms.",
+      "achievements_note": "No shipped-outcome metrics recorded yet. Bullets are scope-derived only — replace with verified accomplishments when available."
+    },
     {
       "company": "OpenBiz Software India Pvt Ltd",
       "title": "Founding Engineer",

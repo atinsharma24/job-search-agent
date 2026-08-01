@@ -49,7 +49,7 @@ PLACEHOLDERS: [Company Name]
 ---
 Following up briefly — I know your inbox moves fast.
 
-If it helps to have a one-line summary: full-stack engineer with a year of production LLM systems (LangGraph, RAG, provider fallback), MERN + Docker, available immediately, targeting [Company Name] specifically.
+If it helps to have a one-line summary: full-stack engineer with a year of production LLM systems (LangGraph, RAG, provider fallback), MERN + Docker, available on 15 days' notice, targeting [Company Name] specifically.
 
 If there's an open role or if headcount is coming up, I'd genuinely like to be considered. Happy to do a technical screen at any point.
 

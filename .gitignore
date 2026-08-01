@@ -1,0 +1,44 @@
+# ---------------------------------------------------------------------------
+# Browser profiles — NEVER commit these.
+# They contain live session cookies, Local Storage and IndexedDB for LinkedIn,
+# Naukri and Wellfound. Anything committed here is a credential leak, and this
+# repo is public. Sessions are re-created locally by:
+#     bash scripts/setup_browser_sessions.sh
+# ---------------------------------------------------------------------------
+active_application_context/playwright/
+ChromeDebugProfile/
+
+# Secrets / local env
+dev.env
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Build output & run artifacts
+out/
+output/
+logs/
+*.log
+*.synctex.gz
+*.aux
+*.fdb_latexmk
+*.fls
+
+# Scratch / experiments
+scratch/
+
+# Editor & OS noise
+.DS_Store
+.claude/worktrees/
+*.swp
+*~
