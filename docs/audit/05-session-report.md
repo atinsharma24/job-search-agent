@@ -123,6 +123,21 @@ it run again.
 
 ---
 
+## 4b. Questions I deliberately did not decide for you
+
+Each of these appeared on a live form and is currently abstained. Each needs one decision
+from you, after which it becomes a one-line rule.
+
+| Question seen | Why I did not answer it |
+|---|---|
+| *"Mention your CTC"* (no "current"/"expected" qualifier) | Genuinely ambiguous. Answering 11.2 when they meant *expected* would quote below your 18L floor and cap the offer; answering 18 when they meant *current* overstates your salary. Compensation is exactly where a wrong guess is expensive and hard to walk back. **Tell me which reading to use and it becomes one rule.** |
+| *"Are you willing to work 6 days a week, remotely, and across time zones?"* | A working-conditions commitment. Yours to make. |
+| *"Can you convert a business requirement into an AI architecture, define evaluation metrics and deliver?"* | Capability self-assessment — you scoped these out of the safe-factual set. |
+| *"If you joined tomorrow, what would you build first at &lt;company&gt;—and why?"* | Company-specific judgement. This is the screening-agent's job. |
+| *"Are you currently residing in Bengaluru or willing to relocate to Bengaluru?"* | Answered **Yes** (relocation is in your work_preference) — flagged only because your Naukri profile says Bengaluru while the vault says Agra. Worth making those agree. |
+
+---
+
 ## 5. What to do next
 
 **Immediate (yours, ~5 minutes)**

@@ -244,6 +244,7 @@
     "generative-futures:software-engineer-remote-ai",
     "giantmind-solutions:lead-python-developer-production-systems",
     "gruntwrk:software-engineer",
+    "harp:node-js-developer",
     "hcltech:walk-in-drive-for-gen-ai-developer-noida-sec-60-on-20th-june",
     "healthflex:react-native-professional",
     "hindavi-technologies:fullstack-developer",
@@ -331,6 +332,7 @@
     "spydra:full-stack-developer-ai-assist-and-integrations",
     "stealth-startup:software-engineer",
     "strobes-security-inc:full-stack-engineer",
+    "suitepedia:artificial-intelligence-engineer",
     "super-v-technology:mern-full-stack-developer",
     "suzuki-digital:mern-full-stack-developer",
     "swipeloan:genai-ml-engineer",
@@ -464,6 +466,11 @@
       "reason": "blocked:unanswerable_question",
       "at": "2026-08-01T18:05:14",
       "url": "https://www.linkedin.com/jobs/view/4447780207/"
+    },
+    "harp:node-js-developer": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T18:05:58",
+      "url": "https://www.linkedin.com/jobs/view/4445597562/"
     }
   },
   "attempts": {
