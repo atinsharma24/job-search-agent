@@ -9,6 +9,23 @@ zero defects.
 
 ---
 
+> ## Status as of 1 Aug 2026, 17:45
+>
+> Phases 0–4 are **done**. The pipeline is live and submitting correct applications.
+>
+> Running it for real surfaced a second wave of defects that static review had missed —
+> LinkedIn was applying to *nothing* (blank card extraction), descriptions were never read
+> (hashed CSS class names), scripts hijacked the user's browser tabs, a dry run recorded a
+> real application, and the LinkedIn field mapper bypassed the screening policy entirely.
+> All are fixed and covered by pre-flight regression checks. See
+> [`04-live-run-findings.md`](04-live-run-findings.md).
+>
+> **Verified on live submissions:** Expected CTC 18 (was 16), 1 year experience (was 0),
+> category-matched resume validated for extractable text, screening questions read before
+> answering.
+
+---
+
 ## Phase 0 — Repo hygiene ✅ *done, commit `4126589`*
 
 - `.gitignore` added; 2,139 files untracked (91% of the repo), local files retained.

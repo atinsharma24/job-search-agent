@@ -8,6 +8,8 @@ data layer, the content assets, and repository hygiene.
 | [`01-findings.md`](01-findings.md) | Every finding, with `file:line` evidence and severity |
 | [`02-browser-automation.md`](02-browser-automation.md) | CDP vs Claude-in-Chrome vs alternatives — the recommendation |
 | [`03-remediation-roadmap.md`](03-remediation-roadmap.md) | Phased fix plan, P0 → P3 |
+| [`04-live-run-findings.md`](04-live-run-findings.md) | Defects found by actually running the pipeline — including that LinkedIn was applying to nothing |
+| [`../design/screening_question_agent.md`](../design/screening_question_agent.md) | Design for the autonomous screening-question agent |
 
 **Method.** Findings were produced by two parallel exploration passes and then
 independently re-verified by direct measurement — reading the cited lines, running
