@@ -111,7 +111,7 @@ _VALUE_RULES = (
     ("first_name", r"\bfirst name\b", "first_name"),
     ("last_name", r"\b(last|sur)\s?name\b", "last_name"),
     ("grad_year", r"(year of|passing|graduation) ?(year|passout)?", "grad_year"),
-    ("current_designation", r"current (designation|title|role|position)", "current_designation"),
+    ("current_designation", r"current\s+(\w+\s+){0,2}(designation|title|role|position)|(designation|job title)\\b", "current_designation"),
     ("skills", r"\b(key |primary |core )?skills\b|technolog(y|ies) you", "primary_skills"),
 )
 
@@ -136,7 +136,8 @@ _QA_PATTERNS = (
     ("qa_why_leaving",   r"reason for leaving|why (are you )?leav|why looking|"
                          r"why (are you )?(looking|searching) for (a )?(new|change)"),
     ("qa_why_role",      r"why (do you want|are you interested|this (role|company|position)|"
-                         r"should we hire|apply)|what interests you|what attracts you"),
+                         r"should we hire|apply)|what (interests|attracts|excites|appeals to|"
+                         r"has attracted|drew|draws) you|why us\b|interest in (this|the) (role|position)"),
     ("qa_current_role",  r"(describe|tell).*(current|present) role|what do you (currently )?do|"
                          r"current responsibilit"),
     ("qa_tech_challenge",r"technical challenge|difficult (problem|bug|technical)|hardest|"

@@ -111,6 +111,20 @@ LINKEDIN_MAPPING = [
 ]
 
 
+_WIDGET_LABEL = re.compile(
+    r"\.pdf\b.*\.pdf\b|\.docx?\b.*\.docx?\b|"          # a list of stored files
+    r"\b(upload|choose|select)\s+(a\s+)?(new\s+)?(resume|cv|file)|"
+    r"\bbe sure to include an updated resume\b|"
+    r"\bdrag and drop\b|\bsupported formats\b",
+    re.I,
+)
+
+
+def _is_widget_not_question(label: str) -> bool:
+    """True for file pickers and similar chrome that only look like fields."""
+    return bool(_WIDGET_LABEL.search(label or ""))
+
+
 # Labels this run declined to answer. A required one blocks the form, so the step
 # loop would otherwise spin to its limit re-reading the same dead page.
 UNANSWERED: list[str] = []
@@ -155,6 +169,12 @@ def answer_mapper(answer_bank: dict, label_text: str) -> Optional[str]:
     val = map_answer(label, answer_bank, LINKEDIN_MAPPING)
     if val is not None:
         return val
+
+    # LinkedIn's resume picker is a radio list of previously uploaded files, not a
+    # question. We upload a fresh file separately, so it must not be counted as an
+    # unanswerable field — doing so blocked otherwise-valid applications.
+    if _is_widget_not_question(label):
+        return None
 
     print(f"  \u26a0 No answer for field: {label[:110]!r} — leaving blank", flush=True)
     UNANSWERED.append(label)

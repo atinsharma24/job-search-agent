@@ -364,6 +364,7 @@
     "cgi:full-stack-developer",
     "chadwallet:founding-engineer",
     "chai-point:software-engineer-intern",
+    "chandigarh-university-hr-department:assistant-manager-ai",
     "chargebee:senior-software-engineer",
     "cheers-interactive:full-stack-engineer",
     "cherry-bekaert:back-end-software-engineer",
@@ -406,6 +407,7 @@
     "crossing-hurdles:backend-developer-75-hr-remote",
     "crossing-hurdles:backend-engineer-42-hr-remote",
     "crossing-hurdles:backend-engineer-remote",
+    "crossing-hurdles:devops-engineer-80-hr-remote",
     "crossing-hurdles:full-stack-developer-15-3-hr-remote",
     "crossing-hurdles:full-stack-developer-25hr-remote",
     "crossing-hurdles:full-stack-software-engineer-100-hr-remote",
@@ -1149,6 +1151,7 @@
     "skild-ai:computer-vision-ai-ml-engineer",
     "skillscapital:frontend-engineer-fully-remote-global-ai-powered-tech-talent-venture",
     "sky-systems:full-stack-engineer-ai-tools",
+    "sleek:principal-full-stack-engineer",
     "smart-working:product-engineer-remote-full-time-as263",
     "smartdocs-business-solutions:jr-devops-engineer",
     "smartronic-technical-solution-chennai:software-developer",
@@ -1388,6 +1391,11 @@
       "reason": "max_attempts_exhausted (error:1)",
       "at": "2026-08-01T17:29:43",
       "url": "https://www.linkedin.com/jobs/view/4444564362/"
+    },
+    "sleek:principal-full-stack-engineer": {
+      "reason": "blocked:unanswerable_question",
+      "at": "2026-08-01T17:34:05",
+      "url": "https://www.linkedin.com/jobs/view/4447509174/"
     }
   },
   "attempts": {
