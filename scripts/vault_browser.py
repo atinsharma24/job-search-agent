@@ -109,14 +109,28 @@ def detect_security_challenge(page) -> str | None:
     body = _safe(lambda: page.locator("body").inner_text(timeout=3000)).casefold()
     blob = f"{title}\n{body[:6000]}"
 
+    # A real challenge/WAF interstitial is a SHORT page with no application
+    # content. A job description is long and may legitimately contain phrases like
+    # "rate limiting, request throttling, and abuse protection" — that is a backend
+    # security JD, not a block. Matching body text on a full content page produced
+    # a false WAF verdict that aborted an entire live run.
+    try:
+        has_content = page.locator("main, [role='main'], article").count() > 0
+    except Exception:
+        has_content = False
+    looks_interstitial = len(body) < 2000 or not has_content
+
     for kind, markers in _MARKERS:
         for marker in markers:
-            if marker in blob:
-                # "captcha" appears in ordinary LinkedIn profile pages; require
-                # that we are not on a normal content route before believing it.
-                if kind == "captcha" and marker == "captcha" and "/in/" in url:
-                    continue
-                return kind
+            if marker not in blob:
+                continue
+            # Title matches are trustworthy on any page ("Just a moment...").
+            in_title = marker in title
+            if not in_title and not looks_interstitial:
+                continue
+            if kind == "captcha" and marker == "captcha" and "/in/" in url:
+                continue
+            return kind
 
     # Soft login phrases count only when a password field corroborates them, and a
     # password field alone counts only when the page has no real content. A logged-in

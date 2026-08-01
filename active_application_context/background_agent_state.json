@@ -34,6 +34,7 @@
     "create-agi-labs:react-js-next-js-web-developer",
     "crossing-hurdles:software-developer-remote",
     "ct-automotive:full-stack-ai-engineer",
+    "data-eminence:ai-full-stack-developer",
     "data-eminence:junior-python-developer",
     "data-eminence:react-developer",
     "deloitte-shared-services-india:fullstack-developer",
@@ -432,6 +433,7 @@
     "curefit:sde-2",
     "cyurae:ai-product-engineer-ai-core-engineer",
     "dailoqa-solutions-india:python-developer",
+    "data-eminence:ai-full-stack-developer",
     "data-eminence:full-stack-developer",
     "data-eminence:junior-react-developer",
     "datasturdy-consulting:fullstack-developer",
@@ -861,6 +863,7 @@
     "keywords-studios:ai-engineer-fresher-entry-level",
     "keyy-pays:google-cloud-engineer",
     "kilwar:backend-engineer-typescript-ai-first-team",
+    "kloth:full-stack-engineering-intern-agentic-ecommerce",
     "kodeinfotech:back-end-developer",
     "kodeinfotech:front-end-developer",
     "koffeetech-communications:web-developer",
@@ -1494,6 +1497,12 @@
       "last": "2026-08-01T17:37:47",
       "last_status": "error:1",
       "url": "https://www.linkedin.com/jobs/view/4447516514/"
+    },
+    "kleios-technologies-pvt-ltd:full-stack-engineer": {
+      "count": 1,
+      "last": "2026-08-01T17:46:14",
+      "last_status": "error:1",
+      "url": "https://www.linkedin.com/jobs/view/4446742881/"
     }
   }
 }
